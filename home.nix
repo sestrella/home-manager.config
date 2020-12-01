@@ -41,6 +41,7 @@
       gp = "git push";
       gst = "git status";
       # home-manager
+      hmg = "home-manager generations";
       hms = "home-manager switch";
     };
   };
