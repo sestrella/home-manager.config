@@ -34,10 +34,20 @@
     enable = true;
     # config
     extraConfig = ''
+      set colorcolumn=80
+      set number
+
       set expandtab
       set shiftwidth=2
       set softtabstop=2
       set tabstop=2
+
+      set splitbelow
+      set splitright
+
+      set nobackup
+      set noswapfile
+      set noundofile
     '';
   };
 }
