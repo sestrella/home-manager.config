@@ -23,6 +23,14 @@
     pkgs.bat
   ];
 
+  programs.fish = {
+    enable = true;
+    # config
+    shellAbbrs = {
+      gst = "git status";
+    };
+  };
+
   programs.git = {
     enable = true;
     # config
