@@ -42,6 +42,7 @@
       gst = "git status";
       # home-manager
       hmg = "home-manager generations";
+      hmn = "home-manager news";
       hms = "home-manager switch";
     };
   };
@@ -73,12 +74,25 @@
       set noundofile
 
       colorscheme solarized
+
+      let mapleader = "\<Space>"
+      let maplocalleader = ','
+
+      let g:airline_powerline_fonts = 1
     '';
     plugins = with pkgs.vimPlugins; [
+      bats-vim
+      coc-nvim
       ctrlp-vim
+      nerdcommenter
+      nerdtree
+      typescript-vim
       vim-airline
       vim-colors-solarized
+      vim-jsx-typescript
       vim-nix
+      vim-projectionist
+      vim-trailing-whitespace
     ];
   };
 
