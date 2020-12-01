@@ -26,7 +26,7 @@
   programs.fish = {
     enable = true;
     # config
-    interactiveShellInit = ''
+    promptInit = ''
       set -gx NIX_PATH $HOME/.nix-defexpr/channels $NIX_PATH
     '';
     shellAbbrs = {
