@@ -80,4 +80,6 @@
       vim-nix
     ];
   };
+
+  programs.starship.enable = true;
 }
