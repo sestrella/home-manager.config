@@ -48,6 +48,13 @@
       set nobackup
       set noswapfile
       set noundofile
+
+      colorscheme solarized
     '';
+    plugins = with pkgs.vimPlugins; [
+      vim-airline
+      vim-colors-solarized
+      vim-nix
+    ];
   };
 }
