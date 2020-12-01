@@ -52,6 +52,7 @@
       colorscheme solarized
     '';
     plugins = with pkgs.vimPlugins; [
+      ctrlp-vim
       vim-airline
       vim-colors-solarized
       vim-nix
