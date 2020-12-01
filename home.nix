@@ -26,8 +26,22 @@
   programs.fish = {
     enable = true;
     # config
+    interactiveShellInit = ''
+      set -gx NIX_PATH $HOME/.nix-defexpr/channels $NIX_PATH
+    '';
     shellAbbrs = {
+      # git
+      ga = "git add";
+      gaa = "git add --all";
+      gbr = "git branch --remote";
+      gc = "git commit -v";
+      gco = "git checkout";
+      gd = "git diff";
+      gl = "git pull";
+      gp = "git push";
       gst = "git status";
+      # home-manager
+      hms = "home-manager switch";
     };
   };
 
