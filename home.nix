@@ -108,5 +108,6 @@
     # config
     baseIndex = 1;
     disableConfirmationPrompt = true;
+    keyMode = "vi";
   };
 }
