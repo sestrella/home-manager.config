@@ -96,6 +96,7 @@
       vim-jsx-typescript
       vim-nix
       vim-projectionist
+      vim-sensible
       vim-trailing-whitespace
     ];
   };
