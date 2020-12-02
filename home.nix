@@ -102,4 +102,11 @@
   };
 
   programs.starship.enable = true;
+
+  programs.tmux = {
+    enable = true;
+    # config
+    baseIndex = 1;
+    disableConfirmationPrompt = true;
+  };
 }
