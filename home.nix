@@ -79,6 +79,10 @@
       let maplocalleader = ','
 
       let g:airline_powerline_fonts = 1
+
+      let g:NERDTreeShowHidden = 1
+
+      noremap <C-n> :NERDTreeToggle<CR>
     '';
     plugins = with pkgs.vimPlugins; [
       bats-vim
