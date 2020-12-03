@@ -30,6 +30,8 @@
       set -gx NIX_PATH $HOME/.nix-defexpr/channels $NIX_PATH
     '';
     shellAbbrs = {
+      # bat
+      cat = "bat";
       # git
       ga = "git add";
       gaa = "git add --all";
@@ -44,6 +46,8 @@
       hmg = "home-manager generations";
       hmn = "home-manager news";
       hms = "home-manager switch";
+      # neovim
+      vim = "nvim";
       # tmux
       ta = "tmux attach -t";
       tkss = "tmux kill-session -t";
