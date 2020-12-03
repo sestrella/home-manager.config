@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  rg="${pkgs.ripgrep}/bin/rg";
+  rg = "${pkgs.ripgrep}/bin/rg";
 in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
