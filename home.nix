@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
-{
+let
+  rg="${pkgs.ripgrep}/bin/rg";
+in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -88,10 +90,10 @@
       " airline
       let g:airline_powerline_fonts = 1
       " ctrlp
-      set grepprg=${pkgs.ripgrep}/bin/rg\ --color=never
+      set grepprg=${rg}\ --color=never
 
       let g:ctrlp_use_caching = 0
-      let g:ctrlp_user_command = '${pkgs.ripgrep}/bin/rg %s --files --color=never --glob ""'
+      let g:ctrlp_user_command = '${rg} %s --files --color=never --glob ""'
       " nerdtree
       let g:NERDTreeShowHidden = 1
 
