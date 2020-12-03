@@ -97,7 +97,7 @@ in {
       " nerdtree
       let g:NERDTreeShowHidden = 1
 
-      noremap <C-n> :NERDTreeToggle<CR>
+      nnoremap <C-n> :NERDTreeToggle<CR>
       " solarized
       colorscheme solarized
     '';
