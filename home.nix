@@ -47,8 +47,6 @@
       hmg = "home-manager generations";
       hmn = "home-manager news";
       hms = "home-manager switch";
-      # neovim
-      vim = "nvim";
       # tmux
       ta = "tmux attach -t";
       tkss = "tmux kill-session -t";
@@ -116,6 +114,7 @@
       vim-sensible
       vim-trailing-whitespace
     ];
+    vimAlias = true;
     withNodeJs = true;
   };
 
