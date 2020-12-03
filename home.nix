@@ -84,8 +84,6 @@
       set noswapfile
       set noundofile
 
-      colorscheme solarized
-
       let mapleader = "\<Space>"
       let maplocalleader = ','
 
@@ -100,6 +98,8 @@
       let g:NERDTreeShowHidden = 1
 
       noremap <C-n> :NERDTreeToggle<CR>
+      " solarized
+      colorscheme solarized
     '';
     plugins = with pkgs.vimPlugins; [
       bats-vim
