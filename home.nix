@@ -105,6 +105,7 @@
       vim-sensible
       vim-trailing-whitespace
     ];
+    withNodeJs = true;
   };
 
   programs.starship.enable = true;
