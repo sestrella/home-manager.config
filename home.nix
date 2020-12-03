@@ -44,6 +44,12 @@
       hmg = "home-manager generations";
       hmn = "home-manager news";
       hms = "home-manager switch";
+      # tmux
+      ta = "tmux attach -t";
+      tkss = "tmux kill-session -t";
+      tksv = "tmux kill-server";
+      tl = "tmux list-sessions";
+      ts = "tmux new-session -s";
     };
   };
 
