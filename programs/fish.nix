@@ -4,9 +4,9 @@
   programs.fish = {
     enable = true;
     # config
-    promptInit = ''
-      set -gx NIX_PATH $HOME/.nix-defexpr/channels $NIX_PATH
-    '';
+    # promptInit = ''
+    #   set -gx NIX_PATH $HOME/.nix-defexpr/channels $NIX_PATH
+    # '';
     shellAbbrs = {
       # bat
       cat = "bat";

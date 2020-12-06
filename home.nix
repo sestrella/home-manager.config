@@ -27,6 +27,7 @@
   imports = [
     ./programs/fish.nix
     ./programs/git.nix
+    ./programs/gnome-terminal.nix
     ./programs/neovim.nix
     ./programs/starship.nix
     ./programs/tmux.nix
