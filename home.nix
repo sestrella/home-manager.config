@@ -29,6 +29,7 @@
     ./programs/fish.nix
     ./programs/git.nix
     ./programs/gnome-terminal.nix
+    ./programs/google-chrome.nix
     ./programs/neovim.nix
     ./programs/starship.nix
     ./programs/tmux.nix
