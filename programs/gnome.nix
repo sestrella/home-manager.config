@@ -61,5 +61,14 @@ in {
       use-theme-colors = false;
       visible-name = "sestrella";
     };
+    "org/gnome/shell" = {
+      favorite-apps = [
+        "google-chrome.desktop"
+        "org.gnome.Terminal.desktop"
+        "spotify.desktop"
+        "slack.desktop"
+        "org.gnome.Nautilus.desktop"
+      ];
+    };
   };
 }
