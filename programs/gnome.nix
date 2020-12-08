@@ -1,10 +1,14 @@
-{ lib , ... }:
+{ lib, pkgs, ... }:
 
 let
   mkTuple = lib.hm.gvariant.mkTuple;
 in {
   imports = [
     ./gnome/terminal.nix
+  ];
+
+  home.packages = with pkgs.gnome3; [
+    gnome-tweaks
   ];
 
   dconf.settings = {
