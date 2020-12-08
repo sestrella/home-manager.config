@@ -24,6 +24,8 @@
       hmg = "home-manager generations";
       hmn = "home-manager news";
       hms = "home-manager switch";
+      # nixos-rebuild
+      nrs = "sudo nixos-rebuild switch";
       # tmux
       ta = "tmux attach -t";
       tkss = "tmux kill-session -t";
