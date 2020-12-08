@@ -20,6 +20,10 @@ in {
         "caps:ctrl_modifier"
       ];
     };
+    "org/gnome/desktop/interface" = {
+      gtk-im-module = "gtk-im-context-simple";
+      gtk-theme = "Adwaita-dark";
+    };
   };
 
   programs.gnome-terminal = {
