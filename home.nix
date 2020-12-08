@@ -29,9 +29,11 @@
   # changes in each release.
   home.stateVersion = "21.03";
 
-  home.packages = [
-    pkgs.bat
-    pkgs.jq
-    pkgs.ripgrep
+  home.packages = with pkgs; [
+    bat
+    jq
+    ripgrep
+    slack
+    spotify
   ];
 }
