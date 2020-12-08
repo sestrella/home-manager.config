@@ -17,3 +17,7 @@ Build and activate configuration:
 ```sh
 home-manager switch
 ```
+
+## References
+
+- [Gnome 3 on NixOS](https://gvolpe.com/blog/gnome3-on-nixos/)
