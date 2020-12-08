@@ -35,5 +35,6 @@
     ripgrep
     slack
     spotify
+    zoom-us
   ];
 }
