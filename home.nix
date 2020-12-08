@@ -28,7 +28,6 @@
   imports = [
     ./programs/fish.nix
     ./programs/git.nix
-    ./programs/gnome-terminal.nix
     ./programs/gnome.nix
     ./programs/google-chrome.nix
     ./programs/neovim.nix

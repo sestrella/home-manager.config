@@ -3,6 +3,10 @@
 let
   mkTuple = lib.hm.gvariant.mkTuple;
 in {
+  imports = [
+    ./gnome/terminal.nix
+  ];
+
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
       current = "uint32 0";
