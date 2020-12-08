@@ -1,6 +1,16 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ./programs/fish.nix
+    ./programs/git.nix
+    ./programs/gnome.nix
+    ./programs/google-chrome.nix
+    ./programs/neovim.nix
+    ./programs/starship.nix
+    ./programs/tmux.nix
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -23,15 +33,5 @@
     pkgs.bat
     pkgs.jq
     pkgs.ripgrep
-  ];
-
-  imports = [
-    ./programs/fish.nix
-    ./programs/git.nix
-    ./programs/gnome.nix
-    ./programs/google-chrome.nix
-    ./programs/neovim.nix
-    ./programs/starship.nix
-    ./programs/tmux.nix
   ];
 }
