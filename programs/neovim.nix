@@ -54,6 +54,7 @@ in {
       vim-colors-solarized
       vim-jsx-typescript
       vim-nix
+      vim-obsession
       vim-projectionist
       vim-sensible
       vim-trailing-whitespace
