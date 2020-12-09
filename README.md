@@ -1,5 +1,7 @@
 # Nix Home
 
+![CI](https://github.com/sestrella/nix-home/workflows/CI/badge.svg)
+
 ## Requirements
 
 Install [home-manager](https://github.com/nix-community/home-manager.git).
