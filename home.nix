@@ -6,11 +6,13 @@
     ./programs/git.nix
     ./programs/gnome.nix
     ./programs/google-chrome.nix
-    ./programs/home-manager.nix
     ./programs/neovim.nix
     ./programs/starship.nix
     ./programs/tmux.nix
   ];
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
