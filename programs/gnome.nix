@@ -24,11 +24,18 @@ in {
       gtk-im-module = "gtk-im-context-simple";
       gtk-theme = "Adwaita-dark";
     };
+    "org/gnome/terminal/legacy/profiles:" = {
+      default = "7f987b3a-0157-48a5-a06f-e2a1d1bb35df";
+      list = [
+        "7f987b3a-0157-48a5-a06f-e2a1d1bb35df"
+      ];
+    };
     "org/gnome/terminal/legacy/profiles:/:7f987b3a-0157-48a5-a06f-e2a1d1bb35df" = {
       audible-bell = false;
       background-color = "rgb(0,43,54)";
       backspace-binding = "ascii-delete";
       bold-color-same-as-fg = true;
+      bold-is-bright = false;
       cursor-blink-mode = "system";
       cursor-colors-set = false;
       cursor-shape = "block";
