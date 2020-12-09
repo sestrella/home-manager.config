@@ -59,6 +59,7 @@ in {
       vim-sensible
       vim-trailing-whitespace
     ];
+    viAlias = true;
     vimAlias = true;
     withNodeJs = true;
   };
