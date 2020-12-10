@@ -10,6 +10,7 @@
     keyMode = "vi";
     plugins = with pkgs.tmuxPlugins; [
       continuum
+      nord
       {
         plugin = resurrect;
         extraConfig = "set -g @resurrect-strategy-nvim 'session'";
