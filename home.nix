@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
-{
+let
+  niv = import (import ./nix/sources.nix {}).niv {};
+in {
   imports = [
     ./home/fish.nix
     ./home/git.nix
@@ -33,14 +35,14 @@
     NIX_PATH = "$HOME/.nix-defexpr/channels:$NIX_PATH";
   };
 
-  home.packages = with pkgs; [
-    bat
-    jq
-    niv
-    ripgrep
-    slack
-    spotify
-    zoom-us
+  home.packages = [
+    niv.niv
+    pkgs.bat
+    pkgs.jq
+    pkgs.ripgrep
+    pkgs.slack
+    pkgs.spotify
+    pkgs.zoom-us
   ];
 
   news.display = "silent";
