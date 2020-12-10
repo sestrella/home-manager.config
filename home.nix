@@ -2,13 +2,13 @@
 
 {
   imports = [
-    ./programs/fish.nix
-    ./programs/git.nix
-    ./programs/gnome.nix
-    ./programs/google-chrome.nix
-    ./programs/neovim.nix
-    ./programs/starship.nix
-    ./programs/tmux.nix
+    ./home/fish.nix
+    ./home/git.nix
+    ./home/gnome.nix
+    ./home/google-chrome.nix
+    ./home/neovim.nix
+    ./home/starship.nix
+    ./home/tmux.nix
   ];
 
   # Let Home Manager install and manage itself.
