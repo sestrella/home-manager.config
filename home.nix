@@ -36,6 +36,7 @@
   home.packages = with pkgs; [
     bat
     jq
+    niv
     ripgrep
     slack
     spotify

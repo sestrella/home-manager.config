@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
-{
+let
+  unstable = import (import ../nix/sources.nix {}).nixpkgs {};
+in {
   programs.tmux = {
     enable = true;
     # config
@@ -8,14 +10,14 @@
     disableConfirmationPrompt = true;
     escapeTime = 0;
     keyMode = "vi";
-    plugins = with pkgs.tmuxPlugins; [
-      continuum
-      nord
+    plugins = [
+      pkgs.tmuxPlugins.continuum
+      unstable.tmuxPlugins.nord
       {
-        plugin = resurrect;
+        plugin = pkgs.tmuxPlugins.resurrect;
         extraConfig = "set -g @resurrect-strategy-nvim 'session'";
       }
-      sensible
+      pkgs.tmuxPlugins.sensible
     ];
     shortcut = "a";
     terminal = "screen-256color";
