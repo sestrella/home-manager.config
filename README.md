@@ -4,7 +4,7 @@
 
 ## Requirements
 
-Install [home-manager](https://github.com/nix-community/home-manager.git).
+Install [nix](https://nixos.org/guides/install-nix.html).
 
 ## Getting Started
 
