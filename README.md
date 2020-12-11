@@ -2,6 +2,9 @@
 
 ![CI](https://github.com/sestrella/nix-home/workflows/CI/badge.svg)
 
+My user configuration managed via
+[home-manager](https://github.com/nix-community/home-manager).
+
 ## Requirements
 
 Install [nix](https://nixos.org/guides/install-nix.html).
