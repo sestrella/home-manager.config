@@ -10,5 +10,6 @@ in pkgs.mkShell {
   ];
   shellHook = ''
     export NIX_PATH="home-manager=${home-manager}:nixpkgs=${nixpkgs}"
+    export HOME_MANAGER_CONFIG="./home.nix"
   '';
 }
