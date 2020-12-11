@@ -1,8 +1,6 @@
 { config, pkgs, ... }:
 
-let
-  nixpkgs = import (import ../nix/sources.nix {}).nixpkgs {};
-in {
+{
   programs.tmux = {
     enable = true;
     # config
@@ -11,8 +9,8 @@ in {
     escapeTime = 0;
     keyMode = "vi";
     plugins = [
-      nixpkgs.tmuxPlugins.nord
       pkgs.tmuxPlugins.continuum
+      pkgs.tmuxPlugins.nord
       {
         plugin = pkgs.tmuxPlugins.resurrect;
         extraConfig = "set -g @resurrect-strategy-nvim 'session'";
