@@ -31,10 +31,6 @@ in {
   # changes in each release.
   home.stateVersion = "20.09";
 
-  home.sessionVariables = {
-    NIX_PATH = "$HOME/.nix-defexpr/channels:$NIX_PATH";
-  };
-
   home.packages = [
     niv.niv
     pkgs.bat
