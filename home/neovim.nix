@@ -52,7 +52,6 @@ in {
       typescript-vim
       vim-airline
       vim-colors-solarized
-      vim-devicons
       vim-jsx-typescript
       vim-nix
       vim-obsession

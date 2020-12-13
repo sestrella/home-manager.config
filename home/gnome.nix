@@ -3,10 +3,6 @@
 let
   mkTuple = lib.hm.gvariant.mkTuple;
 in {
-  home.packages = [
-    pkgs.nerdfonts
-  ];
-
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
       current = "uint32 0";
