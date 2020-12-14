@@ -63,4 +63,6 @@ in {
     vimAlias = true;
     withNodeJs = true;
   };
+
+  xdg.configFile."nvim/coc-settings.json".source = ./coc-settings.json;
 }

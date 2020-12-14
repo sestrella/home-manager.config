@@ -8,7 +8,7 @@ in {
     ./home/git.nix
     ./home/gnome.nix
     ./home/google-chrome.nix
-    ./home/neovim.nix
+    ./home/neovim
     ./home/starship.nix
     ./home/tmux.nix
   ];
