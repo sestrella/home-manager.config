@@ -36,7 +36,6 @@ in {
     pkgs.bat
     pkgs.jq
     pkgs.nix-linter
-    pkgs.ripgrep
     pkgs.slack
     pkgs.spotify
     pkgs.zoom-us

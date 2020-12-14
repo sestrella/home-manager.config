@@ -7,6 +7,11 @@ in {
     EDITOR = "nvim";
   };
 
+  home.packages = [
+    pkgs.ripgrep
+    pkgs.rnix-lsp
+  ];
+
   programs.neovim = {
     enable = true;
     # config
