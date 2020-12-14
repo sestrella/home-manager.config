@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   niv = import (import ./nix/sources.nix {}).niv {};
@@ -35,6 +35,7 @@ in {
     niv.niv
     pkgs.bat
     pkgs.jq
+    pkgs.nix-linter
     pkgs.ripgrep
     pkgs.slack
     pkgs.spotify
