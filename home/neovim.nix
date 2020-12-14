@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   rgPath = "${pkgs.ripgrep}/bin/rg";
