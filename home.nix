@@ -4,13 +4,13 @@ let
   niv = import (import ./nix/sources.nix {}).niv {};
 in {
   imports = [
-    ./home/fish.nix
-    ./home/git.nix
-    ./home/gnome.nix
-    ./home/google-chrome.nix
+    ./home/fish
+    ./home/git
+    ./home/gnome
+    ./home/google-chrome
     ./home/neovim
-    ./home/starship.nix
-    ./home/tmux.nix
+    ./home/starship
+    ./home/tmux
   ];
 
   # Let Home Manager install and manage itself.
