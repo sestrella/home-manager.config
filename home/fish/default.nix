@@ -4,6 +4,7 @@
   programs.fish = {
     enable = true;
     # config
+    promptInit = "set fish_greeting";
     shellAbbrs = {
       # bat
       cat = "bat";
