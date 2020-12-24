@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 let
   niv = import (import ./nix/sources.nix {}).niv {};
@@ -42,4 +42,26 @@ in {
   ];
 
   news.display = "silent";
+
+  systemd.user = {
+    services."home-manager-updater" = {
+      Unit = {
+        Description = "home-manager updater";
+      };
+      Service = {
+        WorkingDirectory = "${config.home.homeDirectory}/.config/nixpkgs";
+        ExecStartPre = "${config.home.homeDirectory}/.nix-profile/bin/niv update";
+        ExecStart = "/run/current-system/sw/bin/nix-shell --run 'home-manager switch'";
+      };
+    };
+    timers."home-manager-updater" = {
+      Unit = {
+        Description = "Weekly home-manager updater";
+      };
+      Timer = {
+        OnCalendar = "weekly";
+        Persistent = true;
+      };
+    };
+  };
 }
