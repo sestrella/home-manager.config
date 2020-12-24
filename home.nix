@@ -44,23 +44,67 @@ in {
   news.display = "silent";
 
   systemd.user = {
-    services."home-manager-updater" = {
-      Unit = {
-        Description = "home-manager updater";
+    services = {
+      "home-manager-gc" = {
+        Unit = {
+          Description = "home-manager garbage collector";
+        };
+        Service = {
+          WorkingDirectory = "${config.home.homeDirectory}/.config/nixpkgs";
+          ExecStart = ''
+            /run/current-system/sw/bin/nix-shell --run "home-manager expire-generations \"-2 days\""
+          '';
+        };
+        Install = {
+          WantedBy = [
+            "default.target"
+          ];
+        };
       };
-      Service = {
-        WorkingDirectory = "${config.home.homeDirectory}/.config/nixpkgs";
-        ExecStartPre = "${config.home.homeDirectory}/.nix-profile/bin/niv update";
-        ExecStart = "/run/current-system/sw/bin/nix-shell --run 'home-manager switch'";
+      "home-manager-updater" = {
+        Unit = {
+          Description = "home-manager updater";
+        };
+        Service = {
+          WorkingDirectory = "${config.home.homeDirectory}/.config/nixpkgs";
+          ExecStartPre = "${config.home.homeDirectory}/.nix-profile/bin/niv update";
+          ExecStart = "/run/current-system/sw/bin/nix-shell --run 'home-manager switch'";
+        };
+        Install = {
+          WantedBy = [
+            "default.target"
+          ];
+        };
       };
     };
-    timers."home-manager-updater" = {
-      Unit = {
-        Description = "Weekly home-manager updater";
+    timers = {
+      "home-manager-gc" = {
+        Unit = {
+          Description = "Weekly home-manager garbage collector";
+        };
+        Timer = {
+          OnCalendar = "weekly";
+          Persistent = true;
+        };
+        Install = {
+          WantedBy = [
+            "timers.target"
+          ];
+        };
       };
-      Timer = {
-        OnCalendar = "weekly";
-        Persistent = true;
+      "home-manager-updater" = {
+        Unit = {
+          Description = "Weekly home-manager updater";
+        };
+        Timer = {
+          OnCalendar = "weekly";
+          Persistent = true;
+        };
+        Install = {
+          WantedBy = [
+            "timers.target"
+          ];
+        };
       };
     };
   };
