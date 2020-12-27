@@ -34,7 +34,6 @@ in {
 
   home.packages = [
     niv.niv
-    pkgs.bat
     pkgs.jq
     pkgs.nix-linter
     pkgs.slack

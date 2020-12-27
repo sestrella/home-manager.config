@@ -6,8 +6,6 @@
     # config
     promptInit = "set fish_greeting";
     shellAbbrs = {
-      # bat
-      cat = "bat";
       # git
       ga = "git add";
       gaa = "git add --all";
