@@ -9,6 +9,7 @@ in {
     ./home/gnome
     ./home/google-chrome
     ./home/neovim
+    ./home/spotify
     ./home/starship
     ./home/tmux
   ];
@@ -37,7 +38,6 @@ in {
     pkgs.jq
     pkgs.nix-linter
     pkgs.slack
-    pkgs.spotify
     pkgs.zoom-us
   ];
 
