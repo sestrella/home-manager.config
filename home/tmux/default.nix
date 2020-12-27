@@ -9,12 +9,8 @@
     escapeTime = 0;
     keyMode = "vi";
     plugins = [
-      pkgs.tmuxPlugins.continuum
       pkgs.tmuxPlugins.nord
-      {
-        plugin = pkgs.tmuxPlugins.resurrect;
-        extraConfig = "set -g @resurrect-strategy-nvim 'session'";
-      }
+      pkgs.tmuxPlugins.resurrect
       pkgs.tmuxPlugins.sensible
     ];
     shortcut = "a";
