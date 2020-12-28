@@ -37,6 +37,7 @@ in {
     pkgs.jq
     pkgs.nix-linter
     pkgs.slack
+    pkgs.xclip
     pkgs.zoom-us
   ];
 

@@ -28,6 +28,9 @@
       tksv = "tmux kill-server";
       tl = "tmux list-sessions";
       ts = "tmux new-session -s";
+      # xclip
+      pbcopy = "xclip -selection clipboard";
+      pbpaste = "xclip -selection clipboard -o";
     };
   };
 }
