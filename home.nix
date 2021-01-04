@@ -5,6 +5,7 @@ let
 in {
   imports = [
     ./home/fish
+    ./home/ghci
     ./home/git
     ./home/gnome
     ./home/google-chrome
