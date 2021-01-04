@@ -34,6 +34,7 @@ in {
 
   home.packages = [
     niv.niv
+    pkgs.docker-compose
     pkgs.jq
     pkgs.nix-linter
     pkgs.slack
