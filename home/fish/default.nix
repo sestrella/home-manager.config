@@ -6,6 +6,8 @@
     # config
     promptInit = "set fish_greeting";
     shellAbbrs = {
+      # docker-compose
+      dc = "docker-compose";
       # git
       ga = "git add";
       gaa = "git add --all";
