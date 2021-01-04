@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 let
   niv = import (import ./nix/sources.nix {}).niv {};
