@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   imports = [ ./module.nix ];
 
