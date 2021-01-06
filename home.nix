@@ -36,6 +36,7 @@ in {
   home.packages = [
     niv.niv
     pkgs.docker-compose
+    pkgs.htop
     pkgs.jq
     pkgs.lsof
     pkgs.nix-linter
