@@ -37,6 +37,7 @@ in {
     niv.niv
     pkgs.docker-compose
     pkgs.jq
+    pkgs.lsof
     pkgs.nix-linter
     pkgs.slack
     pkgs.xclip
