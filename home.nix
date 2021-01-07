@@ -35,10 +35,12 @@ in {
 
   home.packages = [
     niv.niv
+    pkgs.bind
     pkgs.docker-compose
     pkgs.htop
     pkgs.jq
     pkgs.lsof
+    pkgs.ncat
     pkgs.nix-linter
     pkgs.slack
     pkgs.xclip
