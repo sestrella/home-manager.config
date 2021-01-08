@@ -43,7 +43,6 @@ in {
     pkgs.lsof
     pkgs.ncat
     pkgs.nix-linter
-    pkgs.openvpn
     pkgs.slack
     pkgs.vagrant
     pkgs.xclip
