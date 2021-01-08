@@ -39,10 +39,13 @@ in {
     pkgs.docker-compose
     pkgs.htop
     pkgs.jq
+    pkgs.lorri
     pkgs.lsof
     pkgs.ncat
     pkgs.nix-linter
+    pkgs.openvpn
     pkgs.slack
+    pkgs.vagrant
     pkgs.xclip
     pkgs.zoom-us
   ];

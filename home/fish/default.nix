@@ -16,10 +16,6 @@
       gl = "git pull";
       gp = "git push";
       gst = "git status";
-      # home-manager
-      hmg = "./home-manager generations";
-      hmn = "./home-manager news";
-      hms = "./home-manager switch";
       # nixos-rebuild
       nrs = "sudo nixos-rebuild switch";
       # tmux
