@@ -11,10 +11,12 @@
       gaa = "git add --all";
       gbr = "git branch --remote";
       gc = "git commit -v";
+      "gc!" = "git commit -v --amend";
       gco = "git checkout";
       gd = "git diff";
       gl = "git pull";
       gp = "git push";
+      "gp!" = "git push -f";
       gst = "git status";
       # lorri
       nix-shell = "lorri shell";
