@@ -16,7 +16,7 @@ in {
   ];
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  programs.home-manager.enable = false;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
