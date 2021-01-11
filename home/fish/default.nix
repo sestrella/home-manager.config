@@ -18,8 +18,6 @@
       gp = "git push";
       "gp!" = "git push -f";
       gst = "git status";
-      # lorri
-      nix-shell = "lorri shell";
       # nixos-rebuild
       nrs = "sudo nixos-rebuild switch";
       # tmux
