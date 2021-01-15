@@ -37,6 +37,7 @@ in {
     niv.niv
     pkgs.bind
     pkgs.docker-compose
+    pkgs.gitAndTools.gh
     pkgs.htop
     pkgs.jq
     pkgs.lorri
