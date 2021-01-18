@@ -10,7 +10,6 @@ in {
     ./home/gnome
     ./home/google-chrome
     ./home/neovim
-    ./home/spotify
     ./home/starship
     ./home/tmux
   ];
@@ -45,6 +44,7 @@ in {
     pkgs.ncat
     pkgs.nix-linter
     pkgs.slack
+    pkgs.spotify
     pkgs.vagrant
     pkgs.xclip
     pkgs.zoom-us
