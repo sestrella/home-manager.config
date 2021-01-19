@@ -33,39 +33,55 @@ in {
 
       let mapleader = "\<Space>"
       let maplocalleader = ','
-
-      " airline
-      let g:airline_powerline_fonts = 1
-      " ctrlp
-      set grepprg=${rgPath}\ --color=never
-
-      let g:ctrlp_use_caching = 0
-      let g:ctrlp_user_command = '${rgPath} %s --files --color=never --glob ""'
-      " nerdtree
-      let g:NERDTreeShowHidden = 1
-
-      nnoremap <C-n> :NERDTreeToggle<CR>
-      " solarized
-      colorscheme solarized
     '';
     plugins = with pkgs.vimPlugins; [
       bats-vim
-      coc-nvim
-      ctrlp-vim
+      #coc-nvim
+      #completion-nvim
+      {
+        plugin = ctrlp-vim;
+        config = ''
+          set grepprg=${rgPath}\ --color=never
+
+          let g:ctrlp_use_caching = 0
+          let g:ctrlp_user_command = '${rgPath} %s --files --color=never --glob ""'
+        '';
+      }
       nerdcommenter
-      nerdtree
+      {
+        plugin = nerdtree;
+        config = ''
+          let g:NERDTreeShowHidden = 1
+
+          nnoremap <C-f> :NERDTreeFind<CR>
+          nnoremap <C-t> :NERDTreeToggle<CR>
+        '';
+      }
       typescript-vim
-      vim-airline
-      vim-colors-solarized
+      #ultisnips
+      {
+        plugin = vim-airline;
+        config = ''
+          let g:airline_powerline_fonts = 1
+        '';
+      }
+      {
+        plugin = vim-colors-solarized;
+        config = ''
+          colorscheme solarized
+        '';
+      }
       vim-jsx-typescript
       vim-nix
       vim-projectionist
       vim-sensible
+      #vim-snippets
       vim-trailing-whitespace
     ];
     viAlias = true;
     vimAlias = true;
     withNodeJs = true;
+    withPython = true;
   };
 
   xdg.configFile."nvim/coc-settings.json".source = ./coc-settings.json;
