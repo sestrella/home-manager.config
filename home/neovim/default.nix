@@ -9,7 +9,6 @@ in {
 
   home.packages = [
     pkgs.ripgrep
-    pkgs.rnix-lsp
   ];
 
   programs.neovim = {
@@ -86,10 +85,5 @@ in {
     ];
     viAlias = true;
     vimAlias = true;
-    withNodeJs = true;
-    #withPython = true;
-    #withPython3 = true;
   };
-
-  xdg.configFile."nvim/coc-settings.json".source = ./coc-settings.json;
 }
