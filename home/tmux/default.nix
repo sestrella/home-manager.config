@@ -15,6 +15,5 @@
       pkgs.tmuxPlugins.sensible
     ];
     shortcut = "a";
-    terminal = "screen-256color";
   };
 }
