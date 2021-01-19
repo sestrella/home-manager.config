@@ -35,7 +35,6 @@ in {
     '';
     plugins = with pkgs.vimPlugins; [
       bats-vim
-      #completion-nvim
       {
         plugin = ctrlp-vim;
         config = ''
