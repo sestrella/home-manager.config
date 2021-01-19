@@ -36,7 +36,6 @@ in {
     '';
     plugins = with pkgs.vimPlugins; [
       bats-vim
-      #coc-nvim
       #completion-nvim
       {
         plugin = ctrlp-vim;
@@ -58,7 +57,14 @@ in {
         '';
       }
       typescript-vim
-      #ultisnips
+      {
+        plugin = ultisnips;
+        config = ''
+          let g:UltiSnipsExpandTrigger="<tab>"
+          let g:UltiSnipsJumpForwardTrigger="<c-b>"
+          let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+        '';
+      }
       {
         plugin = vim-airline;
         config = ''
@@ -75,13 +81,14 @@ in {
       vim-nix
       vim-projectionist
       vim-sensible
-      #vim-snippets
+      vim-snippets
       vim-trailing-whitespace
     ];
     viAlias = true;
     vimAlias = true;
     withNodeJs = true;
-    withPython = true;
+    #withPython = true;
+    #withPython3 = true;
   };
 
   xdg.configFile."nvim/coc-settings.json".source = ./coc-settings.json;
