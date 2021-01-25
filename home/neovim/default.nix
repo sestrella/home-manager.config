@@ -51,7 +51,7 @@ in {
           let g:NERDTreeShowHidden = 1
 
           nnoremap <C-f> :NERDTreeFind<CR>
-          nnoremap <C-t> :NERDTreeToggle<CR>
+          nnoremap <C-n> :NERDTreeToggle<CR>
         '';
       }
       typescript-vim
@@ -78,6 +78,7 @@ in {
       vim-jsx-typescript
       vim-nix
       vim-projectionist
+      vim-rails
       vim-sensible
       vim-snippets
       vim-trailing-whitespace
