@@ -35,6 +35,7 @@ in {
       cursor-colors-set = false;
       cursor-shape = "block";
       delete-binding = "delete-sequence";
+      font = "Monospace 12";
       foreground-color = "rgb(131,148,150)";
       highlight-colors-set = false;
       login-shell = false;
@@ -59,7 +60,7 @@ in {
       scrollback-lines = 10000;
       scrollbar-policy = "always";
       use-custom-command = false;
-      use-system-font = true;
+      use-system-font = false;
       use-theme-colors = false;
       visible-name = "sestrella";
     };
