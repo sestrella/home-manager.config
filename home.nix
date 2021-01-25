@@ -50,5 +50,7 @@ in {
     pkgs.zoom-us
   ];
 
+  fonts.fontconfig.enable = true;
+
   news.display = "silent";
 }

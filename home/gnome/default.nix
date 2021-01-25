@@ -1,9 +1,13 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 
 let
   mkTuple = lib.hm.gvariant.mkTuple;
   profileId = "7f987b3a-0157-48a5-a06f-e2a1d1bb35df";
 in {
+  home.packages = [
+    pkgs.fira-code
+  ];
+
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
       current = "uint32 0";
@@ -35,7 +39,7 @@ in {
       cursor-colors-set = false;
       cursor-shape = "block";
       delete-binding = "delete-sequence";
-      font = "Monospace 12";
+      font = "Fira Code 12";
       foreground-color = "rgb(131,148,150)";
       highlight-colors-set = false;
       login-shell = false;
