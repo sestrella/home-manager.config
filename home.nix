@@ -42,6 +42,7 @@ in {
     pkgs.lorri
     pkgs.lsof
     pkgs.ncat
+    pkgs.ngrok
     pkgs.nix-linter
     pkgs.slack
     pkgs.spotify
