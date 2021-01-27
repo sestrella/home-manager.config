@@ -45,6 +45,7 @@ in {
     pkgs.nix-linter
     pkgs.slack
     pkgs.spotify
+    pkgs.tmate
     pkgs.vagrant
     pkgs.xclip
     pkgs.zoom-us
