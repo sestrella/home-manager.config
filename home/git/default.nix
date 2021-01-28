@@ -2,7 +2,10 @@
   programs.git = {
     enable = true;
     # config
-    extraConfig.pull.rebase = false;
+    extraConfig = {
+      pull.rebase = false;
+      push.default = "current";
+    };
     userEmail = "2049686+sestrella@users.noreply.github.com";
     userName = "Sebastián Estrella";
   };
