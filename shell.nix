@@ -1,7 +1,7 @@
 let
   sources = import ./nix/sources.nix;
-  home-manager = sources.home-manager;
   nixpkgs = sources.nixpkgs;
+  home-manager = sources.home-manager;
   pkgs = import nixpkgs {};
 in pkgs.mkShell {
   name = "nix-home";
@@ -9,6 +9,6 @@ in pkgs.mkShell {
     (import home-manager { inherit pkgs; }).home-manager
   ];
   shellHook = ''
-    export NIX_PATH="home-manager=${home-manager}:nixpkgs=${nixpkgs}"
+    export NIX_PATH="nixpkgs=${nixpkgs}:home-manager=${home-manager}"
   '';
 }
