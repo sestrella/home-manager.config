@@ -18,10 +18,11 @@
     enable = true;
     # config
     font = {
-      name = "Fira Code 12";
+      name = "Fira Code";
       package = pkgs.fira-code;
     };
     settings = {
+      font_size = 12;
       enable_audio_bell = false;
     };
     extraConfig = ''
