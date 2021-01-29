@@ -9,6 +9,7 @@ in {
     ./home/git
     ./home/gnome
     ./home/google-chrome
+    ./home/kitty
     ./home/neovim
     ./home/starship
     ./home/tmux
@@ -39,6 +40,7 @@ in {
     pkgs.gitAndTools.gh
     pkgs.htop
     pkgs.jq
+    pkgs.kitty
     pkgs.lorri
     pkgs.lsof
     pkgs.ncat
