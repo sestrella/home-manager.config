@@ -18,11 +18,14 @@
     enable = true;
     # config
     font = {
-      name = "Fira Code";
+      name = "Fira Code 12";
       package = pkgs.fira-code;
     };
-    # extraConfig = ''
-    #   source ${kittyThemes}/themes/Solarized_Dark.conf
-    # '';
+    settings = {
+      enable_audio_bell = false;
+    };
+    extraConfig = ''
+      include ~/.config/kitty/kitty-themes/themes/Solarized_Dark.conf
+    '';
   };
 }
