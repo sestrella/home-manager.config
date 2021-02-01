@@ -37,11 +37,10 @@ in {
     niv.niv
     pkgs.bind
     pkgs.docker-compose
+    pkgs.file
     pkgs.gitAndTools.gh
     pkgs.htop
     pkgs.jq
-    pkgs.kitty
-    pkgs.lorri
     pkgs.lsof
     pkgs.ncat
     pkgs.ngrok
