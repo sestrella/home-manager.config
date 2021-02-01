@@ -9,7 +9,6 @@
     escapeTime = 0;
     keyMode = "vi";
     plugins = [
-      #pkgs.tmuxPlugins.nord
       pkgs.tmuxPlugins.prefix-highlight
       pkgs.tmuxPlugins.resurrect
       pkgs.tmuxPlugins.sensible
