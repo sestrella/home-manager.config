@@ -35,6 +35,7 @@ in {
 
   home.packages = [
     niv.niv
+    pkgs.awscli
     pkgs.bind
     pkgs.docker-compose
     pkgs.file
