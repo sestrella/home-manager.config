@@ -9,7 +9,6 @@ in {
     ./home/git
     ./home/gnome
     ./home/google-chrome
-    ./home/kitty
     ./home/neovim
     ./home/starship
     ./home/tmux
