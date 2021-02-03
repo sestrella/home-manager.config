@@ -47,6 +47,7 @@ in {
     pkgs.nix-linter
     pkgs.slack
     pkgs.spotify
+    pkgs.telnet
     pkgs.tmate
     pkgs.vagrant
     pkgs.xclip
