@@ -86,4 +86,6 @@ in {
     viAlias = true;
     vimAlias = true;
   };
+
+  xdg.configFile."nvim/UltiSnips".source = ./ultisnips;
 }
