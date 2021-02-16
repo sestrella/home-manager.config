@@ -1,3 +1,17 @@
+snippet ansible "Ansible Instructions"
+Install the dependencies:
+
+\`\`\`sh
+ansible-galaxy install -r requirements.yml
+\`\`\`
+
+Check access to all hosts listed in the inventory:
+
+\`\`\`sh
+ansible -m ping all
+\`\`\`
+endsnippet
+
 snippet python "Python Instructions"
 Create a virtual environment:
 
