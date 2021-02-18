@@ -56,5 +56,11 @@ in {
 
   fonts.fontconfig.enable = true;
 
+  services.gpg-agent ={
+    enable = true;
+    enableSshSupport = true;
+    pinentryFlavor = "gnome3";
+  };
+
   news.display = "silent";
 }
