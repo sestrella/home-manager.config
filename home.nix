@@ -1,17 +1,16 @@
 { pkgs, ... }:
 
-let
-  niv = import (import ./nix/sources.nix {}).niv {};
-in {
+{
   imports = [
+    ./home/direnv
     ./home/fish
     ./home/ghci
     ./home/git
     ./home/gnome
     ./home/google-chrome
-    ./home/neovim
     ./home/starship
     ./home/tmux
+    ./home/vim
   ];
 
   # Let Home Manager install and manage itself.
@@ -30,37 +29,33 @@ in {
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "20.09";
+  # home.stateVersion = "20.09";
 
-  home.packages = [
-    niv.niv
-    pkgs.awscli
-    pkgs.bind
-    pkgs.docker-compose
-    pkgs.file
-    pkgs.gitAndTools.gh
-    pkgs.htop
-    pkgs.jq
-    pkgs.lsof
-    pkgs.ncat
-    pkgs.ngrok
-    pkgs.nix-linter
-    pkgs.slack
-    pkgs.spotify
-    pkgs.telnet
-    pkgs.tmate
-    pkgs.vagrant
-    pkgs.xclip
-    pkgs.zoom-us
+  home.packages = with pkgs; [
+    bind
+    file
+    gitAndTools.gh
+    htop
+    jq
+    lsof
+    ncat
+    ngrok
+    niv
+    ripgrep
+    slack
+    spotify
+    tmate
+    xclip
+    zoom-us
   ];
 
-  fonts.fontconfig.enable = true;
+  # fonts.fontconfig.enable = true;
 
-  services.gpg-agent ={
-    enable = true;
-    enableSshSupport = true;
-    pinentryFlavor = "gnome3";
-  };
+  # services.gpg-agent ={
+  #   enable = true;
+  #   enableSshSupport = true;
+  #   pinentryFlavor = "gnome3";
+  # };
 
   news.display = "silent";
 }
