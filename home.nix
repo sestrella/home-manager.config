@@ -8,9 +8,9 @@
     ./home/git
     ./home/gnome
     ./home/google-chrome
+    ./home/neovim
     ./home/starship
     ./home/tmux
-    ./home/vim
   ];
 
   # Let Home Manager install and manage itself.
@@ -21,7 +21,7 @@
   home.username = "sestrella";
   home.homeDirectory = "/home/sestrella";
   home.sessionVariables = {
-    EDITOR = "vim";
+    EDITOR = "nvim";
   };
 
   # This value determines the Home Manager release that your
