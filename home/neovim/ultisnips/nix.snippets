@@ -1,0 +1,10 @@
+snippet shell
+let
+  sources = import ./nix/sources.nix;
+  nixpkgs = sources.nixpkgs;
+in pkgs.mkShell {
+  name = "$0";
+  buildInputs = with nixpkgs; [
+	];
+}
+endsnippet
