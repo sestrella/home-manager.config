@@ -44,6 +44,7 @@
     ncat
     ngrok
     niv
+    openssl
     ripgrep
     slack
     spotify
