@@ -3,6 +3,17 @@
 let
   mkTuple = lib.hm.gvariant.mkTuple;
   profileId = "7f987b3a-0157-48a5-a06f-e2a1d1bb35df";
+  themes = {
+    solarizedDark = {
+      background-color = "rgb(0,43,54)";
+      foreground-color = "rgb(131,148,150)";
+    };
+    solarizedLight = {
+      background-color = "rgb(253,246,227)";
+      foreground-color = "rgb(101,123,131)";
+    };
+  };
+  currentTheme = themes.solarizedDark;
 in {
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {
@@ -25,11 +36,8 @@ in {
       default = profileId;
       list = [ profileId ];
     };
-    "org/gnome/terminal/legacy/profiles:/:${profileId}" = {
+    "org/gnome/terminal/legacy/profiles:/:${profileId}" = ({
       audible-bell = false;
-      # solarized-dark
-      # background-color = "rgb(0,43,54)";
-      background-color = "rgb(253,246,227)";
       backspace-binding = "ascii-delete";
       bold-color-same-as-fg = true;
       bold-is-bright = false;
@@ -38,30 +46,8 @@ in {
       cursor-shape = "block";
       delete-binding = "delete-sequence";
       font = "Monospace 12";
-      # solarized-dark
-      # foreground-color = "rgb(131,148,150)";
-      foreground-color = "rgb(101,123,131)";
       highlight-colors-set = false;
       login-shell = false;
-      # solarized-dark
-      # palette = [
-      #   "rgb(7,54,66)"
-      #   "rgb(220,50,47)"
-      #   "rgb(133,153,0)"
-      #   "rgb(181,137,0)"
-      #   "rgb(38,139,210)"
-      #   "rgb(211,54,130)"
-      #   "rgb(42,161,152)"
-      #   "rgb(238,232,213)"
-      #   "rgb(0,43,54)"
-      #   "rgb(203,75,22)"
-      #   "rgb(88,110,117)"
-      #   "rgb(101,123,131)"
-      #   "rgb(131,148,150)"
-      #   "rgb(108,113,196)"
-      #   "rgb(147,161,161)"
-      #   "rgb(253,246,227)"
-      # ];
       palette = [
         "rgb(7,54,66)"
         "rgb(220,50,47)"
@@ -86,7 +72,7 @@ in {
       use-system-font = false;
       use-theme-colors = false;
       visible-name = "sestrella";
-    };
+    } // currentTheme);
     "org/gnome/shell" = {
       favorite-apps = [
         "google-chrome.desktop"
