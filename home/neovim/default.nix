@@ -3,6 +3,10 @@
 let
   rg = "${pkgs.ripgrep}/bin/rg";
 in {
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+
   programs.neovim = {
     enable = true;
     # config

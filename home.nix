@@ -20,9 +20,6 @@
   # paths it should manage.
   home.username = "sestrella";
   home.homeDirectory = "/home/sestrella";
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
