@@ -18,6 +18,8 @@
       gp = "git push";
       "gp!" = "git push -f";
       gst = "git status";
+      # home-manager
+      hms = "home-manager switch";
       # nixos-rebuild
       nrs = "sudo nixos-rebuild switch";
       # tmux
