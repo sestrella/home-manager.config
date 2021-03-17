@@ -4,7 +4,10 @@ let
   pkgs = import sources.nixpkgs {};
 in pkgs.mkShell {
   name = "$0";
-  buildInputs = with pkgs; [
-	];
+  buildInputs = [
+  ];
+  shellHook = ''
+    export NIX_PATH="nixpkgs={sources.nixpkgs}"
+  '';
 }
 endsnippet
