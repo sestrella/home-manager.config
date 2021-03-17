@@ -59,7 +59,7 @@ in {
         plugin = vim-colors-solarized;
         config = ''
           syntax enable
-          set background=light
+          set background=dark
           colorscheme solarized
         '';
       }
