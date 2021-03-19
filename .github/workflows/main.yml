@@ -1,11 +1,7 @@
 ---
 name: CI
 
-on:
-  pull_request:
-    branches: [ main ]
-  push:
-    branches: [ main ]
+on: push
 
 jobs:
   build:
@@ -16,5 +12,5 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-20.09
       - run: ln -s $PWD ~/.config/nixpkgs
-      - run: ./switch
-      - run: nix-linter home/**/*.nix *.nix
+      - run: nix-env -i home-manager
+      - run: home-manager switch
