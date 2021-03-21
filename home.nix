@@ -42,6 +42,7 @@
     ngrok
     niv
     openssl
+    postman
     ripgrep
     slack
     spotify
