@@ -4,6 +4,9 @@
     # config
     promptInit = "set fish_greeting";
     shellAbbrs = {
+      # bundle
+      be = "bundle exec";
+      bi = "bundle install";
       # docker-compose
       dc = "docker-compose";
       # git

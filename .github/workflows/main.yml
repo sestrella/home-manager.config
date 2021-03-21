@@ -1,11 +1,7 @@
 ---
 name: CI
 
-on:
-  pull_request:
-    branches: [ main ]
-  push:
-    branches: [ main ]
+on: push
 
 jobs:
   build:
@@ -15,6 +11,6 @@ jobs:
       - uses: cachix/install-nix-action@v12
         with:
           nix_path: nixpkgs=channel:nixos-20.09
+      - run: nix-env -f '<nixpkgs>' -iA home-manager
       - run: ln -s $PWD ~/.config/nixpkgs
-      - run: ./switch
-      - run: nix-linter home/**/*.nix *.nix
+      - run: home-manager switch
