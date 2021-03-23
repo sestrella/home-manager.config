@@ -47,6 +47,7 @@
     slack
     spotify
     tmate
+    traceroute
     xclip
     zoom-us
   ];
