@@ -74,6 +74,7 @@ in {
       vim-sensible
       vim-snippets
       vim-trailing-whitespace
+      surround
     ];
     viAlias = true;
     vimAlias = true;
