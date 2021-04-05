@@ -3,6 +3,7 @@
     enable = true;
     # config
     extraConfig = {
+      init.defaultBranch = "main";
       pull.rebase = false;
       push.default = "current";
     };
