@@ -33,6 +33,7 @@
 
   home.packages = with pkgs; [
     bind
+    docker-compose
     file
     gitAndTools.gh
     htop
