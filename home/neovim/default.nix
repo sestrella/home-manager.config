@@ -71,10 +71,11 @@ in {
       vim-nix
       vim-projectionist
       vim-rails
+      vim-repeat
       vim-sensible
       vim-snippets
+      vim-surround
       vim-trailing-whitespace
-      surround
     ];
     viAlias = true;
     vimAlias = true;
