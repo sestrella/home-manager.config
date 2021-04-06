@@ -42,6 +42,7 @@
     ncat
     ngrok
     niv
+    nix-linter
     openssl
     postman
     ripgrep
