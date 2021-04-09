@@ -7,7 +7,7 @@ in pkgs.mkShell {
   buildInputs = [
   ];
   shellHook = ''
-    export NIX_PATH="nixpkgs={sources.nixpkgs}"
+    export NIX_PATH="nixpkgs=${sources.nixpkgs}"
   '';
 }
 endsnippet
