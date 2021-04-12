@@ -13,7 +13,7 @@ let
       foreground-color = "rgb(101,123,131)";
     };
   };
-  currentTheme = themes.solarizedDark;
+  currentTheme = themes.solarizedLight;
 in {
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {

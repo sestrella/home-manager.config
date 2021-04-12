@@ -63,10 +63,11 @@ in {
         plugin = vim-colors-solarized;
         config = ''
           syntax enable
-          set background=dark
+          set background=light
           colorscheme solarized
         '';
       }
+      vim-jinja
       vim-jsx-typescript
       vim-nix
       vim-projectionist
