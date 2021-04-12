@@ -50,6 +50,7 @@
     spotify
     tmate
     traceroute
+    wget
     xclip
     zoom-us
   ];
