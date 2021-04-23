@@ -7,7 +7,6 @@ My user configuration managed via [home-manager][home-manager].
 ## Requirements
 
 - Install [nix](https://nixos.org/guides/install-nix.html)
-- Install [home-manager][home-manager]
 
 ## Getting Started
 
@@ -26,7 +25,7 @@ cp settings.example.nix settings.nix
 Build and activate configuration:
 
 ```sh
-home-manager switch
+nix-shell --run 'home-manager switch'
 ```
 
 ## Inspired By
