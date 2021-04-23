@@ -13,4 +13,5 @@ jobs:
           nix_path: nixpkgs=channel:nixos-20.09
       - run: nix-env -f '<nixpkgs>' -iA home-manager
       - run: ln -s $PWD ~/.config/nixpkgs
+      - run: cp settings.example.nix settings.nix
       - run: home-manager switch

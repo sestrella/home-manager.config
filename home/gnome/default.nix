@@ -4,16 +4,17 @@ let
   mkTuple = lib.hm.gvariant.mkTuple;
   profileId = "7f987b3a-0157-48a5-a06f-e2a1d1bb35df";
   themes = {
-    solarizedDark = {
+    dark = {
       background-color = "rgb(0,43,54)";
       foreground-color = "rgb(131,148,150)";
     };
-    solarizedLight = {
+    light = {
       background-color = "rgb(253,246,227)";
       foreground-color = "rgb(101,123,131)";
     };
   };
-  currentTheme = themes.solarizedLight;
+  settings = import ../../settings.nix;
+  currentTheme = themes.${settings.theme};
 in {
   dconf.settings = {
     "org/gnome/desktop/input-sources" = {

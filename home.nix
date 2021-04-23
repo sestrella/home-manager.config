@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, theme ? "dark" , ... }:
 
 {
   imports = [

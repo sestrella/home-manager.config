@@ -2,6 +2,7 @@
 
 let
   rg = "${pkgs.ripgrep}/bin/rg";
+  settings = import ../../settings.nix;
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -63,7 +64,7 @@ in {
         plugin = vim-colors-solarized;
         config = ''
           syntax enable
-          set background=light
+          set background=${settings.theme}
           colorscheme solarized
         '';
       }
