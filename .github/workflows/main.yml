@@ -14,4 +14,4 @@ jobs:
       - run: nix-env -f '<nixpkgs>' -iA home-manager
       - run: ln -s $PWD ~/.config/nixpkgs
       - run: cp settings.example.nix settings.nix
-      - run: home-manager switch
+      - run: nix-shell --run 'home-manager switch'
