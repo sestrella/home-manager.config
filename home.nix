@@ -38,12 +38,14 @@
     gitAndTools.gh
     htop
     jq
+    lshw
     lsof
     ncat
     ngrok
     niv
     nix-linter
     openssl
+    pciutils
     postman
     ripgrep
     slack
@@ -51,6 +53,7 @@
     tmate
     traceroute
     wget
+    wirelesstools
     xclip
     zoom-us
   ];
