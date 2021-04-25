@@ -4,20 +4,22 @@ let
   rg = "${pkgs.ripgrep}/bin/rg";
   settings = import ../../settings.nix;
   # TODO: compile neovim 0.5
+  sources = import ../../nix/sources.nix {};
+  nixpkgs-unstable = import sources.nixpkgs-unstable {};
+  tree-sitter = nixpkgs-unstable.tree-sitter;
   neovim = pkgs.neovim-unwrapped.overrideAttrs (old: {
-    version = "v0.5.0-dev+1274-gbb3372792";
-
-    src = pkgs.fetchFromGitHub {
-      owner  = "neovim";
-      repo   = "neovim";
-      rev    = "bb33727922ca4549bb3b9b7aaaac1b535154b669";
-      sha256 = "0xy4ky8gaqwa8acmh1vkijx2hln6y8c1mxj2yqzg9q6cv3ffrlgf";
-    };
+    version = "v0.5.0";
+    src = (import ../../nix/sources.nix {}).neovim;
+      #owner  = "neovim";
+      #repo   = "neovim";
+      #rev    = "bb33727922ca4549bb3b9b7aaaac1b535154b669";
+      #sha256 = "0xy4ky8gaqwa8acmh1vkijx2hln6y8c1mxj2yqzg9q6cv3ffrlgf";
+    #};
 
     # buildInputs = old.buildInputs ++ [ pkgs.tree-sitter ];
     cmakeFlags = old.cmakeFlags ++ [
-      "-DTreeSitter_INCLUDE_DIR=${pkgs.tree-sitter}/bin"
-      "-DTreeSitter_LIBRARY=${pkgs.tree-sitter}/lib"
+      "-DTreeSitter_INCLUDE_DIR=${pkgs.tree-sitter}/include/tree_sitter"
+      "-DTreeSitter_LIBRARY=${tree-sitter}/lib/libtree-sitter.so"
     ];
   });
 in {

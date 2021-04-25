@@ -5,10 +5,22 @@
         "homepage": "https://nix-community.github.io/home-manager/",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "209566c752c4428c7692c134731971193f06b37c",
-        "sha256": "1canlfkm09ssbgm3hq0kb9d86bdh84jhidxv75g98zq5wgadk7jm",
+        "rev": "2aa20ae969f2597c4df10a094440a66e9d7f8c86",
+        "sha256": "0i5fxaxqm53zp767smrn250q1wjywf9c1jmg6vhp28973p7jysah",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/209566c752c4428c7692c134731971193f06b37c.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/2aa20ae969f2597c4df10a094440a66e9d7f8c86.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "neovim": {
+        "branch": "master",
+        "description": "Vim-fork focused on extensibility and usability",
+        "homepage": "https://neovim.io",
+        "owner": "neovim",
+        "repo": "neovim",
+        "rev": "bb7d3790bf08b5519623d261d8235bad77b5c0dd",
+        "sha256": "1d3a53fp8grv477nqz7ik21r3bzrm8mdgx9c7mfzs6i1xyh1wldf",
+        "type": "tarball",
+        "url": "https://github.com/neovim/neovim/archive/bb7d3790bf08b5519623d261d8235bad77b5c0dd.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niv": {
@@ -29,10 +41,22 @@
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5c864fcb540bf783487b3c176631a208ae372d61",
-        "sha256": "13x87d93jwzq4yf6bwc3l1vd3czdykq43m0id0hbsh9gb60fhxxn",
+        "rev": "e6911eaed6bb61acf11f9ae106d58b7d8fcfd659",
+        "sha256": "17j4xm2q8r3rjdv27k3vdpw1gs6irdzppah3fzyl76k6x5f92fay",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/5c864fcb540bf783487b3c176631a208ae372d61.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/e6911eaed6bb61acf11f9ae106d58b7d8fcfd659.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "nixpkgs-unstable": {
+        "branch": "nixpkgs-unstable",
+        "description": "Nix Packages collection",
+        "homepage": "",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "9839cda8dc0eae5fd2af4ffc970c95ebaa59b92c",
+        "sha256": "0w07qpqikgfx74azjyx60p55j9f8d2hnqs0dikq8hccsrsbj3mlv",
+        "type": "tarball",
+        "url": "https://github.com/NixOS/nixpkgs/archive/9839cda8dc0eae5fd2af4ffc970c95ebaa59b92c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
