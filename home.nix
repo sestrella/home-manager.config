@@ -7,7 +7,6 @@
     ./home/ghci
     ./home/git
     ./home/gnome
-    ./home/google-chrome
     ./home/neovim
     ./home/starship
     ./home/tmux
@@ -36,6 +35,7 @@
     docker-compose
     file
     gitAndTools.gh
+    google-chrome
     htop
     jq
     lshw

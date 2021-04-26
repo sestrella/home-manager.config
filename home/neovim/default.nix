@@ -3,24 +3,10 @@
 let
   rg = "${pkgs.ripgrep}/bin/rg";
   settings = import ../../settings.nix;
-  # TODO: compile neovim 0.5
-  sources = import ../../nix/sources.nix {};
-  nixpkgs-unstable = import sources.nixpkgs-unstable {};
-  tree-sitter = nixpkgs-unstable.tree-sitter;
   neovim = pkgs.neovim-unwrapped.overrideAttrs (old: {
-    version = "v0.5.0";
+    version = "nightly";
     src = (import ../../nix/sources.nix {}).neovim;
-      #owner  = "neovim";
-      #repo   = "neovim";
-      #rev    = "bb33727922ca4549bb3b9b7aaaac1b535154b669";
-      #sha256 = "0xy4ky8gaqwa8acmh1vkijx2hln6y8c1mxj2yqzg9q6cv3ffrlgf";
-    #};
-
-    # buildInputs = old.buildInputs ++ [ pkgs.tree-sitter ];
-    cmakeFlags = old.cmakeFlags ++ [
-      "-DTreeSitter_INCLUDE_DIR=${pkgs.tree-sitter}/include/tree_sitter"
-      "-DTreeSitter_LIBRARY=${tree-sitter}/lib/libtree-sitter.so"
-    ];
+    buildInputs = old.buildInputs ++ [ pkgs.tree-sitter ];
   });
 in {
   home.sessionVariables = {
@@ -45,7 +31,7 @@ in {
       let mapleader = "\<Space>"
       let maplocalleader = ','
     '';
-    #package = neovim;
+    package = neovim;
     plugins = with pkgs.vimPlugins; [
       {
         plugin = ctrlp-vim;
