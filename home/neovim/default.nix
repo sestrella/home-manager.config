@@ -51,6 +51,7 @@ in {
           nnoremap <C-n> :NERDTreeToggle<CR>
         '';
       }
+      nvim-lspconfig
       typescript-vim
       {
         plugin = ultisnips;
