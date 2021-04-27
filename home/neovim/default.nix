@@ -53,6 +53,12 @@ in {
           let g:ctrlp_user_command = '${rg} %s --files --color=never --glob ""'
         '';
       }
+      {
+        plugin = NeoSolarized;
+        config = ''
+          colorscheme NeoSolarized
+        '';
+      }
       nerdcommenter
       {
         plugin = nerdtree;
@@ -85,12 +91,6 @@ in {
         plugin = vim-airline;
         config = ''
           let g:airline_powerline_fonts = 1
-        '';
-      }
-      {
-        plugin = NeoSolarized;
-        config = ''
-          colorscheme NeoSolarized
         '';
       }
       vim-jinja
