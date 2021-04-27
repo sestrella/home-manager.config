@@ -2,7 +2,6 @@
 
 let
   rg = "${pkgs.ripgrep}/bin/rg";
-  settings = import ../../settings.nix;
   neovim = pkgs.neovim-unwrapped.overrideAttrs (old: {
     version = "nightly";
     src = (import ../../nix/sources.nix {}).neovim;
@@ -89,11 +88,9 @@ in {
         '';
       }
       {
-        plugin = vim-colors-solarized;
+        plugin = NeoSolarized;
         config = ''
-          syntax enable
-          set background=${settings.theme}
-          colorscheme solarized
+          colorscheme NeoSolarized
         '';
       }
       vim-jinja

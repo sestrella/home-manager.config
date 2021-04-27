@@ -15,5 +15,9 @@
       pkgs.tmuxPlugins.sensible
     ];
     shortcut = "a";
+    terminal = "screen-256color";
+    extraConfig = ''
+      set-option -ga terminal-overrides ",screen-256color:Tc"
+    '';
   };
 }
