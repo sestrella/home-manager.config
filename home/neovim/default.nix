@@ -7,10 +7,15 @@ let
     src = (import ../../nix/sources.nix {}).neovim;
     buildInputs = old.buildInputs ++ [ pkgs.tree-sitter ];
   });
+  # https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
   lspConfigs = [
     {
       server = "rnix";
       cmd = pkgs.rnix-lsp;
+    }
+    {
+      server = "terraformls";
+      cmd = pkgs.terraform-lsp;
     }
     {
       server = "yamlls";
