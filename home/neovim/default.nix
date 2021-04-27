@@ -8,10 +8,22 @@ let
     src = (import ../../nix/sources.nix {}).neovim;
     buildInputs = old.buildInputs ++ [ pkgs.tree-sitter ];
   });
+  lspConfigs = [
+    {
+      server = "rnix";
+      cmd = pkgs.rnix-lsp;
+    }
+    {
+      server = "yamlls";
+      cmd = pkgs.yaml-language-server;
+    }
+  ];
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
   };
+
+  home.packages = builtins.map (config: config.cmd) lspConfigs;
 
   programs.neovim = {
     enable = true;
@@ -51,7 +63,16 @@ in {
           nnoremap <C-n> :NERDTreeToggle<CR>
         '';
       }
-      nvim-lspconfig
+      {
+        plugin = nvim-lspconfig;
+        config = let
+          servers = builtins.map (config: "require'lspconfig'.${config.server}.setup{}") lspConfigs;
+        in ''
+          lua <<EOF
+            ${builtins.concatStringsSep "\n" servers}
+          EOF
+        '';
+      }
       typescript-vim
       {
         plugin = ultisnips;
