@@ -56,6 +56,7 @@
     wget
     wirelesstools
     xclip
+    yq
     zoom-us
   ];
 
