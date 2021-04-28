@@ -4,6 +4,8 @@
     # config
     promptInit = "set fish_greeting";
     shellAbbrs = {
+      # ansible
+      agi = "ansible-galaxy install -r requirements.yml";
       # bundle
       be = "bundle exec";
       bi = "bundle install";
