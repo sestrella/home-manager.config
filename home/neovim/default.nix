@@ -33,8 +33,11 @@ in {
     enable = true;
     # config
     extraConfig = ''
+      lua <<EOF
+        vim.wo.number = true
+      EOF
+
       set colorcolumn=80
-      set number
 
       set expandtab
       set shiftwidth=2
