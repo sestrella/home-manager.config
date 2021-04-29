@@ -47,6 +47,16 @@ in {
     package = neovim;
     plugins = with pkgs.vimPlugins; [
       {
+        plugin = completion-nvim;
+        config = ''
+          set completeopt=menuone,noinsert,noselect
+
+          let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+
+          autocmd BufEnter * lua require'completion'.on_attach()
+        '';
+      }
+      {
         plugin = ctrlp-vim;
         config = ''
           set grepprg=${rg}\ --color=never
