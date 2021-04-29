@@ -8,26 +8,17 @@ let
     buildInputs = old.buildInputs ++ [ pkgs.tree-sitter ];
   });
   # https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
-  lspConfigs = [
-    {
-      server = "rnix";
-      cmd = pkgs.rnix-lsp;
-    }
-    {
-      server = "terraformls";
-      cmd = pkgs.terraform-lsp;
-    }
-    {
-      server = "yamlls";
-      cmd = pkgs.yaml-language-server;
-    }
-  ];
+  lspConfigs = {
+    rnix = pkgs.rnix-lsp;
+    terraformls = pkgs.terraform-lsp;
+    yamlls = pkgs.yaml-language-server;
+  };
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
   };
 
-  home.packages = builtins.map (config: config.cmd) lspConfigs;
+  home.packages = builtins.attrValues lspConfigs;
 
   programs.neovim = {
     enable = true;
@@ -79,7 +70,8 @@ in {
       {
         plugin = nvim-lspconfig;
         config = let
-          servers = builtins.map (config: "require'lspconfig'.${config.server}.setup{}") lspConfigs;
+          names = builtins.attrNames lspConfigs;
+          servers = builtins.map (name: "require'lspconfig'.${name}.setup{}") names;
         in ''
           lua <<EOF
             ${builtins.concatStringsSep "\n" servers}
