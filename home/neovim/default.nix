@@ -52,7 +52,12 @@ in {
           autocmd BufEnter * lua require'completion'.on_attach()
         '';
       }
-      fzf-vim
+      {
+        plugin = fzf-vim;
+        config = ''
+          nnoremap <C-p> :Files<CR>
+        '';
+      }
       {
         plugin = NeoSolarized;
         config = ''
