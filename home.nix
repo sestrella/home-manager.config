@@ -4,12 +4,13 @@
   imports = [
     ./home/direnv
     ./home/fish
-    ./home/ghci
+    # ./home/ghci
     ./home/git
     ./home/gnome
     ./home/neovim
+    ./home/spotify
     ./home/starship
-    ./home/tmux
+    # ./home/tmux
   ];
 
   # Let Home Manager install and manage itself.
@@ -28,27 +29,25 @@
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  # home.stateVersion = "20.09";
+  home.stateVersion = "20.09";
 
   home.packages = with pkgs; [
     bind
     docker-compose
     file
-    gitAndTools.gh
-    google-chrome
+    github-cli
+    # google-chrome
     htop
     jq
     lshw
     lsof
     ncat
     ngrok
-    niv
-    nix-linter
     openssl
     pciutils
-    postman
+    # postman
     ripgrep
-    slack
+    # slack
     spotify
     tmate
     traceroute
@@ -57,16 +56,8 @@
     wirelesstools
     xclip
     yq
-    zoom-us
+    # zoom-us
   ];
-
-  # fonts.fontconfig.enable = true;
-
-  # services.gpg-agent ={
-  #   enable = true;
-  #   enableSshSupport = true;
-  #   pinentryFlavor = "gnome3";
-  # };
 
   news.display = "silent";
 }
