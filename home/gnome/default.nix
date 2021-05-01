@@ -2,7 +2,8 @@
 
 let
   mkTuple = lib.hm.gvariant.mkTuple;
-  profileId = "b1dcc9dd-5262-4d8d-a863-c897e6d979b9";
+  settings = import ../../settings.nix;
+  profileId = settings.profileId;
   themes = {
     dark = {
       background-color = "rgb(0,43,54)";
@@ -13,7 +14,6 @@ let
       foreground-color = "rgb(101,123,131)";
     };
   };
-  settings = import ../../settings.nix;
   currentTheme = themes.${settings.theme};
 in {
   dconf.settings = {
