@@ -1,8 +1,8 @@
-{ lib, ... }:
+{ pkgs, lib, ... }:
 
 let
   mkTuple = lib.hm.gvariant.mkTuple;
-  profileId = "7f987b3a-0157-48a5-a06f-e2a1d1bb35df";
+  profileId = "b1dcc9dd-5262-4d8d-a863-c897e6d979b9";
   themes = {
     dark = {
       background-color = "rgb(0,43,54)";
@@ -45,6 +45,7 @@ in {
       cursor-blink-mode = "system";
       cursor-colors-set = false;
       cursor-shape = "block";
+      custom-command = "${pkgs.fish}/bin/fish";
       delete-binding = "delete-sequence";
       font = "Monospace 12";
       highlight-colors-set = false;
@@ -69,19 +70,19 @@ in {
       ];
       scrollback-lines = 10000;
       scrollbar-policy = "always";
-      use-custom-command = false;
+      use-custom-command = true;
       use-system-font = false;
       use-theme-colors = false;
       visible-name = "sestrella";
     } // currentTheme);
-    "org/gnome/shell" = {
-      favorite-apps = [
-        "google-chrome.desktop"
-        "org.gnome.Terminal.desktop"
-        "spotify.desktop"
-        "slack.desktop"
-        "org.gnome.Nautilus.desktop"
-      ];
-    };
+    # "org/gnome/shell" = {
+    #   favorite-apps = [
+    #     "google-chrome.desktop"
+    #     "org.gnome.Terminal.desktop"
+    #     "spotify.desktop"
+    #     "slack.desktop"
+    #     "org.gnome.Nautilus.desktop"
+    #   ];
+    # };
   };
 }
