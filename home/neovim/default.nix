@@ -1,7 +1,6 @@
 { pkgs, ... }:
 
 let
-  rg = "${pkgs.ripgrep}/bin/rg";
   neovim = pkgs.neovim-unwrapped.overrideAttrs (old: {
     version = "nightly";
     src = (import ../../nix/sources.nix {}).neovim;
@@ -24,10 +23,7 @@ in {
     enable = true;
     # config
     extraConfig = ''
-      lua <<EOF
-        vim.wo.number = true
-      EOF
-
+      set number
       set colorcolumn=80
 
       set expandtab
@@ -58,7 +54,9 @@ in {
       }
       {
         plugin = ctrlp-vim;
-        config = ''
+  	config = let
+	  rg = "${pkgs.ripgrep}/bin/rg";
+	in ''
           set grepprg=${rg}\ --color=never
 
           let g:ctrlp_use_caching = 0
@@ -121,5 +119,5 @@ in {
     vimAlias = true;
   };
 
-  xdg.configFile."nvim/UltiSnips".source = ./ultisnips;
+  # xdg.configFile."nvim/UltiSnips".source = ./ultisnips;
 }
