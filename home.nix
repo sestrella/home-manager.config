@@ -4,6 +4,7 @@
   imports = [
     ./home/direnv
     ./home/fish
+    ./home/fzf
     # ./home/ghci
     ./home/git
     ./home/gnome

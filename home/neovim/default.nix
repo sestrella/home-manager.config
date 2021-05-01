@@ -52,17 +52,7 @@ in {
           autocmd BufEnter * lua require'completion'.on_attach()
         '';
       }
-      {
-        plugin = ctrlp-vim;
-  	config = let
-	  rg = "${pkgs.ripgrep}/bin/rg";
-	in ''
-          set grepprg=${rg}\ --color=never
-
-          let g:ctrlp_use_caching = 0
-          let g:ctrlp_user_command = '${rg} %s --files --color=never --glob ""'
-        '';
-      }
+      fzf-vim
       {
         plugin = NeoSolarized;
         config = ''
@@ -101,7 +91,7 @@ in {
       {
         plugin = vim-airline;
         config = ''
-          let g:airline_powerline_fonts = 1
+          " let g:airline_powerline_fonts = 1
         '';
       }
       vim-jinja
