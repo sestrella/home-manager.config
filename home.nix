@@ -9,8 +9,8 @@
     ./home/git
     ./home/gnome
     ./home/neovim
-    ./home/spotify
     ./home/starship
+    ./home/xprofile
     # ./home/tmux
   ];
 
@@ -33,11 +33,14 @@
   home.stateVersion = "20.09";
 
   home.packages = with pkgs; [
+    # google-chrome
+    # postman
+    # slack
+    # zoom-us
     bind
     docker-compose
     file
     github-cli
-    # google-chrome
     htop
     jq
     lshw
@@ -46,9 +49,7 @@
     ngrok
     openssl
     pciutils
-    # postman
     ripgrep
-    # slack
     spotify
     tmate
     traceroute
@@ -58,7 +59,6 @@
     wirelesstools
     xclip
     yq
-    # zoom-us
   ];
 
   news.display = "silent";
