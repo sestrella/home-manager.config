@@ -5,7 +5,7 @@
     ./home/direnv
     ./home/fish
     ./home/fzf
-    # ./home/ghci
+    ./home/ghci
     ./home/git
     ./home/gnome
     ./home/neovim
