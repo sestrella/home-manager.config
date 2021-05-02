@@ -52,6 +52,7 @@
     spotify
     tmate
     traceroute
+    vscode
     wavemon
     wget
     wirelesstools
