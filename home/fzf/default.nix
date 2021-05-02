@@ -2,8 +2,9 @@
 
 {
   programs.fzf = {
-    defaultCommand = "${pkgs.ripgrep}/bin/rg --files --hidden";
     enable = true;
+    # config
+    defaultCommand = "${pkgs.ripgrep}/bin/rg --files --hidden";
     enableBashIntegration = false;
     enableFishIntegration = true;
     enableZshIntegration = false;
