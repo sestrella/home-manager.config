@@ -10,8 +10,8 @@
     ./home/gnome
     ./home/neovim
     ./home/starship
+    ./home/tmux
     ./home/xprofile
-    # ./home/tmux
   ];
 
   # Let Home Manager install and manage itself.
