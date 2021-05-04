@@ -48,6 +48,7 @@
     lsof
     ncat
     ngrok
+    niv
     openssl
     pciutils
     ripgrep
