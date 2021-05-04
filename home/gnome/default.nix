@@ -47,7 +47,7 @@ in {
       cursor-shape = "block";
       custom-command = "${pkgs.fish}/bin/fish";
       delete-binding = "delete-sequence";
-      font = "Fira Code 12";
+      font = "Fira Code Medium 12";
       highlight-colors-set = false;
       login-shell = false;
       palette = [
