@@ -34,9 +34,6 @@ in {
       set splitbelow
       set splitright
 
-      set spell
-      set complete+=kspell
-
       let mapleader = "\<Space>"
       let maplocalleader = ','
     '';
