@@ -36,6 +36,8 @@ in {
 
       let mapleader = "\<Space>"
       let maplocalleader = ','
+
+      autocmd FileType markdown setlocal spell
     '';
     package = neovim;
     plugins = with pkgs.vimPlugins; [
