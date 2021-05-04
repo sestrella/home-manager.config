@@ -56,6 +56,9 @@ in {
         plugin = fzf-vim;
         config = ''
           nnoremap <C-p> :Files<CR>
+
+          nnoremap <Leader>fl :BLines<CR>
+          nnoremap <Leader>fm :Maps<CR>
         '';
       }
       {
