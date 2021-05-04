@@ -37,7 +37,7 @@ in {
       let mapleader = "\<Space>"
       let maplocalleader = ','
 
-      autocmd FileType markdown setlocal spell
+      autocmd FileType gitcommit,markdown setlocal spell
     '';
     package = neovim;
     plugins = with pkgs.vimPlugins; [
