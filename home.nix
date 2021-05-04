@@ -40,6 +40,7 @@
     bind
     docker-compose
     file
+    fira-code
     github-cli
     htop
     jq
@@ -62,4 +63,6 @@
   ];
 
   news.display = "silent";
+
+  fonts.fontconfig.enable = true;
 }
