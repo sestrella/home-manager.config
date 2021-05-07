@@ -51,7 +51,9 @@
     niv
     openssl
     pciutils
+    ranger
     ripgrep
+    rsync
     spotify
     tmate
     traceroute
