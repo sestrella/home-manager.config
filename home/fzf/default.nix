@@ -9,4 +9,9 @@
     enableFishIntegration = true;
     enableZshIntegration = false;
   };
+
+  home.file.".rgignore".text = ''
+    .direnv/
+    .git/
+  '';
 }
