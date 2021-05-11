@@ -1,9 +1,6 @@
 { pkgs, ... }:
 
-let
-  sources = import ./nix/sources.nix {};
-  niv = import sources.niv {};
-in {
+{
   imports = [
     ./home/direnv
     ./home/fish
@@ -35,38 +32,37 @@ in {
   # changes in each release.
   home.stateVersion = "21.05";
 
-  home.packages = [
+  home.packages = with pkgs; [
     # google-chrome
     # postman
     # slack
     # zoom-us
+    bind
+    docker-compose
+    file
+    fira-code
+    github-cli
+    htop
+    jq
+    lshw
+    lsof
+    ncat
+    ngrok
     niv
-    pkgs.bind
-    pkgs.docker-compose
-    pkgs.file
-    pkgs.fira-code
-    pkgs.github-cli
-    pkgs.htop
-    pkgs.jq
-    pkgs.lshw
-    pkgs.lsof
-    pkgs.ncat
-    pkgs.ngrok
-    pkgs.niv
-    pkgs.openssl
-    pkgs.pciutils
-    pkgs.ranger
-    pkgs.ripgrep
-    pkgs.rsync
-    pkgs.spotify
-    pkgs.tmate
-    pkgs.traceroute
-    pkgs.vscode
-    pkgs.wavemon
-    pkgs.wget
-    pkgs.wirelesstools
-    pkgs.xclip
-    pkgs.yq
+    openssl
+    pciutils
+    ranger
+    ripgrep
+    rsync
+    spotify
+    tmate
+    traceroute
+    vscode
+    wavemon
+    wget
+    wirelesstools
+    xclip
+    yq
   ];
 
   news.display = "silent";
