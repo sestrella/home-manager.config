@@ -9,6 +9,7 @@
     ./home/git
     ./home/gnome
     ./home/neovim
+    ./home/ripgrep
     ./home/starship
     ./home/tmux
     ./home/xprofile
@@ -52,7 +53,6 @@
     openssl
     pciutils
     ranger
-    ripgrep
     rsync
     spotify
     tmate
