@@ -47,6 +47,7 @@ in {
         config = ''
           set completeopt=menuone,noinsert,noselect
 
+          let g:completion_enable_snippet = 'UltiSnips'
           let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
           autocmd BufEnter * lua require'completion'.on_attach()
@@ -99,7 +100,7 @@ in {
       {
         plugin = vim-airline;
         config = ''
-          " let g:airline_powerline_fonts = 1
+          let g:airline_powerline_fonts = 1
         '';
       }
       vim-jinja
@@ -117,5 +118,5 @@ in {
     vimAlias = true;
   };
 
-  # xdg.configFile."nvim/UltiSnips".source = ./ultisnips;
+  xdg.configFile."nvim/UltiSnips".source = ./ultisnips;
 }
