@@ -75,14 +75,14 @@ in {
       use-theme-colors = false;
       visible-name = "sestrella";
     } // currentTheme);
-    # "org/gnome/shell" = {
-    #   favorite-apps = [
-    #     "google-chrome.desktop"
-    #     "org.gnome.Terminal.desktop"
-    #     "spotify.desktop"
-    #     "slack.desktop"
-    #     "org.gnome.Nautilus.desktop"
-    #   ];
-    # };
+    "org/gnome/shell" = {
+      favorite-apps = [
+        "google-chrome.desktop"
+        "org.gnome.Terminal.desktop"
+        "spotify.desktop"
+        "slack.desktop"
+        "org.gnome.Nautilus.desktop"
+      ];
+    };
   };
 }
