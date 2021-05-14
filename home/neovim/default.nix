@@ -34,10 +34,11 @@ in {
       set splitbelow
       set splitright
 
+      set spell
+      set spelllang=en
+
       let mapleader = "\<Space>"
       let maplocalleader = ','
-
-      autocmd FileType gitcommit,markdown setlocal spell
     '';
     package = neovim;
     plugins = with pkgs.vimPlugins; [
