@@ -9,7 +9,7 @@ let
   # https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
   lspConfigs = {
     rnix = pkgs.rnix-lsp;
-    terraformls = pkgs.terraform-lsp;
+    terraformls = pkgs.terraform-ls;
     yamlls = pkgs.yaml-language-server;
   };
 in {
@@ -45,10 +45,14 @@ in {
       {
         plugin = completion-nvim;
         config = ''
-          set completeopt=menuone,noinsert,noselect
-
           let g:completion_enable_snippet = 'UltiSnips'
           let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+
+          set completeopt=menuone,noinsert,noselect
+          set shortmess+=c
+
+          inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+          inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
           autocmd BufEnter * lua require'completion'.on_attach()
         '';
