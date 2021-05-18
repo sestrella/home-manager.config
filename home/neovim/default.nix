@@ -10,6 +10,7 @@ let
   lspConfigs = {
     rnix = pkgs.rnix-lsp;
     terraformls = pkgs.terraform-ls;
+    tflint = pkgs.tflint;
     yamlls = pkgs.yaml-language-server;
   };
 in {
