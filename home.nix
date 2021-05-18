@@ -57,6 +57,7 @@
     spotify
     tmate
     traceroute
+    vagrant
     vscode
     wavemon
     wget
