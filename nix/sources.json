@@ -11,16 +11,16 @@
         "url": "https://github.com/nix-community/home-manager/archive/3612ca58e8d592e58762da9ea650f82b9c7c05d9.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "neovim": {
-        "branch": "nightly",
-        "description": "Vim-fork focused on extensibility and usability",
-        "homepage": "https://neovim.io",
-        "owner": "neovim",
-        "repo": "neovim",
-        "rev": "dc18c1e3ee4f2ec556de4e13ae162c5f70cf51ae",
-        "sha256": "13d601kv86mlbx7zcib2ncyzrcc2vv7bgfqgywgbjc260m7cdk55",
+    "neovim-nightly-overlay": {
+        "branch": "master",
+        "description": "[maintainer=@mjlbach] ",
+        "homepage": "",
+        "owner": "nix-community",
+        "repo": "neovim-nightly-overlay",
+        "rev": "0ad2d324edb9ea62758d4fa2d4d7e0fefe10a32e",
+        "sha256": "1zxpissh7ifmrr5fr5j8g4zcz0q1zzv97ijlns7c7dq26zdz6649",
         "type": "tarball",
-        "url": "https://github.com/neovim/neovim/archive/dc18c1e3ee4f2ec556de4e13ae162c5f70cf51ae.tar.gz",
+        "url": "https://github.com/nix-community/neovim-nightly-overlay/archive/0ad2d324edb9ea62758d4fa2d4d7e0fefe10a32e.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {

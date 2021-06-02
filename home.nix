@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
-{
+let
+  sources = import ./nix/sources.nix {};
+in {
   imports = [
     ./home/direnv
     ./home/fish
@@ -69,4 +71,8 @@
   news.display = "silent";
 
   fonts.fontconfig.enable = true;
+
+  nixpkgs.overlays = [
+    (import sources.neovim-nightly-overlay)
+  ];
 }

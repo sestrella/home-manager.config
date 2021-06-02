@@ -1,11 +1,6 @@
 { pkgs, ... }:
 
 let
-  neovim = pkgs.neovim-unwrapped.overrideAttrs (old: {
-    version = "nightly";
-    src = (import ../../nix/sources.nix {}).neovim;
-    buildInputs = old.buildInputs ++ [ pkgs.tree-sitter ];
-  });
   # https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
   lspConfigs = {
     rnix = pkgs.rnix-lsp;
@@ -41,7 +36,7 @@ in {
       let mapleader = "\<Space>"
       let maplocalleader = ','
     '';
-    package = neovim;
+    package = pkgs.neovim-nightly;
     plugins = with pkgs.vimPlugins; [
       {
         plugin = completion-nvim;
