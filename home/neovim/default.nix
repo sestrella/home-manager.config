@@ -1,6 +1,16 @@
 { pkgs, ... }:
 
 let
+  # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md#what-if-your-favourite-vim-plugin-isnt-already-packaged
+  sources = import ../../nix/sources.nix {};
+  compe = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "nvim-compe";
+    src = sources.nvim-compe;
+  };
+  telescope = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "telescope.nvim";
+    src = sources."telescope.nvim";
+  };
   # https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
   lspConfigs = {
     rnix = pkgs.rnix-lsp;
@@ -39,27 +49,42 @@ in {
     package = pkgs.neovim-nightly;
     plugins = with pkgs.vimPlugins; [
       {
-        plugin = completion-nvim;
+        plugin = compe;
         config = ''
-          let g:completion_enable_snippet = 'UltiSnips'
-          let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
+          lua <<EOF
+            vim.o.completeopt = "menuone,noselect"
 
-          set completeopt=menuone,noinsert,noselect
-          set shortmess+=c
+            require'compe'.setup {
+              enabled = true;
+              autocomplete = true;
+              debug = false;
+              min_length = 1;
+              preselect = 'enable';
+              throttle_time = 80;
+              source_timeout = 200;
+              incomplete_delay = 400;
+              max_abbr_width = 100;
+              max_kind_width = 100;
+              max_menu_width = 100;
+              documentation = true;
 
-          inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-          inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-          autocmd BufEnter * lua require'completion'.on_attach()
+              source = {
+                path = true;
+                buffer = true;
+                calc = true;
+                nvim_lsp = true;
+                nvim_lua = true;
+                vsnip = true;
+                ultisnips = true;
+              };
+            }
+          EOF
         '';
       }
       {
-        plugin = fzf-vim;
+        plugin = telescope;
         config = ''
-          nnoremap <C-p> :Files<CR>
-
-          nnoremap <Leader>fl :BLines<CR>
-          nnoremap <Leader>fm :Maps<CR>
+          nnoremap <C-p> <cmd>Telescope find_files<cr>
         '';
       }
       {
@@ -84,7 +109,15 @@ in {
           servers = builtins.map (name: "require'lspconfig'.${name}.setup{}") names;
         in ''
           lua <<EOF
-            ${builtins.concatStringsSep "\n" servers}
+            require'lspconfig'.yamlls.setup{
+              settings = {
+                yaml = {
+                  schemas = {
+                    ["https://json.schemastore.org/circleciconfig.json"] = ".circleci/config.yml"
+                  }
+                }
+              }
+            }
           EOF
         '';
       }
