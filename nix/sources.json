@@ -47,18 +47,6 @@
         "url": "https://github.com/hrsh7th/nvim-compe/archive/310488302c6532646adfe8228e40187a80b36ac5.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "vim/gruvbox": {
-        "branch": "main",
-        "description": "Lua port of the most famous vim colorscheme",
-        "homepage": "",
-        "owner": "npxbr",
-        "repo": "gruvbox.nvim",
-        "rev": "86bc293204a6c13f1650378c39bf248bd5a5a22f",
-        "sha256": "0if2ad8s9r3pwdsqlkl6y82r0a0z86c6vlkdp28m18sxv848psx5",
-        "type": "tarball",
-        "url": "https://github.com/npxbr/gruvbox.nvim/archive/86bc293204a6c13f1650378c39bf248bd5a5a22f.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "vim/lspconfig": {
         "branch": "master",
         "description": "Quickstart configurations for the Nvim LSP client",
@@ -71,16 +59,16 @@
         "url": "https://github.com/neovim/nvim-lspconfig/archive/62c04242031ed65a8d29ebefaaf645e8e3375748.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "vim/lush": {
+    "vim/neon": {
         "branch": "main",
-        "description": "Define Neovim themes as a DSL in lua, with real-time feedback.",
+        "description": "Customizable coloscheme with dark and light options, vivid colors and easy on the eye.",
         "homepage": "",
-        "owner": "rktjmp",
-        "repo": "lush.nvim",
-        "rev": "684c06d4879a38e50a247ce23b32beaacc75c4d1",
-        "sha256": "1khws788sww2dw4s3nqyigyxi7099kqh60dabs66hj9byb84irql",
+        "owner": "rafamadriz",
+        "repo": "neon",
+        "rev": "22bd47d1edc6f26f68ae2e0e8c4929a21a10ff7f",
+        "sha256": "11n6mr95xc1s7liqww4n3x231cdpwfnqj4r2j0ix88hic2mpqpm2",
         "type": "tarball",
-        "url": "https://github.com/rktjmp/lush.nvim/archive/684c06d4879a38e50a247ce23b32beaacc75c4d1.tar.gz",
+        "url": "https://github.com/rafamadriz/neon/archive/22bd47d1edc6f26f68ae2e0e8c4929a21a10ff7f.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "vim/nix": {

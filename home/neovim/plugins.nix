@@ -8,16 +8,6 @@
       src = sources."vim/compe";
     };
   }
-  # gruvbox
-  {
-    plugin = vimPlugin {
-      name = "gruvbox";
-      src = sources."vim/gruvbox";
-    };
-    config = ''
-      colorscheme gruvbox
-    '';
-  }
   # lspconfig
   {
     plugin = vimPlugin {
@@ -25,12 +15,15 @@
       src = sources."vim/lspconfig";
     };
   }
-  # lush (gruvbox dependency)
+  # neon
   {
     plugin = vimPlugin {
-      name = "lush";
-      src = sources."vim/lush";
+      name = "neon";
+      src = sources."vim/neon";
     };
+    config = ''
+      lua vim.cmd[[colorscheme neon]]
+    '';
   }
   # nix
   {
