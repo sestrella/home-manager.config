@@ -35,7 +35,19 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/a39809ade0121f374126b5b499173930672b3736.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "nvim-compe": {
+    "vim/colorizer": {
+        "branch": "master",
+        "description": "The fastest Neovim colorizer.",
+        "homepage": "",
+        "owner": "norcalli",
+        "repo": "nvim-colorizer.lua",
+        "rev": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6",
+        "sha256": "0gvqdfkqf6k9q46r0vcc3nqa6w45gsvp8j4kya1bvi24vhifg2p9",
+        "type": "tarball",
+        "url": "https://github.com/norcalli/nvim-colorizer.lua/archive/36c610a9717cc9ec426a07c8e6bf3b3abcb139d6.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "vim/compe": {
         "branch": "master",
         "description": "Auto completion plugin for nvim that written in Lua.",
         "homepage": "",
@@ -47,16 +59,112 @@
         "url": "https://github.com/hrsh7th/nvim-compe/archive/310488302c6532646adfe8228e40187a80b36ac5.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "telescope.nvim": {
+    "vim/lspconfig": {
+        "branch": "master",
+        "description": "Quickstart configurations for the Nvim LSP client",
+        "homepage": "",
+        "owner": "neovim",
+        "repo": "nvim-lspconfig",
+        "rev": "62c04242031ed65a8d29ebefaaf645e8e3375748",
+        "sha256": "1g1s85dzz7lr3ky90m27m8f3s06xm4c87z96vwzaaajb28927774",
+        "type": "tarball",
+        "url": "https://github.com/neovim/nvim-lspconfig/archive/62c04242031ed65a8d29ebefaaf645e8e3375748.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "vim/nix": {
+        "branch": "master",
+        "description": "Vim configuration files for Nix http://nixos.org/nix",
+        "homepage": null,
+        "owner": "LnL7",
+        "repo": "vim-nix",
+        "rev": "63b47b39c8d481ebca3092822ca8972e08df769b",
+        "sha256": "08n9cgphv2m96kk5w996lwlqak011x5xm410hajmc91vy5fws361",
+        "type": "tarball",
+        "url": "https://github.com/LnL7/vim-nix/archive/63b47b39c8d481ebca3092822ca8972e08df769b.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "vim/projectionist": {
+        "branch": "master",
+        "description": "projectionist.vim: Granular project configuration",
+        "homepage": "https://www.vim.org/scripts/script.php?script_id=4989",
+        "owner": "tpope",
+        "repo": "vim-projectionist",
+        "rev": "8dda7acb7e24b44ef691ba19b35f585e97e91b30",
+        "sha256": "0laqkgwv6hq1ix3kahvx0sfb8c7ifx61z2n4npqswpn0ri4ckd2j",
+        "type": "tarball",
+        "url": "https://github.com/tpope/vim-projectionist/archive/8dda7acb7e24b44ef691ba19b35f585e97e91b30.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "vim/rails": {
+        "branch": "master",
+        "description": "rails.vim: Ruby on Rails power tools",
+        "homepage": "http://www.vim.org/scripts/script.php?script_id=1567",
+        "owner": "tpope",
+        "repo": "vim-rails",
+        "rev": "3b3796352a6f1a68e54e5f7ae5e0c1b9103fab0e",
+        "sha256": "1f0xns0h55szamms17wi06k1ninvygsc4yw82hr29kfq94hvn57l",
+        "type": "tarball",
+        "url": "https://github.com/tpope/vim-rails/archive/3b3796352a6f1a68e54e5f7ae5e0c1b9103fab0e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "vim/surround": {
+        "branch": "master",
+        "description": "surround.vim: quoting/parenthesizing made simple",
+        "homepage": "http://www.vim.org/scripts/script.php?script_id=1697",
+        "owner": "tpope",
+        "repo": "vim-surround",
+        "rev": "f51a26d3710629d031806305b6c8727189cd1935",
+        "sha256": "0aqrqn35xdiy80y7skxfsh3m33n6cdxw6lzz6aspfgzwllx2f0kr",
+        "type": "tarball",
+        "url": "https://github.com/tpope/vim-surround/archive/f51a26d3710629d031806305b6c8727189cd1935.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "vim/telescope": {
         "branch": "master",
         "description": "Find, Filter, Preview, Pick. All lua, all the time.",
         "homepage": "",
         "owner": "nvim-telescope",
         "repo": "telescope.nvim",
-        "rev": "5b6b23a3a275626187ad0fbd25604b126cc6de73",
-        "sha256": "0fqazdjpr1bf8456saxcwqagig28hqdyqf5v6d0gpcdjpjcyj9bj",
+        "rev": "2697bcfaf0fac861e08c3a55d9334ec6d823029f",
+        "sha256": "0q9kq64y3yrazcks476yplkrhx59z82ij5wj1w8qakidy2i008z1",
         "type": "tarball",
-        "url": "https://github.com/nvim-telescope/telescope.nvim/archive/5b6b23a3a275626187ad0fbd25604b126cc6de73.tar.gz",
+        "url": "https://github.com/nvim-telescope/telescope.nvim/archive/2697bcfaf0fac861e08c3a55d9334ec6d823029f.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "vim/trailing-whitespace": {
+        "branch": "master",
+        "description": "Highlights trailing whitespace in red and provides :FixWhitespace to fix it.",
+        "homepage": "",
+        "owner": "bronson",
+        "repo": "vim-trailing-whitespace",
+        "rev": "05f068ebd9dbdf71d2d334d02abd99deb0311c40",
+        "sha256": "1bh15yw2aysvpn2ndnc0s6jzc0y93x6q1blc5pph67rdix5bm7gy",
+        "type": "tarball",
+        "url": "https://github.com/bronson/vim-trailing-whitespace/archive/05f068ebd9dbdf71d2d334d02abd99deb0311c40.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "vim/tree": {
+        "branch": "master",
+        "description": "A file explorer tree for neovim written in lua",
+        "homepage": "",
+        "owner": "kyazdani42",
+        "repo": "nvim-tree.lua",
+        "rev": "6dca42d09db1aa2511c3d2901313083143ea0829",
+        "sha256": "0gbyii5gw1gyxgwl3cfba1dx2w1ipga67dr27lhxfk09a5bc9rwl",
+        "type": "tarball",
+        "url": "https://github.com/kyazdani42/nvim-tree.lua/archive/6dca42d09db1aa2511c3d2901313083143ea0829.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "vim/typescript": {
+        "branch": "master",
+        "description": "Typescript syntax files for Vim",
+        "homepage": null,
+        "owner": "leafgarland",
+        "repo": "typescript-vim",
+        "rev": "67e81e4292186889a1a519e1bf3a600d671237eb",
+        "sha256": "1mpp4n7qgz3yq4vka8h5sbngc14w5bzd9s9c2csbv9ds8w0lpi0g",
+        "type": "tarball",
+        "url": "https://github.com/leafgarland/typescript-vim/archive/67e81e4292186889a1a519e1bf3a600d671237eb.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
