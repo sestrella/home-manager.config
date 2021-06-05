@@ -8,11 +8,28 @@
       src = sources."vim/compe";
     };
   }
+  # gruvbox
+  {
+    plugin = vimPlugin {
+      name = "gruvbox";
+      src = sources."vim/gruvbox";
+    };
+    config = ''
+      colorscheme gruvbox
+    '';
+  }
   # lspconfig
   {
     plugin = vimPlugin {
       name = "lspconfig";
       src = sources."vim/lspconfig";
+    };
+  }
+  # lush (gruvbox dependency)
+  {
+    plugin = vimPlugin {
+      name = "lush";
+      src = sources."vim/lush";
     };
   }
   # nix
