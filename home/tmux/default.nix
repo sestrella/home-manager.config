@@ -8,7 +8,7 @@
     disableConfirmationPrompt = true;
     escapeTime = 0;
     extraConfig = ''
-      set-option -ga terminal-overrides ",screen-256color:RGB"
+      set-option -sa terminal-overrides ',xterm-256color:RGB'
     '';
     keyMode = "vi";
     plugins = with pkgs.tmuxPlugins; [

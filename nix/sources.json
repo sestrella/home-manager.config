@@ -35,18 +35,6 @@
         "url": "https://github.com/NixOS/nixpkgs/archive/a39809ade0121f374126b5b499173930672b3736.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "vim/colorizer": {
-        "branch": "master",
-        "description": "The fastest Neovim colorizer.",
-        "homepage": "",
-        "owner": "norcalli",
-        "repo": "nvim-colorizer.lua",
-        "rev": "36c610a9717cc9ec426a07c8e6bf3b3abcb139d6",
-        "sha256": "0gvqdfkqf6k9q46r0vcc3nqa6w45gsvp8j4kya1bvi24vhifg2p9",
-        "type": "tarball",
-        "url": "https://github.com/norcalli/nvim-colorizer.lua/archive/36c610a9717cc9ec426a07c8e6bf3b3abcb139d6.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "vim/compe": {
         "branch": "master",
         "description": "Auto completion plugin for nvim that written in Lua.",
