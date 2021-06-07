@@ -18,10 +18,10 @@ needs to match the value provided in the previous command:
   plugin = vimPlugin {
     name = "<name>";
     src = sources.<name>;
-    config = ''
-      " custom plugin configuration
-    '';
   };
+  config = ''
+    " custom plugin configuration
+  '';
 }
 ```
 

@@ -12,7 +12,7 @@
     '';
     keyMode = "vi";
     plugins = (import ./plugins.nix {
-      tmuxPlugin = pkgs.tmuxPlugins.mkTmuxPlugin;
+      mkPlugin = pkgs.tmuxPlugins.mkTmuxPlugin;
     });
     # plugins = with pkgs.tmuxPlugins; [
     #   nord

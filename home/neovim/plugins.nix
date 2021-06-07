@@ -1,25 +1,25 @@
-{ vimPlugin }:
+{ mkPlugin }:
 
 let
   sources = import ./nix/sources.nix {};
 in [
   # compe
   {
-    plugin = vimPlugin {
+    plugin = mkPlugin {
       name = "compe";
       src = sources.compe;
     };
   }
   # lspconfig
   {
-    plugin = vimPlugin {
+    plugin = mkPlugin {
       name = "lspconfig";
       src = sources.lspconfig;
     };
   }
   # neon
   {
-    plugin = vimPlugin {
+    plugin = mkPlugin {
       name = "neon";
       src = sources.neon;
     };
@@ -29,35 +29,35 @@ in [
   }
   # nix
   {
-    plugin = vimPlugin {
+    plugin = mkPlugin {
       name = "nix";
       src = sources.nix;
     };
   }
   # projectionist
   {
-    plugin = vimPlugin {
+    plugin = mkPlugin {
       name = "projectionist";
       src = sources.projectionist;
     };
   }
   # rails
   {
-    plugin = vimPlugin {
+    plugin = mkPlugin {
       name = "rails";
       src = sources.rails;
     };
   }
   # surround
   {
-    plugin = vimPlugin {
+    plugin = mkPlugin {
       name = "surround";
       src = sources.surround;
     };
   }
   # telescope
   {
-    plugin = vimPlugin {
+    plugin = mkPlugin {
       name = "telescope";
       src = sources.telescope;
     };
@@ -67,14 +67,14 @@ in [
   }
   # trailing-whitespace
   {
-    plugin = vimPlugin {
+    plugin = mkPlugin {
       name = "trailing-whitespace";
       src = sources.trailing-whitespace;
     };
   }
   # tree
   {
-    plugin = vimPlugin {
+    plugin = mkPlugin {
       name = "tree";
       src = sources.tree;
     };
@@ -86,7 +86,7 @@ in [
   }
   # typescript
   {
-    plugin = vimPlugin {
+    plugin = mkPlugin {
       name = "typescript";
       src = sources.typescript;
     };

@@ -42,35 +42,13 @@ in {
     package = pkgs.neovim-nightly;
     # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md#what-if-your-favourite-vim-plugin-isnt-already-packaged
     plugins = (import ./plugins.nix {
-      vimPlugin = pkgs.vimUtils.buildVimPluginFrom2Nix;
+      mkPlugin = pkgs.vimUtils.buildVimPluginFrom2Nix;
     });
-      #{
-        #plugin = nvim-lspconfig;
-        #config = let
-          #names = builtins.attrNames lspConfigs;
-          #servers = builtins.map (name: "require'lspconfig'.${name}.setup{}") names;
-        #in ''
-
-        #'';
-        #in ''
-          #lua <<EOF
-            #require'lspconfig'.yamlls.setup{
-              #settings = {
-                #yaml = {
-                  #schemas = {
-                    #["https://json.schemastore.org/circleciconfig.json"] = ".circleci/config.yml"
-                  #}
-                #}
-              #}
-            #}
-          #EOF
-        #'';
-      #}
-      #vim-jinja
-      #vim-jsx-typescript
-      #vim-repeat
-      #vim-sensible
-      #vim-snippets
+    # vim-jinja
+    # vim-jsx-typescript
+    # vim-repeat
+    # vim-sensible
+    # vim-snippets
     viAlias = true;
     vimAlias = true;
   };
