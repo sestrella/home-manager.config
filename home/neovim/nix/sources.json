@@ -11,6 +11,18 @@
         "url": "https://github.com/hrsh7th/nvim-compe/archive/310488302c6532646adfe8228e40187a80b36ac5.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "kommentary": {
+        "branch": "main",
+        "description": "Neovim commenting plugin, written in lua.",
+        "homepage": "",
+        "owner": "b3nj5m1n",
+        "repo": "kommentary",
+        "rev": "f0b6d75df0a263fc849b0860dc8a27f4bed743db",
+        "sha256": "0z6rcvlgp00hrgjff31vwssrq000pwwak5kw6k1xz2349n01chsa",
+        "type": "tarball",
+        "url": "https://github.com/b3nj5m1n/kommentary/archive/f0b6d75df0a263fc849b0860dc8a27f4bed743db.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "lspconfig": {
         "branch": "master",
         "description": "Quickstart configurations for the Nvim LSP client",

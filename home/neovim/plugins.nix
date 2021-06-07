@@ -4,12 +4,18 @@ let
   mkPlugin = pkgs.vimUtils.buildVimPluginFrom2Nix;
   sources = import ./nix/sources.nix {};
 in [
-  # TODO: foo
   # compe
   {
     plugin = mkPlugin {
       name = "compe";
       src = sources.compe;
+    };
+  }
+  # kommentary
+  {
+    plugin = mkPlugin {
+      name = "kommentary";
+      src = sources.kommentary;
     };
   }
   # lspconfig
