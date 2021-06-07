@@ -1,5 +1,6 @@
 { pkgs }:
 
+# https://github.com/rockerBOO/awesome-neovim
 let
   mkPlugin = pkgs.vimUtils.buildVimPluginFrom2Nix;
   sources = import ./nix/sources.nix {};
