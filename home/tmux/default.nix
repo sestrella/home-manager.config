@@ -11,12 +11,15 @@
       set-option -sa terminal-overrides ',xterm-256color:RGB'
     '';
     keyMode = "vi";
-    plugins = with pkgs.tmuxPlugins; [
-      nord
-      prefix-highlight
-      resurrect
-      sensible
-    ];
+    plugins = (import ./plugins.nix {
+      tmuxPlugin = pkgs.tmuxPlugins.mkTmuxPlugin;
+    });
+    # plugins = with pkgs.tmuxPlugins; [
+    #   nord
+    #   prefix-highlight
+    #   resurrect
+    #   sensible
+    # ];
     shell = "${pkgs.fish}/bin/fish";
     shortcut = "a";
     terminal = "screen-256color";

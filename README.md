@@ -33,6 +33,7 @@ nix-shell --run 'home-manager switch'
 Some modules include some specific instructions:
 
 - [neovim](home/neovim)
+- [tmux](home/tmux)
 
 ## Inspired By
 
