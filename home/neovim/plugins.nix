@@ -1,25 +1,27 @@
-{ vimPlugin, sources }:
+{ vimPlugin }:
 
-[
+let
+  sources = import ./nix/sources.nix {};
+in [
   # compe
   {
     plugin = vimPlugin {
       name = "compe";
-      src = sources."vim/compe";
+      src = sources.compe;
     };
   }
   # lspconfig
   {
     plugin = vimPlugin {
       name = "lspconfig";
-      src = sources."vim/lspconfig";
+      src = sources.lspconfig;
     };
   }
   # neon
   {
     plugin = vimPlugin {
       name = "neon";
-      src = sources."vim/neon";
+      src = sources.neon;
     };
     config = ''
       lua vim.cmd[[colorscheme neon]]
@@ -29,35 +31,35 @@
   {
     plugin = vimPlugin {
       name = "nix";
-      src = sources."vim/nix";
+      src = sources.nix;
     };
   }
   # projectionist
   {
     plugin = vimPlugin {
       name = "projectionist";
-      src = sources."vim/projectionist";
+      src = sources.projectionist;
     };
   }
   # rails
   {
     plugin = vimPlugin {
       name = "rails";
-      src = sources."vim/rails";
+      src = sources.rails;
     };
   }
   # surround
   {
     plugin = vimPlugin {
       name = "surround";
-      src = sources."vim/surround";
+      src = sources.surround;
     };
   }
   # telescope
   {
     plugin = vimPlugin {
       name = "telescope";
-      src = sources."vim/telescope";
+      src = sources.telescope;
     };
     config = ''
       nnoremap <C-p> <cmd>Telescope find_files<cr>
@@ -67,14 +69,14 @@
   {
     plugin = vimPlugin {
       name = "trailing-whitespace";
-      src = sources."vim/trailing-whitespace";
+      src = sources.trailing-whitespace;
     };
   }
   # tree
   {
     plugin = vimPlugin {
       name = "tree";
-      src = sources."vim/tree";
+      src = sources.tree;
     };
     config = ''
       highlight NvimTreeFolderIcon guibg=blue
@@ -86,7 +88,7 @@
   {
     plugin = vimPlugin {
       name = "typescript";
-      src = sources."vim/typescript";
+      src = sources.typescript;
     };
   }
 ]

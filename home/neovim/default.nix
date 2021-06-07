@@ -43,7 +43,6 @@ in {
     # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md#what-if-your-favourite-vim-plugin-isnt-already-packaged
     plugins = (import ./plugins.nix {
       vimPlugin = pkgs.vimUtils.buildVimPluginFrom2Nix;
-      sources = sources;
     });
       #{
         #plugin = nvim-lspconfig;
