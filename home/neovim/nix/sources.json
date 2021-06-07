@@ -47,6 +47,18 @@
         "url": "https://github.com/LnL7/vim-nix/archive/63b47b39c8d481ebca3092822ca8972e08df769b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "plenary": {
+        "branch": "master",
+        "description": "plenary: full; complete; entire; absolute; unqualified. All the lua functions I don't want to write twice.",
+        "homepage": null,
+        "owner": "nvim-lua",
+        "repo": "plenary.nvim",
+        "rev": "3834d42236c155bb4240fb4008ea6e62c4a21dae",
+        "sha256": "1y9aqpb6j36873kcp8dbv5mm04qccjicrs0z0z9cy53s8sgfx558",
+        "type": "tarball",
+        "url": "https://github.com/nvim-lua/plenary.nvim/archive/3834d42236c155bb4240fb4008ea6e62c4a21dae.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "projectionist": {
         "branch": "master",
         "description": "projectionist.vim: Granular project configuration",
@@ -93,6 +105,18 @@
         "sha256": "0kx9xmlv6smpqgf2mdz0n6r4cwrsldw9d92xk5m1pdsmpi1b61sa",
         "type": "tarball",
         "url": "https://github.com/nvim-telescope/telescope.nvim/archive/feaed4b6e23bd56906089154f293f2b1ecb68c7e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "todo-comments": {
+        "branch": "main",
+        "description": "✅  Highlight, list and search todo comments in your projects",
+        "homepage": "",
+        "owner": "folke",
+        "repo": "todo-comments.nvim",
+        "rev": "8560546c466d1f555573d37e062e95e7ae94bbab",
+        "sha256": "1g0ypjdcj7sp433n933n3qazp7301b2q7p968v57mgmlh5saq6kb",
+        "type": "tarball",
+        "url": "https://github.com/folke/todo-comments.nvim/archive/8560546c466d1f555573d37e062e95e7ae94bbab.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "trailing-whitespace": {

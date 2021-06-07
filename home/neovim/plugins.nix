@@ -4,6 +4,7 @@ let
   mkPlugin = pkgs.vimUtils.buildVimPluginFrom2Nix;
   sources = import ./nix/sources.nix {};
 in [
+  # TODO: foo
   # compe
   {
     plugin = mkPlugin {
@@ -35,6 +36,13 @@ in [
       src = sources.nix;
     };
   }
+  # plenary (required by todo-comments)
+  {
+    plugin = mkPlugin {
+      name = "plenary";
+      src = sources.plenary;
+    };
+  }
   # projectionist
   {
     plugin = mkPlugin {
@@ -64,6 +72,16 @@ in [
     };
     config = ''
       nnoremap <C-p> <cmd>Telescope find_files<cr>
+    '';
+  }
+  # todo-comments
+  {
+    plugin = mkPlugin {
+      name = "todo-comments";
+      src = sources.todo-comments;
+    };
+    config = ''
+      lua require("todo-comments").setup()
     '';
   }
   # trailing-whitespace
