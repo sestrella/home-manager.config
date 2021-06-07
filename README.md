@@ -28,6 +28,12 @@ Build and activate configuration:
 nix-shell --run 'home-manager switch'
 ```
 
+## Modules
+
+Some modules include some specific instructions:
+
+- [neovim](home/neovim)
+
 ## Inspired By
 
 A list of some repos that inspired me to build this one:
