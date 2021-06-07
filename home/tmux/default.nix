@@ -11,9 +11,7 @@
       set-option -sa terminal-overrides ',xterm-256color:RGB'
     '';
     keyMode = "vi";
-    plugins = (import ./plugins.nix {
-      mkPlugin = pkgs.tmuxPlugins.mkTmuxPlugin;
-    });
+    plugins = import ./plugins.nix { inherit pkgs; };
     # plugins = with pkgs.tmuxPlugins; [
     #   nord
     #   prefix-highlight

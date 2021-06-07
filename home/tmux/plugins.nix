@@ -1,6 +1,7 @@
-{ mkPlugin }:
+{ pkgs }:
 
 let
+  mkPlugin = pkgs.tmuxPlugins.mkTmuxPlugin;
   sources = import ./nix/sources.nix {};
 in [
   # nord

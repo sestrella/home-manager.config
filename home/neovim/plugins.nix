@@ -1,6 +1,7 @@
-{ mkPlugin }:
+{ pkgs }:
 
 let
+  mkPlugin = pkgs.vimUtils.buildVimPluginFrom2Nix;
   sources = import ./nix/sources.nix {};
 in [
   # compe

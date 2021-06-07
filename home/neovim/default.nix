@@ -41,9 +41,7 @@ in {
     '';
     package = pkgs.neovim-nightly;
     # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md#what-if-your-favourite-vim-plugin-isnt-already-packaged
-    plugins = (import ./plugins.nix {
-      mkPlugin = pkgs.vimUtils.buildVimPluginFrom2Nix;
-    });
+    plugins = import ./plugins.nix { inherit pkgs; };
     # vim-jinja
     # vim-jsx-typescript
     # vim-repeat
