@@ -1,13 +1,13 @@
 { pkgs }:
 
 let
-  mkPlugin = pkgs.tmuxPlugins.mkTmuxPlugin;
   sources = import ./nix/sources.nix {};
+  mkPlugin = ({ name } : pkgs.tmuxPlugins.mkTmuxPlugin {
+    pluginName = name;
+    version = sources."${name}".rev;
+    src = sources."${name}";
+  });
 in [
   # nord
-  (mkPlugin {
-    pluginName = "nord";
-    version = sources.nord.rev;
-    src = sources.nord;
-  })
+  (mkPlugin { name = "nord"; })
 ]
