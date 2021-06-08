@@ -26,6 +26,22 @@ in [
       src = sources.lspconfig;
     };
   }
+  # lualine
+  {
+    plugin = mkPlugin {
+      name = "lualine";
+      src = sources.lualine;
+    };
+    config = ''
+      lua <<EOF
+        require('lualine').setup({
+          options = {
+            theme = 'neon'
+          }
+        })
+      EOF
+    '';
+  }
   # neon
   {
     plugin = mkPlugin {

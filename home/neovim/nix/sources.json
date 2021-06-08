@@ -35,6 +35,18 @@
         "url": "https://github.com/neovim/nvim-lspconfig/archive/62c04242031ed65a8d29ebefaaf645e8e3375748.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "lualine": {
+        "branch": "master",
+        "description": "A blazing fast and easy to configure neovim statusline plugin written in pure lua.",
+        "homepage": "",
+        "owner": "hoob3rt",
+        "repo": "lualine.nvim",
+        "rev": "9726824f1dcc8907632bc7c32f9882f26340f815",
+        "sha256": "0gmbv0pbswkxjd4qw7dq66gp3fj594di0pgkb47yh3b46id8vkyj",
+        "type": "tarball",
+        "url": "https://github.com/hoob3rt/lualine.nvim/archive/9726824f1dcc8907632bc7c32f9882f26340f815.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "neon": {
         "branch": "main",
         "description": "Customizable coloscheme with dark and light options, vivid colors and easy on the eye.",
