@@ -25,6 +25,13 @@ in [
     plugin = mkPlugin {
       name = "lspconfig";
     };
+    # https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
+    config = ''
+      lua <<EOF
+        require'lspconfig'.terraformls.setup{}
+        require'lspconfig'.yamlls.setup{}
+      EOF
+    '';
   }
   # lualine
   {

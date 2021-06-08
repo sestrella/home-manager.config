@@ -1,20 +1,15 @@
 { pkgs, ... }:
 
 let
-  sources = import ../../nix/sources.nix {};
-  # https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
-  lspConfigs = {
-    rnix = pkgs.rnix-lsp;
-    terraformls = pkgs.terraform-ls;
-    tflint = pkgs.tflint;
-    yamlls = pkgs.yaml-language-server;
-  };
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
   };
 
-  home.packages = builtins.attrValues lspConfigs;
+  home.packages = [
+    pkgs.terraform-ls
+    pkgs.yaml-language-server
+  ];
 
   programs.neovim = {
     enable = true;
