@@ -1,14 +1,14 @@
 {
     "home-manager": {
-        "branch": "master",
+        "branch": "release-21.05",
         "description": "Manage a user environment using Nix  [maintainer=@rycee] ",
         "homepage": "https://nix-community.github.io/home-manager/",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "3612ca58e8d592e58762da9ea650f82b9c7c05d9",
-        "sha256": "1hpjazh8ijmjrkzvvnr2d3pfim57bxn86b7rj99qmnzqg3zxkd38",
+        "rev": "148d85ee8303444fb0116943787aa0b1b25f94df",
+        "sha256": "1qdq9cm10lq7ypj26qk4l8mwpmz24j7yn5diy6xi4bijnk0hh07n",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/3612ca58e8d592e58762da9ea650f82b9c7c05d9.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/148d85ee8303444fb0116943787aa0b1b25f94df.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "neovim-nightly-overlay": {
@@ -24,15 +24,15 @@
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
-        "branch": "nixpkgs-unstable",
+        "branch": "release-21.05",
         "description": "Nix Packages collection",
         "homepage": "",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "a39809ade0121f374126b5b499173930672b3736",
-        "sha256": "1lm3fxa0zywp61yq83z9cqhvwz9fgsf7387igcayd6hnzrwhaivs",
+        "rev": "0507e901b325e9487e971d9918cba5aa9c54aace",
+        "sha256": "07cvg24690986rrbvzkpr0i640hvsb54bpws7rv0jsa0mpnnsx4v",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/a39809ade0121f374126b5b499173930672b3736.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/0507e901b325e9487e971d9918cba5aa9c54aace.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

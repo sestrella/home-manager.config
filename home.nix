@@ -36,10 +36,6 @@ in {
   home.stateVersion = "21.05";
 
   home.packages = with pkgs; [
-    # google-chrome
-    # postman
-    # slack
-    # zoom-us
     bind
     docker-compose
     file
