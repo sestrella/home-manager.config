@@ -13,17 +13,19 @@
       dc = "docker-compose";
       dcd = "docker-compose down";
       dcu = "docker-compose up";
+      # gh
+      gpr = "gh pr create";
       # git
+      "gc!" = "git commit -v --amend";
+      "gp!" = "git push -f";
       ga = "git add";
       gaa = "git add --all";
       gbr = "git branch --remote";
       gc = "git commit -v";
-      "gc!" = "git commit -v --amend";
       gco = "git checkout";
       gd = "git diff";
       gl = "git pull";
       gp = "git push";
-      "gp!" = "git push -f";
       gst = "git status";
       # home-manager
       hms = "home-manager switch";
