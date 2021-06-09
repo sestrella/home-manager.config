@@ -26,16 +26,16 @@ in {
       set splitbelow
       set splitright
 
-      set spell
-      set spelllang=en
-
       set termguicolors
+
+      let g:loaded_perl_provider=0
+      let g:loaded_python_provider=0
+      let g:loaded_ruby_provider=0
 
       let mapleader = "\<Space>"
       let maplocalleader = ','
     '';
     package = pkgs.neovim-nightly;
-    # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md#what-if-your-favourite-vim-plugin-isnt-already-packaged
     plugins = import ./plugins.nix { inherit pkgs; };
     # vim-jinja
     # vim-jsx-typescript

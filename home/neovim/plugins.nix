@@ -1,5 +1,11 @@
 { pkgs }:
 
+# The following link contains instructions about how to add custom plugins:
+#
+# https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md#what-if-your-favourite-vim-plugin-isnt-already-packaged
+#
+# The following link contains a list of awesome Neovim plugins:
+#
 # https://github.com/rockerBOO/awesome-neovim
 let
   sources = import ./nix/sources.nix {};
