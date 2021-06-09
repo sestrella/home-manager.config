@@ -11,6 +11,8 @@
       bi = "bundle install";
       # docker-compose
       dc = "docker-compose";
+      dcd = "docker-compose down";
+      dcu = "docker-compose up";
       # git
       ga = "git add";
       gaa = "git add --all";
