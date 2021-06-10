@@ -2,6 +2,9 @@
 
 let
   sources = import ./nix/sources.nix {};
+  nerdfonts = pkgs.nerdfonts.override {
+    fonts = [ "FiraCode" ];
+  };
 in {
   imports = [
     ./home/direnv
@@ -46,6 +49,7 @@ in {
     lshw
     lsof
     ncat
+    nerdfonts
     ngrok
     niv
     openssl

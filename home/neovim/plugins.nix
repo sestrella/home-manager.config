@@ -133,7 +133,7 @@ in [
       name = "telescope";
     };
     config = ''
-      nnoremap <leader>ff <cmd>Telescope find_files<cr>
+      nnoremap <C-p> <cmd>Telescope find_files<cr>
       nnoremap <leader>fg <cmd>Telescope live_grep<cr>
     '';
   }
@@ -168,5 +168,18 @@ in [
     plugin = mkPlugin {
       name = "typescript";
     };
+  }
+  # web-devicons (required by tree)
+  {
+    plugin = mkPlugin {
+      name = "web-devicons";
+    };
+    config = ''
+      lua <<EOF
+        require'nvim-web-devicons'.setup {
+          default = true;
+        }
+      EOF
+    '';
   }
 ]

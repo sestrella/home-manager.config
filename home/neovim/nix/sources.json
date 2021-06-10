@@ -190,5 +190,17 @@
         "type": "tarball",
         "url": "https://github.com/leafgarland/typescript-vim/archive/67e81e4292186889a1a519e1bf3a600d671237eb.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "web-devicons": {
+        "branch": "master",
+        "description": "lua `fork` of vim-web-devicons for neovim",
+        "homepage": null,
+        "owner": "kyazdani42",
+        "repo": "nvim-web-devicons",
+        "rev": "da717e19678bd6ec33008cf92da05da1b8ceb87d",
+        "sha256": "0jvvjpbxdgch0wvgdmihkqng84rwifq74q858cvfahrx3y5y1cnw",
+        "type": "tarball",
+        "url": "https://github.com/kyazdani42/nvim-web-devicons/archive/da717e19678bd6ec33008cf92da05da1b8ceb87d.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
