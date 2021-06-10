@@ -97,7 +97,13 @@ in [
       name = "nix";
     };
   }
-  # plenary (required by todo-comments)
+  # popup (required by telescope)
+  {
+    plugin = mkPlugin {
+      name = "popup";
+    };
+  }
+  # plenary (required by telescope and todo-comments)
   {
     plugin = mkPlugin {
       name = "plenary";
@@ -127,7 +133,8 @@ in [
       name = "telescope";
     };
     config = ''
-      nnoremap <C-p> <cmd>Telescope find_files<cr>
+      nnoremap <leader>ff <cmd>Telescope find_files<cr>
+      nnoremap <leader>fg <cmd>Telescope live_grep<cr>
     '';
   }
   # todo-comments

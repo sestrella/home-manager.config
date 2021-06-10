@@ -83,6 +83,18 @@
         "url": "https://github.com/nvim-lua/plenary.nvim/archive/3834d42236c155bb4240fb4008ea6e62c4a21dae.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "popup": {
+        "branch": "master",
+        "description": "[WIP] An implementation of the Popup API from vim in Neovim. Hope to upstream when complete",
+        "homepage": null,
+        "owner": "nvim-lua",
+        "repo": "popup.nvim",
+        "rev": "5e3bece7b4b4905f4ec89bee74c09cfd8172a16a",
+        "sha256": "1k6rz652fjkzhjd8ljr0l6vfispanrlpq0r4aya4qswzxni4rxhg",
+        "type": "tarball",
+        "url": "https://github.com/nvim-lua/popup.nvim/archive/5e3bece7b4b4905f4ec89bee74c09cfd8172a16a.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "projectionist": {
         "branch": "master",
         "description": "projectionist.vim: Granular project configuration",
