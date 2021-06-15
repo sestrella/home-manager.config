@@ -157,8 +157,15 @@ in [
       name = "telescope";
     };
     config = ''
-      nnoremap <C-p> <cmd>Telescope find_files<cr>
-      nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+      lua <<EOF
+        local wk = require("which-key")
+        wk.register({
+          t = {
+            f = { "<cmd>Telescope find_files<cr>", "Find files" },
+            g = { "<cmd>Telescope live_grep<cr>", "Live grep" }
+          }
+        }, { prefix = "<leader>" })
+      EOF
     '';
   }
   # terraform
@@ -193,8 +200,8 @@ in [
       lua <<EOF
         local wk = require("which-key")
         wk.register({
-          t = {
-            n = { ":NvimTreeToggle<cr>", "Tree Toggle" }
+          r = {
+            n = { ":NvimTreeToggle<cr>", "Tree toggle" }
           }
         }, { prefix = "<leader>" })
       EOF
