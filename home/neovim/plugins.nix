@@ -119,13 +119,16 @@ in [
       name = "nix";
     };
   }
-  # popup (required by telescope)
+  # popup required by:
+  # - telescope
   {
     plugin = mkPlugin {
       name = "popup";
     };
   }
-  # plenary (required by telescope and todo-comments)
+  # plenary required by:
+  # - telescope
+  # - todo-comments
   {
     plugin = mkPlugin {
       name = "plenary";
@@ -197,7 +200,8 @@ in [
       name = "typescript";
     };
   }
-  # web-devicons (required by tree)
+  # web-devicons required by:
+  # - tree
   {
     plugin = mkPlugin {
       name = "web-devicons";

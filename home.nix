@@ -49,6 +49,8 @@ in {
     lshw
     lsof
     ncat
+    # nvim-web-devicon requirement
+    # https://github.com/kyazdani42/nvim-web-devicons#requirements
     nerdfonts
     ngrok
     niv
