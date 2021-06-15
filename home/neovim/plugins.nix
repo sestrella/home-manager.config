@@ -108,7 +108,6 @@ in [
     };
     config = ''
       lua <<EOF
-        vim.g.neon_style = 'dark'
         vim.cmd[[colorscheme neon]]
       EOF
     '';
