@@ -35,6 +35,18 @@
         "url": "https://github.com/neovim/nvim-lspconfig/archive/62c04242031ed65a8d29ebefaaf645e8e3375748.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "lspinstall": {
+        "branch": "main",
+        "description": "Provides the missing :LspInstall for nvim-lspconfig",
+        "homepage": "",
+        "owner": "kabouzeid",
+        "repo": "nvim-lspinstall",
+        "rev": "878645fffab9b14eec104ec95a64c4165b6138e8",
+        "sha256": "1n69f5zry3x9mw4c2bzchi3jlvfl5hhzy91wd8b2m04csxca13d0",
+        "type": "tarball",
+        "url": "https://github.com/kabouzeid/nvim-lspinstall/archive/878645fffab9b14eec104ec95a64c4165b6138e8.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "lualine": {
         "branch": "master",
         "description": "A blazing fast and easy to configure neovim statusline plugin written in pure lua.",
@@ -141,6 +153,18 @@
         "sha256": "0kx9xmlv6smpqgf2mdz0n6r4cwrsldw9d92xk5m1pdsmpi1b61sa",
         "type": "tarball",
         "url": "https://github.com/nvim-telescope/telescope.nvim/archive/feaed4b6e23bd56906089154f293f2b1ecb68c7e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "terraform": {
+        "branch": "master",
+        "description": "basic vim/terraform integration",
+        "homepage": "http://hashivim.github.io/vim-terraform",
+        "owner": "hashivim",
+        "repo": "vim-terraform",
+        "rev": "814a21db89f742c3ea492c69c5a2bfecded1aeb3",
+        "sha256": "0acdq2m16mhm3g6n4saqf9fljz5qfdalw88h126z2f6mm731y6pi",
+        "type": "tarball",
+        "url": "https://github.com/hashivim/vim-terraform/archive/814a21db89f742c3ea492c69c5a2bfecded1aeb3.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "todo-comments": {

@@ -59,11 +59,30 @@ in [
     plugin = mkPlugin {
       name = "lspconfig";
     };
-    # https://github.com/neovim/nvim-lspconfig/blob/master/CONFIG.md
+  }
+  # lspinstall
+  {
+    plugin = mkPlugin {
+      name = "lspinstall";
+    };
+    # https://github.com/kabouzeid/nvim-lspinstall#advanced-configuration-recommended
     config = ''
       lua <<EOF
-        require'lspconfig'.terraformls.setup{}
-        require'lspconfig'.yamlls.setup{}
+        local function setup_servers()
+          require'lspinstall'.setup()
+          local servers = require'lspinstall'.installed_servers()
+          for _, server in pairs(servers) do
+            require'lspconfig'[server].setup{}
+          end
+        end
+
+        setup_servers()
+
+        -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+        require'lspinstall'.post_install_hook = function ()
+          setup_servers() -- reload installed servers
+          vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+        end
       EOF
     '';
   }
@@ -136,6 +155,12 @@ in [
       nnoremap <C-p> <cmd>Telescope find_files<cr>
       nnoremap <leader>fg <cmd>Telescope live_grep<cr>
     '';
+  }
+  # terraform
+  {
+    plugin = mkPlugin {
+      name = "terraform";
+    };
   }
   # todo-comments
   {

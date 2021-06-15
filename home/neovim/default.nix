@@ -1,15 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 let
+  sources = import ../../nix/sources.nix {};
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
   };
-
-  home.packages = [
-    pkgs.terraform-ls
-    pkgs.yaml-language-server
-  ];
 
   programs.neovim = {
     enable = true;
