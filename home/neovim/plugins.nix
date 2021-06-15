@@ -190,7 +190,14 @@ in [
     config = ''
       highlight NvimTreeFolderIcon guibg=blue
 
-      nnoremap <C-n> :NvimTreeToggle<CR>
+      lua <<EOF
+        local wk = require("which-key")
+        wk.register({
+          t = {
+            n = { ":NvimTreeToggle<cr>", "Tree Toggle" }
+          }
+        }, { prefix = "<leader>" })
+      EOF
     '';
   }
   # typescript
@@ -211,6 +218,15 @@ in [
           default = true;
         }
       EOF
+    '';
+  }
+  # which-key
+  {
+    plugin = mkPlugin {
+      name = "which-key";
+    };
+    config = ''
+      lua require("which-key").setup()
     '';
   }
 ]
