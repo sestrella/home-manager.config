@@ -11,6 +11,18 @@
         "url": "https://github.com/hrsh7th/nvim-compe/archive/310488302c6532646adfe8228e40187a80b36ac5.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "jinja2": {
+        "branch": "master",
+        "description": "An up-to-date jinja2 syntax file.",
+        "homepage": "https://github.com/mitsuhiko/jinja2",
+        "owner": "glench",
+        "repo": "vim-jinja2-syntax",
+        "rev": "5d2496eb5fd4415c7ce062ccbcd53a3f0de93aa3",
+        "sha256": "1ss065b2psalli46bs3v13fhaplqydh13bg3jg3zr98wbdn70cws",
+        "type": "tarball",
+        "url": "https://github.com/glench/vim-jinja2-syntax/archive/5d2496eb5fd4415c7ce062ccbcd53a3f0de93aa3.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "kommentary": {
         "branch": "main",
         "description": "Neovim commenting plugin, written in lua.",

@@ -48,6 +48,12 @@ in [
       EOF
     '';
   }
+  # jinja2
+  {
+    plugin = mkPlugin {
+      name = "jinja2";
+    };
+  }
   # kommentary
   {
     plugin = mkPlugin {

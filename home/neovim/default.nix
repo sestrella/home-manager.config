@@ -35,11 +35,6 @@ in {
     '';
     package = pkgs.neovim-nightly;
     plugins = import ./plugins.nix { inherit pkgs; };
-    # vim-jinja
-    # vim-jsx-typescript
-    # vim-repeat
-    # vim-sensible
-    # vim-snippets
     viAlias = true;
     vimAlias = true;
   };
