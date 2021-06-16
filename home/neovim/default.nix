@@ -30,6 +30,8 @@ in {
 
       let mapleader = "\<Space>"
       let maplocalleader = ','
+
+      nnoremap <c-l> :nohlsearch<cr>
     '';
     package = pkgs.neovim-nightly;
     plugins = import ./plugins.nix { inherit pkgs; };

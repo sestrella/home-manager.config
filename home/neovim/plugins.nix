@@ -95,20 +95,9 @@ in [
       lua <<EOF
         require('lualine').setup({
           options = {
-            theme = 'neon'
+            theme = 'solarized'
           }
         })
-      EOF
-    '';
-  }
-  # neon
-  {
-    plugin = mkPlugin {
-      name = "neon";
-    };
-    config = ''
-      lua <<EOF
-        vim.cmd[[colorscheme neon]]
       EOF
     '';
   }
@@ -145,6 +134,15 @@ in [
       name = "rails";
     };
   }
+  # solarized
+  {
+    plugin = mkPlugin {
+      name = "solarized";
+    };
+    config = ''
+      colorscheme solarized
+    '';
+  }
   # surround
   {
     plugin = mkPlugin {
@@ -157,15 +155,7 @@ in [
       name = "telescope";
     };
     config = ''
-      lua <<EOF
-        local wk = require("which-key")
-        wk.register({
-          t = {
-            f = { "<cmd>Telescope find_files<cr>", "Find files" },
-            g = { "<cmd>Telescope live_grep<cr>", "Live grep" }
-          }
-        }, { prefix = "<leader>" })
-      EOF
+      nnoremap <c-p> <cmd>Telescope find_files<cr>
     '';
   }
   # terraform
@@ -196,15 +186,7 @@ in [
     };
     config = ''
       highlight NvimTreeFolderIcon guibg=blue
-
-      lua <<EOF
-        local wk = require("which-key")
-        wk.register({
-          r = {
-            n = { ":NvimTreeToggle<cr>", "Tree toggle" }
-          }
-        }, { prefix = "<leader>" })
-      EOF
+      nnoremap <c-n> :NvimTreeToggle<cr>
     '';
   }
   # typescript
@@ -225,15 +207,6 @@ in [
           default = true;
         }
       EOF
-    '';
-  }
-  # which-key
-  {
-    plugin = mkPlugin {
-      name = "which-key";
-    };
-    config = ''
-      lua require("which-key").setup()
     '';
   }
 ]

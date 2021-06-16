@@ -59,18 +59,6 @@
         "url": "https://github.com/hoob3rt/lualine.nvim/archive/9726824f1dcc8907632bc7c32f9882f26340f815.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "neon": {
-        "branch": "main",
-        "description": "Customizable coloscheme with dark and light options, vivid colors and easy on the eye.",
-        "homepage": "",
-        "owner": "rafamadriz",
-        "repo": "neon",
-        "rev": "22bd47d1edc6f26f68ae2e0e8c4929a21a10ff7f",
-        "sha256": "11n6mr95xc1s7liqww4n3x231cdpwfnqj4r2j0ix88hic2mpqpm2",
-        "type": "tarball",
-        "url": "https://github.com/rafamadriz/neon/archive/22bd47d1edc6f26f68ae2e0e8c4929a21a10ff7f.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "nix": {
         "branch": "master",
         "description": "Vim configuration files for Nix http://nixos.org/nix",
@@ -129,6 +117,18 @@
         "sha256": "1f0xns0h55szamms17wi06k1ninvygsc4yw82hr29kfq94hvn57l",
         "type": "tarball",
         "url": "https://github.com/tpope/vim-rails/archive/3b3796352a6f1a68e54e5f7ae5e0c1b9103fab0e.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "solarized": {
+        "branch": "master",
+        "description": "solarized colorscheme in lua for nvim 0.5",
+        "homepage": "",
+        "owner": "ishan9299",
+        "repo": "nvim-solarized-lua",
+        "rev": "b8e712e0c7f3ee20aab97522a83755c71024a807",
+        "sha256": "08dcs0fg7b9sy17qjrxvxx0cmc4wpprmflcswjvil8azhawmmswb",
+        "type": "tarball",
+        "url": "https://github.com/ishan9299/nvim-solarized-lua/archive/b8e712e0c7f3ee20aab97522a83755c71024a807.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "surround": {
@@ -225,18 +225,6 @@
         "sha256": "0jvvjpbxdgch0wvgdmihkqng84rwifq74q858cvfahrx3y5y1cnw",
         "type": "tarball",
         "url": "https://github.com/kyazdani42/nvim-web-devicons/archive/da717e19678bd6ec33008cf92da05da1b8ceb87d.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "which-key": {
-        "branch": "main",
-        "description": "💥   Create key bindings that stick. WhichKey is a lua plugin for Neovim 0.5 that displays a popup with possible keybindings of the command you started typing.",
-        "homepage": "",
-        "owner": "folke",
-        "repo": "which-key.nvim",
-        "rev": "9ea98e59ddeeafc9181815dd714bea513b298e33",
-        "sha256": "0zhlbbd969p4bg5vrifsi5sgqi2wbp8zxlak3l7zk67akpbb395n",
-        "type": "tarball",
-        "url": "https://github.com/folke/which-key.nvim/archive/9ea98e59ddeeafc9181815dd714bea513b298e33.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
