@@ -47,18 +47,6 @@
         "url": "https://github.com/neovim/nvim-lspconfig/archive/62c04242031ed65a8d29ebefaaf645e8e3375748.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "lspinstall": {
-        "branch": "main",
-        "description": "Provides the missing :LspInstall for nvim-lspconfig",
-        "homepage": "",
-        "owner": "kabouzeid",
-        "repo": "nvim-lspinstall",
-        "rev": "878645fffab9b14eec104ec95a64c4165b6138e8",
-        "sha256": "1n69f5zry3x9mw4c2bzchi3jlvfl5hhzy91wd8b2m04csxca13d0",
-        "type": "tarball",
-        "url": "https://github.com/kabouzeid/nvim-lspinstall/archive/878645fffab9b14eec104ec95a64c4165b6138e8.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "lualine": {
         "branch": "master",
         "description": "A blazing fast and easy to configure neovim statusline plugin written in pure lua.",
