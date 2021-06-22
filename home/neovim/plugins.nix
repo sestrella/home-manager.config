@@ -189,4 +189,22 @@ in [
       EOF
     '';
   }
+  # which-key
+  {
+    plugin = mkPlugin {
+      name = "which-key";
+    };
+    config = ''
+      lua <<EOF
+        require("which-key").setup({
+          plugins = {
+            presets = {
+              motions = true,
+              text_objects = true
+            }
+          }
+        })
+      EOF
+    '';
+  }
 ]
