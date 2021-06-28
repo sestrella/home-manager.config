@@ -165,7 +165,6 @@ in [
       name = "tree";
     };
     config = ''
-      highlight NvimTreeFolderIcon guibg=blue
       nnoremap <c-n> :NvimTreeToggle<cr>
     '';
   }
