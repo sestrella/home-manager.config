@@ -5,10 +5,10 @@
         "homepage": "https://www.nordtheme.com/ports/tmux",
         "owner": "arcticicestudio",
         "repo": "nord-tmux",
-        "rev": "4e2dc2a5065f5e8e67366700f803c733682e8f8c",
-        "sha256": "0l97cqbnq31f769jak31ffb7bkf8rrg72w3vd0g3fjpq0717864a",
+        "rev": "775ef74a64a3829dfc2c6b8d4aa27d3754daa2a6",
+        "sha256": "1gx66zjmnxscfblzicpg61i9gngjvk1yy3qngzvfznwbivimvrb9",
         "type": "tarball",
-        "url": "https://github.com/arcticicestudio/nord-tmux/archive/4e2dc2a5065f5e8e67366700f803c733682e8f8c.tar.gz",
+        "url": "https://github.com/arcticicestudio/nord-tmux/archive/775ef74a64a3829dfc2c6b8d4aa27d3754daa2a6.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
