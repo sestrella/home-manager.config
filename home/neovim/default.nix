@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
-let
-  sources = import ../../nix/sources.nix {};
-in {
+{
   home.sessionVariables = {
     EDITOR = "nvim";
   };
@@ -24,9 +22,9 @@ in {
 
       set termguicolors
 
-      let g:loaded_perl_provider=0
-      let g:loaded_python_provider=0
-      let g:loaded_ruby_provider=0
+      " let g:loaded_perl_provider=0
+      " let g:loaded_python_provider=0
+      " let g:loaded_ruby_provider=0
 
       let mapleader = "\<Space>"
       let maplocalleader = ','
