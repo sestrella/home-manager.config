@@ -88,12 +88,12 @@ in [
   }
   # popup required by:
   # - telescope
-  {
-    plugin = mkPlugin {
-      name = "popup";
-    };
-  }
-  # plenary required by:
+  # {
+  #   plugin = mkPlugin {
+  #     name = "popup";
+  #   };
+  # }
+  # # plenary required by:
   # - telescope
   # - todo-comments
   {
