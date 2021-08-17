@@ -13,6 +13,7 @@ let
     inherit name;
     src = sources."${name}";
   });
+  settings = import ../../settings.nix;
 in [
   # compe
   # {
@@ -119,6 +120,7 @@ in [
       name = "solarized";
     };
     config = ''
+      set background=${settings.theme}
       colorscheme solarized
     '';
   }
