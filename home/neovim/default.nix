@@ -20,7 +20,7 @@
       set splitbelow
       set splitright
 
-      set termguicolors
+      " set termguicolors
 
       " INFO: Avoid issues running :checkhealth
       let g:loaded_perl_provider=0
@@ -33,7 +33,77 @@
       nnoremap <c-l> :nohlsearch<cr>
     '';
     package = pkgs.neovim-nightly;
-    plugins = import ./plugins.nix { inherit pkgs; };
+    # plugins = import ./plugins.nix { inherit pkgs; };
+    plugins = with pkgs.vimPlugins; [
+      {
+        plugin = lualine-nvim;
+        config = ''
+          lua <<EOF
+            require('lualine').setup({
+              options = {
+                theme = 'solarized'
+              }
+            })
+          EOF
+        '';
+      }
+      {
+        plugin = nvim-compe;
+        config = ''
+          lua <<EOF
+            require'compe'.setup {
+              enabled = true;
+              autocomplete = true;
+              debug = false;
+              min_length = 1;
+              preselect = 'enable';
+              throttle_time = 80;
+              source_timeout = 200;
+              incomplete_delay = 400;
+              max_abbr_width = 100;
+              max_kind_width = 100;
+              max_menu_width = 100;
+              source = {
+                path = true;
+                buffer = true;
+              };
+            }
+          EOF
+        '';
+      }
+      {
+        plugin = nvim-tree-lua;
+        config = ''
+          nnoremap <C-n> :NvimTreeToggle<CR>
+        '';
+      }
+      {
+        plugin = nvim-web-devicons;
+        config = ''
+          lua <<EOF
+            require'nvim-web-devicons'.setup {
+              default = true;
+            }
+          EOF
+        '';
+      }
+      {
+        plugin = solarized;
+        config = ''
+          colorscheme solarized
+        '';
+      }
+      surround
+      {
+        plugin = telescope-nvim;
+        config = ''
+          nnoremap <C-p> <cmd>Telescope find_files<CR>
+        '';
+      }
+      vim-nix
+      vim-rails
+      vim-terraform
+    ];
     viAlias = true;
     vimAlias = true;
   };
