@@ -88,6 +88,7 @@
         '';
       }
       {
+        # TODO: Replace with nvim-solarized-lua
         plugin = solarized;
         config = ''
           colorscheme solarized
