@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
-{
+let
+  settings = import ../../settings.nix;
+in {
   home.sessionVariables = {
     EDITOR = "nvim";
   };
@@ -91,6 +93,7 @@
         # TODO: Replace with nvim-solarized-lua
         plugin = solarized;
         config = ''
+          set background=${settings.theme}
           colorscheme solarized
         '';
       }
