@@ -38,6 +38,12 @@ in {
     # plugins = import ./plugins.nix { inherit pkgs; };
     plugins = with pkgs.vimPlugins; [
       {
+        plugin = haskell-vim;
+        config = ''
+          let g:haskell_classic_highlighting=1
+        '';
+      }
+      {
         plugin = lualine-nvim;
         config = ''
           lua <<EOF
