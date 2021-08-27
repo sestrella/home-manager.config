@@ -1,32 +1,13 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
-let
-  sources = import ./nix/sources.nix {};
-  nerdfonts = pkgs.nerdfonts.override {
-    fonts = [ "FiraCode" ];
-  };
-in {
-  imports = [
-    ./home/direnv
-    ./home/fish
-    ./home/fzf
-    ./home/ghci
-    ./home/git
-    ./home/gnome
-    ./home/neovim
-    ./home/ripgrep
-    ./home/starship
-    ./home/tmux
-    ./home/xprofile
-  ];
-
+{
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = false;
+  programs.home-manager.enable = true;
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = "sestrella";
-  home.homeDirectory = "/home/sestrella";
+  home.homeDirectory = "/Users/sestrella";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -36,45 +17,35 @@ in {
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.05";
+  home.stateVersion = "21.11";
+
+  # Custom changes
+  imports = [
+    ./home/direnv.nix
+    ./home/git.nix
+    ./home/neovim.nix
+    ./home/tmux.nix
+    ./home/zsh.nix
+  ];
 
   home.packages = with pkgs; [
-    bind
-    docker-compose
-    file
-    fira-code
     github-cli
     htop
     jq
-    lshw
-    lsof
     ncat
-    # nvim-web-devicon requirement
-    # https://github.com/kyazdani42/nvim-web-devicons#requirements
-    nerdfonts
     ngrok
     niv
-    openssl
-    pciutils
-    ranger
-    rsync
-    spotify
-    tmate
-    traceroute
-    vagrant
+    ripgrep
+    slack
     vscode
-    wavemon
     wget
-    wirelesstools
-    xclip
     yq
   ];
+  programs.starship.enable = true;
+  programs.fzf.enable = true;
 
-  news.display = "silent";
-
-  fonts.fontconfig.enable = true;
-
-  nixpkgs.overlays = [
-    (import sources.neovim-nightly-overlay)
-  ];
+  home.file.".bundle/config".text = ''
+    ---
+    BUNDLE_PATH: "vendor/bundle"
+  '';
 }
