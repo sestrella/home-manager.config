@@ -29,6 +29,7 @@
   ];
 
   home.packages = with pkgs; [
+    docker-compose
     github-cli
     htop
     jq
