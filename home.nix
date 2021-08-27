@@ -37,7 +37,6 @@
     ngrok
     niv
     ripgrep
-    slack
     vscode
     wget
     yq
