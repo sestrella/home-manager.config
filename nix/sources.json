@@ -11,6 +11,18 @@
         "url": "https://github.com/nix-community/home-manager/archive/b39647e52ed3c0b989e9d5c965e598ae4c38d7ef.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "neon": {
+        "branch": "main",
+        "description": "Customizable coloscheme with dark and light options, vivid colors and easy on the eye.",
+        "homepage": "",
+        "owner": "rafamadriz",
+        "repo": "neon",
+        "rev": "5c6d24504e2177a709ad16ae9e89ab5732327ad8",
+        "sha256": "1p7g3204hjj52qnm5vdvh425r4xh0y8bsyfivpnp4zgz44rqd6v3",
+        "type": "tarball",
+        "url": "https://github.com/rafamadriz/neon/archive/5c6d24504e2177a709ad16ae9e89ab5732327ad8.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "neovim-nightly-overlay": {
         "branch": "master",
         "description": "[maintainer=@mjlbach] ",

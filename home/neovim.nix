@@ -1,6 +1,12 @@
 { pkgs, ... }:
 
-{
+let
+  sources = import ../nix/sources.nix {};
+  neon = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    name = "neon";
+    src = sources.neon;
+  };
+in {
   home.sessionVariables = {
     EDITOR = "nvim";
   };
@@ -37,6 +43,12 @@
         plugin = haskell-vim;
         config = ''
           let g:haskell_classic_highlighting=1
+        '';
+      }
+      {
+        plugin = neon;
+        config = ''
+          colorscheme neon
         '';
       }
       {
