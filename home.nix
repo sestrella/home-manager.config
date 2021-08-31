@@ -29,6 +29,7 @@
   ];
 
   home.packages = with pkgs; [
+    fira-code
     docker-compose
     github-cli
     htop
