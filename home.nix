@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
-{
+let
+  nerdfonts = pkgs.nerdfonts.override {
+    fonts = ["FiraCode"];
+  };
+in {
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -28,19 +32,19 @@
     ./home/zsh.nix
   ];
 
-  home.packages = with pkgs; [
-    fira-code
-    docker-compose
-    github-cli
-    htop
-    jq
-    ncat
-    ngrok
-    niv
-    ripgrep
-    vscode
-    wget
-    yq
+  home.packages = [
+    nerdfonts
+    pkgs.docker-compose
+    pkgs.github-cli
+    pkgs.htop
+    pkgs.jq
+    pkgs.ncat
+    pkgs.ngrok
+    pkgs.niv
+    pkgs.ripgrep
+    pkgs.vscode
+    pkgs.wget
+    pkgs.yq
   ];
   programs.starship.enable = true;
   programs.fzf.enable = true;
