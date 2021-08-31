@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 let
+  # https://nixos.wiki/wiki/Fonts#Installing_specific_fonts_from_nerdfonts
   nerdfonts = pkgs.nerdfonts.override {
     fonts = ["FiraCode"];
   };
