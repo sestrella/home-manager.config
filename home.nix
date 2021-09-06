@@ -54,4 +54,14 @@ in {
     ---
     BUNDLE_PATH: "vendor/bundle"
   '';
+
+  home.file.".stack/config.yaml".text = ''
+    ---
+    templates:
+      params:
+        author-email: sestrella.me@gmail.com
+        author-name: Sebastian Estrella
+        copyright: 2021 Sebastian Estrella
+        github-username: sestrella
+  '';
 }
