@@ -8,10 +8,9 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
+        with:
+          path: ~/.config/nixpkgs
       - uses: cachix/install-nix-action@v13
         with:
-          nix_path: nixpkgs=channel:nixos-20.09
-      - run: nix-env -f '<nixpkgs>' -iA home-manager
-      - run: ln -s $PWD ~/.config/nixpkgs
-      - run: cp settings.example.nix settings.nix
+          nix_path: nixpkgs=channel:nixos-unstable
       - run: nix-shell --run 'home-manager switch'
