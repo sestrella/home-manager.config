@@ -1,6 +1,6 @@
 # Nix Home
 
-![CI](https://github.com/sestrella/nix-home/workflows/CI/badge.svg)
+[![CI](https://github.com/sestrella/nix-home/actions/workflows/main.yml/badge.svg)](https://github.com/sestrella/nix-home/actions/workflows/main.yml)
 
 My user configuration managed via [home-manager][home-manager].
 
