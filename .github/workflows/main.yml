@@ -13,4 +13,5 @@ jobs:
       - uses: cachix/install-nix-action@v13
         with:
           nix_path: nixpkgs=channel:nixos-unstable
+      - run: ln -s $PWD ~/.config/nixpkgs
       - run: nix-shell --run 'home-manager switch'
