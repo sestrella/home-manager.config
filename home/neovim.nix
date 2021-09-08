@@ -1,12 +1,6 @@
 { pkgs, ... }:
 
-let
-  sources = import ../nix/sources.nix {};
-  neon = pkgs.vimUtils.buildVimPluginFrom2Nix {
-    name = "neon";
-    src = sources.neon;
-  };
-in {
+{
   home.sessionVariables = {
     EDITOR = "nvim";
   };
@@ -46,9 +40,9 @@ in {
         '';
       }
       {
-        plugin = neon;
+        plugin = NeoSolarized;
         config = ''
-          colorscheme neon
+          colorscheme NeoSolarized
         '';
       }
       {
