@@ -11,6 +11,7 @@
       set-option -sa terminal-overrides ',xterm-256color:RGB'
     '';
     keyMode = "vi";
+    # https://github.com/rothgar/awesome-tmux
     plugins = [
       pkgs.tmuxPlugins.nord
     ];
