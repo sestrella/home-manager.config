@@ -11,6 +11,9 @@
       set-option -sa terminal-overrides ',xterm-256color:RGB'
     '';
     keyMode = "vi";
+    plugins = [
+      pkgs.tmuxPlugins.nord
+    ];
     shortcut = "a";
     terminal = "screen-256color";
   };
