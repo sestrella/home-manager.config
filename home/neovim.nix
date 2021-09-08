@@ -95,7 +95,11 @@
       {
         plugin = lualine-nvim;
         config = ''
-          lua require('lualine').setup()
+          lua <<EOF
+            require('lualine').setup({
+              options = { theme = 'solarized' }
+            })
+          EOF
         '';
       }
       vim-nix
