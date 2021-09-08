@@ -92,6 +92,12 @@
           nnoremap <C-p> <cmd>Telescope find_files<CR>
         '';
       }
+      {
+        plugin = lualine-nvim;
+        config = ''
+          lua require('lualine').setup()
+        '';
+      }
       vim-nix
       vim-rails
       vim-terraform
