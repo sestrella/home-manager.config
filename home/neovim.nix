@@ -64,11 +64,13 @@
               source = {
                 path = true;
                 buffer = true;
+                nvim_lsp = true;
               };
             }
           EOF
         '';
       }
+      nvim-lspconfig
       {
         plugin = nvim-tree-lua;
         config = ''
