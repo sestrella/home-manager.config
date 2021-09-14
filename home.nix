@@ -64,4 +64,9 @@ in {
         copyright: 2021 Sebastian Estrella
         github-username: sestrella
   '';
+
+  # https://blog.ramdoot.in/changing-ghci-prompt-96fe5750d78
+  home.file.".ghci".text = ''
+    :set prompt "\ESC[34mλ> \ESC[m"
+  '';
 }
