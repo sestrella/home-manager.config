@@ -49,7 +49,7 @@
         plugin = nvim-compe;
         config = ''
           lua <<EOF
-            require'compe'.setup {
+            require'compe'.setup({
               enabled = true;
               autocomplete = true;
               debug = false;
@@ -66,11 +66,20 @@
                 buffer = true;
                 nvim_lsp = true;
               };
-            }
+            });
           EOF
         '';
       }
-      nvim-lspconfig
+      {
+        plugin = nvim-lspconfig;
+        config = ''
+          lua <<EOF
+            require'lspconfig'.solargraph.setup({
+              cmd = { '${pkgs.rubyPackages.solargraph}/bin/solargraph', 'stdio' };
+            });
+          EOF
+        '';
+      }
       {
         plugin = nvim-tree-lua;
         config = ''
