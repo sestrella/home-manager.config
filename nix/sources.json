@@ -11,30 +11,6 @@
         "url": "https://github.com/nix-community/home-manager/archive/5e46262cb1fa888f6f46a675cc2806a23ba9625c.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
-    "neon": {
-        "branch": "main",
-        "description": "Customizable coloscheme with dark and light options, vivid colors and easy on the eye.",
-        "homepage": "",
-        "owner": "rafamadriz",
-        "repo": "neon",
-        "rev": "5c6d24504e2177a709ad16ae9e89ab5732327ad8",
-        "sha256": "1p7g3204hjj52qnm5vdvh425r4xh0y8bsyfivpnp4zgz44rqd6v3",
-        "type": "tarball",
-        "url": "https://github.com/rafamadriz/neon/archive/5c6d24504e2177a709ad16ae9e89ab5732327ad8.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
-    "neovim-nightly-overlay": {
-        "branch": "master",
-        "description": "[maintainer=@mjlbach] ",
-        "homepage": "",
-        "owner": "nix-community",
-        "repo": "neovim-nightly-overlay",
-        "rev": "fd36b1238720fdd5f01ddb760cc4d51c97c003c3",
-        "sha256": "04n909l4mxlnbl24vk3y3x99a3iji62qgx2rrzg31s0q49f4br4w",
-        "type": "tarball",
-        "url": "https://github.com/nix-community/neovim-nightly-overlay/archive/fd36b1238720fdd5f01ddb760cc4d51c97c003c3.tar.gz",
-        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
-    },
     "nixpkgs": {
         "branch": "nixpkgs-unstable",
         "description": "Nix Packages collection",
