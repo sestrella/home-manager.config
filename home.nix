@@ -47,7 +47,17 @@ in {
     pkgs.wget
     pkgs.yq
   ];
-  programs.starship.enable = true;
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      character = {
+        success_symbol = "[➜](bold green) ";
+        error_symbol = "[✗](bold red) ";
+      };
+    };
+  };
+
   programs.fzf.enable = true;
 
   home.file.".bundle/config".text = ''
