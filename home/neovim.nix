@@ -46,6 +46,11 @@
         '';
       }
       {
+        # TODO: Replace with https://github.com/hrsh7th/nvim-cmp/
+        #
+        # Reference:
+        #
+        # https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
         plugin = nvim-compe;
         config = ''
           lua <<EOF
