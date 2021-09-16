@@ -42,46 +42,44 @@
       {
         plugin = NeoSolarized;
         config = ''
+          set background=light
           colorscheme NeoSolarized
         '';
       }
-      {
-        # TODO: Replace with https://github.com/hrsh7th/nvim-cmp/
-        #
-        # Reference:
-        #
-        # https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
-        plugin = nvim-compe;
-        config = ''
-          lua <<EOF
-            require'compe'.setup({
-              enabled = true;
-              autocomplete = true;
-              debug = false;
-              min_length = 1;
-              preselect = 'enable';
-              throttle_time = 80;
-              source_timeout = 200;
-              incomplete_delay = 400;
-              max_abbr_width = 100;
-              max_kind_width = 100;
-              max_menu_width = 100;
-              source = {
-                path = true;
-                buffer = true;
-                nvim_lsp = true;
-              };
-            });
-          EOF
-        '';
-      }
+      # TODO: WIP
+      # {
+      #   plugin = nvim-cmp;
+      #   config = ''
+      #     lua <<EOF
+      #       vim.o.completeopt = 'menuone,noselect'
+
+      #       local cmp = require('cmp')
+      #       cmp.setup({
+      #         snippet = {
+      #           expand = function(args)
+      #             require('luasnip').lsp_expand(args.body)
+      #           end
+      #         },
+      #        sources = {
+      #           { name = 'nvim_lsp' }
+      #         }
+      #       })
+      #     EOF
+      #   '';
+      # }
       {
         plugin = nvim-lspconfig;
         config = ''
           lua <<EOF
-            require'lspconfig'.solargraph.setup({
-              cmd = { '${pkgs.rubyPackages.solargraph}/bin/solargraph', 'stdio' };
-            });
+            local lspconfig = require('lspconfig')
+
+            lspconfig.rnix.setup({
+              cmd = { '${pkgs.rnix-lsp}/bin/rnix-lsp' }
+            })
+
+            lspconfig.solargraph.setup({
+              cmd = { '${pkgs.solargraph}/bin/solargraph', 'stdio' }
+            })
           EOF
         '';
       }
