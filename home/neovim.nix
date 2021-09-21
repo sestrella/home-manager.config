@@ -31,6 +31,8 @@
       let maplocalleader = ','
 
       nnoremap <c-l> :nohlsearch<cr>
+
+      " highlight LspDiagnosticsDefaultError guifg="BrightRed"
     '';
     plugins = with pkgs.vimPlugins; [
       {
@@ -116,6 +118,7 @@
           EOF
         '';
       }
+      vim-better-whitespace
       vim-nix
       vim-rails
       vim-terraform
