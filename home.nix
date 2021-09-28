@@ -43,6 +43,7 @@ in {
     pkgs.ngrok
     pkgs.niv
     pkgs.ripgrep
+    pkgs.vagrant
     pkgs.vscode
     pkgs.wget
     pkgs.yq
