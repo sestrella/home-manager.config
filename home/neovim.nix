@@ -31,8 +31,6 @@
       let maplocalleader = ','
 
       nnoremap <c-l> :nohlsearch<cr>
-
-      " highlight LspDiagnosticsDefaultError guifg="BrightRed"
     '';
     plugins = with pkgs.vimPlugins; [
       {
