@@ -46,32 +46,29 @@
           colorscheme NeoSolarized
         '';
       }
-      # TODO: WIP
-      # {
-      #   plugin = nvim-cmp;
-      #   config = ''
-      #     lua <<EOF
-      #       vim.o.completeopt = 'menuone,noselect'
+      cmp-buffer
+      # TODO: https://github.com/hrsh7th/nvim-cmp/#recommended-configuration
+      # cmp-nvim-lsp
+      {
+        plugin = nvim-cmp;
+        config = ''
+          set completeopt=menu,menuone,noselect
 
-      #       local cmp = require('cmp')
-      #       cmp.setup({
-      #         snippet = {
-      #           expand = function(args)
-      #             require('luasnip').lsp_expand(args.body)
-      #           end
-      #         },
-      #        sources = {
-      #           { name = 'nvim_lsp' }
-      #         }
-      #       })
-      #     EOF
-      #   '';
-      # }
+          lua <<EOF
+            local cmp = require('cmp')
+            cmp.setup({
+             sources = {
+                { name = 'buffer' }
+              }
+            })
+          EOF
+        '';
+      }
       {
         plugin = nvim-lspconfig;
         config = ''
           lua <<EOF
-            local lspconfig = require('lspconfig')
+            local lspconfig = require('lspconfig');
 
             lspconfig.rnix.setup({
               cmd = { '${pkgs.rnix-lsp}/bin/rnix-lsp' }
