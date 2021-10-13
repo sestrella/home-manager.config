@@ -77,6 +77,10 @@
             lspconfig.solargraph.setup({
               cmd = { '${pkgs.solargraph}/bin/solargraph', 'stdio' }
             })
+
+            lspconfig.rust_analyzer.setup({
+              cmd = { '${pkgs.rust-analyzer}/bin/rust-analyzer' }
+            })
           EOF
         '';
       }
