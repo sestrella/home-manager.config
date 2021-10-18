@@ -42,7 +42,7 @@
       {
         plugin = NeoSolarized;
         config = ''
-          set background=dark
+          set background=light
           colorscheme NeoSolarized
         '';
       }
