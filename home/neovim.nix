@@ -46,41 +46,51 @@
           colorscheme NeoSolarized
         '';
       }
+      nvim-lspconfig
       cmp-buffer
-      # TODO: https://github.com/hrsh7th/nvim-cmp/#recommended-configuration
-      # cmp-nvim-lsp
+      cmp-nvim-lsp
+      # INFO: References:
+      # https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
+      # https://github.com/hrsh7th/nvim-cmp#recommended-configuration
       {
         plugin = nvim-cmp;
         config = ''
           set completeopt=menu,menuone,noselect
 
           lua <<EOF
-            local cmp = require('cmp')
+            local cmp = require('cmp');
             cmp.setup({
-             sources = {
-                { name = 'buffer' }
+              mapping = {
+                -- TODO: Fix me
+                -- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+                -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                ['<C-Space>'] = cmp.mapping.complete(),
+                ['<C-e>'] = cmp.mapping.close(),
+                ['<CR>'] = cmp.mapping.confirm({ select = true }),
+              },
+              sources = {
+                { name = 'buffer' },
+                { name = 'nvim_lsp' }
               }
-            })
-          EOF
-        '';
-      }
-      {
-        plugin = nvim-lspconfig;
-        config = ''
-          lua <<EOF
+            });
+
+            -- TODO: Update cmp-nvim-lsp
+            -- local capabilities = vim.lsp.protocol.make_client_capabilities();
+            -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities);
+
             local lspconfig = require('lspconfig');
-
             lspconfig.rnix.setup({
-              cmd = { '${pkgs.rnix-lsp}/bin/rnix-lsp' }
-            })
-
+              cmd = { '${pkgs.rnix-lsp}/bin/rnix-lsp' },
+              -- capabilities = capabilities
+            });
             lspconfig.solargraph.setup({
-              cmd = { '${pkgs.solargraph}/bin/solargraph', 'stdio' }
-            })
-
+              cmd = { '${pkgs.solargraph}/bin/solargraph', 'stdio' },
+              -- capabilities = capabilities
+            });
             lspconfig.rust_analyzer.setup({
-              cmd = { '${pkgs.rust-analyzer}/bin/rust-analyzer' }
-            })
+              cmd = { '${pkgs.rust-analyzer}/bin/rust-analyzer' },
+              -- capabilities = capabilities
+            });
           EOF
         '';
       }
