@@ -32,28 +32,28 @@
 
       nnoremap <c-l> :nohlsearch<cr>
     '';
-    plugins = with pkgs.vimPlugins; [
+    plugins = [
       {
-        plugin = haskell-vim;
+        plugin = pkgs.vimPlugins.haskell-vim;
         config = ''
           let g:haskell_classic_highlighting=1
         '';
       }
       {
-        plugin = NeoSolarized;
+        plugin = pkgs.vimPlugins.NeoSolarized;
         config = ''
           set background=light
           colorscheme NeoSolarized
         '';
       }
-      nvim-lspconfig
-      cmp-buffer
-      cmp-nvim-lsp
+      pkgs.vimPlugins.nvim-lspconfig
+      pkgs.vimPlugins.cmp-buffer
+      pkgs.vimPlugins.cmp-nvim-lsp
       # INFO: References:
       # https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
       # https://github.com/hrsh7th/nvim-cmp#recommended-configuration
       {
-        plugin = nvim-cmp;
+        plugin = pkgs.vimPlugins.nvim-cmp;
         config = ''
           set completeopt=menu,menuone,noselect
 
@@ -95,13 +95,13 @@
         '';
       }
       {
-        plugin = nvim-tree-lua;
+        plugin = pkgs.vimPlugins.nvim-tree-lua;
         config = ''
           nnoremap <C-n> :NvimTreeToggle<CR>
         '';
       }
       {
-        plugin = nvim-web-devicons;
+        plugin = pkgs.vimPlugins.nvim-web-devicons;
         config = ''
           lua <<EOF
             require'nvim-web-devicons'.setup {
@@ -110,15 +110,15 @@
           EOF
         '';
       }
-      surround
+      pkgs.vimPlugins.surround
       {
-        plugin = telescope-nvim;
+        plugin = pkgs.vimPlugins.telescope-nvim;
         config = ''
           nnoremap <C-p> <cmd>Telescope find_files<CR>
         '';
       }
       {
-        plugin = lualine-nvim;
+        plugin = pkgs.vimPlugins.lualine-nvim;
         config = ''
           lua <<EOF
             require('lualine').setup({
@@ -128,7 +128,7 @@
         '';
       }
       {
-        plugin = lsp-colors-nvim;
+        plugin = pkgs.vimPlugins.lsp-colors-nvim;
         config = ''
           lua <<EOF
             require("lsp-colors").setup({
@@ -140,10 +140,10 @@
           EOF
         '';
       }
-      vim-better-whitespace
-      vim-nix
-      vim-rails
-      vim-terraform
+      pkgs.vimPlugins.vim-better-whitespace
+      pkgs.vimPlugins.vim-nix
+      pkgs.vimPlugins.vim-rails
+      pkgs.vimPlugins.vim-terraform
     ];
     viAlias = true;
     vimAlias = true;
