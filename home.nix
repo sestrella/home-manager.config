@@ -28,7 +28,7 @@ in {
   imports = [
     ./home/direnv.nix
     ./home/git.nix
-    ./home/neovim.nix
+    ./home/neovim
     ./home/tmux.nix
     ./home/zsh.nix
   ];

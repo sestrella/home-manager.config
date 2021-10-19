@@ -1,8 +1,6 @@
 { pkgs, ... }:
 
-let
-  settings = import ../../settings.nix;
-in {
+{
   home.sessionVariables = {
     EDITOR = "nvim";
   };
@@ -22,7 +20,7 @@ in {
       set splitbelow
       set splitright
 
-      " set termguicolors
+      set termguicolors
 
       " INFO: Avoid issues running :checkhealth
       let g:loaded_perl_provider=0
@@ -34,8 +32,6 @@ in {
 
       nnoremap <c-l> :nohlsearch<cr>
     '';
-    package = pkgs.neovim-nightly;
-    # plugins = import ./plugins.nix { inherit pkgs; };
     plugins = with pkgs.vimPlugins; [
       {
         plugin = haskell-vim;
@@ -44,38 +40,57 @@ in {
         '';
       }
       {
-        plugin = lualine-nvim;
+        plugin = NeoSolarized;
         config = ''
-          lua <<EOF
-            require('lualine').setup({
-              options = {
-                theme = 'solarized'
-              }
-            })
-          EOF
+          set background=light
+          colorscheme NeoSolarized
         '';
       }
+      nvim-lspconfig
+      cmp-buffer
+      cmp-nvim-lsp
+      # INFO: References:
+      # https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
+      # https://github.com/hrsh7th/nvim-cmp#recommended-configuration
       {
-        plugin = nvim-compe;
+        plugin = nvim-cmp;
         config = ''
+          set completeopt=menu,menuone,noselect
+
           lua <<EOF
-            require'compe'.setup {
-              enabled = true;
-              autocomplete = true;
-              debug = false;
-              min_length = 1;
-              preselect = 'enable';
-              throttle_time = 80;
-              source_timeout = 200;
-              incomplete_delay = 400;
-              max_abbr_width = 100;
-              max_kind_width = 100;
-              max_menu_width = 100;
-              source = {
-                path = true;
-                buffer = true;
-              };
-            }
+            local cmp = require('cmp');
+            cmp.setup({
+              mapping = {
+                -- TODO: Fix me
+                -- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+                -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                ['<C-Space>'] = cmp.mapping.complete(),
+                ['<C-e>'] = cmp.mapping.close(),
+                ['<CR>'] = cmp.mapping.confirm({ select = true }),
+              },
+              sources = {
+                { name = 'buffer' },
+                { name = 'nvim_lsp' }
+              }
+            });
+
+            -- TODO: Update cmp-nvim-lsp
+            -- local capabilities = vim.lsp.protocol.make_client_capabilities();
+            -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities);
+
+            local lspconfig = require('lspconfig');
+            lspconfig.rnix.setup({
+              cmd = { '${pkgs.rnix-lsp}/bin/rnix-lsp' },
+              -- capabilities = capabilities
+            });
+            lspconfig.solargraph.setup({
+              cmd = { '${pkgs.solargraph}/bin/solargraph', 'stdio' },
+              -- capabilities = capabilities
+            });
+            lspconfig.rust_analyzer.setup({
+              cmd = { '${pkgs.rust-analyzer}/bin/rust-analyzer' },
+              -- capabilities = capabilities
+            });
           EOF
         '';
       }
@@ -95,14 +110,6 @@ in {
           EOF
         '';
       }
-      {
-        # TODO: Replace with nvim-solarized-lua
-        plugin = solarized;
-        config = ''
-          set background=${settings.theme}
-          colorscheme solarized
-        '';
-      }
       surround
       {
         plugin = telescope-nvim;
@@ -110,6 +117,30 @@ in {
           nnoremap <C-p> <cmd>Telescope find_files<CR>
         '';
       }
+      {
+        plugin = lualine-nvim;
+        config = ''
+          lua <<EOF
+            require('lualine').setup({
+              options = { theme = 'solarized' }
+            })
+          EOF
+        '';
+      }
+      {
+        plugin = lsp-colors-nvim;
+        config = ''
+          lua <<EOF
+            require("lsp-colors").setup({
+              Error = "#db4b4b",
+              Warning = "#e0af68",
+              Information = "#0db9d7",
+              Hint = "#10B981"
+            })
+          EOF
+        '';
+      }
+      vim-better-whitespace
       vim-nix
       vim-rails
       vim-terraform
@@ -117,6 +148,4 @@ in {
     viAlias = true;
     vimAlias = true;
   };
-
-  xdg.configFile."nvim/UltiSnips".source = ./ultisnips;
 }
