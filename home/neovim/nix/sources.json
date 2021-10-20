@@ -11,6 +11,18 @@
         "url": "https://github.com/hrsh7th/cmp-nvim-lsp/archive/accbe6d97548d8d3471c04d512d36fa61d0e4be8.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "lspkind-nvim": {
+        "branch": "master",
+        "description": "vscode-like pictograms for neovim lsp completion items",
+        "homepage": "",
+        "owner": "onsails",
+        "repo": "lspkind-nvim",
+        "rev": "0f7851772ebdd5cb67a04b3d3cda5281a1eb83c1",
+        "sha256": "0jk1xlp8x6vw40dl96zvmdxv0p8100rzx7za58xpahz10232lckx",
+        "type": "tarball",
+        "url": "https://github.com/onsails/lspkind-nvim/archive/0f7851772ebdd5cb67a04b3d3cda5281a1eb83c1.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nvim-cmp": {
         "branch": "main",
         "description": "A completion plugin for neovim coded in Lua.",

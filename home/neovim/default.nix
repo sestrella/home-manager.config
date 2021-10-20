@@ -7,6 +7,10 @@ let
       version = "2021-10-19";
       src = sources.cmp-nvim-lsp;
     });
+    lspkind-nvim = pkgs.vimPlugins.lspkind-nvim.overrideAttrs (_: {
+      version = "2021-10-19";
+      src = sources.lspkind-nvim;
+    });
     nvim-cmp = pkgs.vimPlugins.nvim-cmp.overrideAttrs (_: {
       version = "2021-10-19";
       src = sources.nvim-cmp;
@@ -88,6 +92,7 @@ in {
         '';
       }
       overrides.cmp-nvim-lsp
+      overrides.lspkind-nvim
       {
         plugin = overrides.nvim-cmp;
         # INFO: Reference
@@ -97,7 +102,12 @@ in {
             vim.o.completeopt = 'menuone,noselect'
 
             local cmp = require('cmp');
+            local lspkind = require('lspkind');
+
             cmp.setup({
+              formatting = {
+                format = lspkind.cmp_format(),
+              },
               mapping = {
                 ['<C-n>'] = cmp.mapping.select_next_item(),
                 ['<C-d>'] = cmp.mapping.scroll_docs(-4),
