@@ -1,6 +1,22 @@
 { pkgs, ... }:
 
-{
+let
+  sources = import ./nix/sources.nix {};
+  overrides = {
+    cmp-nvim-lsp = pkgs.vimPlugins.cmp-nvim-lsp.overrideAttrs (_: {
+      version = "2021-10-19";
+      src = sources.cmp-nvim-lsp;
+    });
+    nvim-cmp = pkgs.vimPlugins.nvim-cmp.overrideAttrs (_: {
+      version = "2021-10-19";
+      src = sources.nvim-cmp;
+    });
+    nvim-lspconfig = pkgs.vimPlugins.nvim-lspconfig.overrideAttrs (_ : {
+      version = "2021-10-19";
+      src = sources.nvim-lspconfig;
+    });
+  };
+in {
   home.sessionVariables = {
     EDITOR = "nvim";
   };
@@ -46,50 +62,70 @@
           colorscheme NeoSolarized
         '';
       }
-      pkgs.vimPlugins.nvim-lspconfig
-      pkgs.vimPlugins.cmp-buffer
-      pkgs.vimPlugins.cmp-nvim-lsp
-      # INFO: References:
-      # https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
-      # https://github.com/hrsh7th/nvim-cmp#recommended-configuration
       {
-        plugin = pkgs.vimPlugins.nvim-cmp;
+        plugin = overrides.nvim-lspconfig;
+        # INFO: Reference
+        # https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
         config = ''
-          set completeopt=menu,menuone,noselect
-
           lua <<EOF
-            local cmp = require('cmp');
-            cmp.setup({
-              mapping = {
-                -- TODO: Fix me
-                -- ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-                -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
-                ['<C-Space>'] = cmp.mapping.complete(),
-                ['<C-e>'] = cmp.mapping.close(),
-                ['<CR>'] = cmp.mapping.confirm({ select = true }),
-              },
-              sources = {
-                { name = 'buffer' },
-                { name = 'nvim_lsp' }
-              }
-            });
-
-            -- TODO: Update cmp-nvim-lsp
-            -- local capabilities = vim.lsp.protocol.make_client_capabilities();
-            -- capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities);
+            local capabilities = vim.lsp.protocol.make_client_capabilities();
+            capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities);
 
             local lspconfig = require('lspconfig');
             lspconfig.rnix.setup({
               cmd = { '${pkgs.rnix-lsp}/bin/rnix-lsp' },
-              -- capabilities = capabilities
+              capabilities = capabilities,
             });
             lspconfig.solargraph.setup({
               cmd = { '${pkgs.solargraph}/bin/solargraph', 'stdio' },
-              -- capabilities = capabilities
+              capabilities = capabilities,
             });
             lspconfig.rust_analyzer.setup({
               cmd = { '${pkgs.rust-analyzer}/bin/rust-analyzer' },
-              -- capabilities = capabilities
+              capabilities = capabilities,
+            });
+          EOF
+        '';
+      }
+      overrides.cmp-nvim-lsp
+      {
+        plugin = overrides.nvim-cmp;
+        # INFO: Reference
+        # https://github.com/hrsh7th/nvim-cmp#recommended-configuration
+        config = ''
+          lua <<EOF
+            vim.o.completeopt = 'menuone,noselect'
+
+            local cmp = require('cmp');
+            cmp.setup({
+              mapping = {
+                ['<C-n>'] = cmp.mapping.select_next_item(),
+                ['<C-d>'] = cmp.mapping.scroll_docs(-4),
+                ['<C-f>'] = cmp.mapping.scroll_docs(4),
+                ['<C-Space>'] = cmp.mapping.complete(),
+                ['<C-e>'] = cmp.mapping.close(),
+                ['<CR>'] = cmp.mapping.confirm {
+                  behavior = cmp.ConfirmBehavior.Replace,
+                  select = true,
+                },
+                ['<Tab>'] = function(fallback)
+                  if cmp.visible() then
+                    cmp.select_next_item()
+                  else
+                    fallback()
+                  end
+                end,
+                ['<S-Tab>'] = function(fallback)
+                  if cmp.visible() then
+                    cmp.select_prev_item()
+                  else
+                    fallback()
+                  end
+                end,
+              },
+              sources = {
+                { name = 'nvim_lsp' },
+              }
             });
           EOF
         '';
