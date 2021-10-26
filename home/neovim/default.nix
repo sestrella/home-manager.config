@@ -88,10 +88,10 @@ in {
               cmd = { '${pkgs.rust-analyzer}/bin/rust-analyzer' },
               capabilities = capabilities,
             });
-            -- lspconfig.hls.setup({
-            --   cmd = { '${pkgs.haskell-language-server}/bin/haskell-language-server-wrapper', '--lsp' },
-            --   capabilities = capabilities,
-            -- });
+            lspconfig.hls.setup({
+              cmd = { '${pkgs.haskell-language-server}/bin/haskell-language-server-wrapper', '--lsp' },
+              capabilities = capabilities,
+            });
           EOF
         '';
       }
