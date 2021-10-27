@@ -2,17 +2,19 @@
 
 let
   sources = import ./nix/sources.nix {};
-  mkPlugin = ({ name }: pkgs.vimPlugins."${name}".overrideAttrs (_: {
-    version = "2021-10-26";
-    src = sources."${name}";
-  }));
-  overrides = {
-    cmp-buffer = mkPlugin { name = "cmp-buffer"; };
-    cmp-nvim-lsp = mkPlugin { name = "cmp-nvim-lsp"; };
-    lspkind-nvim = mkPlugin { name = "lspkind-nvim"; };
-    nvim-cmp = mkPlugin { name = "nvim-cmp"; };
-    nvim-lspconfig = mkPlugin { name = "nvim-lspconfig"; };
-  };
+  overrides = builtins.listToAttrs (builtins.map (name: {
+    name = name;
+    value = pkgs.vimPlugins."${name}".overrideAttrs (_: {
+      version = "2021-10-26";
+      src = sources."${name}";
+    });
+  }) [
+    "cmp-buffer"
+    "cmp-nvim-lsp"
+    "lspkind-nvim"
+    "nvim-cmp"
+    "nvim-lspconfig"
+  ]);
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
