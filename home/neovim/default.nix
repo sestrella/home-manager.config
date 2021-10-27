@@ -2,23 +2,16 @@
 
 let
   sources = import ./nix/sources.nix {};
+  mkPlugin = ({ name }: pkgs.vimPlugins."${name}".overrideAttrs (_: {
+    version = "2021-10-26";
+    src = sources."${name}";
+  }));
   overrides = {
-    cmp-nvim-lsp = pkgs.vimPlugins.cmp-nvim-lsp.overrideAttrs (_: {
-      version = "2021-10-19";
-      src = sources.cmp-nvim-lsp;
-    });
-    lspkind-nvim = pkgs.vimPlugins.lspkind-nvim.overrideAttrs (_: {
-      version = "2021-10-19";
-      src = sources.lspkind-nvim;
-    });
-    nvim-cmp = pkgs.vimPlugins.nvim-cmp.overrideAttrs (_: {
-      version = "2021-10-19";
-      src = sources.nvim-cmp;
-    });
-    nvim-lspconfig = pkgs.vimPlugins.nvim-lspconfig.overrideAttrs (_ : {
-      version = "2021-10-19";
-      src = sources.nvim-lspconfig;
-    });
+    cmp-buffer = mkPlugin { name = "cmp-buffer"; };
+    cmp-nvim-lsp = mkPlugin { name = "cmp-nvim-lsp"; };
+    lspkind-nvim = mkPlugin { name = "lspkind-nvim"; };
+    nvim-cmp = mkPlugin { name = "nvim-cmp"; };
+    nvim-lspconfig = mkPlugin { name = "nvim-lspconfig"; };
   };
 in {
   home.sessionVariables = {
@@ -62,7 +55,7 @@ in {
       {
         plugin = pkgs.vimPlugins.NeoSolarized;
         config = ''
-          set background=light
+          set background=dark
           colorscheme NeoSolarized
         '';
       }
@@ -95,6 +88,7 @@ in {
           EOF
         '';
       }
+      overrides.cmp-buffer
       overrides.cmp-nvim-lsp
       overrides.lspkind-nvim
       {
@@ -137,9 +131,11 @@ in {
                   end
                 end,
               },
-              sources = {
+              sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
-              }
+              }, {
+                { name = 'buffer' },
+              })
             });
           EOF
         '';
