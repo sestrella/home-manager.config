@@ -28,6 +28,7 @@ in {
   imports = [
     ./home/direnv.nix
     ./home/git.nix
+    ./home/iterm2
     ./home/neovim
     ./home/tmux.nix
     ./home/zsh.nix
