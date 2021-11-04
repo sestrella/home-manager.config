@@ -52,7 +52,7 @@ in {
       {
         plugin = pkgs.vimPlugins.NeoSolarized;
         config = ''
-          set background=dark
+          set background=light
           set termguicolors
           colorscheme NeoSolarized
         '';
@@ -135,12 +135,14 @@ in {
           EOF
         '';
       }
-      # {
-      #   plugin = pkgs.vimPlugins.nvim-tree-lua;
-      #   config = ''
-      #     nnoremap <C-n> :NvimTreeToggle<CR>
-      #   '';
-      # }
+      {
+        plugin = pkgs.vimPlugins.nvim-tree-lua;
+        config = ''
+          lua require('nvim-tree').setup()
+
+          nnoremap <C-n> :NvimTreeToggle<CR>
+        '';
+      }
       # {
       #   plugin = pkgs.vimPlugins.nvim-web-devicons;
       #   config = ''
