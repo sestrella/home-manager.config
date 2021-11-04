@@ -37,6 +37,7 @@ in {
   home.packages = [
     nerdfonts
     pkgs.docker-compose
+    pkgs.duf
     pkgs.github-cli
     pkgs.htop
     pkgs.jq
