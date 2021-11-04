@@ -4,11 +4,13 @@ let
   sources = import ./nix/sources.nix {};
   overrides = builtins.listToAttrs (builtins.map (name: {
     name = name;
-    value = pkgs.vimUtils.buildVimPluginFrom2Nix {
+    value = pkgs.vimUtils.buildVimPluginFrom2Nix (let
+      source = sources."${name}";
+    in {
       pname = name;
-      version = "2021-10-28";
-      src = sources."${name}";
-    };
+      src = source;
+      version = source.rev;
+    });
   }) [
     "cmp-buffer"
     "cmp-cmdline"
