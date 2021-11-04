@@ -47,6 +47,30 @@
         "url": "https://github.com/hrsh7th/cmp-path/archive/97661b00232a2fe145fe48e295875bc3299ed1f7.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "cmp-vsnip": {
+        "branch": "main",
+        "description": "nvim-cmp source for vim-vsnip",
+        "homepage": "",
+        "owner": "hrsh7th",
+        "repo": "cmp-vsnip",
+        "rev": "1588c35bf8f637e8f5287477f31895781858f970",
+        "sha256": "0q3z0f7d53cbqidx8qd3z48b46a83l5ay54iw525w22j1kki3aaw",
+        "type": "tarball",
+        "url": "https://github.com/hrsh7th/cmp-vsnip/archive/1588c35bf8f637e8f5287477f31895781858f970.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "friendly-snippets": {
+        "branch": "main",
+        "description": "Set of preconfigured snippets for different languages. ",
+        "homepage": "",
+        "owner": "rafamadriz",
+        "repo": "friendly-snippets",
+        "rev": "1614c0a1fb29aaf4762ce43c594cb33963650af1",
+        "sha256": "0qdjf5bbhh3zk0aw2yik82caxvmny9j8fqvspp125g68p4vix0zm",
+        "type": "tarball",
+        "url": "https://github.com/rafamadriz/friendly-snippets/archive/1614c0a1fb29aaf4762ce43c594cb33963650af1.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "lspkind-nvim": {
         "branch": "master",
         "description": "vscode-like pictograms for neovim lsp completion items",
@@ -81,6 +105,18 @@
         "sha256": "1lia7mawxp4gry2r21ib1vy7p8zngcwnbkr4bzf00z8rjqsh4sb5",
         "type": "tarball",
         "url": "https://github.com/neovim/nvim-lspconfig/archive/7dee6a7c07e1c99361c1e1cec51622ccb3fc21ef.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
+    "vim-vsnip": {
+        "branch": "master",
+        "description": "Snippet plugin for vim/nvim that supports LSP/VSCode's snippet format.",
+        "homepage": "",
+        "owner": "hrsh7th",
+        "repo": "vim-vsnip",
+        "rev": "4d57a1f4efce38e0d05196f9beba4bcc6e9d1ed5",
+        "sha256": "0p6bqhddbqnfcd0wq1wy3ix082phhgiqrx593wq54fjx4wqg9xvi",
+        "type": "tarball",
+        "url": "https://github.com/hrsh7th/vim-vsnip/archive/4d57a1f4efce38e0d05196f9beba4bcc6e9d1ed5.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }

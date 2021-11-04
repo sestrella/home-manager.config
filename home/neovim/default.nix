@@ -106,8 +106,14 @@ in {
                 }),
                 ['<CR>'] = cmp.mapping.confirm({ select = true }),
               },
+              snippet = {
+                expand = function(args)
+                  vim.fn["vsnip#anonymous"](args.body)
+                end,
+              },
               sources = cmp.config.sources({
                 { name = 'nvim_lsp' },
+                { name = 'vsnip' },
               }, {
                 { name = 'buffer' },
               })
@@ -165,7 +171,10 @@ in {
       overrides.cmp-cmdline
       overrides.cmp-nvim-lsp
       overrides.cmp-path
+      overrides.cmp-vsnip
+      overrides.friendly-snippets
       overrides.lspkind-nvim
+      overrides.vim-vsnip
       pkgs.vimPlugins.lsp-colors-nvim
       pkgs.vimPlugins.nvim-web-devicons
       pkgs.vimPlugins.surround
