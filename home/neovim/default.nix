@@ -11,15 +11,7 @@ let
       src = source;
       version = source.rev;
     });
-  }) [
-    "cmp-buffer"
-    "cmp-cmdline"
-    "cmp-nvim-lsp"
-    "cmp-path"
-    "lspkind-nvim"
-    "nvim-cmp"
-    "nvim-lspconfig"
-  ]);
+  }) (builtins.attrNames sources));
 in {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -93,11 +85,6 @@ in {
           EOF
         '';
       }
-      overrides.cmp-buffer
-      overrides.cmp-cmdline
-      overrides.cmp-nvim-lsp
-      overrides.cmp-path
-      overrides.lspkind-nvim
       {
         plugin = overrides.nvim-cmp;
         # INFO: Reference
@@ -147,23 +134,22 @@ in {
           EOF
         '';
       }
-      {
-        plugin = pkgs.vimPlugins.nvim-tree-lua;
-        config = ''
-          nnoremap <C-n> :NvimTreeToggle<CR>
-        '';
-      }
-      {
-        plugin = pkgs.vimPlugins.nvim-web-devicons;
-        config = ''
-          lua <<EOF
-            require'nvim-web-devicons'.setup {
-              default = true;
-            }
-          EOF
-        '';
-      }
-      pkgs.vimPlugins.surround
+      # {
+      #   plugin = pkgs.vimPlugins.nvim-tree-lua;
+      #   config = ''
+      #     nnoremap <C-n> :NvimTreeToggle<CR>
+      #   '';
+      # }
+      # {
+      #   plugin = pkgs.vimPlugins.nvim-web-devicons;
+      #   config = ''
+      #     lua <<EOF
+      #       require'nvim-web-devicons'.setup {
+      #         default = true;
+      #       }
+      #     EOF
+      #   '';
+      # }
       {
         plugin = pkgs.vimPlugins.telescope-nvim;
         config = ''
@@ -180,19 +166,14 @@ in {
           EOF
         '';
       }
-      {
-        plugin = pkgs.vimPlugins.lsp-colors-nvim;
-        config = ''
-          lua <<EOF
-            require("lsp-colors").setup({
-              Error = "#db4b4b",
-              Warning = "#e0af68",
-              Information = "#0db9d7",
-              Hint = "#10B981"
-            })
-          EOF
-        '';
-      }
+      overrides.cmp-buffer
+      overrides.cmp-cmdline
+      overrides.cmp-nvim-lsp
+      overrides.cmp-path
+      overrides.lspkind-nvim
+      pkgs.vimPlugins.lsp-colors-nvim
+      pkgs.vimPlugins.nvim-web-devicons
+      pkgs.vimPlugins.surround
       pkgs.vimPlugins.vim-better-whitespace
       pkgs.vimPlugins.vim-nix
       pkgs.vimPlugins.vim-rails
