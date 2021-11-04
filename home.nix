@@ -26,12 +26,12 @@ in {
 
   # Custom changes
   imports = [
-    ./home/direnv.nix
-    ./home/git.nix
+    ./home/direnv
+    ./home/git
     ./home/iterm2
     ./home/neovim
-    ./home/tmux.nix
-    ./home/zsh.nix
+    ./home/tmux
+    ./home/zsh
   ];
 
   home.packages = [
