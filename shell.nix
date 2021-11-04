@@ -5,6 +5,7 @@ in pkgs.mkShell {
   name = "nix-home";
   buildInputs = [
     (import sources.home-manager { inherit pkgs; }).home-manager
+    pkgs.rnix-lsp
   ];
   shellHook = ''
     export NIX_PATH="nixpkgs=${sources.nixpkgs}"

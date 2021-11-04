@@ -67,21 +67,17 @@ in {
             capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities);
 
             local lspconfig = require('lspconfig');
-            lspconfig.rnix.setup({
-              cmd = { '${pkgs.rnix-lsp}/bin/rnix-lsp' },
-              capabilities = capabilities,
-            });
-            lspconfig.solargraph.setup({
-              cmd = { '${pkgs.solargraph}/bin/solargraph', 'stdio' },
-              capabilities = capabilities,
-            });
-            lspconfig.rust_analyzer.setup({
-              cmd = { '${pkgs.rust-analyzer}/bin/rust-analyzer' },
-              capabilities = capabilities,
-            });
-            lspconfig.hls.setup({
-              capabilities = capabilities,
-            });
+            local servers = {
+              'hls',
+              'rnix',
+              'rust_analyzer',
+              'solargraph',
+            };
+            for _, lsp in ipairs(servers) do
+              lspconfig[lsp].setup({
+                capabilities = capabilities,
+              });
+            end
           EOF
         '';
       }
