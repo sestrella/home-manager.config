@@ -90,11 +90,10 @@ in {
             vim.o.completeopt = 'menuone,noselect'
 
             local cmp = require('cmp');
-            local lspkind = require('lspkind');
 
             cmp.setup({
               formatting = {
-                format = lspkind.cmp_format(),
+                format = require('lspkind').cmp_format(),
               },
               mapping = {
                 ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
