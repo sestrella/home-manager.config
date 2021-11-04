@@ -17,6 +17,7 @@ let
     "cmp-nvim-lsp"
     "cmp-path"
     "lspkind-nvim"
+    "neosolarized"
     "nvim-cmp"
     "nvim-lspconfig"
   ]);
@@ -58,7 +59,7 @@ in {
         '';
       }
       {
-        plugin = pkgs.vimPlugins.NeoSolarized;
+        plugin = overrides.neosolarized;
         config = ''
           set background=dark
           set termguicolors

@@ -59,6 +59,18 @@
         "url": "https://github.com/onsails/lspkind-nvim/archive/1557ce5b3b8e497c1cb1d0b9d967a873136b0c23.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "neosolarized": {
+        "branch": "master",
+        "description": "NeoSolarized: A fixed solarized colorscheme for better truecolor support.",
+        "homepage": "",
+        "owner": "overcache",
+        "repo": "NeoSolarized",
+        "rev": "b94b1a9ad51e2de015266f10fdc6e142f97bd617",
+        "sha256": "019nz56yirpg1ahg8adfafrxznalw056qwm3xjm9kzg6da8j6v48",
+        "type": "tarball",
+        "url": "https://github.com/overcache/NeoSolarized/archive/b94b1a9ad51e2de015266f10fdc6e142f97bd617.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "nvim-cmp": {
         "branch": "main",
         "description": "A completion plugin for neovim coded in Lua.",
