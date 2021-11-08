@@ -54,7 +54,7 @@ in {
       {
         plugin = pkgs.vimPlugins.NeoSolarized;
         config = ''
-          set background=dark
+          set background=light
           colorscheme NeoSolarized
         '';
       }
@@ -170,6 +170,16 @@ in {
           EOF
         '';
       }
+      # Reference: https://github.com/hrsh7th/vim-vsnip#2-setting
+      {
+        plugin = plugins.vim-vsnip;
+        config = ''
+          imap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+          imap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+          smap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+          smap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+        '';
+      }
       pkgs.vimPlugins.lsp-colors-nvim
       pkgs.vimPlugins.nvim-web-devicons
       pkgs.vimPlugins.surround
@@ -184,7 +194,6 @@ in {
       plugins.cmp-vsnip
       plugins.friendly-snippets
       plugins.lspkind-nvim
-      plugins.vim-vsnip
     ];
     viAlias = true;
     vimAlias = true;
