@@ -2,7 +2,7 @@
 
 let
   sources = import ./nix/sources.nix {};
-  overrides = builtins.listToAttrs (builtins.map (name: {
+  plugins = builtins.listToAttrs (builtins.map (name: {
     name = name;
     value = pkgs.vimUtils.buildVimPluginFrom2Nix (let
       source = sources."${name}";
@@ -58,7 +58,7 @@ in {
         '';
       }
       {
-        plugin = overrides.nvim-lspconfig;
+        plugin = plugins.nvim-lspconfig;
         # INFO: Reference
         # https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
         config = ''
@@ -82,7 +82,7 @@ in {
         '';
       }
       {
-        plugin = overrides.nvim-cmp;
+        plugin = plugins.nvim-cmp;
         # INFO: Reference
         # https://github.com/hrsh7th/nvim-cmp#recommended-configuration
         config = ''
@@ -169,14 +169,6 @@ in {
           EOF
         '';
       }
-      overrides.cmp-buffer
-      overrides.cmp-cmdline
-      overrides.cmp-nvim-lsp
-      overrides.cmp-path
-      overrides.cmp-vsnip
-      overrides.friendly-snippets
-      overrides.lspkind-nvim
-      overrides.vim-vsnip
       pkgs.vimPlugins.lsp-colors-nvim
       pkgs.vimPlugins.nvim-web-devicons
       pkgs.vimPlugins.surround
@@ -184,6 +176,14 @@ in {
       pkgs.vimPlugins.vim-nix
       pkgs.vimPlugins.vim-rails
       pkgs.vimPlugins.vim-terraform
+      plugins.cmp-buffer
+      plugins.cmp-cmdline
+      plugins.cmp-nvim-lsp
+      plugins.cmp-path
+      plugins.cmp-vsnip
+      plugins.friendly-snippets
+      plugins.lspkind-nvim
+      plugins.vim-vsnip
     ];
     viAlias = true;
     vimAlias = true;
