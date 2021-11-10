@@ -54,86 +54,21 @@ in {
       {
         plugin = pkgs.vimPlugins.NeoSolarized;
         config = ''
-          set background=light
+          set background=dark
           colorscheme NeoSolarized
         '';
       }
       {
         plugin = plugins.nvim-lspconfig;
-        # INFO: Reference
-        # https://github.com/neovim/nvim-lspconfig/wiki/Autocompletion
         config = ''
-          lua <<EOF
-            local capabilities = vim.lsp.protocol.make_client_capabilities();
-            capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities);
-
-            local lspconfig = require('lspconfig');
-            local servers = {
-              'hls',
-              'rnix',
-              'rust_analyzer',
-              'solargraph',
-            };
-            for _, lsp in ipairs(servers) do
-              lspconfig[lsp].setup({
-                capabilities = capabilities,
-              });
-            end
-          EOF
+          lua require('config/lspconfig')
         '';
       }
       {
         plugin = plugins.nvim-cmp;
         # INFO: Reference
-        # https://github.com/hrsh7th/nvim-cmp#recommended-configuration
         config = ''
-          lua <<EOF
-            vim.o.completeopt = 'menuone,noselect'
-
-            local cmp = require('cmp');
-
-            cmp.setup({
-              formatting = {
-                format = require('lspkind').cmp_format(),
-              },
-              mapping = {
-                ['<C-d>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-                ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-                ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-                ['<C-y>'] = cmp.config.disable,
-                ['<C-e>'] = cmp.mapping({
-                  i = cmp.mapping.abort(),
-                  c = cmp.mapping.close(),
-                }),
-                ['<CR>'] = cmp.mapping.confirm({ select = true }),
-              },
-              snippet = {
-                expand = function(args)
-                  vim.fn["vsnip#anonymous"](args.body)
-                end,
-              },
-              sources = cmp.config.sources({
-                { name = 'nvim_lsp' },
-                { name = 'vsnip' },
-              }, {
-                { name = 'buffer' },
-              })
-            });
-
-            cmp.setup.cmdline('/', {
-              sources = {
-                { name = 'buffer' }
-              }
-            });
-
-            cmp.setup.cmdline(':', {
-              sources = cmp.config.sources({
-                { name = 'path' }
-              }, {
-                { name = 'cmdline' }
-              })
-            });
-          EOF
+          lua require('config/cmp')
         '';
       }
       {
@@ -163,11 +98,7 @@ in {
       {
         plugin = pkgs.vimPlugins.lualine-nvim;
         config = ''
-          lua <<EOF
-            require('lualine').setup({
-              options = { theme = 'solarized' }
-            })
-          EOF
+          lua require('config/lualine')
         '';
       }
       # Reference: https://github.com/hrsh7th/vim-vsnip#2-setting
@@ -197,5 +128,10 @@ in {
     ];
     viAlias = true;
     vimAlias = true;
+  };
+
+  xdg.configFile."nvim/lua" = {
+    source = ./lua;
+    recursive = true;
   };
 }
