@@ -43,6 +43,8 @@ in {
       let maplocalleader = ','
 
       nnoremap <c-l> :nohlsearch<cr>
+
+      lua require('config')
     '';
     plugins = [
       {
@@ -59,19 +61,6 @@ in {
         '';
       }
       {
-        plugin = plugins.nvim-lspconfig;
-        config = ''
-          lua require('config/lspconfig')
-        '';
-      }
-      {
-        plugin = plugins.nvim-cmp;
-        # INFO: Reference
-        config = ''
-          lua require('config/cmp')
-        '';
-      }
-      {
         plugin = pkgs.vimPlugins.nvim-tree-lua;
         config = ''
           lua require('nvim-tree').setup()
@@ -79,26 +68,10 @@ in {
           nnoremap <C-n> :NvimTreeToggle<CR>
         '';
       }
-      # {
-      #   plugin = pkgs.vimPlugins.nvim-web-devicons;
-      #   config = ''
-      #     lua <<EOF
-      #       require'nvim-web-devicons'.setup {
-      #         default = true;
-      #       }
-      #     EOF
-      #   '';
-      # }
       {
         plugin = pkgs.vimPlugins.telescope-nvim;
         config = ''
           nnoremap <C-p> <cmd>Telescope find_files<CR>
-        '';
-      }
-      {
-        plugin = pkgs.vimPlugins.lualine-nvim;
-        config = ''
-          lua require('config/lualine')
         '';
       }
       # Reference: https://github.com/hrsh7th/vim-vsnip#2-setting
@@ -112,6 +85,7 @@ in {
         '';
       }
       pkgs.vimPlugins.lsp-colors-nvim
+      pkgs.vimPlugins.lualine-nvim
       pkgs.vimPlugins.nvim-web-devicons
       pkgs.vimPlugins.surround
       pkgs.vimPlugins.vim-better-whitespace
@@ -125,6 +99,8 @@ in {
       plugins.cmp-vsnip
       plugins.friendly-snippets
       plugins.lspkind-nvim
+      plugins.nvim-cmp
+      plugins.nvim-lspconfig
     ];
     viAlias = true;
     vimAlias = true;
