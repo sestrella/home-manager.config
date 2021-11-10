@@ -56,7 +56,7 @@ in {
       {
         plugin = pkgs.vimPlugins.NeoSolarized;
         config = ''
-          set background=dark
+          set background=light
           colorscheme NeoSolarized
         '';
       }
@@ -108,6 +108,12 @@ in {
 
   xdg.configFile."nvim/lua" = {
     source = ./lua;
+    recursive = true;
+  };
+
+  # TODO: Add path to g:vsnip_snippet_dir
+  xdg.configFile."nvim/snippets" = {
+    source = ./snippets;
     recursive = true;
   };
 }
