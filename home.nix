@@ -38,6 +38,7 @@ in {
     nerdfonts
     pkgs.docker-compose
     pkgs.duf
+    pkgs.git-ignore
     pkgs.github-cli
     pkgs.htop
     pkgs.jq
