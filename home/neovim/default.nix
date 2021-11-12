@@ -41,14 +41,6 @@ in {
         '';
       }
       {
-        plugin = pkgs.vimPlugins.nvim-tree-lua;
-        config = ''
-          lua require('nvim-tree').setup()
-
-          nnoremap <C-n> :NvimTreeToggle<CR>
-        '';
-      }
-      {
         plugin = pkgs.vimPlugins.telescope-nvim;
         config = ''
           nnoremap <C-p> <cmd>Telescope find_files<CR>
@@ -67,6 +59,7 @@ in {
       pkgs.vimPlugins.NeoSolarized
       pkgs.vimPlugins.lsp-colors-nvim
       pkgs.vimPlugins.lualine-nvim
+      pkgs.vimPlugins.nvim-tree-lua
       pkgs.vimPlugins.nvim-web-devicons
       pkgs.vimPlugins.surround
       pkgs.vimPlugins.vim-better-whitespace
