@@ -23,6 +23,8 @@
       gst = "git status";
       # home-manager
       hms = "home-manager switch";
+      # niv
+      niv = "command niv --no-colors";
       # tmux - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tmux
       ta = "tmux attach -t";
       tkss = "tmux kill-session -t";
