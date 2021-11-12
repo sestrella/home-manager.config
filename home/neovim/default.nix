@@ -54,13 +54,6 @@ in {
         '';
       }
       {
-        plugin = pkgs.vimPlugins.NeoSolarized;
-        config = ''
-          set background=light
-          colorscheme NeoSolarized
-        '';
-      }
-      {
         plugin = pkgs.vimPlugins.nvim-tree-lua;
         config = ''
           lua require('nvim-tree').setup()
@@ -84,6 +77,7 @@ in {
           smap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
         '';
       }
+      pkgs.vimPlugins.NeoSolarized
       pkgs.vimPlugins.lsp-colors-nvim
       pkgs.vimPlugins.lualine-nvim
       pkgs.vimPlugins.nvim-web-devicons
