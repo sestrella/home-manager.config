@@ -66,6 +66,7 @@ in {
       pkgs.vimPlugins.vim-nix
       pkgs.vimPlugins.vim-rails
       pkgs.vimPlugins.vim-terraform
+      pkgs.vimPlugins.vim-toml
       plugins.cmp-buffer
       plugins.cmp-cmdline
       plugins.cmp-nvim-lsp
