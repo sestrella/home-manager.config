@@ -7,6 +7,8 @@
       . ~/.nix-profile/etc/profile.d/nix.sh
     '';
     shellAliases = {
+      # duf
+      duf = "command duf -theme $((defaults read -g AppleInterfaceStyle &> /dev/null) && echo \"dark\" || echo \"light\")";
       # git - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
       "gc!" = "git commit -v --amend";
       "gp!" = "git push -f";
