@@ -9,4 +9,5 @@ else
   vim.o.background = "light"
 end
 
+vim.o.termguicolors = true
 vim.cmd("colorscheme NeoSolarized")
