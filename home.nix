@@ -48,6 +48,7 @@ in {
     pkgs.ripgrep
     pkgs.vagrant
     pkgs.vscode
+    pkgs.watch
     pkgs.wget
     pkgs.yq
   ];
