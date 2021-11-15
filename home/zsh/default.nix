@@ -7,6 +7,9 @@
       . ~/.nix-profile/etc/profile.d/nix.sh
     '';
     shellAliases = {
+      # cargo
+      cb = "cargo build";
+      cr = "cargo run";
       # duf
       duf = "command duf -theme $((defaults read -g AppleInterfaceStyle &> /dev/null) && echo \"dark\" || echo \"light\")";
       # git - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
