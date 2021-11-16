@@ -5,6 +5,10 @@
     enable = true;
     initExtraFirst = ''
       . ~/.nix-profile/etc/profile.d/nix.sh
+
+      autoload bashcompinit && bashcompinit
+      autoload -Uz compinit && compinit
+      complete -C '${pkgs.awscli2}/bin/aws_completer' aws
     '';
     shellAliases = {
       # cargo

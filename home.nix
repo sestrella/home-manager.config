@@ -36,6 +36,7 @@ in {
 
   home.packages = [
     nerdfonts
+    pkgs.awscli2
     pkgs.docker-compose
     pkgs.duf
     pkgs.git-ignore
