@@ -16,6 +16,8 @@
       cr = "cargo run";
       # duf
       duf = "command duf -theme $((defaults read -g AppleInterfaceStyle &> /dev/null) && echo \"dark\" || echo \"light\")";
+      # fd
+      find = "fd";
       # git - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
       "gc!" = "git commit -v --amend";
       "gp!" = "git push -f";

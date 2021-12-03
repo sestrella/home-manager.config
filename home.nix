@@ -39,6 +39,7 @@ in {
     pkgs.awscli2
     pkgs.docker-compose
     pkgs.duf
+    pkgs.fd
     pkgs.git-ignore
     pkgs.github-cli
     pkgs.htop
