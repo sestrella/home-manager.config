@@ -72,6 +72,7 @@ in {
       plugins.cmp-nvim-lsp
       plugins.cmp-path
       plugins.cmp-vsnip
+      plugins.comment
       plugins.friendly-snippets
       plugins.lspkind-nvim
       plugins.nvim-cmp

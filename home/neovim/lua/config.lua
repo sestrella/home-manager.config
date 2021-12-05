@@ -11,6 +11,7 @@ vim.o.splitbelow = true
 vim.o.splitright = true
 
 require('config/cmp')
+require('config/comment')
 require('config/lspconfig')
 require('config/lualine')
 require('config/neosolarized')

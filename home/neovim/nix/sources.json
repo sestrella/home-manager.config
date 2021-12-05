@@ -59,6 +59,18 @@
         "url": "https://github.com/hrsh7th/cmp-vsnip/archive/1588c35bf8f637e8f5287477f31895781858f970.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
+    "comment": {
+        "branch": "master",
+        "description": ":brain: :muscle: // Smart and powerful comment plugin for neovim. Supports treesitter, dot repeat, left-right/up-down motions, hooks, and more",
+        "homepage": "",
+        "owner": "numToStr",
+        "repo": "Comment.nvim",
+        "rev": "ed8f4882a0cc00c57369257109a4c1d89964ee79",
+        "sha256": "0sw4ijidkxqm75xqkm9xj7a3586im6l98jhyfsv36403ymqk5h7n",
+        "type": "tarball",
+        "url": "https://github.com/numToStr/Comment.nvim/archive/ed8f4882a0cc00c57369257109a4c1d89964ee79.tar.gz",
+        "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
+    },
     "friendly-snippets": {
         "branch": "main",
         "description": "Set of preconfigured snippets for different languages. ",
