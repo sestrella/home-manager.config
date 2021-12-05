@@ -40,12 +40,6 @@ in {
           let g:haskell_classic_highlighting=1
         '';
       }
-      {
-        plugin = pkgs.vimPlugins.telescope-nvim;
-        config = ''
-          nnoremap <C-p> <cmd>Telescope find_files<CR>
-        '';
-      }
       # Reference: https://github.com/hrsh7th/vim-vsnip#2-setting
       {
         plugin = plugins.vim-vsnip;
@@ -62,11 +56,13 @@ in {
       pkgs.vimPlugins.nvim-tree-lua
       pkgs.vimPlugins.nvim-web-devicons
       pkgs.vimPlugins.surround
+      pkgs.vimPlugins.telescope-nvim
       pkgs.vimPlugins.vim-better-whitespace
       pkgs.vimPlugins.vim-nix
       pkgs.vimPlugins.vim-rails
       pkgs.vimPlugins.vim-terraform
       pkgs.vimPlugins.vim-toml
+      # Custom plugins
       plugins.cmp-buffer
       plugins.cmp-cmdline
       plugins.cmp-nvim-lsp
