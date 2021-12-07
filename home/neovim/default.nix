@@ -17,6 +17,10 @@ in {
     EDITOR = "nvim";
   };
 
+  home.packages = [
+    pkgs.yaml-language-server
+  ];
+
   programs.neovim = {
     enable = true;
     # config
