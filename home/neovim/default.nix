@@ -18,6 +18,7 @@ in {
   };
 
   home.packages = [
+    pkgs.rnix-lsp
     pkgs.yaml-language-server
   ];
 
