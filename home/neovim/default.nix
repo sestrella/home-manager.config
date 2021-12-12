@@ -19,6 +19,7 @@ in {
 
   home.packages = [
     pkgs.rnix-lsp
+    pkgs.rust-analyzer
     pkgs.yaml-language-server
   ];
 
