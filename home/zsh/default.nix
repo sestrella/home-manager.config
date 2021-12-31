@@ -3,6 +3,8 @@
 {
   programs.zsh ={
     enable = true;
+    # INFO: Temporarily disabled due to an issue with nix autocompletion
+    enableCompletion = false;
     initExtraFirst = ''
       . ~/.nix-profile/etc/profile.d/nix.sh
 
