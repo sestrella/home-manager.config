@@ -33,6 +33,7 @@ in {
     ./home/iterm2
     ./home/neovim
     ./home/stack
+    ./home/starship
     ./home/tmux
     ./home/zsh
   ];
@@ -57,17 +58,6 @@ in {
     pkgs.wget
     pkgs.yq
   ];
-
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = false;
-      character = {
-        success_symbol = "[➜](bold green) ";
-        error_symbol = "[✗](bold red) ";
-      };
-    };
-  };
 
   programs.fzf.enable = true;
 
