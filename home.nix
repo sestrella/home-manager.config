@@ -11,8 +11,9 @@ in {
 
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "sestrella";
-  home.homeDirectory = "/Users/sestrella";
+  # INFO: set via flake.nix
+  # home.username = "sestrella";
+  # home.homeDirectory = "/Users/sestrella";
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -22,7 +23,7 @@ in {
   # You can update Home Manager without changing this value. See
   # the Home Manager release notes for a list of state version
   # changes in each release.
-  home.stateVersion = "21.11";
+  # home.stateVersion = "21.11";
 
   # Custom changes
   imports = [
@@ -87,4 +88,6 @@ in {
   home.file.".ghci".text = ''
     :set prompt "\ESC[34mλ> \ESC[m"
   '';
+
+  nixpkgs.config.allowUnfree = true;
 }
