@@ -31,6 +31,7 @@ in {
     ./home/git
     ./home/iterm2
     ./home/neovim
+    ./home/stack
     ./home/tmux
     ./home/zsh
   ];
@@ -72,16 +73,6 @@ in {
   home.file.".bundle/config".text = ''
     ---
     BUNDLE_PATH: "vendor/bundle"
-  '';
-
-  home.file.".stack/config.yaml".text = ''
-    ---
-    templates:
-      params:
-        author-email: sestrella.me@gmail.com
-        author-name: Sebastian Estrella
-        github-username: sestrella
-        year: 2022
   '';
 
   # https://blog.ramdoot.in/changing-ghci-prompt-96fe5750d78
