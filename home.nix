@@ -80,8 +80,8 @@ in {
       params:
         author-email: sestrella.me@gmail.com
         author-name: Sebastian Estrella
-        copyright: 2021 Sebastian Estrella
         github-username: sestrella
+        year: 2022
   '';
 
   # https://blog.ramdoot.in/changing-ghci-prompt-96fe5750d78
