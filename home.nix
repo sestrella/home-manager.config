@@ -27,6 +27,7 @@ in {
 
   # Custom changes
   imports = [
+    ./home/bundle
     ./home/direnv
     ./home/git
     ./home/iterm2
@@ -69,11 +70,6 @@ in {
   };
 
   programs.fzf.enable = true;
-
-  home.file.".bundle/config".text = ''
-    ---
-    BUNDLE_PATH: "vendor/bundle"
-  '';
 
   # https://blog.ramdoot.in/changing-ghci-prompt-96fe5750d78
   home.file.".ghci".text = ''
