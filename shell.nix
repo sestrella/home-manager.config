@@ -1,12 +1,8 @@
-let
-  sources = import ./nix/sources.nix {};
-  pkgs = import sources.nixpkgs {};
-in pkgs.mkShell {
+{ home-manager, pkgs }:
+
+pkgs.mkShell {
   name = "nix-home";
   buildInputs = [
-    (import sources.home-manager { inherit pkgs; }).home-manager
+    home-manager
   ];
-  shellHook = ''
-    export NIX_PATH="nixpkgs=${sources.nixpkgs}"
-  '';
 }
