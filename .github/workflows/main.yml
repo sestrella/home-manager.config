@@ -15,4 +15,4 @@ jobs:
       - run: ln -s $PWD ~/.config/nixpkgs
       - run: ls -al ~/.config/nixpkgs
       - run: sed -i '' 's/sestrella/runner/g' flake.nix
-      - run: nix-shell --run 'home-manager switch'
+      - run: nix develop -c home-manager switch
