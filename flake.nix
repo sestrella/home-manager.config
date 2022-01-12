@@ -11,22 +11,25 @@
 
   outputs = inputs:
     let
-      home-manager = inputs.home-manager.defaultPackage.${system};
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
       system = "x86_64-darwin";
     in {
       devShell.${system} = import ./shell.nix {
-        inherit home-manager pkgs;
+        home-manager = inputs.home-manager.defaultPackage.${system};
+        pkgs = inputs.nixpkgs.legacyPackages.${system};
       };
       packages.${system} = {
-        homeConfigurations = {
-          sestrella = inputs.home-manager.lib.homeManagerConfiguration {
-            inherit system;
-            homeDirectory = "/Users/sestrella";
-            username = "sestrella";
-            configuration.imports = [ ./home.nix ];
+        homeConfigurations =
+          let
+            config = username:
+              inputs.home-manager.lib.homeManagerConfiguration {
+                inherit system username;
+                homeDirectory = "/Users/${username}";
+                configuration.imports = [ ./home.nix ];
+              };
+          in {
+            runner = config "runner";
+            sestrella = config "sestrella";
           };
-        };
       };
     };
 }
