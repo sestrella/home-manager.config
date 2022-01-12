@@ -9,19 +9,19 @@
     };
   };
 
-  outputs = inputs:
+  outputs = { self, nixpkgs, home-manager }:
     let
       system = "x86_64-darwin";
     in {
       devShell.${system} = import ./shell.nix {
-        home-manager = inputs.home-manager.defaultPackage.${system};
-        pkgs = inputs.nixpkgs.legacyPackages.${system};
+        home-manager = home-manager.defaultPackage.${system};
+        pkgs = nixpkgs.legacyPackages.${system};
       };
       packages.${system} = {
         homeConfigurations =
           let
             config = username:
-              inputs.home-manager.lib.homeManagerConfiguration {
+              home-manager.lib.homeManagerConfiguration {
                 inherit system username;
                 homeDirectory = "/Users/${username}";
                 configuration.imports = [ ./home.nix ];
