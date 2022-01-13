@@ -20,15 +20,15 @@
       packages.${system} = {
         homeConfigurations =
           let
-            config = username:
+            mkconfig = username:
               home-manager.lib.homeManagerConfiguration {
                 inherit system username;
                 homeDirectory = "/Users/${username}";
                 configuration.imports = [ ./home.nix ];
               };
           in {
-            runner = config "runner";
-            sestrella = config "sestrella";
+            runner = mkconfig "runner";
+            sestrella = mkconfig "sestrella";
           };
       };
     };
