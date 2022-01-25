@@ -13,4 +13,5 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
       - run: ln -s $PWD ~/.config/nixpkgs
       - run: nix develop -c home-manager switch
+        shell: bash
       - run: nixpkgs-fmt --check **/*.nix
