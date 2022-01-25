@@ -17,10 +17,17 @@ Clone the repository:
 git clone https://github.com/sestrella/nix-home.git ~/.config/nixpkgs
 ```
 
+Turn on flakes support:
+
+```sh
+mkdir -p ~/.config/nix
+echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+```
+
 Build and activate configuration:
 
 ```sh
-nix-shell --run 'home-manager switch'
+nix develop -c home-manager switch
 ```
 
 ## Inspired By
