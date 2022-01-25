@@ -1,8 +1,9 @@
 { pkgs, ... }:
 
 let
-  yamlFormat = pkgs.formats.yaml {};
-in {
+  yamlFormat = pkgs.formats.yaml { };
+in
+{
   home.file.".stack/config.yaml".source = yamlFormat.generate "stack-config" {
     templates = {
       params = {

@@ -1,18 +1,24 @@
 { pkgs, ... }:
 
 let
-  sources = import ./nix/sources.nix {};
-  plugins = builtins.listToAttrs (builtins.map (name: {
-    name = name;
-    value = pkgs.vimUtils.buildVimPluginFrom2Nix (let
-      source = sources."${name}";
-    in {
-      pname = name;
-      src = source;
-      version = source.rev;
-    });
-  }) (builtins.attrNames sources));
-in {
+  sources = import ./nix/sources.nix { };
+  plugins = builtins.listToAttrs (builtins.map
+    (name: {
+      name = name;
+      value = pkgs.vimUtils.buildVimPluginFrom2Nix (
+        let
+          source = sources."${name}";
+        in
+        {
+          pname = name;
+          src = source;
+          version = source.rev;
+        }
+      );
+    })
+    (builtins.attrNames sources));
+in
+{
   home.sessionVariables = {
     EDITOR = "nvim";
   };

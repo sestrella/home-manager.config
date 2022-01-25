@@ -1,7 +1,8 @@
-{ pkgs, home-manager }:
+{ pkgs }:
 
 pkgs.mkShell {
   buildInputs = [
-    home-manager
+    pkgs.home-manager
+    pkgs.nixpkgs-fmt
   ];
 }
