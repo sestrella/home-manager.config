@@ -14,7 +14,6 @@ in
     ./home/git
     # ./home/iterm2
     ./home/neovim
-    # ./home/stack
     ./home/starship
     ./home/tmux
     ./home/zsh
