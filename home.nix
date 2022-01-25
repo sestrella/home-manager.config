@@ -30,6 +30,7 @@ in
     pkgs.jq
     pkgs.ncat
     pkgs.ngrok
+    pkgs.nixpkgs-fmt
     pkgs.ripgrep
     pkgs.vagrant
     pkgs.watch
