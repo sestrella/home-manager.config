@@ -10,7 +10,7 @@ in
   imports = [
     # ./home/bundle
     ./home/direnv
-    # ./home/fzf
+    ./home/fzf
     ./home/git
     # ./home/iterm2
     ./home/neovim
