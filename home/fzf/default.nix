@@ -1,5 +1,9 @@
 { pkgs, ... }:
 
 {
-  programs.fzf.enable = true;
+  programs.fzf = {
+    enable = true;
+    enableBashIntegration = false;
+    enableFishIntegration = false;
+  };
 }
