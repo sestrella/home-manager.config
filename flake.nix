@@ -7,22 +7,25 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager }: {
-    devShell.x86_64-darwin = import ./shell.nix {
-      pkgs = nixpkgs.legacyPackages.x86_64-darwin;
-    };
-    packages.x86_64-darwin.homeConfigurations =
-      let
-        mkconfig = username: home-manager.lib.homeManagerConfiguration {
-          inherit username;
-          system = "x86_64-darwin";
-          homeDirectory = "/Users/${username}";
-          configuration.imports = [ ./home.nix ];
-        };
-      in
-      {
-        runner = mkconfig "runner";
-        sestrella = mkconfig "sestrella";
+  outputs = { self, nixpkgs, home-manager }:
+    let
+      system = "x86_64-darwin";
+    in
+    {
+      devShell."${system}" = import ./shell.nix {
+        pkgs = import nixpkgs { inherit system; };
       };
-  };
+      packages."${system}".homeConfigurations =
+        let
+          mkconfig = username: home-manager.lib.homeManagerConfiguration {
+            inherit username system;
+            homeDirectory = "/Users/${username}";
+            configuration.imports = [ ./home.nix ];
+          };
+        in
+        {
+          runner = mkconfig "runner";
+          sestrella = mkconfig "sestrella";
+        };
+    };
 }

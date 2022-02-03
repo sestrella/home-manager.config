@@ -12,5 +12,5 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
       - run: ln -s $PWD ~/.config/nixpkgs
-      - run: nix develop -c home-manager switch
+      - run: nix develop -c home-manager switch --show-trace
       - run: nixpkgs-fmt --check **/*.nix
