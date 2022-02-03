@@ -13,7 +13,14 @@
     in
     {
       devShell."${system}" = import ./shell.nix {
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [
+            (self: super: {
+              home-manager = home-manager.defaultPackage."${system}";
+            })
+          ];
+        };
       };
       packages."${system}".homeConfigurations =
         let
