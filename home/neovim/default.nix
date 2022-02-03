@@ -53,15 +53,15 @@ in
         '';
       }
       # Reference: https://github.com/hrsh7th/vim-vsnip#2-setting
-      {
-        plugin = plugins.vim-vsnip;
-        config = ''
-          imap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-          imap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-          smap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-          smap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-        '';
-      }
+      # {
+      #   plugin = plugins.vim-vsnip;
+      #   config = ''
+      #     imap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+      #     imap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+      #     smap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
+      #     smap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
+      #   '';
+      # }
       pkgs.vimPlugins.NeoSolarized
       pkgs.vimPlugins.lsp-colors-nvim
       pkgs.vimPlugins.lualine-nvim
@@ -75,16 +75,17 @@ in
       pkgs.vimPlugins.vim-terraform
       pkgs.vimPlugins.vim-toml
       # Custom plugins
-      plugins.cmp-buffer
-      plugins.cmp-cmdline
-      plugins.cmp-nvim-lsp
-      plugins.cmp-path
-      plugins.cmp-vsnip
-      plugins.comment
-      plugins.friendly-snippets
-      plugins.lspkind-nvim
-      plugins.nvim-cmp
-      plugins.nvim-lspconfig
+      # TODO: Review LSP configuration
+      # plugins.cmp-buffer
+      # plugins.cmp-cmdline
+      # plugins.cmp-nvim-lsp
+      # plugins.cmp-path
+      # plugins.cmp-vsnip
+      # plugins.comment
+      # plugins.friendly-snippets
+      # plugins.lspkind-nvim
+      # plugins.nvim-cmp
+      # plugins.nvim-lspconfig
     ];
     viAlias = true;
     vimAlias = true;
