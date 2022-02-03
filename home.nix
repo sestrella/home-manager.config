@@ -8,7 +8,7 @@ let
 in
 {
   imports = [
-    # ./home/bundle
+    ./home/bundle
     ./home/direnv
     ./home/fzf
     ./home/git
