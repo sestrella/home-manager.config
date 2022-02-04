@@ -12,5 +12,5 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
       - run: ln -s $PWD ~/.config/nixpkgs
+      # TODO: Revisit this approach try to use switch instead of build as before
       - run: nix develop -c home-manager build
-      - run: nixpkgs-fmt --check **/*.nix
