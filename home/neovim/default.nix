@@ -62,13 +62,53 @@ in
       #     smap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
       #   '';
       # }
-      pkgs.vimPlugins.NeoSolarized
+      {
+        plugin = pkgs.vimPlugins.NeoSolarized;
+        config = ''
+          lua << EOF
+          local handle = io.popen("defaults read -g AppleInterfaceStyle 2> /dev/null", "r")
+          local result = handle:read("*a")
+          handle:close()
+
+          if result == "Dark\n" then
+            vim.o.background = "dark"
+          else
+            vim.o.background = "light"
+          end
+
+          vim.o.termguicolors = true
+          vim.cmd("colorscheme NeoSolarized")
+          EOF
+        '';
+      }
       pkgs.vimPlugins.lsp-colors-nvim
-      pkgs.vimPlugins.lualine-nvim
-      pkgs.vimPlugins.nvim-tree-lua
+      {
+        plugin = pkgs.vimPlugins.lualine-nvim;
+        config = ''
+          lua << EOF
+          require('lualine').setup({
+            options = { theme = 'solarized' }
+          });
+          EOF
+        '';
+      }
+      {
+        plugin = pkgs.vimPlugins.nvim-tree-lua;
+        config = ''
+          lua << EOF
+          require('nvim-tree').setup()
+          vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true })
+          EOF
+        '';
+      }
       pkgs.vimPlugins.nvim-web-devicons
       pkgs.vimPlugins.surround
-      pkgs.vimPlugins.telescope-nvim
+      {
+        plugin = pkgs.vimPlugins.telescope-nvim;
+        config = ''
+          lua vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>Telescope find_files<CR>', {})
+        '';
+      }
       pkgs.vimPlugins.vim-better-whitespace
       pkgs.vimPlugins.vim-nix
       pkgs.vimPlugins.vim-rails

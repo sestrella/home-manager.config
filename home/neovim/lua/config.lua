@@ -13,7 +13,3 @@ vim.o.splitright = true
 -- require('config/cmp')
 -- require('config/comment')
 -- require('config/lspconfig')
-require('config/lualine')
-require('config/neosolarized')
-require('config/nvim-tree')
-require('config/telescope')
