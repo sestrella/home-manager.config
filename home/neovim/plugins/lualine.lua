@@ -1,3 +1,1 @@
-require('lualine').setup({
-  options = { theme = 'solarized' }
-});
+require('lualine').setup({options = {theme = 'solarized'}});

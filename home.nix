@@ -29,6 +29,7 @@ in
     pkgs.github-cli
     pkgs.htop
     pkgs.jq
+    pkgs.luaformatter
     pkgs.ncat
     pkgs.ngrok
     pkgs.nixpkgs-fmt
