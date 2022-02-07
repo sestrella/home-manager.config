@@ -32,20 +32,8 @@ in
     plugins = [
       {
         plugin = pkgs.vimPlugins.haskell-vim;
-        config = ''
-          let g:haskell_classic_highlighting=1
-        '';
+        config = readLuaFile ./plugins/haskell.lua;
       }
-      # Reference: https://github.com/hrsh7th/vim-vsnip#2-setting
-      # {
-      #   plugin = plugins.vim-vsnip;
-      #   config = ''
-      #     imap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-      #     imap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-      #     smap <expr> <S-Tab> vsnip#jumpable(-1) ? '<Plug>(vsnip-jump-prev)' : '<S-Tab>'
-      #     smap <expr> <Tab> vsnip#jumpable(1) ? '<Plug>(vsnip-jump-next)' : '<Tab>'
-      #   '';
-      # }
       {
         plugin = pkgs.vimPlugins.NeoSolarized;
         config = readLuaFile ./plugins/neosolarized.lua;
@@ -54,6 +42,10 @@ in
       {
         plugin = pkgs.vimPlugins.lualine-nvim;
         config = readLuaFile ./plugins/lualine.lua;
+      }
+      {
+        plugin = pkgs.vimPlugins.nvim-lspconfig;
+        config = readLuaFile ./plugins/lspconfig.lua;
       }
       {
         plugin = pkgs.vimPlugins.nvim-tree-lua;
@@ -85,16 +77,5 @@ in
     ];
     viAlias = true;
     vimAlias = true;
-  };
-
-  xdg.configFile."nvim/lua" = {
-    source = ./lua;
-    recursive = true;
-  };
-
-  # TODO: Add path to g:vsnip_snippet_dir
-  xdg.configFile."nvim/snippets" = {
-    source = ./snippets;
-    recursive = true;
   };
 }
