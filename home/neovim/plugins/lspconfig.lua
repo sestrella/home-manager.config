@@ -1,14 +1,16 @@
 local lspconfig = require('lspconfig');
 
 local opts = {noremap = true, silent = true};
+local keymaps = {
+  ['<leader>f'] = '<cmd>lua vim.lsp.buf.formatting()<CR>',
+  ['<leader>rn'] = '<cmd>lua vim.lsp.buf.rename()<CR>',
+};
 
 local on_attach = function(_, bufnr)
     vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc');
-
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>f',
-                                '<cmd>lua vim.lsp.buf.formatting()<CR>', opts);
-    vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>rn',
-                                '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
+    for lhs, rhs in pairs(keymaps) do
+      vim.api.nvim_buf_set_keymap(bufnr, 'n', lhs, rhs, opts);
+    end
 end
 
 local servers = {'rnix', 'rust_analyzer', 'yamlls'};
