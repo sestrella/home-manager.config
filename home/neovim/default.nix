@@ -1,22 +1,11 @@
 { pkgs, ... }:
 
 let
-  sources = import ./nix/sources.nix { };
-  plugins = builtins.listToAttrs (builtins.map
-    (name: {
-      name = name;
-      value = pkgs.vimUtils.buildVimPluginFrom2Nix (
-        let
-          source = sources."${name}";
-        in
-        {
-          pname = name;
-          src = source;
-          version = source.rev;
-        }
-      );
-    })
-    (builtins.attrNames sources));
+  readLuaFile = source: ''
+    lua << EOF
+    ${builtins.readFile source}
+    EOF
+  '';
 in
 {
   home.sessionVariables = {
@@ -43,19 +32,7 @@ in
 
       nnoremap <c-l> :nohlsearch<cr>
 
-      lua << EOF
-      vim.o.number = true
-      -- screen
-      vim.o.colorcolumn = "80"
-      -- spaces
-      vim.o.expandtab = true
-      vim.o.shiftwidth = 2
-      vim.o.softtabstop = 2
-      vim.o.tabstop = 2
-      -- windows
-      vim.o.splitbelow = true
-      vim.o.splitright = true
-      EOF
+      ${readLuaFile ./init.lua}
     '';
     plugins = [
       {
@@ -76,50 +53,22 @@ in
       # }
       {
         plugin = pkgs.vimPlugins.NeoSolarized;
-        config = ''
-          lua << EOF
-          local handle = io.popen("defaults read -g AppleInterfaceStyle 2> /dev/null", "r")
-          local result = handle:read("*a")
-          handle:close()
-
-          if result == "Dark\n" then
-            vim.o.background = "dark"
-          else
-            vim.o.background = "light"
-          end
-
-          vim.o.termguicolors = true
-          vim.cmd("colorscheme NeoSolarized")
-          EOF
-        '';
+        config = readLuaFile ./plugins/neosolarized.lua;
       }
       pkgs.vimPlugins.lsp-colors-nvim
       {
         plugin = pkgs.vimPlugins.lualine-nvim;
-        config = ''
-          lua << EOF
-          require('lualine').setup({
-            options = { theme = 'solarized' }
-          });
-          EOF
-        '';
+        config = readLuaFile ./plugins/lualine.lua;
       }
       {
         plugin = pkgs.vimPlugins.nvim-tree-lua;
-        config = ''
-          lua << EOF
-          require('nvim-tree').setup()
-          vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true })
-          EOF
-        '';
+        config = readLuaFile ./plugins/nvim-tree.lua;
       }
       pkgs.vimPlugins.nvim-web-devicons
       pkgs.vimPlugins.surround
       {
         plugin = pkgs.vimPlugins.telescope-nvim;
-        config = ''
-          lua vim.api.nvim_set_keymap('n', '<C-p>', '<cmd>Telescope find_files<CR>', {})
-        '';
+        config = readLuaFile ./plugins/telescope.lua;
       }
       pkgs.vimPlugins.vim-better-whitespace
       pkgs.vimPlugins.vim-nix
