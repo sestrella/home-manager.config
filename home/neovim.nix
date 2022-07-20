@@ -25,7 +25,9 @@
 
           local on_attach = function(client, bufnr)
             local bufopts = { noremap=true, silent=true, buffer=bufnr }
-            vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+            vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
+            vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
+            vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
           end
 
           local default_options = {
@@ -49,7 +51,7 @@
         config = ''
           vim.o.termguicolors = true
           vim.g.solarized_termtrans = 1
-          vim.cmd('colorscheme solarized')
+          vim.cmd("colorscheme solarized")
         '';
         type = "lua";
       }
@@ -57,19 +59,19 @@
         plugin = nvim-treesitter;
         config = ''
           require("nvim-treesitter.configs").setup({
-              ensure_installed = {
+            ensure_installed = {
               "haskell",
-                "javascript",
-                "json",
-                "lua",
-                "markdown",
-                "nix",
-                "python",
-                "ruby",
-                "rust",
-                "toml",
-                "yaml"
-              },
+              "javascript",
+              "json",
+              "lua",
+              "markdown",
+              "nix",
+              "python",
+              "ruby",
+              "rust",
+              "toml",
+              "yaml"
+            },
             highlight = {
               enable = true
             }
