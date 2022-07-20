@@ -42,6 +42,18 @@
           local servers = {
             rnix = {
               cmd = { "${pkgs.rnix-lsp}/bin/rnix-lsp" }
+            },
+            yamlls = {
+              cmd = { "${pkgs.yaml-language-server}/bin/yaml-language-server", "--stdio" },
+              settings = {
+                yaml = {
+                  schemas = {
+                    ["https://json.schemastore.org/circleciconfig.json"] = "/.circleci/config.yml",
+                    ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*.yml",
+                    ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "/docker-compose*.yml"
+                  }
+                }
+              }
             }
           }
 
