@@ -5,11 +5,15 @@
     enable = true;
     extraConfig = ''
       lua << EOF
+      vim.o.colorcolumn = "80"
+      vim.o.cursorline = true
       vim.o.expandtab = true
       vim.o.laststatus = 3
       vim.o.number = true
       vim.o.shiftwidth = 2
       vim.o.softtabstop = 2
+      vim.o.splitbelow = true
+      vim.o.splitright = true
       vim.o.tabstop = 2
       EOF
     '';
