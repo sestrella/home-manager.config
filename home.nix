@@ -1,50 +1,41 @@
 { config, pkgs, ... }:
 
-let
-  # https://nixos.wiki/wiki/Fonts#Installing_specific_fonts_from_nerdfonts
-  nerdfonts = pkgs.nerdfonts.override {
-    fonts = [ "FiraCode" ];
-  };
-in
 {
+  # Home Manager needs a bit of information about you and the
+  # paths it should manage.
+  home.username = "sestrella";
+  home.homeDirectory = "/Users/sestrella";
+
+  # This value determines the Home Manager release that your
+  # configuration is compatible with. This helps avoid breakage
+  # when a new Home Manager release introduces backwards
+  # incompatible changes.
+  #
+  # You can update Home Manager without changing this value. See
+  # the Home Manager release notes for a list of state version
+  # changes in each release.
+  home.stateVersion = "22.05";
+
+  # Let Home Manager install and manage itself.
+  programs.home-manager.enable = true;
+
+  # Custom configuration
   imports = [
-    ./home/bundle
-    ./home/direnv
-    ./home/fzf
-    ./home/git
-    # ./home/iterm2
-    ./home/neovim
-    ./home/starship
-    ./home/tmux
-    ./home/zsh
+    ./home/direnv.nix
+    ./home/fzf.nix
+    ./home/git.nix
+    ./home/neovim.nix
+    ./home/nix.nix
+    ./home/starship.nix
+    ./home/tmux.nix
+    ./home/zsh.nix
   ];
 
   home.packages = [
-    nerdfonts
     pkgs.awscli2
-    pkgs.docker-compose
-    pkgs.duf
     pkgs.fd
-    pkgs.git-ignore
-    pkgs.github-cli
-    pkgs.htop
     pkgs.jq
-    pkgs.luaformatter
-    pkgs.ncat
-    pkgs.ngrok
-    pkgs.nixpkgs-fmt
     pkgs.ripgrep
-    pkgs.vagrant
     pkgs.watch
-    pkgs.yq
   ];
-
-  # programs.fzf.enable = true;
-
-  # https://blog.ramdoot.in/changing-ghci-prompt-96fe5750d78
-  # home.file.".ghci".text = ''
-  #   :set prompt "\ESC[34mλ> \ESC[m"
-  # '';
-
-  nixpkgs.config.allowUnfree = true;
 }
