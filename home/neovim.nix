@@ -34,6 +34,15 @@
         type = "lua";
       }
       {
+        plugin = nvim-solarized-lua;
+        config = ''
+          vim.o.termguicolors = true
+          vim.g.solarized_termtrans = 1
+          vim.cmd('colorscheme solarized')
+        '';
+        type = "lua";
+      }
+      {
         plugin = nvim-treesitter;
         config = ''
           require("nvim-treesitter.configs").setup({
@@ -58,15 +67,15 @@
         type = "lua";
       }
       {
-      	plugin = telescope-nvim;
-	config = ''
-	  local builtin = require("telescope.builtin")
-	  vim.keymap.set("n", "<c-p>", builtin.git_files, {})
-	'';
-	type = "lua";
+        plugin = telescope-nvim;
+        config = ''
+          local builtin = require("telescope.builtin")
+          vim.keymap.set("n", "<c-p>", builtin.git_files, {})
+        '';
+        type = "lua";
       }
       # TODO: Remove this plugin
-      pkgs.vimPlugins.playground
+      playground
     ];
     viAlias = true;
     vimAlias = true;
