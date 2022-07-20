@@ -25,9 +25,14 @@
 
           local on_attach = function(client, bufnr)
             local bufopts = { noremap=true, silent=true, buffer=bufnr }
-            vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
-            vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
-            vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+            local keymaps = {
+              ["<space>ca"] = vim.lsp.buf.code_action,
+              ["<space>f"] = vim.lsp.buf.formatting,
+              ["<space>rn"] = vim.lsp.buf.rename
+            }
+            for key, value in pairs(keymaps) do
+              vim.keymap.set("n", key, value, bufopts)
+            end
           end
 
           local default_options = {
