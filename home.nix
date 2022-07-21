@@ -31,6 +31,10 @@
     ./home/zsh.nix
   ];
 
+  home.sessionVariables = {
+    NIX_PATH = "$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels\${NIX_PATH:+:$NIX_PATH}";
+  };
+
   home.packages = [
     pkgs.awscli2
     pkgs.fd

@@ -12,6 +12,10 @@ let
   };
 in
 {
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+
   programs.neovim = {
     enable = true;
     extraConfig = ''
