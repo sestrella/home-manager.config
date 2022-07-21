@@ -1,6 +1,7 @@
 { config, pkgs, ... }:
 
 let
+  # INFO: Reference https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md
   dark-notify = pkgs.vimUtils.buildVimPlugin {
     name = "dark-notify";
     src = pkgs.fetchFromGitHub {
