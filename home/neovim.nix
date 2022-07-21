@@ -10,7 +10,8 @@ let
       sha256 = "sha256-i90NsosFcRd6V2lPjJIG+R0KXwBtWj8L1J0JCJakmvs=";
     };
   };
-in {
+in
+{
   programs.neovim = {
     enable = true;
     extraConfig = ''
@@ -31,7 +32,7 @@ in {
       {
         plugin = dark-notify;
         config = ''
-        require("dark_notify").run()
+          require("dark_notify").run()
         '';
         type = "lua";
       }
