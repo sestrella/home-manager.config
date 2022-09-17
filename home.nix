@@ -28,6 +28,7 @@
   home.packages = [
     pkgs.aws-vault
     pkgs.awscli2
+    pkgs.gh
     pkgs.jq
     pkgs.ripgrep
     pkgs.terraform
