@@ -26,9 +26,12 @@
   };
 
   home.packages = [
+    pkgs.aws-vault
+    pkgs.awscli2
     pkgs.jq
     pkgs.ripgrep
     pkgs.terraform
+    pkgs.tmate
   ];
 
   programs.autojump.enable = true;
