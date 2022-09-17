@@ -33,6 +33,7 @@
     pkgs.ripgrep
     pkgs.terraform
     pkgs.tmate
+    pkgs.tree
   ];
 
   programs.autojump.enable = true;
