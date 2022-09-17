@@ -22,13 +22,13 @@
   # Custom configuration
   home.sessionVariables = {
     EDITOR = "nvim";
+    # https://nix-community.github.io/home-manager/index.html#sec-install-standalone
     NIX_PATH = "$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels\${NIX_PATH:+:$NIX_PATH}";
   };
 
   home.packages = [
     pkgs.aws-vault
     pkgs.awscli2
-    pkgs.gh
     pkgs.jq
     pkgs.ripgrep
     pkgs.terraform
@@ -72,6 +72,13 @@
   };
 
   programs.fzf.enable = true;
+
+  programs.gh = {
+    enable = true;
+    settings = {
+      git_protocol = "git";
+    };
+  };
 
   programs.neovim =
     let
