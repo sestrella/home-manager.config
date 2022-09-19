@@ -1,17 +1,5 @@
 { config, pkgs, ... }:
 
-let
-  # INFO: Reference https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md
-  dark-notify = pkgs.vimUtils.buildVimPlugin {
-    name = "dark-notify";
-    src = pkgs.fetchFromGitHub {
-      owner = "cormacrelf";
-      repo = "dark-notify";
-      rev = "891adc07dd7b367b840f1e9875b075fd8af4dc52";
-      sha256 = "sha256-i90NsosFcRd6V2lPjJIG+R0KXwBtWj8L1J0JCJakmvs=";
-    };
-  };
-in
 {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -24,6 +12,7 @@ in
       vim.o.colorcolumn = "80"
       vim.o.cursorline = true
       vim.o.expandtab = true
+      vim.o.ignorecase = true
       vim.o.laststatus = 3
       vim.o.number = true
       vim.o.shiftwidth = 2
@@ -33,86 +22,79 @@ in
       vim.o.tabstop = 2
       EOF
     '';
-    plugins = with pkgs.vimPlugins; [
+    plugins = [
+      pkgs.vimPlugins.cmp-nvim-lsp
+      pkgs.vimPlugins.cmp-vsnip
       {
-        plugin = dark-notify;
+        plugin = pkgs.vimPlugins.nvim-cmp;
         config = ''
-          require("dark_notify").run()
+          local cmp = require("cmp")
+          cmp.setup({
+            snippet = {
+              expand = function(args)
+                vim.fn["vsnip#anonymous"](args.body)
+              end
+            },
+            mapping = cmp.mapping.preset.insert({
+              ["<Tab>"] = cmp.mapping.confirm({ select = true })
+            }),
+            sources = cmp.config.sources({
+              { name = "nvim_lsp" },
+              { name = "vsnip" }
+            })
+          })
         '';
         type = "lua";
       }
       {
-        plugin = nvim-lspconfig;
+        plugin = pkgs.vimPlugins.nvim-lspconfig;
         config = ''
-          local lspconfig = require("lspconfig")
-
           local on_attach = function(client, bufnr)
-            local bufopts = { noremap=true, silent=true, buffer=bufnr }
-            local keymaps = {
-              ["<space>ca"] = vim.lsp.buf.code_action,
-              ["<space>f"] = vim.lsp.buf.formatting,
-              ["<space>rn"] = vim.lsp.buf.rename
-            }
-            for key, value in pairs(keymaps) do
-              vim.keymap.set("n", key, value, bufopts)
-            end
+            local bufopts = { noremap = true, silent = true, buffer = bufnr }
+            vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
           end
 
-          local default_options = {
-            on_attach = on_attach
-          }
+          local capabilities = vim.lsp.protocol.make_client_capabilities()
+          capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-          local servers = {
-            rnix = {
-              cmd = { "${pkgs.rnix-lsp}/bin/rnix-lsp" }
-            },
-            yamlls = {
-              cmd = { "${pkgs.yaml-language-server}/bin/yaml-language-server", "--stdio" },
-              settings = {
-                yaml = {
-                  schemas = {
-                    ["https://json.schemastore.org/circleciconfig.json"] = "/.circleci/config.yml",
-                    ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*.yml",
-                    ["https://raw.githubusercontent.com/buildkite/pipeline-schema/main/schema.json"] = "/.buildkite/pipeline.yml",
-                    ["https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json"] = "/docker-compose*.yml"
-                  }
+          local lspconfig = require("lspconfig")
+
+          lspconfig["rnix"].setup({
+            cmd = { "${pkgs.rnix-lsp}/bin/rnix-lsp" },
+            on_attach = on_attach,
+            capabilities = capabilities
+          })
+
+          lspconfig["terraformls"].setup({
+            cmd = { "${pkgs.terraform-ls}/bin/terraform-ls", "serve" },
+            on_attach = on_attach,
+            capabilities = capabilities
+          })
+
+          lspconfig["yamlls"].setup({
+            cmd = { "${pkgs.yaml-language-server}/bin/yaml-language-server", "--stdio" },
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+              yaml = {
+                schemas = {
+                  ["https://json.schemastore.org/circleciconfig.json"] = "/.circleci/config.yml",
+                  ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*.yml"
                 }
               }
             }
-          }
-
-          for server, options in pairs(servers) do
-            lspconfig[server].setup(vim.tbl_extend("keep", options, default_options))
-          end
+          })
         '';
         type = "lua";
       }
       {
-        plugin = nvim-solarized-lua;
+        plugin = pkgs.vimPlugins.nvim-treesitter;
         config = ''
-          vim.o.termguicolors = true
-          vim.g.solarized_termtrans = 1
-          vim.cmd("colorscheme solarized")
-        '';
-        type = "lua";
-      }
-      {
-        plugin = nvim-treesitter;
-        config = ''
+          local parser_installed_dir = "~/.local/share/nvim-treesitter"
+          vim.opt.runtimepath:append(parser_installed_dir)
           require("nvim-treesitter.configs").setup({
-            ensure_installed = {
-              "haskell",
-              "javascript",
-              "json",
-              "lua",
-              "markdown",
-              "nix",
-              "python",
-              "ruby",
-              "rust",
-              "toml",
-              "yaml"
-            },
+            auto_install = true,
+            parser_install_dir = parser_installed_dir,
             highlight = {
               enable = true
             }
@@ -121,18 +103,16 @@ in
         type = "lua";
       }
       {
-        plugin = telescope-nvim;
+        plugin = pkgs.vimPlugins.telescope-nvim;
         config = ''
           local builtin = require("telescope.builtin")
-          vim.keymap.set("n", "<c-p>", builtin.git_files, {})
+          vim.keymap.set("n", "<c-p>", builtin.find_files, {})
         '';
         type = "lua";
       }
-      # TODO: Remove this plugin
-      playground
+      pkgs.vimPlugins.vim-vsnip
     ];
     viAlias = true;
     vimAlias = true;
-    vimdiffAlias = true;
   };
 }
