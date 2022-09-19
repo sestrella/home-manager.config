@@ -100,7 +100,6 @@
     plugins = [
       pkgs.vimPlugins.cmp-nvim-lsp
       pkgs.vimPlugins.cmp-vsnip
-      pkgs.vimPlugins.vim-vsnip
       {
         plugin = pkgs.vimPlugins.nvim-cmp;
         config = ''
@@ -186,6 +185,7 @@
         '';
         type = "lua";
       }
+      pkgs.vimPlugins.vim-vsnip
     ];
     viAlias = true;
     vimAlias = true;
