@@ -22,6 +22,7 @@
   # Custom configuration
   imports = [
     ./home/neovim.nix
+    ./home/nix.nix
   ];
 
   home.sessionVariables = {
