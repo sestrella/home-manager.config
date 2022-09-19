@@ -3,12 +3,20 @@
 {
   programs.git = {
     enable = true;
-    extraConfig.init.defaultBranch = "main";
+    extraConfig = {
+      init.defaultBranch = "main";
+      push = {
+        autoSetupRemote = true;
+        default = "simple";
+      };
+    };
     userEmail = "2049686+sestrella@users.noreply.github.com";
     userName = "Sebastian Estrella";
   };
 
-  programs.zsh.shellAliases = {
+  programs.fish.shellAbbrs = {
+    "gc!" = "git commit -v --amend";
+    "gp!" = "git push --force";
     ga = "git add";
     gaa = "git add --all";
     gbr = "git branch --remote";

@@ -21,6 +21,7 @@
 
   # Custom configuration
   imports = [
+    ./home/git.nix
     ./home/neovim.nix
     ./home/nix.nix
   ];
@@ -47,18 +48,6 @@
   programs.fish = {
     enable = true;
     shellAbbrs = {
-      "gc!" = "git commit -v --amend";
-      "gp!" = "git push --force";
-      # git - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git
-      ga = "git add";
-      gaa = "git add --all";
-      gb = "git branch";
-      gc = "git commit -v";
-      gco = "git checkout";
-      gd = "git diff";
-      gl = "git pull";
-      gp = "git push";
-      gst = "git status";
       # home-manager
       hmo = "home-manager option";
       hms = "home-manager switch";
