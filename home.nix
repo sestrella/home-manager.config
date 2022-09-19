@@ -98,6 +98,30 @@
       EOF
     '';
     plugins = [
+      pkgs.vimPlugins.cmp-nvim-lsp
+      pkgs.vimPlugins.cmp-vsnip
+      pkgs.vimPlugins.vim-vsnip
+      {
+        plugin = pkgs.vimPlugins.nvim-cmp;
+        config = ''
+          local cmp = require("cmp")
+          cmp.setup({
+            snippet = {
+              expand = function(args)
+                vim.fn["vsnip#anonymous"](args.body)
+              end
+            },
+            mapping = cmp.mapping.preset.insert({
+              ["<Tab>"] = cmp.mapping.confirm({ select = true })
+            }),
+            sources = cmp.config.sources({
+              { name = "nvim_lsp" },
+              { name = "vsnip" }
+            })
+          })
+        '';
+        type = "lua";
+      }
       {
         plugin = pkgs.vimPlugins.nvim-lspconfig;
         config = ''
@@ -106,21 +130,27 @@
             vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
           end
 
+          local capabilities = vim.lsp.protocol.make_client_capabilities()
+          capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
           local lspconfig = require("lspconfig")
 
           lspconfig["rnix"].setup({
             cmd = { "${pkgs.rnix-lsp}/bin/rnix-lsp" },
-            on_attach = on_attach
+            on_attach = on_attach,
+            capabilities = capabilities
           })
 
           lspconfig["terraformls"].setup({
             cmd = { "${pkgs.terraform-ls}/bin/terraform-ls", "serve" },
-            on_attach = on_attach
+            on_attach = on_attach,
+            capabilities = capabilities
           })
 
           lspconfig["yamlls"].setup({
             cmd = { "${pkgs.yaml-language-server}/bin/yaml-language-server", "--stdio" },
             on_attach = on_attach,
+            capabilities = capabilities,
             settings = {
               yaml = {
                 schemas = {
