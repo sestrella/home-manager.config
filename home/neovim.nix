@@ -49,41 +49,41 @@
       {
         plugin = pkgs.vimPlugins.nvim-lspconfig;
         config = ''
+          local servers = {
+            rnix = {
+              cmd = { "${pkgs.rnix-lsp}/bin/rnix-lsp" }
+            },
+            terraformls = {
+              cmd = { "${pkgs.terraform-ls}/bin/terraform-ls", "serve" }
+            },
+            yamlls = {
+              cmd = { "${pkgs.yaml-language-server}/bin/yaml-language-server", "--stdio" },
+              settings = {
+                yaml = {
+                  schemas = {
+                    ["https://json.schemastore.org/circleciconfig.json"] = "/.circleci/config.yml",
+                    ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*.yml"
+                  }
+                }
+              }
+            }
+          }
+
+          local capabilities = vim.lsp.protocol.make_client_capabilities()
+          capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
+
           local on_attach = function(client, bufnr)
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
             vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
           end
 
-          local capabilities = vim.lsp.protocol.make_client_capabilities()
-          capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
-
           local lspconfig = require("lspconfig")
-
-          lspconfig["rnix"].setup({
-            cmd = { "${pkgs.rnix-lsp}/bin/rnix-lsp" },
-            on_attach = on_attach,
-            capabilities = capabilities
-          })
-
-          lspconfig["terraformls"].setup({
-            cmd = { "${pkgs.terraform-ls}/bin/terraform-ls", "serve" },
-            on_attach = on_attach,
-            capabilities = capabilities
-          })
-
-          lspconfig["yamlls"].setup({
-            cmd = { "${pkgs.yaml-language-server}/bin/yaml-language-server", "--stdio" },
-            on_attach = on_attach,
-            capabilities = capabilities,
-            settings = {
-              yaml = {
-                schemas = {
-                  ["https://json.schemastore.org/circleciconfig.json"] = "/.circleci/config.yml",
-                  ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*.yml"
-                }
-              }
-            }
-          })
+          for server, options in pairs(servers) do
+            lspconfig[server].setup(vim.tbl_extend("keep", options, {
+              capabilities = capabilities,
+              on_attach = on_attach
+            }))
+          end
         '';
         type = "lua";
       }
