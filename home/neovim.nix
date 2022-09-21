@@ -89,9 +89,9 @@
       }
       {
         plugin = pkgs.vimPlugins.nvim-treesitter;
+        # https://github.com/nvim-treesitter/nvim-treesitter#changing-the-parser-install-directory
         config = ''
           local parser_installed_dir = "~/.local/share/nvim-treesitter"
-          vim.opt.runtimepath:append(parser_installed_dir)
           require("nvim-treesitter.configs").setup({
             auto_install = true,
             parser_install_dir = parser_installed_dir,
@@ -99,6 +99,7 @@
               enable = true
             }
           })
+          vim.opt.runtimepath:append(parser_installed_dir)
         '';
         type = "lua";
       }
