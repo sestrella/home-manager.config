@@ -107,7 +107,7 @@
         plugin = pkgs.vimPlugins.telescope-nvim;
         config = ''
           local builtin = require("telescope.builtin")
-          vim.keymap.set("n", "<c-p>", builtin.find_files, {})
+          vim.keymap.set("n", "<c-p>", builtin.git_files, {})
         '';
         type = "lua";
       }
@@ -117,6 +117,7 @@
     vimAlias = true;
   };
 
+  # TODO: open an issue about passing the file path as an argument
   xdg.configFile."nvim/lua/init-home-manager.lua".onChange = ''
     ${pkgs.luaPackages.luacheck}/bin/luacheck \
       --config ~/.config/nixpkgs/.luacheckrc \
