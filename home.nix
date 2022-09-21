@@ -26,6 +26,7 @@
     ./home/neovim.nix
     ./home/nix.nix
     ./home/ripgrep.nix
+    ./home/tmux.nix
   ];
 
   home.sessionVariables = {
@@ -78,12 +79,4 @@
   };
 
   programs.starship.enable = true;
-
-  programs.tmux = {
-    enable = true;
-    baseIndex = 1;
-    escapeTime = 0;
-    keyMode = "vi";
-    prefix = "C-a";
-  };
 }
