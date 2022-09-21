@@ -72,7 +72,7 @@
           local capabilities = vim.lsp.protocol.make_client_capabilities()
           capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
-          local on_attach = function(client, bufnr)
+          local on_attach = function(_client, bufnr)
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
             vim.keymap.set("n", "<space>f", vim.lsp.buf.formatting, bufopts)
           end
@@ -116,4 +116,10 @@
     viAlias = true;
     vimAlias = true;
   };
+
+  xdg.configFile."nvim/lua/init-home-manager.lua".onChange = ''
+    ${pkgs.luaPackages.luacheck}/bin/luacheck \
+      --config ~/.config/nixpkgs/.luacheckrc \
+      ~/.config/nvim/lua/init-home-manager.lua
+  '';
 }
