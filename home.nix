@@ -21,9 +21,11 @@
 
   # Custom configuration
   imports = [
+    ./home/bat.nix
     ./home/git.nix
     ./home/neovim.nix
     ./home/nix.nix
+    ./home/ripgrep.nix
   ];
 
   home.sessionVariables = {
@@ -35,7 +37,6 @@
     pkgs.aws-vault
     pkgs.awscli2
     pkgs.jq
-    pkgs.ripgrep
     pkgs.terraform
     pkgs.tmate
     pkgs.tree
