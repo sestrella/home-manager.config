@@ -39,6 +39,7 @@
     pkgs.awscli2
     pkgs.jq
     pkgs.terraform
+    pkgs.tfsec
     pkgs.tmate
     pkgs.tree
   ];
