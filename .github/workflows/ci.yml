@@ -12,3 +12,5 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
       - run: nix-env -f '<nixpkgs>' -i home-manager
+      - run: ln -s $PWD ~/.config/nixpkgs
+      - run: home-manager switch
