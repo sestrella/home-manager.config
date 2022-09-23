@@ -50,6 +50,9 @@
         plugin = pkgs.vimPlugins.nvim-lspconfig;
         config = ''
           local servers = {
+            bashls = {
+              cmd = { "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server", "start" }
+            },
             rnix = {
               cmd = { "${pkgs.rnix-lsp}/bin/rnix-lsp" }
             },
