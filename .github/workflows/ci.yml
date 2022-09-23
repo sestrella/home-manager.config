@@ -8,7 +8,7 @@ jobs:
     runs-on: macos-latest
     defaults:
       run:
-        working-directory: ~/.config/nixpkgs
+        working-directory: /Users/runner/.config/nixpkgs
 
     steps:
       - uses: actions/checkout@v3
