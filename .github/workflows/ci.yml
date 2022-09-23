@@ -3,13 +3,13 @@ name: CI
 
 on: push
 
-defaults:
-  run:
-    working-directory: ~/.config/nixpkgs
-
 jobs:
   build:
     runs-on: macos-latest
+    defaults:
+      run:
+        working-directory: ~/.config/nixpkgs
+
     steps:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v15
