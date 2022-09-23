@@ -6,15 +6,11 @@ on: push
 jobs:
   build:
     runs-on: macos-latest
-    defaults:
-      run:
-        working-directory: /Users/runner/.config/nixpkgs
-
     steps:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v15
         with:
           nix_path: nixpkgs=channel:nixos-unstable
-      - run: ln -s $PWD ~/.config/nixpkgs
       - run: nix-env -f '<nixpkgs>' -i home-manager
+      - run: ln -s $PWD ~/.config/nixpkgs
       - run: home-manager switch
