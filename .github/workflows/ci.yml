@@ -3,6 +3,10 @@ name: CI
 
 on: push
 
+defaults:
+  run:
+    working-directory: ~/.config/nixpkgs
+
 jobs:
   build:
     runs-on: macos-latest
@@ -14,4 +18,4 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-unstable
       - run: nix-env -f '<nixpkgs>' -i home-manager
-      - run: home-manager switch -f home.nix
+      - run: home-manager switch
