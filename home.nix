@@ -38,6 +38,7 @@
     pkgs.aws-vault
     pkgs.awscli2
     pkgs.jq
+    pkgs.node2nix
     pkgs.terraform
     pkgs.tfsec
     pkgs.tmate
