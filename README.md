@@ -30,6 +30,15 @@ Build and activate configuration:
 nix develop -c home-manager switch
 ```
 
+## Update nodePackages
+
+Run the following commands:
+
+```sh
+cd nodePackages
+node2nix -i node-packages.json
+```
+
 ## Inspired By
 
 A list of some repos that inspired me to build this one:

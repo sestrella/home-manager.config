@@ -1,5 +1,11 @@
 { config, pkgs, ... }:
 
+let
+  nodePackages = pkgs.callPackage ../nodePackages {
+    nodejs = pkgs.nodejs-14_x;
+  };
+  ansibleLanguageServer = nodePackages."@ansible/ansible-language-server";
+in
 {
   home.sessionVariables = {
     EDITOR = "nvim";
@@ -64,6 +70,9 @@
         plugin = pkgs.vimPlugins.nvim-lspconfig;
         config = ''
           local servers = {
+            ansiblels = {
+              cmd = { "${ansibleLanguageServer}/bin/ansible-language-server", "--stdio" }
+            },
             bashls = {
               cmd = { "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server", "start" }
             },
