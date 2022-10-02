@@ -5,12 +5,11 @@ on: push
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: cachix/install-nix-action@v15
         with:
-          nix_path: nixpkgs=channel:nixos-unstable:home-manager=https://github.com/nix-community/home-manager/archive/master.tar.gz
-      - run: nix-shell '<home-manager>' -A install
-      # - run: ln -s $PWD ~/.config/nixpkgs
-      # - run: home-manager switch
+          nix_path: nixpkgs=channel:nixos-unstable
+      - run: nix-env -i nixpkgs-fmt -f '<nixpkgs>'
+      - run: nixpkgs-fmt --check .
