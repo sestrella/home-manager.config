@@ -7,7 +7,10 @@ let
   ansibleLanguageServer = pkgs.stdenv.mkDerivation rec {
     pname = "ansible-language-server";
     version = "0.10.3";
-    src = builtins.fetchTarball "https://github.com/ansible/ansible-language-server/archive/refs/tags/v${version}.tar.gz";
+    src = builtins.fetchTarball {
+      url = "https://github.com/ansible/ansible-language-server/archive/refs/tags/v${version}.tar.gz";
+      sha256 = "1ydj0fiwvb48hf3nsqyg2038mihxlyazmwapgir2kx3nfzwslskv";
+    };
     nativeBuildInputs = [
       pkgs.nodejs
       pkgs.nodePackages.npm
