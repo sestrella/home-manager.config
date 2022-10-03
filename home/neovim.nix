@@ -4,31 +4,7 @@ let
   nodePackages = pkgs.callPackage ../nodePackages {
     nodejs = pkgs.nodejs-14_x;
   };
-  ansibleLanguageServer = pkgs.stdenv.mkDerivation rec {
-    pname = "ansible-language-server";
-    version = "0.10.3";
-    src = builtins.fetchTarball {
-      url = "https://github.com/ansible/ansible-language-server/archive/refs/tags/v${version}.tar.gz";
-      sha256 = "1ydj0fiwvb48hf3nsqyg2038mihxlyazmwapgir2kx3nfzwslskv";
-    };
-    nativeBuildInputs = [
-      pkgs.nodejs
-      pkgs.nodePackages.npm
-    ];
-    buildPhase = ''
-      HOME=. npm ci
-    '';
-    installPhase = ''
-      mkdir -p $out/bin
-      cp -r node_modules $out/
-      cp -r out $out/
-      cp bin/ansible-language-server $out/bin
-      cp package.json $out/
-    '';
-    fixupPhase = ''
-      patchShebangs $out/bin/ansible-language-server
-    '';
-  };
+  ansibleLanguageServer = nodePackages."@ansible/ansible-language-server";
 in
 {
   home.sessionVariables = {
