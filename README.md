@@ -30,7 +30,7 @@ home-manager switch --flake .#sestrella
 Run the following commands:
 
 ```sh
-cd nodePackages
+cd node-packages
 node2nix -i node-packages.json
 ```
 
