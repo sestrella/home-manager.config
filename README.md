@@ -7,27 +7,22 @@ My user configuration managed via
 
 ## Requirements
 
-- Install [nix](https://nixos.org/guides/install-nix.html)
+- Install [Nix](https://nixos.org/guides/install-nix.html)
+- Enable [Nix Flakes](https://nixos.wiki/wiki/Flakes)
 
 ## Getting Started
 
-Clone the repository:
+Activate the configuration for the first time:
 
 ```sh
-git clone https://github.com/sestrella/nix-home.git ~/.config/nixpkgs
+nix build --no-link .#homeConfigurations.sestrella.activationPackage
+"$(nix path-info .#homeConfigurations.sestrella.activationPackage)"/activate
 ```
 
-Turn on flakes support:
+Next time, update the configuration via `home-manager`:
 
 ```sh
-mkdir -p ~/.config/nix
-echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
-```
-
-Build and activate configuration:
-
-```sh
-nix develop -c home-manager switch
+home-manager switch --flake .#sestrella
 ```
 
 ## Update nodePackages
@@ -46,10 +41,3 @@ A list of some repos that inspired me to build this one:
 - [HugoReeves/nix-home](https://github.com/HugoReeves/nix-home/)
 - [gvolpe/nix-config](https://github.com/gvolpe/nix-config/)
 - [ryantm/home-manager-template](https://github.com/ryantm/home-manager-template/)
-
-## References
-
-Some interesting articles that I found handy while building this project:
-
-- [Gnome 3 on NixOS](https://gvolpe.com/blog/gnome3-on-nixos/)
-- [Your home in Nix (dotfile management)](https://hugoreeves.com/posts/2019/nix-home/)
