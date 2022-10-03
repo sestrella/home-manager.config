@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  nodePackages = pkgs.callPackage ../nodePackages {
+  nodePackages = pkgs.callPackage ../node-packages {
     nodejs = pkgs.nodejs-14_x;
   };
   # TODO: try to refactor with an overlay
