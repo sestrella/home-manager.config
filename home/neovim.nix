@@ -147,9 +147,9 @@ in
   };
 
   # TODO: open an issue about passing the file path as an argument
-  xdg.configFile."nvim/init.lua".onChange = ''
-    ${pkgs.luaPackages.luacheck}/bin/luacheck \
-      --config ~/.config/nixpkgs/.luacheckrc \
-      ~/.config/nvim/init.lua
-  '';
+  # xdg.configFile."nvim/init.lua".onChange = ''
+  #   ${pkgs.luaPackages.luacheck}/bin/luacheck \
+  #     --config ~/.config/nixpkgs/.luacheckrc \
+  #     ~/.config/nvim/init.lua
+  # '';
 }
