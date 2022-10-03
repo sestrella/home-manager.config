@@ -4,6 +4,7 @@ let
   nodePackages = pkgs.callPackage ../nodePackages {
     nodejs = pkgs.nodejs-14_x;
   };
+  # TODO: try to refactor with an overlay
   ansibleLanguageServer = nodePackages."@ansible/ansible-language-server";
 in
 {
