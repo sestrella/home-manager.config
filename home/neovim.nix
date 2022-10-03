@@ -4,28 +4,7 @@ let
   nodePackages = pkgs.callPackage ../nodePackages {
     nodejs = pkgs.nodejs-14_x;
   };
-  ansibleLanguageServer = pkgs.stdenv.mkDerivation rec {
-    pname = "ansible-language-server";
-    version = "0.10.3";
-    src = builtins.fetchTarball "https://github.com/ansible/ansible-language-server/archive/refs/tags/v${version}.tar.gz";
-    nativeBuildInputs = [
-      pkgs.nodejs
-      pkgs.nodePackages.npm
-    ];
-    buildPhase = ''
-      HOME=. npm ci
-    '';
-    installPhase = ''
-      mkdir -p $out/bin
-      cp -r node_modules $out/
-      cp -r out $out/
-      cp bin/ansible-language-server $out/bin
-      cp package.json $out/
-    '';
-    fixupPhase = ''
-      patchShebangs $out/bin/ansible-language-server
-    '';
-  };
+  ansibleLanguageServer = nodePackages."@ansible/ansible-language-server";
 in
 {
   home.sessionVariables = {
@@ -168,9 +147,9 @@ in
   };
 
   # TODO: open an issue about passing the file path as an argument
-  xdg.configFile."nvim/init.lua".onChange = ''
-    ${pkgs.luaPackages.luacheck}/bin/luacheck \
-      --config ~/.config/nixpkgs/.luacheckrc \
-      ~/.config/nvim/init.lua
-  '';
+  # xdg.configFile."nvim/init.lua".onChange = ''
+  #   ${pkgs.luaPackages.luacheck}/bin/luacheck \
+  #     --config ~/.config/nixpkgs/.luacheckrc \
+  #     ~/.config/nvim/init.lua
+  # '';
 }
