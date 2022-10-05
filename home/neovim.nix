@@ -148,4 +148,12 @@ in
     viAlias = true;
     vimAlias = true;
   };
+
+  xdg.configFile."nvim/init.lua".onChange = ''
+    ${pkgs.luaPackages.luacheck}/bin/luacheck \
+      ${config.xdg.configHome}/nvim/init.lua \
+      --codes \
+      --globals vim \
+      --ignore 631
+  '';
 }

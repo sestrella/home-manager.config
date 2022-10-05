@@ -35,6 +35,7 @@
   };
 
   home.packages = [
+    pkgs.luaPackages.luacheck
     pkgs.aws-vault
     pkgs.awscli2
     pkgs.jq
