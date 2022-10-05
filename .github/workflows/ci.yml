@@ -13,4 +13,4 @@ jobs:
           nix_path: nixpkgs=channel:nixos-unstable
           extra_nix_config: experimental-features = nix-command flakes
       - run: nix build .#homeConfigurations.sestrella.activationPackage
-      - run: ls -al
+      - run: ./result/activate
