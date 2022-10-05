@@ -151,7 +151,7 @@ in
 
   xdg.configFile."nvim/init.lua".onChange = ''
     ${pkgs.luaPackages.luacheck}/bin/luacheck \
-      ${config.xdg.configHome}/nvim/init.lua \
+      ~/nvim/init.lua \
       --codes \
       --globals vim \
       --ignore 631
