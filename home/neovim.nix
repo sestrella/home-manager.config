@@ -16,12 +16,12 @@ in
     enable = true;
     extraConfig = ''
       lua << EOF
-      vim.o.cmdheight = 0 -- number of lines to use for the command-line
+      vim.o.cmdheight = 0
       vim.o.colorcolumn = "80"
       vim.o.cursorline = true
       vim.o.expandtab = true
       vim.o.ignorecase = true
-      vim.o.laststatus = 0 -- tells when last window has status lines
+      vim.o.laststatus = 0
       vim.o.number = true
       vim.o.shiftwidth = 2
       vim.o.softtabstop = 2
@@ -29,6 +29,7 @@ in
       vim.o.splitright = true
       vim.o.tabstop = 2
       EOF
+      set winbar=%f
     '';
     plugins = [
       pkgs.vimPlugins.cmp-nvim-lsp
