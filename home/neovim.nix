@@ -28,8 +28,8 @@ in
       vim.o.splitbelow = true
       vim.o.splitright = true
       vim.o.tabstop = 2
+      vim.o.winbar= "%f"
       EOF
-      set winbar=%f
     '';
     plugins = [
       pkgs.vimPlugins.cmp-nvim-lsp
