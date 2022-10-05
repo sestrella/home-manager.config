@@ -120,8 +120,8 @@ in
         type = "lua";
       }
       {
-        plugin = pkgs.vimPlugins.nvim-treesitter;
         # https://github.com/nvim-treesitter/nvim-treesitter#changing-the-parser-install-directory
+        plugin = pkgs.vimPlugins.nvim-treesitter;
         config = ''
           local parser_installed_dir = "~/.local/share/nvim-treesitter"
           require("nvim-treesitter.configs").setup({
@@ -148,11 +148,4 @@ in
     viAlias = true;
     vimAlias = true;
   };
-
-  # TODO: open an issue about passing the file path as an argument
-  # xdg.configFile."nvim/init.lua".onChange = ''
-  #   ${pkgs.luaPackages.luacheck}/bin/luacheck \
-  #     --config ~/.config/nixpkgs/.luacheckrc \
-  #     ~/.config/nvim/init.lua
-  # '';
 }
