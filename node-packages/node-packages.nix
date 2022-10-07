@@ -190,10 +190,10 @@ in
   "@ansible/ansible-language-server" = nodeEnv.buildNodePackage {
     name = "_at_ansible_slash_ansible-language-server";
     packageName = "@ansible/ansible-language-server";
-    version = "0.10.3";
+    version = "1.0.0";
     src = fetchurl {
-      url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-0.10.3.tgz";
-      sha512 = "1+KX4kTIkvS9yBIvNX5P3fp+MIrmCUFYJ0SHjR9RW5AkvHDv7vdBL8f6b0Jt/yFMzmMxDdgZuAM6X5MK7qoFPA==";
+      url = "https://registry.npmjs.org/@ansible/ansible-language-server/-/ansible-language-server-1.0.0.tgz";
+      sha512 = "ddJeWZ8GJGkuBCLXY5qLFDguyUQYpEoZfIdpzdEhVWiO1K/Dy28Bx75YC889hEreHzwXbJXUOeDGqkUe39azpg==";
     };
     dependencies = [
       sources."@flatten-js/interval-tree-1.0.19"
