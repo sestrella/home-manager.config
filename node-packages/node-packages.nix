@@ -187,7 +187,7 @@ let
   };
 in
 {
-  "@ansible/ansible-language-server" = nodeEnv.buildNodePackage {
+  "@ansible/ansible-language-server-1.x" = nodeEnv.buildNodePackage {
     name = "_at_ansible_slash_ansible-language-server";
     packageName = "@ansible/ansible-language-server";
     version = "1.0.0";

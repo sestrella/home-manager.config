@@ -5,7 +5,7 @@ let
     nodejs = pkgs.nodejs-14_x;
   };
   # TODO: try to refactor with an overlay
-  ansibleLanguageServer = nodePackages."@ansible/ansible-language-server";
+  ansibleLanguageServer = nodePackages."@ansible/ansible-language-server-1.x";
 in
 {
   home.sessionVariables = {
