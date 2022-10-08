@@ -120,18 +120,21 @@ in
         type = "lua";
       }
       {
-        # https://github.com/nvim-treesitter/nvim-treesitter#changing-the-parser-install-directory
-        plugin = pkgs.vimPlugins.nvim-treesitter;
+        # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md#treesitter
+        plugin = pkgs.vimPlugins.nvim-treesitter.withPlugins (plugins: [
+          plugins.tree-sitter-dockerfile
+          plugins.tree-sitter-haskell
+          plugins.tree-sitter-markdown
+          plugins.tree-sitter-nix
+          plugins.tree-sitter-rust
+          plugins.tree-sitter-yaml
+        ]);
         config = ''
-          local parser_installed_dir = "~/.local/share/nvim-treesitter"
           require("nvim-treesitter.configs").setup({
-            auto_install = true,
-            parser_install_dir = parser_installed_dir,
             highlight = {
               enable = true
             }
           })
-          vim.opt.runtimepath:append(parser_installed_dir)
         '';
         type = "lua";
       }
