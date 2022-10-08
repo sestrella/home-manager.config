@@ -4,8 +4,19 @@ let
   nodePackages = pkgs.callPackage ../node-packages {
     nodejs = pkgs.nodejs-14_x;
   };
-  # TODO: try to refactor with an overlay
   ansibleLanguageServer = nodePackages."@ansible/ansible-language-server-1.x";
+  # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md
+  playground = pkgs.vimUtils.buildVimPlugin rec {
+    pname = "playgrond";
+    version = "e6a0bfaf9b5e36e3a327a1ae9a44a989eae472cf";
+    # https://github.com/nvim-treesitter/playground
+    src = pkgs.fetchFromGitHub {
+      owner = "nvim-treesitter";
+      repo = "playground";
+      rev = "${version}";
+      sha256 = "wst6YwtTJbR65+jijSSgsS9Isv1/vO9uAjuoUg6tVQc=";
+    };
+  };
 in
 {
   home.sessionVariables = {
@@ -34,6 +45,7 @@ in
     plugins = [
       pkgs.vimPlugins.cmp-nvim-lsp
       pkgs.vimPlugins.cmp-vsnip
+      playground
       {
         plugin = pkgs.vimPlugins.null-ls-nvim;
         config = ''
@@ -132,6 +144,9 @@ in
         config = ''
           require("nvim-treesitter.configs").setup({
             highlight = {
+              enable = true
+            },
+            playground = {
               enable = true
             }
           })
