@@ -33,7 +33,6 @@ in
     plugins = [
       pkgs.vimPlugins.cmp-nvim-lsp
       pkgs.vimPlugins.cmp-vsnip
-      pkgs.vimPlugins.playground
       {
         plugin = pkgs.vimPlugins.null-ls-nvim;
         config = ''
@@ -140,14 +139,6 @@ in
           require("nvim-treesitter.configs").setup({
             highlight = {
               enable = true
-            },
-            playground = {
-              enable = true
-            },
-            query_linter = {
-              enable = true,
-              use_virtual_text = true,
-              lint_events = {"BufWrite", "CursorHold"},
             }
           })
         '';
