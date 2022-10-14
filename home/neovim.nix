@@ -107,6 +107,8 @@ in
           local on_attach = function(_client, bufnr)
             vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
             local bufopts = { noremap = true, silent = true, buffer = bufnr }
+            vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, bufopts)
+            vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, bufopts)
             vim.keymap.set("n", "<space>f", function()
               vim.lsp.buf.format { async = true }
             end, bufopts)
@@ -122,7 +124,6 @@ in
         '';
         type = "lua";
       }
-      #  Use vim.lsp.buf.format { async = true } instead
       {
         # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md#treesitter
         plugin = pkgs.vimPlugins.nvim-treesitter.withPlugins
