@@ -1,9 +1,7 @@
 { config, pkgs, ... }@args:
 
 {
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
+  home.sessionVariables.EDITOR = "nvim";
 
   programs.neovim = {
     enable = true;
@@ -28,6 +26,7 @@
       (plugin: (import plugin { inherit pkgs; }))
       [
         ./neovim/cmp.nix
+        ./neovim/dark-notify.nix
         ./neovim/lspconfig.nix
         ./neovim/null-ls.nix
         ./neovim/solarized.nix
