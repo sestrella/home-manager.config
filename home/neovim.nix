@@ -125,6 +125,14 @@ in
         type = "lua";
       }
       {
+        plugin = pkgs.vimPlugins.nvim-solarized-lua;
+        config = ''
+          vim.o.termguicolors = true
+          vim.cmd("colorscheme solarized")
+        '';
+        type = "lua";
+      }
+      {
         # https://github.com/NixOS/nixpkgs/blob/master/doc/languages-frameworks/vim.section.md#treesitter
         plugin = pkgs.vimPlugins.nvim-treesitter.withPlugins
           (plugins: [
