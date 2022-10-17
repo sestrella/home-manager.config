@@ -17,9 +17,6 @@ in
       bashls = {
         cmd = { "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server", "start" }
       },
-      hls = {
-        cmd = { "${pkgs.haskell-language-server}/bin/haskell-language-server-wrapper", "--lsp" }
-      },
       rnix = {
         cmd = { "${pkgs.rnix-lsp}/bin/rnix-lsp" }
       },
