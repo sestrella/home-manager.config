@@ -22,7 +22,6 @@
   # Custom configuration
   imports = [
     ./home/bat.nix
-    ./home/direnv.nix
     ./home/fish.nix
     ./home/git.nix
     ./home/neovim.nix
@@ -49,6 +48,8 @@
   ];
 
   programs.autojump.enable = true;
+
+  programs.direnv.enable = true;
 
   programs.fzf.enable = true;
 
