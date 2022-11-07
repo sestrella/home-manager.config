@@ -36,15 +36,17 @@
   };
 
   home.packages = [
-    pkgs.luaPackages.luacheck
     pkgs.aws-vault
     pkgs.awscli2
     pkgs.jq
+    pkgs.luaPackages.luacheck
     pkgs.node2nix
+    pkgs.powershell
     pkgs.terraform
     pkgs.tfsec
     pkgs.tmate
     pkgs.tree
+    pkgs.wget
   ];
 
   programs.autojump.enable = true;

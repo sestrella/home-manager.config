@@ -14,7 +14,8 @@
     terminal = "screen-256color";
   };
 
-  programs.zsh.shellAliases = {
+  programs.fish.shellAbbrs = {
+    # tmux - https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tmux
     ta = "tmux attach -t";
     tkss = "tmux kill-session -t";
     tksv = "tmux kill-server";
