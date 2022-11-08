@@ -2,6 +2,7 @@
 
 {
   plugin = pkgs.vimPlugins.nvim-cmp;
+  # Reference: https://github.com/hrsh7th/nvim-cmp#recommended-configuration
   config = ''
     local cmp = require("cmp")
     cmp.setup({
@@ -14,7 +15,7 @@
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true })
+        ["<Tab>"] = cmp.mapping.confirm({ select = true })
       }),
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
