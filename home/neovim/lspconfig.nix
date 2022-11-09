@@ -6,37 +6,31 @@
   config = ''
     local servers = {
       ansiblels = {
-        cmd = {
-          "${pkgs.nodePackages."@ansible/ansible-language-server"}/bin/ansible-language-server",
-          "--stdio",
-        },
+        cmd = { "${pkgs.nodePackages."@ansible/ansible-language-server"}/bin/ansible-language-server", "--stdio" },
       },
       bashls = {
-        cmd = { "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server", "start" },
+        cmd = { "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server", "start" }
       },
       rnix = {
-        cmd = { "${pkgs.rnix-lsp}/bin/rnix-lsp" },
+        cmd = { "${pkgs.rnix-lsp}/bin/rnix-lsp" }
       },
       rust_analyzer = {
-        cmd = { "${pkgs.rust-analyzer}/bin/rust-analyzer" },
+        cmd = { "${pkgs.rust-analyzer}/bin/rust-analyzer" }
       },
       terraformls = {
-        cmd = { "${pkgs.terraform-ls}/bin/terraform-ls", "serve" },
+        cmd = { "${pkgs.terraform-ls}/bin/terraform-ls", "serve" }
       },
       yamlls = {
-        cmd = {
-          "${pkgs.yaml-language-server}/bin/yaml-language-server",
-          "--stdio",
-        },
+        cmd = { "${pkgs.yaml-language-server}/bin/yaml-language-server", "--stdio" },
         settings = {
           yaml = {
             schemas = {
               ["https://json.schemastore.org/circleciconfig.json"] = "/.circleci/config.yml",
-              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*.yml",
-            },
-          },
-        },
-      },
+              ["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*.yml"
+            }
+          }
+        }
+      }
     }
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -51,11 +45,11 @@
       end, bufopts)
     end
 
-    local lspconfig = require "lspconfig"
+    local lspconfig = require("lspconfig")
     for server, options in pairs(servers) do
       lspconfig[server].setup(vim.tbl_extend("keep", options, {
         capabilities = capabilities,
-        on_attach = on_attach,
+        on_attach = on_attach
       }))
     end
   '';
