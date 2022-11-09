@@ -49,10 +49,9 @@
   };
 
   xdg.configFile."nvim/init.lua".onChange = ''
-    ${pkgs.luaPackages.luacheck}/bin/luacheck \
-      ~/.config/nvim/init.lua \
-      --codes \
-      --globals vim \
-      --ignore 631
+    ${pkgs.stylua}/bin/stylua \
+      -c \
+      -f ~/.config/nixpkgs/.stylua.toml \
+      ~/.config/nvim/init.lua
   '';
 }
