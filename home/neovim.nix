@@ -22,23 +22,28 @@
       vim.o.winbar= "%f"
       EOF
     '';
-    plugins = map
-      (plugin: (import plugin { inherit pkgs; }))
-      [
-        ./neovim/cmp.nix
-        ./neovim/dark-notify.nix
-        ./neovim/lspconfig.nix
-        ./neovim/null-ls.nix
-        ./neovim/solarized.nix
-        ./neovim/telescope.nix
-        ./neovim/treesitter.nix
-      ] ++ [
-      pkgs.vimPlugins.cmp-buffer
-      pkgs.vimPlugins.cmp-nvim-lsp
-      pkgs.vimPlugins.cmp-path
-      pkgs.vimPlugins.cmp-vsnip
-      pkgs.vimPlugins.vim-vsnip
-    ];
+    plugins =
+      let
+        pluginsWithConfig = map
+          (plugin: (import plugin { inherit pkgs; }))
+          [
+            ./neovim/cmp.nix
+            ./neovim/dark-notify.nix
+            ./neovim/lspconfig.nix
+            ./neovim/null-ls.nix
+            ./neovim/solarized.nix
+            ./neovim/telescope.nix
+            ./neovim/treesitter.nix
+          ];
+        plugins = [
+          pkgs.vimPlugins.cmp-buffer
+          pkgs.vimPlugins.cmp-nvim-lsp
+          pkgs.vimPlugins.cmp-path
+          pkgs.vimPlugins.cmp-vsnip
+          pkgs.vimPlugins.vim-vsnip
+        ];
+      in
+      pluginsWithConfig ++ plugins;
     viAlias = true;
     vimAlias = true;
   };
