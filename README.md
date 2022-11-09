@@ -25,15 +25,6 @@ Next time, update the configuration via `home-manager`:
 home-manager switch --flake .#sestrella
 ```
 
-## Update nodePackages
-
-Run the following commands:
-
-```sh
-cd node-packages
-node2nix -i node-packages.json
-```
-
 ## Inspired By
 
 A list of some repos that inspired me to build this one:

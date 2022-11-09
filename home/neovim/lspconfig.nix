@@ -1,18 +1,12 @@
 { pkgs }:
 
-let
-  nodePackages = pkgs.callPackage ../../node-packages {
-    nodejs = pkgs.nodejs-14_x;
-  };
-  ansibleLanguageServer = nodePackages."@ansible/ansible-language-server-1.x";
-in
 {
   # https://github.com/neovim/nvim-lspconfig#suggested-configuration
   plugin = pkgs.vimPlugins.nvim-lspconfig;
   config = ''
     local servers = {
       ansiblels = {
-        cmd = { "${ansibleLanguageServer}/bin/ansible-language-server", "--stdio" },
+        cmd = { "${pkgs.nodePackages."@ansible/ansible-language-server"}/bin/ansible-language-server", "--stdio" },
       },
       bashls = {
         cmd = { "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server", "start" }
