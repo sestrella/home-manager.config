@@ -20,6 +20,10 @@
       vim.o.splitright = true
       vim.o.tabstop = 2
       vim.o.winbar= "%f"
+
+      -- https://twitter.com/theprimeagen/status/1591996471951429633
+      vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", {})
+      vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", {})
       EOF
     '';
     plugins =
