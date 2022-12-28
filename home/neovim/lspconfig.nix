@@ -5,9 +5,6 @@
   plugin = pkgs.vimPlugins.nvim-lspconfig;
   config = ''
     local servers = {
-      ansiblels = {
-        cmd = { "${pkgs.nodePackages."@ansible/ansible-language-server"}/bin/ansible-language-server", "--stdio" },
-      },
       bashls = {
         cmd = { "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server", "start" }
       },
