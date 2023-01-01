@@ -49,6 +49,7 @@
       pluginsWithConfig ++ plugins;
     viAlias = true;
     vimAlias = true;
+    vimdiffAlias = true;
   };
 
   xdg.configFile."nvim/init.lua".onChange = ''
