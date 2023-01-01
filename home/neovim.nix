@@ -1,10 +1,9 @@
 { config, pkgs, ... }@args:
 
 {
-  home.sessionVariables.EDITOR = "nvim";
-
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
     extraConfig = ''
       lua << EOF
       vim.o.cmdheight = 0
