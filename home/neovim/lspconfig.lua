@@ -1,3 +1,5 @@
+-- https://github.com/neovim/nvim-lspconfig#suggested-configuration
+
 local servers = {
   bashls = {},
   rnix = {},
