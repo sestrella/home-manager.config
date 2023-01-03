@@ -1,6 +1,15 @@
 { config, pkgs, ... }@args:
 
 {
+  home.packages = [
+    pkgs.nodePackages.bash-language-server
+    pkgs.rnix-lsp
+    pkgs.rust-analyzer
+    pkgs.sumneko-lua-language-server
+    pkgs.terraform-ls
+    pkgs.yaml-language-server
+  ];
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
