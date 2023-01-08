@@ -42,13 +42,42 @@
         pluginsWithConfig = map
           (plugin: (import plugin { inherit pkgs; }))
           [
-            ./neovim/cmp.nix
             ./neovim/dark-notify.nix
-            ./neovim/lspconfig.nix
             ./neovim/null-ls.nix
             ./neovim/solarized.nix
-            ./neovim/telescope.nix
-            ./neovim/treesitter.nix
+          ];
+        pluginsWithLuaConfig = map
+          (plugin: {
+            plugin = plugin.package;
+            config = builtins.readFile plugin.configFile;
+            type = "lua";
+          })
+          [
+            {
+              package = pkgs.vimPlugins.nvim-cmp;
+              configFile = ./neovim/cmp.lua;
+            }
+            {
+              package = pkgs.vimPlugins.nvim-lspconfig;
+              configFile = ./neovim/lspconfig.lua;
+            }
+            {
+              package = pkgs.vimPlugins.telescope-nvim;
+              configFile = ./neovim/telescope.lua;
+            }
+            {
+              package = pkgs.vimPlugins.nvim-treesitter.withPlugins
+                (plugins: [
+                  plugins.tree-sitter-dockerfile
+                  plugins.tree-sitter-haskell
+                  plugins.tree-sitter-hcl
+                  plugins.tree-sitter-markdown
+                  plugins.tree-sitter-nix
+                  plugins.tree-sitter-rust
+                  plugins.tree-sitter-yaml
+                ]);
+              configFile = ./neovim/treesitter.lua;
+            }
           ];
         plugins = [
           pkgs.vimPlugins.cmp-buffer
@@ -58,7 +87,7 @@
           pkgs.vimPlugins.vim-vsnip
         ];
       in
-      pluginsWithConfig ++ plugins;
+      pluginsWithConfig ++ pluginsWithLuaConfig ++ plugins;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
