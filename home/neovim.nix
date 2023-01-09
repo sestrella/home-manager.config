@@ -5,6 +5,7 @@
     pkgs.nodePackages.bash-language-server
     pkgs.rnix-lsp
     pkgs.rust-analyzer
+    pkgs.shfmt
     pkgs.sumneko-lua-language-server
     pkgs.terraform-ls
     pkgs.yaml-language-server
@@ -43,7 +44,6 @@
           (plugin: (import plugin { inherit pkgs; }))
           [
             ./neovim/dark-notify.nix
-            ./neovim/null-ls.nix
             ./neovim/solarized.nix
           ];
         pluginsWithLuaConfig = map
@@ -53,6 +53,10 @@
             type = "lua";
           })
           [
+            {
+              package = pkgs.vimPlugins.null-ls-nvim;
+              configFile = ./neovim/null-ls.lua;
+            }
             {
               package = pkgs.vimPlugins.nvim-cmp;
               configFile = ./neovim/cmp.lua;
