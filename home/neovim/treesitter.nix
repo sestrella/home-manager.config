@@ -7,6 +7,7 @@
       plugins.tree-sitter-dockerfile
       plugins.tree-sitter-haskell
       plugins.tree-sitter-hcl
+      plugins.tree-sitter-lua
       plugins.tree-sitter-markdown
       plugins.tree-sitter-nix
       plugins.tree-sitter-rust
@@ -16,8 +17,20 @@
     require("nvim-treesitter.configs").setup({
       highlight = {
         enable = true
+      },
+      playground = {
+        enable = true
       }
     })
+
+    require("vim.treesitter.query").set_query("nix", "injections", [[
+      (binding
+        (attrpath
+          attr: (identifier) @_attr (#eq? @_attr "config"))
+      
+        (indented_string_expression
+          (string_fragment) @lua))
+    ]])
   '';
   type = "lua";
 }
