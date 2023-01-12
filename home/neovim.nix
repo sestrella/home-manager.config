@@ -45,6 +45,7 @@
           [
             ./neovim/cmp.nix
             ./neovim/dark-notify.nix
+            ./neovim/lspconfig.nix
             ./neovim/null-ls.nix
             ./neovim/solarized.nix
             ./neovim/telescope.nix
