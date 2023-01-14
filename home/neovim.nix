@@ -50,6 +50,7 @@
             ./neovim/solarized.nix
             ./neovim/telescope.nix
             ./neovim/treesitter.nix
+            ./neovim/whitespace.nix
           ];
         plugins = [
           pkgs.vimPlugins.cmp-buffer

@@ -28,14 +28,14 @@
         (binding
           (attrpath
             attr: (identifier) @_config (#eq? @_config "config"))
-        
+
           (indented_string_expression
             (string_fragment) @lua))
-      
+
         (binding
           (attrpath
             attr: (identifier) @_type (#eq? @_type "type"))
-      
+
           (string_expression
             (string_fragment) @_value (#eq? @_value "lua"))))
     ]])
