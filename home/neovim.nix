@@ -56,6 +56,7 @@
           pkgs.vimPlugins.cmp-nvim-lsp
           pkgs.vimPlugins.cmp-path
           pkgs.vimPlugins.cmp-vsnip
+          pkgs.vimPlugins.markdown-preview-nvim
           pkgs.vimPlugins.playground
           pkgs.vimPlugins.vim-vsnip
         ];
