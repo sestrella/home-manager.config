@@ -14,14 +14,12 @@
       vim.o.cursorline = true
       vim.o.expandtab = true
       vim.o.ignorecase = true
-      vim.o.laststatus = 0
       vim.o.number = true
       vim.o.shiftwidth = 2
       vim.o.softtabstop = 2
       vim.o.splitbelow = true
       vim.o.splitright = true
       vim.o.tabstop = 2
-      vim.o.winbar= "%f"
 
       -- https://twitter.com/theprimeagen/status/1591996471951429633
       vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", {})
