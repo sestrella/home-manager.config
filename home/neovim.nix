@@ -1,16 +1,6 @@
 { config, pkgs, ... }@args:
 
 {
-  home.packages = [
-    pkgs.nodePackages.bash-language-server
-    pkgs.rnix-lsp
-    pkgs.rust-analyzer
-    pkgs.shfmt
-    pkgs.sumneko-lua-language-server
-    pkgs.terraform-ls
-    pkgs.yaml-language-server
-  ];
-
   programs.neovim = {
     enable = true;
     defaultEditor = true;
@@ -38,6 +28,15 @@
       vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", {})
       EOF
     '';
+    extraPackages = [
+      pkgs.nodePackages.bash-language-server
+      pkgs.rnix-lsp
+      pkgs.rust-analyzer
+      pkgs.shfmt
+      pkgs.sumneko-lua-language-server
+      pkgs.terraform-ls
+      pkgs.yaml-language-server
+    ];
     plugins =
       let
         pluginsWithConfig = map
