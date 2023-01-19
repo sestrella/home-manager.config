@@ -1,34 +1,26 @@
 {
-  description = "Home Manager configuration of Sebastian Estrella";
-
   inputs = {
-    flake-utils.url = "github:numtide/flake-utils";
+    darwin = {
+      url = "github:lnl7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = { flake-utils, nixpkgs, home-manager, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
-        packages.homeConfigurations.sestrella =
-          home-manager.lib.homeManagerConfiguration {
-            inherit pkgs;
-
-            # Specify your home configuration modules here, for example,
-            # the path to your home.nix.
-            modules = [
-              ./home.nix
-            ];
-
-            # Optionally use extraSpecialArgs
-            # to pass through arguments to home.nix
-          };
-      }
-    );
+  outputs = { self, darwin, home-manager, nixpkgs }: {
+    darwinConfigurations."Administrators-MacBook-Pro" = darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
+      modules = [
+        ./configuration.nix
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.users.sestrella = import ./home.nix;
+        }
+      ];
+    };
+  };
 }

@@ -1,28 +1,27 @@
-# Nix Home
+# Darwin Configuration
 
 [![CI](https://github.com/sestrella/nix-home/actions/workflows/ci.yml/badge.svg)](https://github.com/sestrella/nix-home/actions/workflows/ci.yml)
 
-My user configuration managed via
-[home-manager](https://github.com/nix-community/home-manager).
+My system configuration managed via
+[nix-darwin](https://github.com/LnL7/nix-darwin).
 
 ## Requirements
 
-- Install [Nix](https://nixos.org/guides/install-nix.html)
-- Enable [Nix Flakes](https://nixos.wiki/wiki/Flakes)
+Install [Nix](https://nixos.org/guides/install-nix.html) with
+[Flakes](https://nixos.wiki/wiki/Flakes) enabled
 
 ## Getting Started
 
-Activate the configuration for the first time:
+Activate the system configuration for the first time:
 
 ```sh
-nix build --no-link .#homeConfigurations.sestrella.activationPackage
-"$(nix path-info .#homeConfigurations.sestrella.activationPackage)"/activate
+nix build .#darwinConfigurations."Administrators-MacBook-Pro".system
 ```
 
-Next time, update the configuration via `home-manager`:
+Next time, update system configuration running the following command:
 
 ```sh
-home-manager switch --flake .#sestrella
+./result/sw/bin/darwin-rebuild switch --flake .
 ```
 
 ## Inspired By
