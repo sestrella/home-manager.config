@@ -1,4 +1,4 @@
-# Darwin Configuration
+# nix-darwin configuration
 
 [![CI](https://github.com/sestrella/nix-home/actions/workflows/ci.yml/badge.svg)](https://github.com/sestrella/nix-home/actions/workflows/ci.yml)
 
