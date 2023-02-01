@@ -11,6 +11,7 @@
       plugins.tree-sitter-markdown
       plugins.tree-sitter-nix
       plugins.tree-sitter-rust
+      plugins.tree-sitter-terraform
       plugins.tree-sitter-yaml
     ]);
   config = ''
