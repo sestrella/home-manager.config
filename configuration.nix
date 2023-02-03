@@ -17,6 +17,7 @@
       "google-chrome"
       "grammarly-desktop"
       "iterm2-beta"
+      "notion"
       "rectangle"
       "session-manager-plugin"
       "slack"
