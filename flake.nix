@@ -12,15 +12,25 @@
   };
 
   outputs = { self, darwin, home-manager, nixpkgs }: {
-    darwinConfigurations."Administrators-MacBook-Pro" = darwin.lib.darwinSystem {
-      system = "aarch64-darwin";
-      modules = [
-        ./configuration.nix
-        home-manager.darwinModules.home-manager
-        {
-          home-manager.users.sestrella = import ./home.nix;
-        }
-      ];
-    };
+    darwinConfigurations =
+      let
+        modules = [
+          ./configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.users.sestrella = import ./home.nix;
+          }
+        ];
+      in
+      {
+        "Administrators-MacBook-Pro" = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          inherit modules;
+        };
+        "ghactions" = darwin.lib.darwinSystem {
+          system = "x86_64-darwin";
+          inherit modules;
+        };
+      };
   };
 }
