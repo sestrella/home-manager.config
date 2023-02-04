@@ -12,5 +12,7 @@ jobs:
         with:
           extra_nix_config: experimental-features = nix-command flakes
       - run: sudo scutil --set HostName ghactions
+      - run: printf 'run\tprivate/var/run\n' | sudo tee -a /etc/synthetic.conf
+      - run: /System/Library/Filesystems/apfs.fs/Contents/Resources/apfs.util -t
       - run: nix build .#darwinConfigurations."ghactions".system
       - run: ./result/sw/bin/darwin-rebuild switch --flake .
