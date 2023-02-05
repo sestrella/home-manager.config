@@ -18,6 +18,7 @@
           ./configuration.nix
           home-manager.darwinModules.home-manager
           {
+            home-manager.backupFileExtension = "bak";
             home-manager.users.sestrella = import ./home.nix;
           }
         ];

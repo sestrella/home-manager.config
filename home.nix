@@ -20,7 +20,6 @@
     ./home/fish.nix
     ./home/git.nix
     ./home/neovim.nix
-    # ./home/nix.nix
     ./home/ripgrep.nix
     ./home/tmux.nix
   ];
