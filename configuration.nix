@@ -10,6 +10,9 @@
 
   homebrew = {
     enable = true;
+    brews = [
+      "dark-notify"
+    ];
     casks = [
       "1password"
       "docker"
@@ -23,6 +26,12 @@
       "slack"
       "spotify"
       "zoom"
+    ];
+    onActivation.cleanup = "uninstall";
+    taps = [
+      "cormacrelf/tap"
+      "homebrew/cask-fonts"
+      "homebrew/cask-versions"
     ];
   };
 
