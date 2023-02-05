@@ -1,13 +1,6 @@
 { pkgs, ... }:
 
 {
-  users.users.sestrella = {
-    home = "/Users/sestrella";
-    shell = pkgs.fish;
-  };
-
-  services.nix-daemon.enable = true;
-
   homebrew = {
     enable = true;
     brews = [
@@ -49,10 +42,18 @@
     };
   };
 
+  # TODO: https://www.hein.dev/blog/2020/01/using-touchid-tmux-pam_reattach/
   security.pam.enableSudoTouchIdAuth = true;
+
+  services.nix-daemon.enable = true;
 
   system.keyboard = {
     enableKeyMapping = true;
     remapCapsLockToControl = true;
+  };
+
+  users.users.sestrella = {
+    home = "/Users/sestrella";
+    shell = pkgs.fish;
   };
 }
