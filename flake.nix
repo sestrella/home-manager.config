@@ -1,7 +1,7 @@
 {
   inputs = {
     darwin = {
-      url = "github:lnl7/nix-darwin";
+      url = "github:stackbuilders/nix-darwin/add_pam_reattach_support";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {

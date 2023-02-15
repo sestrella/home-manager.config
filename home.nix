@@ -33,9 +33,9 @@
     pkgs.aws-vault
     pkgs.awscli2
     pkgs.awsebcli
+    pkgs.gnused
     pkgs.jq
     pkgs.luaPackages.luacheck
-    pkgs.powershell # TODO: remove this package
     pkgs.stack
     pkgs.terraform
     pkgs.terraform-docs

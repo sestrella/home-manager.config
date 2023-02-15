@@ -42,8 +42,10 @@
     };
   };
 
-  # TODO: https://www.hein.dev/blog/2020/01/using-touchid-tmux-pam_reattach/
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam = {
+    enableSudoTouchIdAuth = true;
+    enableTmuxTouchIdSupport = true;
+  };
 
   services.nix-daemon.enable = true;
 
