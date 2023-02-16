@@ -36,10 +36,6 @@
     pkgs.gnused
     pkgs.jq
     pkgs.luaPackages.luacheck
-    pkgs.stack
-    pkgs.terraform
-    pkgs.terraform-docs
-    pkgs.tfsec
     pkgs.tmate
     pkgs.tree
     pkgs.wget
