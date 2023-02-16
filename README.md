@@ -26,7 +26,7 @@ Next time, update system configuration running the following command:
 
 ## Inspired By
 
-A list of some repos that inspired me to build this one:
+A list of repositories that inspired this one:
 
 - [HugoReeves/nix-home](https://github.com/HugoReeves/nix-home/)
 - [gvolpe/nix-config](https://github.com/gvolpe/nix-config/)
