@@ -4,7 +4,7 @@
   plugin = pkgs.vimPlugins.nvim-cmp;
   config = ''
     local cmp = require("cmp")
-    
+
     -- Reference: https://github.com/hrsh7th/nvim-cmp#recommended-configuration
     cmp.setup({
       snippet = {

@@ -42,12 +42,12 @@
         }
       }
     }
-    
+
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
-    
+
     local on_attach = function(_client, bufnr)
       vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-    
+
       local nmap = function(keys, func)
         vim.keymap.set("n", keys, func, {
           buffer = bufnr,
@@ -55,14 +55,14 @@
           silent = true
         })
       end
-    
+
       nmap("<leader>rn", vim.lsp.buf.rename)
       nmap("<leader>ca", vim.lsp.buf.code_action)
       nmap("<leader>f", function()
         vim.lsp.buf.format({ async = true })
       end)
     end
-    
+
     local lspconfig = require("lspconfig")
     for server, options in pairs(servers) do
       lspconfig[server].setup(vim.tbl_extend("keep", options, {
