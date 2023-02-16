@@ -11,6 +11,6 @@ jobs:
       - uses: cachix/install-nix-action@v15
         with:
           extra_nix_config: experimental-features = nix-command flakes
-      - run: nix build .#darwinConfigurations."ghactions".system
+      - run: ./bin/build ghactions
       # TODO: Fix issue running darwin-rebuild
       # - run: ./result/sw/bin/darwin-rebuild switch --flake .

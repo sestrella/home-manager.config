@@ -14,24 +14,23 @@
   outputs = { self, darwin, home-manager, nixpkgs }: {
     darwinConfigurations =
       let
-        modules = [
-          ./configuration.nix
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.backupFileExtension = "bak";
-            home-manager.users.sestrella = import ./home.nix;
-          }
-        ];
+        mkDarwinSystem = system: darwin.lib.darwinSystem {
+          inherit system;
+          modules = [
+            ./configuration.nix
+            home-manager.darwinModules.home-manager
+            {
+              home-manager = {
+                backupFileExtension = "bak";
+                users.sestrella = import ./home.nix;
+              };
+            }
+          ];
+        };
       in
       {
-        "Administrators-MacBook-Pro" = darwin.lib.darwinSystem {
-          system = "aarch64-darwin";
-          inherit modules;
-        };
-        "ghactions" = darwin.lib.darwinSystem {
-          system = "x86_64-darwin";
-          inherit modules;
-        };
+        "Administrators-MacBook-Pro" = mkDarwinSystem "aarch64-darwin";
+        "ghactions" = mkDarwinSystem "x86_64-darwin";
       };
   };
 }

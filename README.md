@@ -15,18 +15,18 @@ Install [Nix](https://nixos.org/guides/install-nix.html) with
 Activate the system configuration for the first time:
 
 ```sh
-nix build .#darwinConfigurations."Administrators-MacBook-Pro".system
+./bin/build
 ```
 
 Next time, update system configuration running the following command:
 
 ```sh
-./result/sw/bin/darwin-rebuild switch --flake .
+./bin/switch
 ```
 
 ## Inspired By
 
-A list of some repos that inspired me to build this one:
+A list of repositories that inspired this one:
 
 - [HugoReeves/nix-home](https://github.com/HugoReeves/nix-home/)
 - [gvolpe/nix-config](https://github.com/gvolpe/nix-config/)

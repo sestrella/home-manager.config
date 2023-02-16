@@ -1,0 +1,2 @@
+#!/usr/bin/env bash
+./result/sw/bin/darwin-rebuild switch --flake .

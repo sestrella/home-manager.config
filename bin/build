@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+HOSTNAME="${1:-$(hostname)}"
+nix build .#darwinConfigurations."$HOSTNAME".system
