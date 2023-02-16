@@ -66,36 +66,40 @@
     vimdiffAlias = true;
   };
 
-  home.file.".vsnip/nix.json".text = builtins.toJSON {
-    flake = {
-      prefix = [ "flake" ];
-      body = [
-        "{"
-        "  inputs = {"
-        "    flake-utils.url = \"github:numtide/flake-utils\";"
-        "    nixpkgs.url = \"nixpkgs/nixos-unstable\";"
-        "  };"
-        ""
-        "  outputs = { self, flake-utils, nixpkgs }:"
-        "    flake-utils.lib.simpleFlake {"
-        "      inherit self nixpkgs;"
-        "      name = \"$1\";"
-        "      shell = ./shell.nix;"
-        "    };"
-        "}"
-      ];
+  home.file.".vsnip/nix.json".text =
+    let
+      mkBody = body: builtins.filter (x: x != [ ]) (builtins.split "\n" body);
+    in
+    builtins.toJSON {
+      flake = {
+        prefix = [ "flake" ];
+        body = mkBody ''
+          {
+            inputs = {
+              flake-utils.url = "github:numtide/flake-utils";
+              nixpkgs.url = "nixpkgs/nixos-unstable";
+            };
+
+            outputs = { self, flake-utils, nixpkgs }:
+              flake-utils.lib.simpleFlake {
+                inherit self nixpkgs;
+                name = "$1";
+                shell = ./shell.nix;
+              };
+          }
+        '';
+      };
+      shell = {
+        prefix = [ "shell" ];
+        body = mkBody ''
+          { pkgs }:
+
+          pkgs.mkShell {
+            buildInputs = [
+              $1
+            ];
+          }
+        '';
+      };
     };
-    shell = {
-      prefix = [ "shell" ];
-      body = [
-        "{ pkgs }:"
-        ""
-        "pkgs.mkShell {"
-        "  buildInputs = ["
-        "    $1"
-        "  ];"
-        "}"
-      ];
-    };
-  };
 }
