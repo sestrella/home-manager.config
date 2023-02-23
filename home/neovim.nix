@@ -32,7 +32,6 @@
       pkgs.rnix-lsp
       pkgs.rust-analyzer
       pkgs.shfmt
-      pkgs.sumneko-lua-language-server
       pkgs.terraform-ls
       pkgs.yaml-language-server
     ];

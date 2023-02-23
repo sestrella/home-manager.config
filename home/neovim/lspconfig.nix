@@ -6,9 +6,8 @@
     -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
     local servers = {
       bashls = {},
-      rnix = {},
-      rust_analyzer = {},
-      sumneko_lua = {
+      lua_ls = {
+        cmd = { "${pkgs.lua-language-server}/bin/lua-language-server" },
         settings = {
           Lua = {
             runtime = {
@@ -30,6 +29,8 @@
           }
         }
       },
+      rnix = {},
+      rust_analyzer = {},
       terraformls = {},
       yamlls = {
         settings = {
