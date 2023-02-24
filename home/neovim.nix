@@ -4,8 +4,7 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
-    extraConfig = ''
-      lua << EOF
+    extraLuaConfig = ''
       vim.g.mapleader = ' '
       vim.g.maplocalleader = ' '
 
@@ -25,15 +24,9 @@
       -- https://twitter.com/theprimeagen/status/1591996471951429633
       vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", {})
       vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", {})
-      EOF
     '';
     extraPackages = [
-      pkgs.nodePackages.bash-language-server
-      pkgs.rnix-lsp
-      pkgs.rust-analyzer
       pkgs.shfmt
-      pkgs.terraform-ls
-      pkgs.yaml-language-server
     ];
     plugins =
       let

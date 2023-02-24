@@ -30,6 +30,14 @@
       (binding_set
         (binding
           (attrpath
+            attr: (identifier) @_config (#eq? @_config "extraLuaConfig"))
+
+          (indented_string_expression
+            (string_fragment) @lua)))
+
+      (binding_set
+        (binding
+          (attrpath
             attr: (identifier) @_config (#eq? @_config "config"))
 
           (indented_string_expression

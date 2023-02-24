@@ -5,7 +5,9 @@
   config = ''
     -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
     local servers = {
-      bashls = {},
+      bashls = {
+        cmd = { "${pkgs.nodePackages.bash-language-server}/bin/bash-language-server", "start" }
+      },
       lua_ls = {
         cmd = { "${pkgs.lua-language-server}/bin/lua-language-server" },
         settings = {
@@ -29,10 +31,17 @@
           }
         }
       },
-      rnix = {},
-      rust_analyzer = {},
-      terraformls = {},
+      rnix = {
+        cmd = { "${pkgs.rnix-lsp}/bin/rnix-lsp" }
+      },
+      rust_analyzer = {
+        cmd = { "${pkgs.rust-analyzer}/bin/rust-analyzer" }
+      },
+      terraformls = {
+        cmd = { "${pkgs.terraform-ls}/bin/terraform-ls", "serve" }
+      },
       yamlls = {
+        cmd = { "${pkgs.yaml-language-server}/bin/yaml-language-server", "--stdio" },
         settings = {
           yaml = {
             schemas = {
