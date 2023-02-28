@@ -1,0 +1,4 @@
+name: sestrella/nix-darwin-config
+windows:
+  - editor: nvim .
+  - terminal: null

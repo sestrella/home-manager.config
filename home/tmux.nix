@@ -22,6 +22,7 @@
     ];
     shortcut = "a";
     terminal = "screen-256color";
+    tmuxinator.enable = true;
   };
 
   programs.fish.shellAbbrs = {
