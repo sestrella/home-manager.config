@@ -30,6 +30,7 @@
         pluginsWithConfig = map
           (plugin: (import plugin { inherit pkgs; }))
           [
+            # TODO: merge cmp and lspconfig
             ./neovim/cmp.nix
             ./neovim/dark-notify.nix
             ./neovim/lspconfig.nix
