@@ -34,6 +34,7 @@
       rnix = {
         cmd = { "${pkgs.rnix-lsp}/bin/rnix-lsp" }
       },
+      ruby_ls = {},
       rust_analyzer = {},
       terraformls = {
         cmd = { "${pkgs.terraform-ls}/bin/terraform-ls", "serve" }
