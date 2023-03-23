@@ -16,7 +16,7 @@
 
   programs.fish.shellAbbrs = {
     "gc!" = "git commit -v --amend";
-    "gp!" = "git push --force";
+    "gp!" = "git push --force-with-lease";
     ga = "git add";
     gaa = "git add --all";
     gbr = "git branch --remote";
