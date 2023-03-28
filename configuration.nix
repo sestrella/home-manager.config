@@ -5,6 +5,7 @@
     enable = true;
     brews = [
       "dark-notify"
+      "postgresql@14"
     ];
     casks = [
       "1password"
@@ -25,6 +26,7 @@
       "cormacrelf/tap"
       "homebrew/cask-fonts"
       "homebrew/cask-versions"
+      "homebrew/services"
     ];
   };
 
@@ -43,8 +45,8 @@
   };
 
   security.pam = {
-    enableSudoTouchIdAuth = true;
-    enableTmuxTouchIdSupport = true;
+    enableSudoTouchIdAuth = false;
+    enablePamReattach = false;
   };
 
   services.nix-daemon.enable = true;
