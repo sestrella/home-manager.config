@@ -54,24 +54,27 @@
 
     local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-    local on_attach = function(_client, bufnr)
-      vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
-      local bufopts = { noremap=true, silent=true, buffer=bufnr }
-      vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-      vim.keymap.set("n", "<leader>f", function()
-        vim.lsp.buf.format({ async = true })
-      end, bufopts)
-    end
-
     local lspconfig = require("lspconfig")
     for server, options in pairs(servers) do
       lspconfig[server].setup(vim.tbl_extend("keep", options, {
-        capabilities = capabilities,
-        on_attach = on_attach
+        capabilities = capabilities
       }))
     end
+
+    vim.api.nvim_create_autocmd("LspAttach", {
+      group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+      callback = function(ev)
+        vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+
+        local opts = { buffer = ev.buf }
+
+        vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+        vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+        vim.keymap.set("n", "<space>f", function()
+          vim.lsp.buf.format { async = true }
+        end, opts)
+      end
+    })
   '';
   type = "lua";
 }
