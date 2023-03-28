@@ -8,9 +8,7 @@
     null_ls.setup({
       sources = {
         null_ls.builtins.formatting.rubocop,
-        null_ls.builtins.formatting.shfmt.with({
-          command = "${pkgs.shfmt}/bin/shfmt"
-        })
+        null_ls.builtins.formatting.shfmt
       }
     })
   '';
