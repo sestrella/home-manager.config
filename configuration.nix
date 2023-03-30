@@ -1,6 +1,10 @@
 { pkgs, ... }:
 
 {
+  environment.systemPackages = [
+    pkgs.pam-reattach
+  ];
+
   homebrew = {
     enable = true;
     brews = [
@@ -13,19 +17,18 @@
       "font-fira-code-nerd-font"
       "google-chrome"
       "grammarly-desktop"
-      "iterm2-beta"
       "notion"
       "rectangle"
       "session-manager-plugin"
       "slack"
       "spotify"
+      "warp"
       "zoom"
     ];
     onActivation.cleanup = "uninstall";
     taps = [
       "cormacrelf/tap"
       "homebrew/cask-fonts"
-      "homebrew/cask-versions"
       "homebrew/services"
     ];
   };
@@ -44,10 +47,7 @@
     };
   };
 
-  security.pam = {
-    enableSudoTouchIdAuth = false;
-    enablePamReattach = false;
-  };
+  security.pam.enableSudoTouchIdAuth = false;
 
   services.nix-daemon.enable = true;
 
@@ -56,8 +56,10 @@
     remapCapsLockToControl = true;
   };
 
+  programs.zsh.enable = true;
+
   users.users.sestrella = {
     home = "/Users/sestrella";
-    shell = pkgs.fish;
+    shell = "/bin/zsh";
   };
 }

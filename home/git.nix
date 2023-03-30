@@ -14,7 +14,7 @@
     userName = "Sebastian Estrella";
   };
 
-  programs.fish.shellAbbrs = {
+  programs.zsh.shellAliases = {
     "gc!" = "git commit -v --amend";
     "gp!" = "git push --force-with-lease";
     ga = "git add";

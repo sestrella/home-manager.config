@@ -14,7 +14,6 @@
   # Custom configuration
   imports = [
     ./home/bat.nix
-    ./home/fish.nix
     ./home/git.nix
     ./home/neovim.nix
     ./home/ripgrep.nix
@@ -50,6 +49,8 @@
       git_protocol = "git";
     };
   };
+
+  programs.zsh.enable = true;
 
   programs.starship.enable = true;
 }
