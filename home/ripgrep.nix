@@ -5,7 +5,7 @@
     pkgs.ripgrep
   ];
 
-  programs.zsh.shellAliases = {
+  programs.zsh.shellGlobalAliases = {
     grep = "rg";
   };
 }

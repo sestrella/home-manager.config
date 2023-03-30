@@ -3,7 +3,7 @@
 {
   programs.bat.enable = true;
 
-  programs.zsh.shellAliases = {
+  programs.zsh.shellGlobalAliases = {
     cat = "bat";
   };
 }
