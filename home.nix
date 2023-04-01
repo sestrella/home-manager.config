@@ -50,12 +50,12 @@
     };
   };
 
-  programs.zsh = {
+  programs.fish = {
     enable = true;
     # https://github.com/Homebrew/brew/blob/master/Library/Homebrew/cmd/shellenv.sh
-    profileExtra = ''
-      eval "$(/opt/homebrew/bin/brew shellenv)"
-    '';
+    # profileExtra = ''
+    #   eval "$(/opt/homebrew/bin/brew shellenv)"
+    # '';
   };
 
   programs.starship.enable = true;

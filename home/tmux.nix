@@ -25,7 +25,7 @@
     tmuxinator.enable = true;
   };
 
-  programs.zsh.shellAliases = {
+  programs.fish.shellAbbrs = {
     # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tmux
     ta = "tmux attach -t";
     tkss = "tmux kill-session -t";

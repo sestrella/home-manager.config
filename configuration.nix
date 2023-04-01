@@ -1,9 +1,14 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = [
-    pkgs.pam-reattach
-  ];
+  environment = {
+    shells = [
+      pkgs.fish
+    ];
+    systemPackages = [
+      pkgs.pam-reattach
+    ];
+  };
 
   homebrew = {
     enable = true;
@@ -17,35 +22,26 @@
       "font-fira-code-nerd-font"
       "google-chrome"
       "grammarly-desktop"
+      "iterm2-beta"
       "notion"
       "rectangle"
       "session-manager-plugin"
       "slack"
       "spotify"
-      "warp"
       "zoom"
     ];
     onActivation.cleanup = "uninstall";
     taps = [
       "cormacrelf/tap"
       "homebrew/cask-fonts"
+      "homebrew/cask-versions"
       "homebrew/services"
     ];
   };
 
-  nix = {
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-    settings = {
-      substituters = [
-        "https://cache.iog.io"
-      ];
-      trusted-public-keys = [
-        "hydra.iohk.io:f/Ea+s+dFdN+3Y/G+FDgSq+a5NEWhJGzdjvKNGv0/EQ="
-      ];
-    };
-  };
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
 
   security.pam.enableSudoTouchIdAuth = false;
 
@@ -56,10 +52,10 @@
     remapCapsLockToControl = true;
   };
 
-  programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   users.users.sestrella = {
     home = "/Users/sestrella";
-    shell = "/bin/zsh";
+    shell = pkgs.fish;
   };
 }
