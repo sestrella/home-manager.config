@@ -14,7 +14,6 @@
     enable = true;
     brews = [
       "dark-notify"
-      "postgresql@14"
     ];
     casks = [
       "1password"
@@ -35,7 +34,6 @@
       "cormacrelf/tap"
       "homebrew/cask-fonts"
       "homebrew/cask-versions"
-      "homebrew/services"
     ];
   };
 
