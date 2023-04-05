@@ -53,9 +53,11 @@
   programs.fish = {
     enable = true;
     # https://github.com/Homebrew/brew/blob/master/Library/Homebrew/cmd/shellenv.sh
-    # profileExtra = ''
-    #   eval "$(/opt/homebrew/bin/brew shellenv)"
-    # '';
+    shellInit = ''
+      if test -e /opt/homebrew/bin/brew
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+      end
+    '';
   };
 
   programs.starship.enable = true;
