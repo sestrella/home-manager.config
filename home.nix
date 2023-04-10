@@ -54,7 +54,7 @@
     enable = true;
     # https://github.com/Homebrew/brew/blob/master/Library/Homebrew/cmd/shellenv.sh
     shellInit = ''
-      if test -e /opt/homebrew/bin/brew
+      if test -x /opt/homebrew/bin/brew
         eval "$(/opt/homebrew/bin/brew shellenv)"
       end
     '';
