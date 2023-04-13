@@ -20,11 +20,6 @@
     ./home/tmux.nix
   ];
 
-  home.sessionVariables = {
-    # https://nix-community.github.io/home-manager/index.html#sec-install-standalone
-    NIX_PATH = "$HOME/.nix-defexpr/channels:/nix/var/nix/profiles/per-user/root/channels\${NIX_PATH:+:$NIX_PATH}";
-  };
-
   home.packages = [
     pkgs.aws-vault
     pkgs.awscli2
@@ -50,15 +45,7 @@
     };
   };
 
-  programs.fish = {
-    enable = true;
-    # https://github.com/Homebrew/brew/blob/master/Library/Homebrew/cmd/shellenv.sh
-    shellInit = ''
-      if test -x /opt/homebrew/bin/brew
-        eval "$(/opt/homebrew/bin/brew shellenv)"
-      end
-    '';
-  };
+  programs.fish.enable = true;
 
   programs.starship.enable = true;
 }
