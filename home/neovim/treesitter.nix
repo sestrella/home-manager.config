@@ -26,7 +26,7 @@
 
     -- TODO: extend existing configuration
     -- https://github.com/nix-community/home-manager/issues/3591
-    require("vim.treesitter.query").set_query("nix", "injections", [[
+    require("vim.treesitter.query").set("nix", "injections", [[
       (binding_set
         (binding
           (attrpath
