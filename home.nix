@@ -42,6 +42,11 @@
     };
   };
 
+  programs.lsd = {
+    enable = true;
+    enableAliases = true;
+  };
+
   programs.fish.enable = true;
 
   programs.starship.enable = true;

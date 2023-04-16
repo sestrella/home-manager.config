@@ -5,7 +5,5 @@
     pkgs.ripgrep
   ];
 
-  programs.zsh.shellGlobalAliases = {
-    grep = "rg";
-  };
+  programs.fish.shellAbbrs.grep = "rg";
 }
