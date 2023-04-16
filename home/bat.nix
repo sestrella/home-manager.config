@@ -3,7 +3,5 @@
 {
   programs.bat.enable = true;
 
-  programs.zsh.shellGlobalAliases = {
-    cat = "bat";
-  };
+  programs.fish.shellAbbrs.cat = "bat";
 }

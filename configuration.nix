@@ -1,14 +1,9 @@
 { pkgs, ... }:
 
 {
-  environment = {
-    shells = [
-      pkgs.fish
-    ];
-    systemPackages = [
-      pkgs.pam-reattach
-    ];
-  };
+  environment.shells = [
+    pkgs.fish
+  ];
 
   homebrew = {
     enable = true;
@@ -40,8 +35,6 @@
   nix.extraOptions = ''
     experimental-features = nix-command flakes
   '';
-
-  security.pam.enableSudoTouchIdAuth = false;
 
   services.nix-daemon.enable = true;
 
