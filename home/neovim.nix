@@ -51,9 +51,12 @@
         ];
       in
       pluginsWithConfig ++ plugins;
-    viAlias = true;
-    vimAlias = true;
     vimdiffAlias = true;
+  };
+
+  programs.fish.shellAbbrs = {
+    vi = "nvim";
+    vim = "nvim";
   };
 
   home.file.".vsnip/nix.json".text =
