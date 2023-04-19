@@ -23,7 +23,6 @@
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
     pkgs.jq
-    pkgs.bottom
     pkgs.luaPackages.luacheck
     pkgs.tmate
     pkgs.tree
@@ -31,6 +30,8 @@
   ];
 
   programs.autojump.enable = true;
+
+  programs.bottom.enable = true;
 
   programs.direnv.enable = true;
 
