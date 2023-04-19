@@ -21,6 +21,7 @@
   ];
 
   home.packages = [
+    pkgs.fd
     pkgs.gnused
     pkgs.jq
     pkgs.luaPackages.luacheck
