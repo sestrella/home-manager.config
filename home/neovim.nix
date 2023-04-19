@@ -48,6 +48,15 @@
           pkgs.vimPlugins.markdown-preview-nvim
           pkgs.vimPlugins.playground
           pkgs.vimPlugins.vim-vsnip
+          {
+            plugin = pkgs.vimPlugins.nvim-treesitter-context;
+            config = ''
+              require('treesitter-context').setup({
+                enable = true
+              })
+            '';
+            type = "lua";
+          }
         ];
       in
       pluginsWithConfig ++ plugins;
