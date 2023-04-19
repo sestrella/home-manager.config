@@ -10,7 +10,10 @@
         default = "simple";
       };
     };
-    delta.enable = true;
+    delta = {
+      enable = true;
+      options.line-numbers = true;
+    };
     userEmail = "2049686+sestrella@users.noreply.github.com";
     userName = "Sebastian Estrella";
   };
