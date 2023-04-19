@@ -43,7 +43,14 @@
     remapCapsLockToControl = true;
   };
 
-  programs.fish.enable = true;
+  programs.fish = {
+    enable = true;
+    shellInit = ''
+      if test -x /opt/homebrew/bin/brew
+        eval (/opt/homebrew/bin/brew shellenv)
+      end
+    '';
+  };
 
   users.users.sestrella = {
     home = "/Users/sestrella";
