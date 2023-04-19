@@ -23,6 +23,7 @@
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
     pkgs.jq
+    pkgs.bottom
     pkgs.luaPackages.luacheck
     pkgs.tmate
     pkgs.tree
@@ -50,6 +51,7 @@
   programs.fish = {
     enable = true;
     functions.fish_greeting = "";
+    shellAbbrs.top = "btm";
   };
 
   programs.starship.enable = true;
