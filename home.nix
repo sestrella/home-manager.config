@@ -20,9 +20,8 @@
     ./home/tmux.nix
   ];
 
+  # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
-    pkgs.fd
-    pkgs.gnused
     pkgs.jq
     pkgs.luaPackages.luacheck
     pkgs.tmate
