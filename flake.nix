@@ -5,7 +5,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "path:/Users/sestrella/code/stackbuilders/home-manager";
+      url = "github:stackbuilders/home-manager/add_delta_package_option";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
