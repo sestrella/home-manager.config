@@ -5,7 +5,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     home-manager = {
-      url = "path:/Users/sestrella/code/sestrella/home-manager";
+      url = "path:/Users/sestrella/code/stackbuilders/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";

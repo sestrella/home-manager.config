@@ -27,13 +27,13 @@
         ]
       },
       "locked": {
-        "lastModified": 1681965084,
-        "narHash": "sha256-NFYVs6udd4SGossWr8qZLtJcoAVO6LajxT+WC+oXct0=",
-        "path": "/Users/sestrella/code/sestrella/home-manager",
+        "lastModified": 1681967202,
+        "narHash": "sha256-MZJkKLAuVjw614YFG5iH7y6MhoEQQiL55k0ddE4asVY=",
+        "path": "/Users/sestrella/code/stackbuilders/home-manager",
         "type": "path"
       },
       "original": {
-        "path": "/Users/sestrella/code/sestrella/home-manager",
+        "path": "/Users/sestrella/code/stackbuilders/home-manager",
         "type": "path"
       }
     },
