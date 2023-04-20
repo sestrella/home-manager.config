@@ -47,6 +47,8 @@
   programs.lsd = {
     enable = true;
     enableAliases = true;
+    # https://github.com/lsd-rs/lsd#config-file-content
+    settings.color.when = "never";
   };
 
   programs.fish = {
@@ -56,4 +58,12 @@
   };
 
   programs.starship.enable = true;
+
+  nixpkgs.overlays = [
+    (self: super: {
+      delta = pkgs.writeScriptBin "delta" ''
+        ${super.delta}/bin/delta "$(defaults read -g AppleInterfaceStyle &> /dev/null || echo --light)" "$@"
+      '';
+    })
+  ];
 }
