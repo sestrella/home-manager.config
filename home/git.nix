@@ -12,6 +12,9 @@
     };
     delta = {
       enable = true;
+      package = pkgs.writeScriptBin "delta" ''
+        ${pkgs.delta}/bin/delta "$(defaults read -g AppleInterfaceStyle &> /dev/null || echo --light)" "$@"
+      '';
       options.line-numbers = true;
     };
     userEmail = "2049686+sestrella@users.noreply.github.com";

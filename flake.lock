@@ -24,21 +24,17 @@
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
-        ],
-        "utils": "utils"
+        ]
       },
       "locked": {
-        "lastModified": 1681250798,
-        "narHash": "sha256-fQMROyKzPFBPqJy9J4ffywm02ZuqAI0GW1O1QibVpdQ=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "28698126bd825aff21cae9ffd15cf83e169051b0",
-        "type": "github"
+        "lastModified": 1681965084,
+        "narHash": "sha256-NFYVs6udd4SGossWr8qZLtJcoAVO6LajxT+WC+oXct0=",
+        "path": "/Users/sestrella/code/sestrella/home-manager",
+        "type": "path"
       },
       "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
+        "path": "/Users/sestrella/code/sestrella/home-manager",
+        "type": "path"
       }
     },
     "nixpkgs": {
@@ -62,21 +58,6 @@
         "darwin": "darwin",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
-      }
-    },
-    "utils": {
-      "locked": {
-        "lastModified": 1678901627,
-        "narHash": "sha256-U02riOqrKKzwjsxc/400XnElV+UtPUQWpANPlyazjH0=",
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "rev": "93a2b84fc4b70d9e089d029deacc3583435c2ed6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "numtide",
-        "repo": "flake-utils",
-        "type": "github"
       }
     }
   },
