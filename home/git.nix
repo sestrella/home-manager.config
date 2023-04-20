@@ -15,7 +15,10 @@
       package = pkgs.writeScriptBin "delta" ''
         ${pkgs.delta}/bin/delta "$(defaults read -g AppleInterfaceStyle &> /dev/null || echo --light)" "$@"
       '';
-      options.line-numbers = true;
+      options = {
+        line-numbers = true;
+        side-by-side = true;
+      };
     };
     userEmail = "2049686+sestrella@users.noreply.github.com";
     userName = "Sebastian Estrella";
