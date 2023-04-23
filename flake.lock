@@ -27,14 +27,18 @@
         ]
       },
       "locked": {
-        "lastModified": 1682004561,
-        "narHash": "sha256-KjoeB6bMSc2ttuq17oTGafDZxZYkIoth6FioW2DrrUY=",
-        "path": "/Users/sestrella/code/stackbuilders/home-manager",
-        "type": "path"
+        "lastModified": 1682004771,
+        "narHash": "sha256-nuTO0qBKR3JEq+QRfTngPhuqABVq0RHJoiDFG3H3//4=",
+        "owner": "stackbuilders",
+        "repo": "home-manager",
+        "rev": "0616f8c46a3b7b54a38dfb20c5df54e7e6168da7",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/sestrella/code/stackbuilders/home-manager",
-        "type": "path"
+        "owner": "stackbuilders",
+        "ref": "add_delta_package_option",
+        "repo": "home-manager",
+        "type": "github"
       }
     },
     "nixpkgs": {

@@ -12,13 +12,11 @@
     };
     delta = {
       enable = true;
+      # https://github.com/dandavison/delta/issues/447
       package = pkgs.writeScriptBin "delta" ''
         ${pkgs.delta}/bin/delta "$(defaults read -g AppleInterfaceStyle &> /dev/null || echo --light)" "$@"
       '';
-      options = {
-        line-numbers = true;
-        side-by-side = true;
-      };
+      options.line-numbers = true;
     };
     userEmail = "2049686+sestrella@users.noreply.github.com";
     userName = "Sebastian Estrella";
