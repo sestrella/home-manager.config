@@ -52,6 +52,7 @@
                 luacheck.enable = true;
                 nixpkgs-fmt.enable = true;
                 stylua.enable = true;
+                yamllint.enable = true;
               };
             })
           ];
