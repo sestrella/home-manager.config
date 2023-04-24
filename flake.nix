@@ -58,6 +58,9 @@
               })
             ];
           };
-          packages.default = darwinConfigurations."Administrators-MacBook-Pro".system;
+          packages = {
+            ci = darwinConfigurations."ghactions".system;
+            default = darwinConfigurations."Administrators-MacBook-Pro".system;
+          };
         });
 }

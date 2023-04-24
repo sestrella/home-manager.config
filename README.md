@@ -1,9 +1,8 @@
-# nix-darwin configuration
+# [nix-darwin] configuration
 
 [![CI](https://github.com/sestrella/nix-home/actions/workflows/ci.yml/badge.svg)](https://github.com/sestrella/nix-home/actions/workflows/ci.yml)
 
-My system configuration managed via
-[nix-darwin](https://github.com/LnL7/nix-darwin).
+My system configuration managed via [nix-darwin].
 
 ## Requirements
 
@@ -31,3 +30,5 @@ A list of repositories that inspired this one:
 - [HugoReeves/nix-home](https://github.com/HugoReeves/nix-home/)
 - [gvolpe/nix-config](https://github.com/gvolpe/nix-config/)
 - [ryantm/home-manager-template](https://github.com/ryantm/home-manager-template/)
+
+[nix-darwin]: https://github.com/LnL7/nix-darwin
