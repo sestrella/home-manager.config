@@ -15,7 +15,7 @@ Install [Nix](https://nixos.org/guides/install-nix.html) with
 Activate the system configuration for the first time:
 
 ```sh
-./bin/build
+nix build
 ```
 
 Next time, update system configuration running the following command:

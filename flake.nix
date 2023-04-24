@@ -14,48 +14,50 @@
   };
 
   outputs = { self, darwin, devenv, flake-utils, home-manager, nixpkgs } @ inputs:
+    let
+      mkDarwinSystem = system: darwin.lib.darwinSystem {
+        inherit system;
+        modules = [
+          ./configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager = {
+              backupFileExtension = "bak";
+              users.sestrella = import ./home.nix;
+            };
+          }
+        ];
+      };
+      darwinConfigurations = {
+        "Administrators-MacBook-Pro" = mkDarwinSystem "aarch64-darwin";
+        "ghactions" = mkDarwinSystem "x86_64-darwin";
+      };
+    in
     {
-      darwinConfigurations =
+      inherit darwinConfigurations;
+    } // flake-utils.lib.eachSystem [ "aarch64-darwin" "x86_64-darwin" ]
+      (system:
         let
-          mkDarwinSystem = system: darwin.lib.darwinSystem {
-            inherit system;
-            modules = [
-              ./configuration.nix
-              home-manager.darwinModules.home-manager
-              {
-                home-manager = {
-                  backupFileExtension = "bak";
-                  users.sestrella = import ./home.nix;
-                };
-              }
-            ];
-          };
+          pkgs = nixpkgs.legacyPackages.${ system};
         in
         {
-          "Administrators-MacBook-Pro" = mkDarwinSystem "aarch64-darwin";
-          "ghactions" = mkDarwinSystem "x86_64-darwin";
-        };
-    } // flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
-        devShells.default = devenv.lib.mkShell {
-          inherit inputs pkgs;
-          modules = [
-            ({ pkgs, ... }: {
-              packages = [
-                pkgs.gitleaks
-              ];
+          devShells.default = devenv.lib.mkShell {
+            inherit inputs pkgs;
+            modules = [
+              ({ pkgs, ... }: {
+                packages = [
+                  pkgs.gitleaks
+                ];
 
-              pre-commit.hooks = {
-                luacheck.enable = true;
-                nixpkgs-fmt.enable = true;
-                stylua.enable = true;
-                yamllint.enable = true;
-              };
-            })
-          ];
-        };
-      });
+                pre-commit.hooks = {
+                  luacheck.enable = true;
+                  nixpkgs-fmt.enable = true;
+                  stylua.enable = true;
+                  yamllint.enable = true;
+                };
+              })
+            ];
+          };
+          packages.default = darwinConfigurations."Administrators-MacBook-Pro".system;
+        });
 }
