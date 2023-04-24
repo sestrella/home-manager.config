@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, auto-dark-mode, ... }:
 
 {
   programs.neovim = {
@@ -43,12 +43,7 @@
           (mkPlugin {
             plugin = pkgs.vimUtils.buildVimPlugin rec {
               name = "auto-dark-mode.nvim";
-              src = pkgs.fetchFromGitHub {
-                owner = "f-person";
-                repo = name;
-                rev = "a02ff9ee4630dd8e81dc097b486b7c7f468b9db7";
-                sha256 = "V5/VEY45wlJD9KRRc27ZTuWWnI3YlJOISW+X8gKgJ6U=";
-              };
+              src = auto-dark-mode;
             };
             configFile = ./neovim/auto-dark-mode.lua;
           })

@@ -1,5 +1,9 @@
 {
   inputs = {
+    auto-dark-mode = {
+      url = "github:f-person/auto-dark-mode.nvim";
+      flake = false;
+    };
     darwin = {
       url = "github:LnL7/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,7 +17,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = { self, darwin, devenv, flake-utils, home-manager, nixpkgs } @ inputs:
+  outputs = { self, auto-dark-mode, darwin, devenv, flake-utils, home-manager, nixpkgs } @ inputs:
     let
       mkDarwinSystem = system: darwin.lib.darwinSystem {
         inherit system;
@@ -23,6 +27,7 @@
           {
             home-manager = {
               backupFileExtension = "bak";
+              extraSpecialArgs = { inherit auto-dark-mode; };
               users.sestrella = import ./home.nix;
             };
           }
