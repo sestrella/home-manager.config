@@ -7,9 +7,6 @@
 
   homebrew = {
     enable = true;
-    brews = [
-      "dark-notify"
-    ];
     casks = [
       "1password"
       "docker"
