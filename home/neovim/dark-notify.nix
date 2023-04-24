@@ -14,8 +14,6 @@ let
 in
 {
   plugin = darkNotify;
-  config = ''
-    require('dark_notify').run()
-  '';
+  config = builtins.readFile ./dark-notify.lua;
   type = "lua";
 }

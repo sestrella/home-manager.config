@@ -14,42 +14,6 @@
       plugins.tree-sitter-terraform
       plugins.tree-sitter-yaml
     ]);
-  config = ''
-    require("nvim-treesitter.configs").setup({
-      highlight = {
-        enable = true
-      },
-      playground = {
-        enable = true
-      }
-    })
-
-    -- TODO: extend existing configuration
-    -- https://github.com/nix-community/home-manager/issues/3591
-    require("vim.treesitter.query").set("nix", "injections", [[
-      (binding_set
-        (binding
-          (attrpath
-            attr: (identifier) @_config (#eq? @_config "extraLuaConfig"))
-
-          (indented_string_expression
-            (string_fragment) @lua)))
-
-      (binding_set
-        (binding
-          (attrpath
-            attr: (identifier) @_config (#eq? @_config "config"))
-
-          (indented_string_expression
-            (string_fragment) @lua))
-
-        (binding
-          (attrpath
-            attr: (identifier) @_type (#eq? @_type "type"))
-
-          (string_expression
-            (string_fragment) @_value (#eq? @_value "lua"))))
-    ]])
-  '';
+  config = builtins.readFile ./treesitter.lua;
   type = "lua";
 }

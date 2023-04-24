@@ -48,7 +48,11 @@
                 pkgs.gitleaks
               ];
 
-              pre-commit.hooks.nixpkgs-fmt.enable = true;
+              pre-commit.hooks = {
+                luacheck.enable = true;
+                nixpkgs-fmt.enable = true;
+                stylua.enable = true;
+              };
             })
           ];
         };
