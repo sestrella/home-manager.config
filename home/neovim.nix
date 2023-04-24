@@ -27,36 +27,78 @@
     '';
     plugins =
       let
+        mkPlugin = cfg: {
+          inherit (cfg) plugin;
+          config = builtins.readFile cfg.configFile;
+          type = "lua";
+        };
         pluginsWithConfig = map
           (plugin: (import plugin { inherit pkgs; }))
           [
-            # TODO: merge cmp and lspconfig
-            ./neovim/cmp.nix
-            ./neovim/dark-notify.nix
             ./neovim/lspconfig.nix
-            ./neovim/null-ls.nix
-            ./neovim/solarized.nix
-            ./neovim/telescope.nix
-            ./neovim/treesitter.nix
             ./neovim/whitespace.nix
           ];
         plugins = [
+          # auto-dark-mode
+          (mkPlugin {
+            plugin = pkgs.vimUtils.buildVimPlugin rec {
+              name = "auto-dark-mode.nvim";
+              src = pkgs.fetchFromGitHub {
+                owner = "f-person";
+                repo = name;
+                rev = "a02ff9ee4630dd8e81dc097b486b7c7f468b9db7";
+                sha256 = "V5/VEY45wlJD9KRRc27ZTuWWnI3YlJOISW+X8gKgJ6U=";
+              };
+            };
+            configFile = ./neovim/auto-dark-mode.lua;
+          })
+          # cmp
+          (mkPlugin {
+            plugin = pkgs.vimPlugins.nvim-cmp;
+            configFile = ./neovim/cmp.lua;
+          })
           pkgs.vimPlugins.cmp-buffer
           pkgs.vimPlugins.cmp-nvim-lsp
           pkgs.vimPlugins.cmp-path
           pkgs.vimPlugins.cmp-vsnip
-          pkgs.vimPlugins.markdown-preview-nvim
-          pkgs.vimPlugins.playground
-          pkgs.vimPlugins.vim-vsnip
-          {
+          # null-ls
+          (mkPlugin {
+            plugin = pkgs.vimPlugins.null-ls-nvim;
+            configFile = ./neovim/null-ls.lua;
+          })
+          # solarized
+          (mkPlugin {
+            plugin = pkgs.vimPlugins.nvim-solarized-lua;
+            configFile = ./neovim/solarized.lua;
+          })
+          # telescope
+          (mkPlugin {
+            plugin = pkgs.vimPlugins.telescope-nvim;
+            configFile = ./neovim/telescope.lua;
+          })
+          # treesitter
+          (mkPlugin {
+            plugin = pkgs.vimPlugins.nvim-treesitter.withPlugins
+              (plugins: [
+                plugins.tree-sitter-dockerfile
+                plugins.tree-sitter-haskell
+                plugins.tree-sitter-hcl
+                plugins.tree-sitter-lua
+                plugins.tree-sitter-markdown
+                plugins.tree-sitter-nix
+                plugins.tree-sitter-rust
+                plugins.tree-sitter-terraform
+                plugins.tree-sitter-yaml
+              ]);
+            configFile = ./neovim/treesitter.lua;
+          })
+          (mkPlugin {
             plugin = pkgs.vimPlugins.nvim-treesitter-context;
-            config = ''
-              require('treesitter-context').setup({
-                enable = true
-              })
-            '';
-            type = "lua";
-          }
+            configFile = ./neovim/treesitter-context.lua;
+          })
+          pkgs.vimPlugins.playground
+          # vsnip
+          pkgs.vimPlugins.vim-vsnip
         ];
       in
       pluginsWithConfig ++ plugins;
