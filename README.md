@@ -2,12 +2,12 @@
 
 [![CI](https://github.com/sestrella/nix-home/actions/workflows/ci.yml/badge.svg)](https://github.com/sestrella/nix-home/actions/workflows/ci.yml)
 
-My system configuration managed via [nix-darwin].
+My system configuration managed via `nix-darwin`.
 
 ## Requirements
 
-Install [Nix](https://nixos.org/guides/install-nix.html) with
-[Flakes](https://nixos.wiki/wiki/Flakes) enabled
+- Install [Nix](https://nixos.org/guides/install-nix.html)
+- Enable [Flakes](https://nixos.wiki/wiki/Flakes#Permanent) permanently
 
 ## Getting Started
 
