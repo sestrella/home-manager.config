@@ -4,6 +4,13 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    extraPackages = [
+      pkgs.lua-language-server
+      pkgs.nodePackages.bash-language-server
+      pkgs.rnix-lsp
+      pkgs.terraform-ls
+      pkgs.yaml-language-server
+    ];
     extraLuaConfig = ''
       vim.g.mapleader = ' '
       vim.g.maplocalleader = ' '
@@ -35,7 +42,6 @@
         pluginsWithConfig = map
           (plugin: (import plugin { inherit pkgs; }))
           [
-            ./neovim/lspconfig.nix
             ./neovim/whitespace.nix
           ];
         plugins = [
@@ -56,6 +62,11 @@
           pkgs.vimPlugins.cmp-nvim-lsp
           pkgs.vimPlugins.cmp-path
           pkgs.vimPlugins.cmp-vsnip
+          # lspconfig
+          (mkPlugin {
+            plugin = pkgs.vimPlugins.nvim-lspconfig;
+            configFile = ./neovim/lspconfig.lua;
+          })
           # null-ls
           (mkPlugin {
             plugin = pkgs.vimPlugins.null-ls-nvim;
