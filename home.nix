@@ -22,6 +22,8 @@
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
+    pkgs.aws-vault
+    pkgs.awscli2
     pkgs.jq
     pkgs.luaPackages.luacheck
     pkgs.tmate
