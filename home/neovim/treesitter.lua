@@ -2,9 +2,11 @@ require("nvim-treesitter.configs").setup({
 	highlight = {
 		enable = true,
 	},
+	-- https://github.com/nvim-treesitter/playground
 	playground = {
 		enable = true,
 	},
+	-- https://github.com/nvim-treesitter/nvim-treesitter-refactor
 	refactor = {
 		highlight_current_scope = {
 			enable = true,
