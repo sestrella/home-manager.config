@@ -107,6 +107,7 @@
             plugin = pkgs.vimPlugins.nvim-treesitter-context;
             configFile = ./neovim/treesitter-context.lua;
           })
+          pkgs.vimPlugins.nvim-treesitter-textobjects
           pkgs.vimPlugins.playground
           # vsnip
           pkgs.vimPlugins.vim-vsnip
