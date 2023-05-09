@@ -25,7 +25,6 @@
     pkgs.aws-vault
     pkgs.awscli2
     pkgs.jq
-    pkgs.luaPackages.luacheck
     pkgs.tmate
     pkgs.tree
     pkgs.wget
