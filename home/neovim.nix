@@ -62,6 +62,11 @@
           pkgs.vimPlugins.cmp-nvim-lsp
           pkgs.vimPlugins.cmp-path
           pkgs.vimPlugins.cmp-vsnip
+          # comment
+          (mkPlugin {
+            plugin = pkgs.vimPlugins.comment-nvim;
+            configFile = ./neovim/comment.lua;
+          })
           # lspconfig
           (mkPlugin {
             plugin = pkgs.vimPlugins.nvim-lspconfig;
