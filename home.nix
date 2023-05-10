@@ -21,15 +21,35 @@
   ];
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
-  home.packages = [
-    pkgs.aws-vault
-    pkgs.awscli2
-    pkgs.circleci-cli
-    pkgs.jq
-    pkgs.tmate
-    pkgs.tree
-    pkgs.wget
-  ];
+  home.packages =
+    let
+      aws-gate = pkgs.python3Packages.buildPythonApplication rec {
+        pname = "aws-gate";
+        version = "0.11.2";
+        src = pkgs.python3Packages.fetchPypi {
+          inherit pname version;
+          sha256 = "sha256-JOs+RZDI9aBAEvBZh40u1a5eOvnW6LSks/xsP46uRos=";
+        };
+        propagatedBuildInputs = [
+          pkgs.python3Packages.boto3
+          pkgs.python3Packages.requests
+          pkgs.python3Packages.stdenv
+          pkgs.python3Packages.wrapt
+          pkgs.python3Packages.pyyaml
+          pkgs.python3Packages.marshmallow
+        ];
+      };
+    in
+    [
+      aws-gate
+      pkgs.aws-vault
+      pkgs.awscli2
+      pkgs.circleci-cli
+      pkgs.jq
+      pkgs.tmate
+      pkgs.tree
+      pkgs.wget
+    ];
 
   programs.autojump.enable = true;
 
