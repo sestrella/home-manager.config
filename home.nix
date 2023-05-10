@@ -24,6 +24,7 @@
   home.packages = [
     pkgs.aws-vault
     pkgs.awscli2
+    pkgs.circleci-cli
     pkgs.jq
     pkgs.tmate
     pkgs.tree
