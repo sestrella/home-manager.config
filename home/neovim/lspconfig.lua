@@ -27,6 +27,7 @@ local servers = {
 	ruby_ls = {},
 	rust_analyzer = {},
 	terraformls = {},
+	pyright = {},
 	yamlls = {
 		settings = {
 			yaml = {

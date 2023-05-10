@@ -7,6 +7,7 @@
     extraPackages = [
       pkgs.lua-language-server
       pkgs.nodePackages.bash-language-server
+      pkgs.pyright
       pkgs.rnix-lsp
       pkgs.terraform-ls
       pkgs.yaml-language-server
