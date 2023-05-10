@@ -5,7 +5,6 @@
     enable = true;
     defaultEditor = true;
     extraPackages = [
-      pkgs.black
       pkgs.lua-language-server
       pkgs.nodePackages.bash-language-server
       pkgs.pyright
