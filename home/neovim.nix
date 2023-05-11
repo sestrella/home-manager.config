@@ -17,7 +17,6 @@
       vim.g.mapleader = ' '
       vim.g.maplocalleader = ' '
 
-      vim.o.cmdheight = 0
       vim.o.colorcolumn = "80"
       vim.o.cursorline = true
       vim.o.expandtab = true
