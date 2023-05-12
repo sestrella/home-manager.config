@@ -24,6 +24,7 @@
   home.packages = [
     pkgs.aws-vault
     pkgs.awscli2
+    pkgs.btop
     pkgs.circleci-cli
     pkgs.jq
     pkgs.tmate
@@ -32,8 +33,6 @@
   ];
 
   programs.autojump.enable = true;
-
-  programs.bottom.enable = true;
 
   programs.direnv.enable = true;
 
