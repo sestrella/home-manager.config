@@ -32,6 +32,9 @@
       -- https://twitter.com/theprimeagen/status/1591996471951429633
       vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", {})
       vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", {})
+      -- https://twitter.com/adib_hanna/status/1657074745978781701
+      vim.api.nvim_set_keymap("n", "j", "jzz", {})
+      vim.api.nvim_set_keymap("n", "k", "kzz", {})
     '';
     plugins =
       let
