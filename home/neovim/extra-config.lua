@@ -15,9 +15,9 @@ vim.o.tabstop = 2
 vim.o.clipboard = "unnamedplus"
 
 -- https://twitter.com/theprimeagen/status/1591996471951429633
-vim.api.nvim_set_keymap("n", "<C-u>", "<C-u>zz", {})
-vim.api.nvim_set_keymap("n", "<C-d>", "<C-d>zz", {})
-vim.api.nvim_set_keymap("n", "n", "nzz", {})
+vim.keymap.set("n", "<C-u>", "<C-u>zz", {})
+vim.keymap.set("n", "<C-d>", "<C-d>zz", {})
+vim.keymap.set("n", "n", "nzz", {})
 -- https://twitter.com/adib_hanna/status/1657074745978781701
-vim.api.nvim_set_keymap("n", "j", "jzz", {})
-vim.api.nvim_set_keymap("n", "k", "kzz", {})
+vim.keymap.set("n", "j", "jzz", {})
+vim.keymap.set("n", "k", "kzz", {})
