@@ -40,11 +40,6 @@
             plugin = pkgs.vimPlugins.comment-nvim;
             configFile = ./neovim/comment.lua;
           })
-          # lspconfig
-          (mkPlugin {
-            plugin = pkgs.vimPlugins.nvim-lspconfig;
-            configFile = ./neovim/lspconfig.lua;
-          })
           # null-ls
           (mkPlugin {
             plugin = pkgs.vimPlugins.null-ls-nvim;
