@@ -55,11 +55,6 @@
             plugin = pkgs.vimPlugins.nvim-solarized-lua;
             configFile = ./neovim/solarized.lua;
           })
-          # telescope
-          (mkPlugin {
-            plugin = pkgs.vimPlugins.telescope-nvim;
-            configFile = ./neovim/telescope.lua;
-          })
           # vsnip
           pkgs.vimPlugins.vim-vsnip
         ];
