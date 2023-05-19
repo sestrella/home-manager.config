@@ -95,8 +95,9 @@
           # vsnip
           pkgs.vimPlugins.vim-vsnip
         ];
+        otherPlugins = import ./neovim/plugins.nix { inherit pkgs; };
       in
-      pluginsWithConfig ++ plugins;
+      pluginsWithConfig ++ plugins ++ otherPlugins;
     vimdiffAlias = true;
   };
 
