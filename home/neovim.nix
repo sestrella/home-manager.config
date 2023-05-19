@@ -35,15 +35,6 @@
             };
             configFile = ./neovim/auto-dark-mode.lua;
           })
-          # cmp
-          (mkPlugin {
-            plugin = pkgs.vimPlugins.nvim-cmp;
-            configFile = ./neovim/cmp.lua;
-          })
-          pkgs.vimPlugins.cmp-buffer
-          pkgs.vimPlugins.cmp-nvim-lsp
-          pkgs.vimPlugins.cmp-path
-          pkgs.vimPlugins.cmp-vsnip
           # comment
           (mkPlugin {
             plugin = pkgs.vimPlugins.comment-nvim;
@@ -69,29 +60,6 @@
             plugin = pkgs.vimPlugins.telescope-nvim;
             configFile = ./neovim/telescope.lua;
           })
-          # treesitter
-          (mkPlugin {
-            plugin = pkgs.vimPlugins.nvim-treesitter.withPlugins
-              (plugins: [
-                plugins.tree-sitter-dockerfile
-                plugins.tree-sitter-haskell
-                plugins.tree-sitter-hcl
-                plugins.tree-sitter-lua
-                plugins.tree-sitter-markdown
-                plugins.tree-sitter-nix
-                plugins.tree-sitter-rust
-                plugins.tree-sitter-terraform
-                plugins.tree-sitter-yaml
-              ]);
-            configFile = ./neovim/treesitter.lua;
-          })
-          (mkPlugin {
-            plugin = pkgs.vimPlugins.nvim-treesitter-context;
-            configFile = ./neovim/treesitter-context.lua;
-          })
-          pkgs.vimPlugins.nvim-treesitter-refactor
-          pkgs.vimPlugins.nvim-treesitter-textobjects
-          pkgs.vimPlugins.playground
           # vsnip
           pkgs.vimPlugins.vim-vsnip
         ];
