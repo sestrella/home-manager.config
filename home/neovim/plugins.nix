@@ -1,14 +1,15 @@
 args:
 
-builtins.concatLists [
-  (import ./plugins/auto-dark-mode.nix args)
-  (import ./plugins/cmp.nix args)
-  (import ./plugins/comment.nix args)
-  (import ./plugins/lspconfig.nix args)
-  (import ./plugins/lualine.nix args)
-  (import ./plugins/null-ls.nix args)
-  (import ./plugins/solarized.nix args)
-  (import ./plugins/telescope.nix args)
-  (import ./plugins/which-key.nix args)
-  (import ./plugins/whitespace.nix args)
-]
+builtins.concatLists
+  (map (plugin: import plugin args) [
+    ./plugins/auto-dark-mode.nix
+    ./plugins/cmp.nix
+    ./plugins/comment.nix
+    ./plugins/lspconfig.nix
+    ./plugins/lualine.nix
+    ./plugins/null-ls.nix
+    ./plugins/solarized.nix
+    ./plugins/telescope.nix
+    ./plugins/which-key.nix
+    ./plugins/whitespace.nix
+  ])
