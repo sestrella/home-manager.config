@@ -1,6 +1,7 @@
 args:
 
 builtins.concatLists [
+  (import ./plugins/auto-dark-mode.nix args)
   (import ./plugins/cmp.nix args)
   (import ./plugins/comment.nix args)
   (import ./plugins/lspconfig.nix args)

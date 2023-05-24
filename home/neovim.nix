@@ -14,28 +14,9 @@
       pkgs.yaml-language-server
     ];
     extraLuaConfig = builtins.readFile ./neovim/extra-config.lua;
-    plugins =
-      let
-        mkPlugin = cfg: {
-          inherit (cfg) plugin;
-          config = builtins.readFile cfg.configFile;
-          type = "lua";
-        };
-        plugins = [
-          # auto-dark-mode
-          (mkPlugin {
-            plugin = pkgs.vimUtils.buildVimPlugin rec {
-              name = "auto-dark-mode.nvim";
-              src = auto-dark-mode;
-            };
-            configFile = ./neovim/auto-dark-mode.lua;
-          })
-          # vsnip
-          pkgs.vimPlugins.vim-vsnip
-        ];
-        otherPlugins = import ./neovim/plugins.nix { inherit pkgs; };
-      in
-      plugins ++ otherPlugins;
+    plugins = import ./neovim/plugins.nix {
+      inherit auto-dark-mode pkgs;
+    };
     vimdiffAlias = true;
   };
 
