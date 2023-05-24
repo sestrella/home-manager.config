@@ -9,4 +9,5 @@ builtins.concatLists [
   (import ./plugins/solarized.nix args)
   (import ./plugins/telescope.nix args)
   (import ./plugins/which-key.nix args)
+  (import ./plugins/whitespace.nix args)
 ]

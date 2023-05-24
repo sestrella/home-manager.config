@@ -21,11 +21,6 @@
           config = builtins.readFile cfg.configFile;
           type = "lua";
         };
-        pluginsWithConfig = map
-          (plugin: (import plugin { inherit pkgs; }))
-          [
-            ./neovim/whitespace.nix
-          ];
         plugins = [
           # auto-dark-mode
           (mkPlugin {
@@ -40,7 +35,7 @@
         ];
         otherPlugins = import ./neovim/plugins.nix { inherit pkgs; };
       in
-      pluginsWithConfig ++ plugins ++ otherPlugins;
+      plugins ++ otherPlugins;
     vimdiffAlias = true;
   };
 
