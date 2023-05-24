@@ -24,7 +24,6 @@
     '';
     type = "lua";
   }
-  pkgs.vimPlugins.nvim-treesitter-refactor
   pkgs.vimPlugins.nvim-treesitter-textobjects
   pkgs.vimPlugins.playground
 ]
