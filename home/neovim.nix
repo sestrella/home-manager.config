@@ -35,20 +35,10 @@
             };
             configFile = ./neovim/auto-dark-mode.lua;
           })
-          # comment
-          (mkPlugin {
-            plugin = pkgs.vimPlugins.comment-nvim;
-            configFile = ./neovim/comment.lua;
-          })
           # null-ls
           (mkPlugin {
             plugin = pkgs.vimPlugins.null-ls-nvim;
             configFile = ./neovim/null-ls.lua;
-          })
-          # solarized
-          (mkPlugin {
-            plugin = pkgs.vimPlugins.nvim-solarized-lua;
-            configFile = ./neovim/solarized.lua;
           })
           # vsnip
           pkgs.vimPlugins.vim-vsnip
