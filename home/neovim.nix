@@ -35,11 +35,6 @@
             };
             configFile = ./neovim/auto-dark-mode.lua;
           })
-          # null-ls
-          (mkPlugin {
-            plugin = pkgs.vimPlugins.null-ls-nvim;
-            configFile = ./neovim/null-ls.lua;
-          })
           # vsnip
           pkgs.vimPlugins.vim-vsnip
         ];
