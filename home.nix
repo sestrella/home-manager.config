@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ auto-dark-mode, config, hardtime, pkgs, ... }:
 
 {
   # This value determines the Home Manager release that your
@@ -59,4 +59,19 @@
   };
 
   programs.starship.enable = true;
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      vimPlugins = prev.vimPlugins // {
+        auto-dark-mode-nvim = pkgs.vimUtils.buildVimPlugin {
+          name = "auto-dark-mode.nvim";
+          src = auto-dark-mode;
+        };
+        hardtime-nvim = pkgs.vimUtils.buildVimPlugin {
+          name = "hardtime.nvim";
+          src = hardtime;
+        };
+      };
+    })
+  ];
 }

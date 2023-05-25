@@ -5,6 +5,7 @@ builtins.concatLists
     ./plugins/auto-dark-mode.nix
     ./plugins/cmp.nix
     ./plugins/comment.nix
+    ./plugins/hardtime.nix
     ./plugins/lspconfig.nix
     ./plugins/lualine.nix
     ./plugins/null-ls.nix

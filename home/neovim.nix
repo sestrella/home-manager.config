@@ -1,4 +1,4 @@
-{ config, pkgs, auto-dark-mode, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.neovim = {
@@ -15,7 +15,7 @@
     ];
     extraLuaConfig = builtins.readFile ./neovim/extra-config.lua;
     plugins = import ./neovim/plugins.nix {
-      inherit auto-dark-mode pkgs;
+      inherit pkgs;
     };
     vimdiffAlias = true;
   };

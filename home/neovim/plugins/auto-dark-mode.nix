@@ -1,11 +1,8 @@
-{ auto-dark-mode, pkgs, ... }:
+{ pkgs, ... }:
 
 [
   {
-    plugin = pkgs.vimUtils.buildVimPlugin rec {
-      name = "auto-dark-mode.nvim";
-      src = auto-dark-mode;
-    };
+    plugin = pkgs.vimPlugins.auto-dark-mode-nvim;
     config = builtins.readFile ./auto-dark-mode.lua;
     type = "lua";
   }
