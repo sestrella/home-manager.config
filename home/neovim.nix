@@ -14,7 +14,20 @@ args@{ config, pkgs, ... }:
       pkgs.yaml-language-server
     ];
     extraLuaConfig = builtins.readFile ./neovim/extra-config.lua;
-    plugins = import ./neovim/plugins.nix args;
+    plugins = builtins.concatLists
+      (map (plugin: import plugin args) [
+        ./neovim/plugins/auto-dark-mode.nix
+        ./neovim/plugins/cmp.nix
+        ./neovim/plugins/comment.nix
+        ./neovim/plugins/hardtime.nix
+        ./neovim/plugins/lspconfig.nix
+        ./neovim/plugins/lualine.nix
+        ./neovim/plugins/null-ls.nix
+        ./neovim/plugins/solarized.nix
+        ./neovim/plugins/telescope.nix
+        ./neovim/plugins/which-key.nix
+        ./neovim/plugins/whitespace.nix
+      ]);
     vimdiffAlias = true;
   };
 
