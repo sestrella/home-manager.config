@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+args@{ config, pkgs, ... }:
 
 {
   programs.neovim = {
@@ -14,9 +14,7 @@
       pkgs.yaml-language-server
     ];
     extraLuaConfig = builtins.readFile ./neovim/extra-config.lua;
-    plugins = import ./neovim/plugins.nix {
-      inherit pkgs;
-    };
+    plugins = import ./neovim/plugins.nix args;
     vimdiffAlias = true;
   };
 
