@@ -9,7 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     devenv.url = "github:cachix/devenv";
-    flake-utils.url = "github:numtide/flake-utils";
     hardtime = {
       url = "github:m4xshen/hardtime.nvim";
       flake = false;
@@ -21,7 +20,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = inputs@{ self, auto-dark-mode, darwin, devenv, flake-utils, hardtime, home-manager, nixpkgs }:
+  outputs = inputs@{ self, auto-dark-mode, darwin, devenv, flake-parts, hardtime, home-manager, nixpkgs }:
     let
       mkDarwinSystem = system: darwin.lib.darwinSystem {
         inherit system;
@@ -44,32 +43,31 @@
     in
     {
       inherit darwinConfigurations;
-    } // flake-utils.lib.eachSystem [ "aarch64-darwin" "x86_64-darwin" ]
-      (system:
-        let
-          pkgs = nixpkgs.legacyPackages.${ system};
-        in
-        {
-          devShells.default = devenv.lib.mkShell {
-            inherit inputs pkgs;
-            modules = [
-              ({ pkgs, ... }: {
-                packages = [
-                  pkgs.gitleaks
-                ];
+    } // flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [
+        inputs.devenv.flakeModule
+      ];
 
-                pre-commit.hooks = {
-                  luacheck.enable = true;
-                  nixpkgs-fmt.enable = true;
-                  stylua.enable = true;
-                  yamllint.enable = true;
-                };
-              })
-            ];
+      systems = [ "aarch64-darwin" "x86_64-darwin" ];
+
+      perSystem = { config, self', inputs', pkgs, system, ... }: {
+        devenv.shells.default = {
+          packages = [
+            pkgs.gitleaks
+          ];
+
+          pre-commit.hooks = {
+            luacheck.enable = true;
+            nixpkgs-fmt.enable = true;
+            stylua.enable = true;
+            yamllint.enable = true;
           };
-          packages = {
-            ci = darwinConfigurations."ghactions".system;
-            default = darwinConfigurations."Administrators-MacBook-Pro".system;
-          };
-        });
+        };
+
+        packages = {
+          ci = darwinConfigurations."ghactions".system;
+          default = darwinConfigurations."Administrators-MacBook-Pro".system;
+        };
+      };
+    };
 }
