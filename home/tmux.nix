@@ -27,6 +27,7 @@
 
   programs.fish.shellAbbrs = {
     # https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/tmux
+    t = "tmuxinator";
     ta = "tmux attach -t";
     tkss = "tmux kill-session -t";
     tksv = "tmux kill-server";

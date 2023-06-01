@@ -55,7 +55,9 @@
   programs.fish = {
     enable = true;
     functions.fish_greeting = "";
-    shellAbbrs.top = "btm";
+    shellAbbrs.nfid = ''
+      nix flake init --template github:cachix/devenv#flake-parts
+    '';
   };
 
   programs.starship.enable = true;
