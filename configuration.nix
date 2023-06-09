@@ -15,6 +15,7 @@
       "grammarly-desktop"
       "iterm2-beta"
       "notion"
+      "obsidian"
       "rectangle"
       "session-manager-plugin"
       "slack"
