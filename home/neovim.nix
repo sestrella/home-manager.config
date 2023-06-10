@@ -18,7 +18,6 @@ args@{ config, pkgs, ... }:
       ./neovim/plugins/auto-dark-mode.nix
       ./neovim/plugins/cmp.nix
       ./neovim/plugins/comment.nix
-      ./neovim/plugins/hardtime.nix
       ./neovim/plugins/lspconfig.nix
       ./neovim/plugins/lualine.nix
       ./neovim/plugins/null-ls.nix
