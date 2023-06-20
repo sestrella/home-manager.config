@@ -27,6 +27,7 @@
     pkgs.btop
     pkgs.circleci-cli
     pkgs.jq
+    pkgs.nix-prefetch-git
     pkgs.tmate
     pkgs.tree
     pkgs.wget
