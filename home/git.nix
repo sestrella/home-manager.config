@@ -14,7 +14,11 @@
       enable = true;
       # https://github.com/dandavison/delta/issues/447
       package = pkgs.writeScriptBin "delta" ''
-        ${pkgs.delta}/bin/delta "$(defaults read -g AppleInterfaceStyle &> /dev/null || echo --light)" "$@"
+        if defaults read -g AppleInterfaceStyle &> /dev/null; then
+          ${pkgs.delta}/bin/delta "$@"
+        else
+          ${pkgs.delta}/bin/delta --light "$@"
+        fi
       '';
       options.line-numbers = true;
     };
