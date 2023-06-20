@@ -1,4 +1,4 @@
-{ auto-dark-mode, config, hardtime, pkgs, ... }:
+{ auto-dark-mode, config, pkgs, ... }:
 
 {
   # This value determines the Home Manager release that your
@@ -69,10 +69,6 @@
         auto-dark-mode-nvim = pkgs.vimUtils.buildVimPlugin {
           name = "auto-dark-mode.nvim";
           src = auto-dark-mode;
-        };
-        hardtime-nvim = pkgs.vimUtils.buildVimPlugin {
-          name = "hardtime.nvim";
-          src = hardtime;
         };
       });
     })

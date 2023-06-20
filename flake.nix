@@ -9,10 +9,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     devenv.url = "github:cachix/devenv";
-    hardtime = {
-      url = "github:m4xshen/hardtime.nvim";
-      flake = false;
-    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +16,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = inputs@{ self, auto-dark-mode, darwin, devenv, flake-parts, hardtime, home-manager, nixpkgs }:
+  outputs = inputs@{ self, auto-dark-mode, darwin, devenv, flake-parts, home-manager, nixpkgs }:
     let
       mkDarwinSystem = system: darwin.lib.darwinSystem {
         inherit system;
@@ -30,7 +26,7 @@
           {
             home-manager = {
               backupFileExtension = "bak";
-              extraSpecialArgs = { inherit auto-dark-mode hardtime; };
+              extraSpecialArgs = { inherit auto-dark-mode; };
               users.sestrella = import ./home.nix;
             };
           }

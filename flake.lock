@@ -127,22 +127,6 @@
         "type": "github"
       }
     },
-    "hardtime": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1684918612,
-        "narHash": "sha256-T+5GOUSvjfHE+moc9dFMliNZFyYhhWUjVMwEFGdqVCk=",
-        "owner": "m4xshen",
-        "repo": "hardtime.nvim",
-        "rev": "7955fa49d32f72e33a87e2f3749079bfc266aada",
-        "type": "github"
-      },
-      "original": {
-        "owner": "m4xshen",
-        "repo": "hardtime.nvim",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -319,7 +303,6 @@
         "darwin": "darwin",
         "devenv": "devenv",
         "flake-parts": "flake-parts",
-        "hardtime": "hardtime",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2"
       }
