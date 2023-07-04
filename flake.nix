@@ -35,7 +35,7 @@
         ];
       };
       darwinConfigurations = {
-        "Administrators-MacBook-Pro" = mkDarwinSystem "aarch64-darwin";
+        "ec-2022-127-lp-sestrella" = mkDarwinSystem "aarch64-darwin";
         "ghactions" = mkDarwinSystem "x86_64-darwin";
       };
     in
@@ -66,7 +66,7 @@
 
         packages = {
           ci = darwinConfigurations."ghactions".system;
-          default = darwinConfigurations."Administrators-MacBook-Pro".system;
+          default = darwinConfigurations."ec-2022-127-lp-sestrella".system;
         };
       });
 }
