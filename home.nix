@@ -28,8 +28,10 @@
     pkgs.circleci-cli
     pkgs.jq
     pkgs.nix-prefetch-git
+    pkgs.pstree
     pkgs.tmate
     pkgs.tree
+    pkgs.watch
     pkgs.wget
   ];
 
