@@ -1,4 +1,4 @@
-args@{ config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   programs.neovim = {
@@ -14,7 +14,7 @@ args@{ config, pkgs, ... }:
       pkgs.yaml-language-server
     ];
     extraLuaConfig = builtins.readFile ./neovim/extra-config.lua;
-    plugins = builtins.concatMap (plugin: import plugin args) [
+    plugins = builtins.concatMap (plugin: pkgs.callPackage plugin { }) [
       ./neovim/plugins/auto-dark-mode.nix
       ./neovim/plugins/cmp.nix
       ./neovim/plugins/comment.nix
