@@ -16,6 +16,7 @@
       "iterm2-beta"
       "notion"
       "obsidian"
+      "postman"
       "rectangle"
       "session-manager-plugin"
       "slack"
