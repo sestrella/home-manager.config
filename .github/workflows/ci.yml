@@ -12,7 +12,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v21
+      - uses: cachix/install-nix-action@v22
       - run: nix build .#ci
       # TODO: Fix issue running darwin-rebuild
       # - run: ./result/sw/bin/darwin-rebuild switch --flake .
