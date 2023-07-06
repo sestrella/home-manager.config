@@ -34,34 +34,34 @@
           }
         ];
       };
+    in
+    {
       darwinConfigurations = {
         ci = mkDarwinSystem "x86_64-darwin";
         work = mkDarwinSystem "aarch64-darwin";
       };
-    in
-    {
-      inherit darwinConfigurations;
-    } // flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = nixpkgs.legacyPackages.${system};
-      in
-      {
-        devShells.default = devenv.lib.mkShell {
-          inherit inputs pkgs;
-          modules = [
-            ({ pkgs, ... }: {
-              packages = [
-                pkgs.gitleaks
-              ];
+    } // flake-utils.lib.eachSystem [ "aarch64-darwin" "x86_64-darwin" ]
+      (system:
+        let
+          pkgs = nixpkgs.legacyPackages.${system};
+        in
+        {
+          devShells.default = devenv.lib.mkShell {
+            inherit inputs pkgs;
+            modules = [
+              ({ pkgs, ... }: {
+                packages = [
+                  pkgs.gitleaks
+                ];
 
-              pre-commit.hooks = {
-                luacheck.enable = true;
-                nixpkgs-fmt.enable = true;
-                stylua.enable = true;
-                yamllint.enable = true;
-              };
-            })
-          ];
-        };
-      });
+                pre-commit.hooks = {
+                  luacheck.enable = true;
+                  nixpkgs-fmt.enable = true;
+                  stylua.enable = true;
+                  yamllint.enable = true;
+                };
+              })
+            ];
+          };
+        });
 }
