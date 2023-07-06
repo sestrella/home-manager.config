@@ -14,7 +14,7 @@ My system configuration managed via `nix-darwin`.
 Activate the system configuration for the first time:
 
 ```sh
-nix build .#darwinConfigurations.ci.system
+nix build .#darwinConfigurations.work.system
 ```
 
 Next time, update system configuration running the following command:
