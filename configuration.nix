@@ -14,7 +14,6 @@
       "google-chrome"
       "grammarly-desktop"
       "iterm2-beta"
-      "notion"
       "obsidian"
       "postman"
       "rectangle"
