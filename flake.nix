@@ -63,10 +63,5 @@
             })
           ];
         };
-
-        packages = {
-          ci = darwinConfigurations.ci.system;
-          default = darwinConfigurations.work.system;
-        };
       });
 }
