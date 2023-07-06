@@ -35,8 +35,8 @@
         ];
       };
       darwinConfigurations = {
-        "ec-2022-127-lp-sestrella" = mkDarwinSystem "aarch64-darwin";
-        "ghactions" = mkDarwinSystem "x86_64-darwin";
+        ci = mkDarwinSystem "x86_64-darwin";
+        work = mkDarwinSystem "aarch64-darwin";
       };
     in
     {
@@ -65,8 +65,8 @@
         };
 
         packages = {
-          ci = darwinConfigurations."ghactions".system;
-          default = darwinConfigurations."ec-2022-127-lp-sestrella".system;
+          ci = darwinConfigurations.ci.system;
+          default = darwinConfigurations.work.system;
         };
       });
 }
