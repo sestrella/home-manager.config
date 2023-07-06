@@ -25,7 +25,6 @@
     pkgs.aws-vault
     pkgs.awscli2
     pkgs.btop
-    pkgs.circleci-cli
     pkgs.jq
     pkgs.nix-prefetch-git
     pkgs.pstree
@@ -33,6 +32,7 @@
     pkgs.tree
     pkgs.watch
     pkgs.wget
+    pkgs.yq
   ];
 
   programs.autojump.enable = true;
