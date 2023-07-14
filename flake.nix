@@ -1,20 +1,14 @@
 {
   # https://nix-community.github.io/home-manager/index.html#sec-flakes-nix-darwin-module
   inputs = {
-    auto-dark-mode = {
-      url = "github:f-person/auto-dark-mode.nvim";
-      flake = false;
-    };
-    darwin = {
-      url = "github:LnL7/nix-darwin";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    auto-dark-mode.flake = false;
+    auto-dark-mode.url = "github:f-person/auto-dark-mode.nvim";
+    darwin.url = "github:LnL7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
     devenv.url = "github:cachix/devenv";
     flake-utils.url = "github:numtide/flake-utils";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
