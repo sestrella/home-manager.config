@@ -12,7 +12,15 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
-  outputs = inputs@{ self, auto-dark-mode, darwin, devenv, flake-utils, home-manager, nixpkgs }:
+  outputs =
+    { self
+    , auto-dark-mode
+    , darwin
+    , devenv
+    , flake-utils
+    , home-manager
+    , nixpkgs
+    }@inputs:
     let
       mkDarwinSystem = system: darwin.lib.darwinSystem {
         inherit system;
@@ -34,28 +42,29 @@
         ci = mkDarwinSystem "x86_64-darwin";
         work = mkDarwinSystem "aarch64-darwin";
       };
+
     } // flake-utils.lib.eachSystem [ "aarch64-darwin" "x86_64-darwin" ]
       (system:
-        let
-          pkgs = nixpkgs.legacyPackages.${system};
-        in
-        {
-          devShells.default = devenv.lib.mkShell {
-            inherit inputs pkgs;
-            modules = [
-              ({ pkgs, ... }: {
-                packages = [
-                  pkgs.gitleaks
-                ];
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShells.default = devenv.lib.mkShell {
+          inherit inputs pkgs;
+          modules = [
+            ({ pkgs, ... }: {
+              packages = [
+                pkgs.gitleaks
+              ];
 
-                pre-commit.hooks = {
-                  luacheck.enable = true;
-                  nixpkgs-fmt.enable = true;
-                  stylua.enable = true;
-                  yamllint.enable = true;
-                };
-              })
-            ];
-          };
-        });
+              pre-commit.hooks = {
+                luacheck.enable = true;
+                nixpkgs-fmt.enable = true;
+                stylua.enable = true;
+                yamllint.enable = true;
+              };
+            })
+          ];
+        };
+      });
 }
