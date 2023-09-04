@@ -12,7 +12,7 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v22
+      - uses: cachix/install-nix-action@v23
       - run: nix build .#darwinConfigurations.ci.system
       # FIXME: error: Directory /run does not exist, aborting activation
       # - run: ./result/sw/bin/darwin-rebuild switch --flake .#ci
