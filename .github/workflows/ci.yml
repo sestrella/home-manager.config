@@ -11,7 +11,7 @@ jobs:
   build:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: cachix/install-nix-action@v22
       - run: nix build .#darwinConfigurations.ci.system
       # FIXME: error: Directory /run does not exist, aborting activation
