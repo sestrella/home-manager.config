@@ -3,8 +3,8 @@
   inputs = {
     auto-dark-mode.flake = false;
     auto-dark-mode.url = "github:f-person/auto-dark-mode.nvim";
-    darwin.url = "github:LnL7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
+    darwin.url = "github:LnL7/nix-darwin";
     devenv.url = "github:cachix/devenv";
     flake-utils.url = "github:numtide/flake-utils";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
