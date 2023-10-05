@@ -24,6 +24,7 @@
   home.packages = [
     pkgs.aws-vault
     pkgs.awscli2
+    pkgs.bottom
     pkgs.btop
     pkgs.jq
     pkgs.nix-prefetch-git
