@@ -1,8 +1,8 @@
 {
   # https://nix-community.github.io/home-manager/index.html#sec-flakes-nix-darwin-module
   inputs = {
-    auto-dark-mode.flake = false;
-    auto-dark-mode.url = "github:f-person/auto-dark-mode.nvim";
+    # auto-dark-mode.flake = false;
+    # auto-dark-mode.url = "github:f-person/auto-dark-mode.nvim";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     darwin.url = "github:LnL7/nix-darwin";
     devenv.url = "github:cachix/devenv";
@@ -10,11 +10,12 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    vim-plugins.url = "path:flakes/vim-plugins";
   };
 
   outputs =
     { self
-    , auto-dark-mode
+    , vim-plugins
     , darwin
     , devenv
     , flake-utils
@@ -30,7 +31,7 @@
           {
             home-manager = {
               backupFileExtension = "bak";
-              extraSpecialArgs = { inherit auto-dark-mode; };
+              extraSpecialArgs = { vim-plugins-overlays = inputs.vim-plugins.overlays.${system}; };
               users.sestrella = import ./home.nix;
             };
           }

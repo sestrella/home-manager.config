@@ -2,7 +2,7 @@
 
 [
   {
-    plugin = pkgs.vimPlugins.auto-dark-mode-nvim;
+    plugin = pkgs.vimPlugins.auto-dark-mode;
     config = builtins.readFile ./auto-dark-mode.lua;
     type = "lua";
   }

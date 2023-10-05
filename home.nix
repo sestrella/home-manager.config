@@ -1,4 +1,4 @@
-{ auto-dark-mode, config, pkgs, ... }:
+{ config, pkgs, vim-plugins-overlays, ... }:
 
 {
   # This value determines the Home Manager release that your
@@ -67,13 +67,6 @@
   programs.starship.enable = true;
 
   nixpkgs.overlays = [
-    (final: prev: {
-      vimPlugins = prev.vimPlugins.extend (final': prev': {
-        auto-dark-mode-nvim = pkgs.vimUtils.buildVimPlugin {
-          name = "auto-dark-mode.nvim";
-          src = auto-dark-mode;
-        };
-      });
-    })
+    vim-plugins-overlays.default
   ];
 }
