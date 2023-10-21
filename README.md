@@ -8,7 +8,7 @@ My [Home Manager](https://github.com/nix-community/home-manager) configuration.
 
 - Install Nix via [nix-installer](https://github.com/DeterminateSystems/nix-installer)
 
-Alternatively, use the official
+Alternatively, use the official Nix
 [installer](https://nixos.org/guides/install-nix.html) and enable
 [Flakes](https://nixos.wiki/wiki/Flakes).
 
@@ -20,11 +20,13 @@ Clone the repository:
 git clone https://github.com/sestrella/nix-darwin-config.git ~/.config/home-manager
 ```
 
-Activate the configuration:
+Active the configuration for the first time:
 
 ```
-nix run home-manager/master -- init --switch
+nix run home-manager/master -- switch
 ```
+
+**Note:** For future activations, run the `home-manager switch` command.
 
 ## Inspired By
 
