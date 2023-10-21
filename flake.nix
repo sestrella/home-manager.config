@@ -10,21 +10,29 @@
     };
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
-    let
-      system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      homeConfigurations."sestrella" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
+  outputs = { nixpkgs, home-manager, ... }: {
+    homeConfigurations = {
+      runner = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.x86_64-linux;
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix ];
+        modules = [ ./runner.nix ];
+
+        # Optionally use extraSpecialArgs
+        # to pass through arguments to home.nix
+
+      };
+      sestrella = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+
+        # Specify your home configuration modules here, for example,
+        # the path to your home.nix.
+        modules = [ ./sestrella.nix ];
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
       };
     };
+  };
 }
