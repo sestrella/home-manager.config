@@ -1,6 +1,6 @@
 # Home Manager Configuration
 
-[![CI](https://github.com/sestrella/nix-home/actions/workflows/ci.yml/badge.svg)](https://github.com/sestrella/nix-home/actions/workflows/ci.yml)
+[![CI](https://github.com/sestrella/home-manager.config/actions/workflows/ci.yml/badge.svg)](https://github.com/sestrella/home-manager.config/actions/workflows/ci.yml)
 
 My [Home Manager](https://github.com/nix-community/home-manager) configuration.
 
