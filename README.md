@@ -1,34 +1,35 @@
-# [nix-darwin] configuration
+# Home Manager Configuration
 
-[![CI](https://github.com/sestrella/nix-home/actions/workflows/ci.yml/badge.svg)](https://github.com/sestrella/nix-home/actions/workflows/ci.yml)
+[![CI](https://github.com/sestrella/home-manager.config/actions/workflows/ci.yml/badge.svg)](https://github.com/sestrella/home-manager.config/actions/workflows/ci.yml)
 
-My system configuration managed via `nix-darwin`.
+My [Home Manager](https://github.com/nix-community/home-manager) configuration.
 
 ## Requirements
 
-- Install [Nix](https://nixos.org/guides/install-nix.html)
-- Enable [Flakes](https://nixos.wiki/wiki/Flakes#Permanent) permanently
+- Install Nix via [nix-installer](https://github.com/DeterminateSystems/nix-installer)
+
+Alternatively, use the official
+[installer](https://nixos.org/guides/install-nix.html) and enable
+[Flakes](https://nixos.wiki/wiki/Flakes).
 
 ## Getting Started
 
-Activate the system configuration for the first time:
+Clone the repository:
 
-```sh
-nix build .#darwinConfigurations.work.system
+```
+git clone https://github.com/sestrella/nix-darwin-config.git ~/.config/home-manager
 ```
 
-Next time, update system configuration running the following command:
+Activate the configuration:
 
-```sh
-./bin/switch
+```
+nix run home-manager/master -- init --switch
 ```
 
 ## Inspired By
 
-A list of repositories that inspired this one:
+A list of projects that inspired me to write this one:
 
-- [HugoReeves/nix-home](https://github.com/HugoReeves/nix-home/)
-- [gvolpe/nix-config](https://github.com/gvolpe/nix-config/)
-- [ryantm/home-manager-template](https://github.com/ryantm/home-manager-template/)
-
-[nix-darwin]: https://github.com/LnL7/nix-darwin
+- https://github.com/HugoReeves/nix-home
+- https://github.com/gvolpe/nix-config
+- https://github.com/ryantm/home-manager-template

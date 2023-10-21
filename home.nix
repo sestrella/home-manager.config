@@ -1,15 +1,19 @@
-{ config, pkgs, vim-plugins-overlays, ... }:
+{ config, pkgs, ... }:
 
 {
-  # This value determines the Home Manager release that your
-  # configuration is compatible with. This helps avoid breakage
-  # when a new Home Manager release introduces backwards
-  # incompatible changes.
+  # Home Manager needs a bit of information about you and the paths it should
+  # manage.
+  home.username = "sestrella";
+  home.homeDirectory = "/Users/sestrella";
+
+  # This value determines the Home Manager release that your configuration is
+  # compatible with. This helps avoid breakage when a new Home Manager release
+  # introduces backwards incompatible changes.
   #
-  # You can update Home Manager without changing this value. See
-  # the Home Manager release notes for a list of state version
-  # changes in each release.
-  home.stateVersion = "22.11";
+  # You should not change this value, even if you update Home Manager. If you do
+  # want to update the value, then make sure to first check the Home Manager
+  # release notes.
+  home.stateVersion = "23.05"; # Please read the comment before changing.
 
   # Custom configuration
   imports = [
@@ -62,11 +66,16 @@
     shellAbbrs.nfid = ''
       nix flake init --template github:cachix/devenv#flake-parts
     '';
+    shellInit = ''
+      # https://github.com/Homebrew/brew/blob/master/Library/Homebrew/cmd/shellenv.sh
+      eval (/opt/homebrew/bin/brew shellenv)
+     . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+    '';
   };
 
   programs.starship.enable = true;
 
-  nixpkgs.overlays = [
-    vim-plugins-overlays.default
-  ];
+  # nixpkgs.overlays = [
+  #   vim-plugins-overlays.default
+  # ];
 }
