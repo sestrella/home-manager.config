@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of sestrella";
+  description = "Home Manager configuration of Sebastian Estrella";
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
@@ -14,7 +14,8 @@
     let
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
-    in {
+    in
+    {
       homeConfigurations."sestrella" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
 
