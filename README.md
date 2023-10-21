@@ -1,8 +1,8 @@
-# [nix-darwin] configuration
+# Home Manager Configuration
 
 [![CI](https://github.com/sestrella/nix-home/actions/workflows/ci.yml/badge.svg)](https://github.com/sestrella/nix-home/actions/workflows/ci.yml)
 
-My system configuration managed via `nix-darwin`.
+My [Home Manager][home-manager] configuration
 
 ## Requirements
 
@@ -11,16 +11,16 @@ My system configuration managed via `nix-darwin`.
 
 ## Getting Started
 
-Activate the system configuration for the first time:
+Clone the repository:
 
-```sh
-nix build .#darwinConfigurations.work.system
+```
+git clone https://github.com/sestrella/nix-darwin-config.git ~/.config/home-manager
 ```
 
-Next time, update system configuration running the following command:
+Activate the configuration:
 
-```sh
-./bin/switch
+```
+nix run home-manager/master -- init --switch
 ```
 
 ## Inspired By
@@ -31,4 +31,4 @@ A list of repositories that inspired this one:
 - [gvolpe/nix-config](https://github.com/gvolpe/nix-config/)
 - [ryantm/home-manager-template](https://github.com/ryantm/home-manager-template/)
 
-[nix-darwin]: https://github.com/LnL7/nix-darwin
+[home-manager]: https://github.com/nix-community/home-manager
