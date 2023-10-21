@@ -26,6 +26,7 @@
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
+    "bad"
     pkgs.aws-vault
     pkgs.awscli2
     pkgs.bottom
