@@ -9,10 +9,9 @@ concurrency:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: cachix/install-nix-action@v22
-      - run: nix build .#darwinConfigurations.ci.system
-      # FIXME: error: Directory /run does not exist, aborting activation
-      # - run: ./result/sw/bin/darwin-rebuild switch --flake .#ci
+      - uses: DeterminateSystems/flake-checker-action@v5
+      - uses: DeterminateSystems/nix-installer-action@v6
+      - run: nix run home-manager/master -- init --switch
