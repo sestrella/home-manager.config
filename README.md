@@ -2,12 +2,15 @@
 
 [![CI](https://github.com/sestrella/nix-home/actions/workflows/ci.yml/badge.svg)](https://github.com/sestrella/nix-home/actions/workflows/ci.yml)
 
-My [Home Manager][home-manager] configuration
+My [Home Manager](https://github.com/nix-community/home-manager) configuration.
 
 ## Requirements
 
-- Install [Nix](https://nixos.org/guides/install-nix.html)
-- Enable [Flakes](https://nixos.wiki/wiki/Flakes#Permanent) permanently
+- Install Nix via [nix-installer](https://github.com/DeterminateSystems/nix-installer)
+
+Alternatively, use the official
+[installer](https://nixos.org/guides/install-nix.html) and enable
+[Flakes](https://nixos.wiki/wiki/Flakes).
 
 ## Getting Started
 
@@ -25,10 +28,8 @@ nix run home-manager/master -- init --switch
 
 ## Inspired By
 
-A list of repositories that inspired this one:
+A list of projects that inspired me to write this one:
 
-- [HugoReeves/nix-home](https://github.com/HugoReeves/nix-home/)
-- [gvolpe/nix-config](https://github.com/gvolpe/nix-config/)
-- [ryantm/home-manager-template](https://github.com/ryantm/home-manager-template/)
-
-[home-manager]: https://github.com/nix-community/home-manager
+- https://github.com/HugoReeves/nix-home
+- https://github.com/gvolpe/nix-config
+- https://github.com/ryantm/home-manager-template
