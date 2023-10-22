@@ -11,7 +11,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: DeterminateSystems/flake-checker-action@v5
-      - uses: DeterminateSystems/nix-installer-action@v6
-      - run: nix run home-manager/master -- init --switch $GITHUB_WORKSPACE
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Check Nix flake inputs
+        uses: DeterminateSystems/flake-checker-action@v5
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v6
+      - name: Build configuration
+        run: nix run home-manager/master -- build --flake ${{ github.workspace }}
+      - name: Activate the configuration
+        run: ./result/activate
