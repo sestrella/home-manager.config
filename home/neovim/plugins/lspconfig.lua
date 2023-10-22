@@ -23,11 +23,11 @@ local servers = {
 			},
 		},
 	},
-	rnix = {},
+	nixd = {},
+	pyright = {},
 	ruby_ls = {},
 	rust_analyzer = {},
 	terraformls = {},
-	pyright = {},
 	yamlls = {
 		settings = {
 			yaml = {

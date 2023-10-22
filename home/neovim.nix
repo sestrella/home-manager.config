@@ -6,9 +6,9 @@
     defaultEditor = true;
     extraPackages = [
       pkgs.lua-language-server
+      pkgs.nixd
       pkgs.nodePackages.bash-language-server
       pkgs.pyright
-      pkgs.rnix-lsp
       pkgs.stylua
       pkgs.terraform-ls
       pkgs.yaml-language-server
