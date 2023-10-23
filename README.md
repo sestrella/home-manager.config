@@ -6,8 +6,8 @@ My [Home Manager](https://github.com/nix-community/home-manager) configuration.
 
 ## Requirements
 
-- Install Nix via [nix-installer](https://github.com/DeterminateSystems/nix-installer)
-
+Install Nix via
+[nix-installer](https://github.com/DeterminateSystems/nix-installer).
 Alternatively, use the official Nix
 [installer](https://nixos.org/guides/install-nix.html) and enable
 [Flakes](https://nixos.wiki/wiki/Flakes).
