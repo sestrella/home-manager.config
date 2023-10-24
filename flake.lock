@@ -116,7 +116,7 @@
       },
       "locked": {
         "lastModified": 1,
-        "narHash": "sha256-+iH2CvyMjbaWrbEtwEVuiCTwg64UTUzhDYHdqSL3rBE=",
+        "narHash": "sha256-8i9FYzp2QYcYlFuebmfgSLUjzCnCVPJktumLd/oT5co=",
         "path": "flakes/vim-plugins",
         "type": "path"
       },
