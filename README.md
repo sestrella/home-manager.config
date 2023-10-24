@@ -20,6 +20,12 @@ Clone the repository:
 git clone https://github.com/sestrella/nix-darwin-config.git ~/.config/home-manager
 ```
 
+Update `vim-plugins` lock:
+
+```
+nix flake lock --update-input vim-plugins
+```
+
 Active the configuration for the first time:
 
 ```
