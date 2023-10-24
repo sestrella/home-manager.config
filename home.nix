@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, vim-plugins-overlay, ... }:
 
 {
   # This value determines the Home Manager release that your configuration is
@@ -74,4 +74,6 @@
   #   vim-plugins-overlays.default
   # ];
   programs.home-manager.enable = true;
+
+  nixpkgs.overlays = [ vim-plugins-overlay ];
 }
