@@ -8,9 +8,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    vim-plugins.url = "path:flakes/vim-plugins";
   };
 
-  outputs = { nixpkgs, home-manager, ... }: {
+  outputs = { nixpkgs, home-manager, vim-plugins, ... }: {
     homeConfigurations = {
       runner = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -21,7 +22,9 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
-
+        extraSpecialArgs = {
+          vim-plugins-overlay = vim-plugins.overlays.x86_64-linux.default;
+        };
       };
       sestrella = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.aarch64-darwin;
@@ -32,6 +35,9 @@
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
+        extraSpecialArgs = {
+          vim-plugins-overlay = vim-plugins.overlays.aarch64-darwin.default;
+        };
       };
     };
   };
