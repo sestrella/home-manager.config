@@ -17,8 +17,8 @@ jobs:
         uses: DeterminateSystems/flake-checker-action@v5
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v6
-      - name: Update vim-plugins lock
-        run: nix flake lock --update-input vim-plugins
+      # - name: Update vim-plugins lock
+      #   run: nix flake lock --update-input vim-plugins
       - name: Build configuration
         run: nix run home-manager/master -- build --flake ${{ github.workspace }}
       - name: Activate the configuration
