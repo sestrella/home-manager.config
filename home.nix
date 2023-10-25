@@ -27,6 +27,7 @@
     pkgs.btop
     pkgs.jq
     pkgs.nix-prefetch-git
+    pkgs.nixpkgs-fmt
     pkgs.pstree
     pkgs.tmate
     pkgs.tree
@@ -62,9 +63,9 @@
       nix flake init --template github:cachix/devenv#flake-parts
     '';
     shellInit = ''
-      # https://github.com/Homebrew/brew/blob/master/Library/Homebrew/cmd/shellenv.sh
-      eval (/opt/homebrew/bin/brew shellenv)
-     . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
+       # https://github.com/Homebrew/brew/blob/master/Library/Homebrew/cmd/shellenv.sh
+       eval (/opt/homebrew/bin/brew shellenv)
+      . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
     '';
   };
 
