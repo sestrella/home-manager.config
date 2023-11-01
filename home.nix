@@ -25,6 +25,7 @@
     pkgs.awscli2
     pkgs.bottom
     pkgs.btop
+    pkgs.cachix
     pkgs.jq
     pkgs.nix-prefetch-git
     pkgs.nixpkgs-fmt
