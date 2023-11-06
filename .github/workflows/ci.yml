@@ -16,7 +16,7 @@ jobs:
       - name: Check Nix flake inputs
         uses: DeterminateSystems/flake-checker-action@v5
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v6
+        uses: DeterminateSystems/nix-installer-action@v7
       - name: Update vim-plugins lock
         run: nix flake lock --update-input vim-plugins
       - name: Build configuration
