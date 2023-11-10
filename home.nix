@@ -27,8 +27,10 @@
     pkgs.btop
     pkgs.cachix
     pkgs.jq
+    pkgs.nix-prefetch
     pkgs.nix-prefetch-git
     pkgs.nixpkgs-fmt
+    pkgs.noti
     pkgs.pstree
     pkgs.tmate
     pkgs.tree
