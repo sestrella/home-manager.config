@@ -8,6 +8,7 @@
       pkgs.lua-language-server
       pkgs.nixd
       pkgs.nodePackages.bash-language-server
+      pkgs.nodePackages.typescript-language-server
       pkgs.pyright
       pkgs.stylua
       pkgs.terraform-ls

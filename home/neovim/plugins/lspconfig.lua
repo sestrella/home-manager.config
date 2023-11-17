@@ -28,6 +28,7 @@ local servers = {
 	ruby_ls = {},
 	rust_analyzer = {},
 	terraformls = {},
+	tsserver = {},
 	yamlls = {
 		settings = {
 			yaml = {
