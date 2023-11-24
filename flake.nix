@@ -2,6 +2,7 @@
   description = "Home Manager configuration of Sebastian Estrella";
 
   inputs = {
+    devenv.url = "github:cachix/devenv";
     # Specify the source of Home Manager and Nixpkgs.
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
@@ -10,7 +11,7 @@
     vim-plugins.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { nixpkgs, home-manager, vim-plugins, ... }: {
+  outputs = { devenv, nixpkgs, home-manager, vim-plugins, ... }: {
     homeConfigurations = {
       runner = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
@@ -22,6 +23,7 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
         extraSpecialArgs = {
+          devenv = devenv.packages.x86_64-linux.default;
           vim-plugins-overlay = vim-plugins.overlays.x86_64-linux.default;
         };
       };
@@ -35,6 +37,7 @@
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
         extraSpecialArgs = {
+          devenv = devenv.packages.aarch64-darwin.default;
           vim-plugins-overlay = vim-plugins.overlays.aarch64-darwin.default;
         };
       };
