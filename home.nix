@@ -1,4 +1,4 @@
-{ config, pkgs, devenv, vim-plugins-overlay, ... }:
+{ config, pkgs, ... }:
 
 {
   # This value determines the Home Manager release that your configuration is
@@ -21,12 +21,12 @@
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
-    devenv
     pkgs.aws-vault
     pkgs.awscli2
     pkgs.bottom
     pkgs.btop
     pkgs.cachix
+    pkgs.devenv
     pkgs.jq
     pkgs.nix-prefetch
     pkgs.nix-prefetch-git
@@ -75,10 +75,5 @@
 
   programs.starship.enable = true;
 
-  # nixpkgs.overlays = [
-  #   vim-plugins-overlays.default
-  # ];
   programs.home-manager.enable = true;
-
-  nixpkgs.overlays = [ vim-plugins-overlay ];
 }
