@@ -6,7 +6,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    vim-plugins.url = "path:flakes/vim-plugins";
+    vim-plugins.url = "github:sestrella/home-manager.config?dir=flakes/vim-plugins";
     vim-plugins.inputs.nixpkgs.follows = "nixpkgs";
   };
 
