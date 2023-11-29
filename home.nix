@@ -63,9 +63,6 @@
   programs.fish = {
     enable = true;
     functions.fish_greeting = "";
-    shellAbbrs.nfid = ''
-      nix flake init --template github:cachix/devenv#flake-parts
-    '';
     shellInit = ''
        # https://github.com/Homebrew/brew/blob/master/Library/Homebrew/cmd/shellenv.sh
        eval (/opt/homebrew/bin/brew shellenv)
