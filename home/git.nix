@@ -9,6 +9,7 @@
         autoSetupRemote = true;
         default = "simple";
       };
+      rerere.enabled = true;
     };
     delta = {
       enable = true;
