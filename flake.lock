@@ -395,14 +395,19 @@
         "nvim-cmp": "nvim-cmp"
       },
       "locked": {
-        "lastModified": 1,
-        "narHash": "sha256-ayXR08MOUQj3ID2pZl3/hQKZNvL0nlWEPOaHYO+pQ3o=",
-        "path": "flakes/vim-plugins",
-        "type": "path"
+        "dir": "flakes/vim-plugins",
+        "lastModified": 1701242061,
+        "narHash": "sha256-CQA6YbSAlt2A98BIbrTCWIaKalhnHbZcfAoaXthn9to=",
+        "owner": "sestrella",
+        "repo": "home-manager.config",
+        "rev": "6c17642e9cc339def8af0720e0aeabe227c6f93e",
+        "type": "github"
       },
       "original": {
-        "path": "flakes/vim-plugins",
-        "type": "path"
+        "dir": "flakes/vim-plugins",
+        "owner": "sestrella",
+        "repo": "home-manager.config",
+        "type": "github"
       }
     }
   },
