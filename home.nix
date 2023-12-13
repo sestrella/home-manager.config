@@ -75,6 +75,6 @@
 
   nixpkgs.overlays = [
     devenv-overlay
-    vim-plugins-overlay
+    # vim-plugins-overlay
   ];
 }

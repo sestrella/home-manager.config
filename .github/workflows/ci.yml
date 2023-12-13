@@ -10,7 +10,6 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,5 +19,6 @@ jobs:
         uses: cachix/install-nix-action@v24
       - name: Build configuration
         run: nix run home-manager/release-23.11 -- build --flake ${{ github.workspace }}
+        timeout-minutes: 2
       - name: Activate the configuration
         run: ./result/activate

@@ -16,7 +16,7 @@
     ];
     extraLuaConfig = builtins.readFile ./neovim/extra-config.lua;
     plugins = builtins.concatMap (plugin: pkgs.callPackage plugin { }) [
-      ./neovim/plugins/auto-dark-mode.nix
+      # ./neovim/plugins/auto-dark-mode.nix
       ./neovim/plugins/cmp.nix
       ./neovim/plugins/comment.nix
       ./neovim/plugins/lspconfig.nix
