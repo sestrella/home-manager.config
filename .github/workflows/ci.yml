@@ -19,6 +19,6 @@ jobs:
       - name: Install Nix
         uses: cachix/install-nix-action@v24
       - name: Build configuration
-        run: nix run home-manager/master -- build --flake ${{ github.workspace }}
+        run: nix run home-manager/release-23.11 -- build
       - name: Activate the configuration
         run: ./result/activate

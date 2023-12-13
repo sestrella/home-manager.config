@@ -1,11 +1,12 @@
 {
-  description = "Home Manager configuration of Sebastian Estrella";
+  description = "My home-manager configuration";
 
   inputs = {
     devenv.url = "github:cachix/devenv";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
+    vim-plugins.inputs.nixpkgs.follows = "nixpkgs";
     vim-plugins.url = "github:sestrella/vim-plugins.nix";
   };
 
