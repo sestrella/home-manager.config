@@ -3,11 +3,10 @@
 
   inputs = {
     devenv.url = "github:cachix/devenv";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    vim-plugins.url = "github:sestrella/home-manager.config?dir=flakes/vim-plugins";
-    vim-plugins.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    vim-plugins.url = "github:sestrella/vim-plugins.nix";
   };
 
   outputs = { devenv, nixpkgs, home-manager, vim-plugins, ... }: {
@@ -22,7 +21,7 @@
                 (final: prev: {
                   devenv = devenv.packages.${system}.default;
                 })
-                vim-plugins.overlays.${system}.default
+                vim-plugins.overlays.default
               ];
             };
           };
