@@ -16,9 +16,7 @@
             inherit modules;
             pkgs = nixpkgs.legacyPackages.${system};
             extraSpecialArgs = {
-              # devenv-overlay = (final: prev: {
-              #   devenv = devenv.packages.${system}.default;
-              # });
+              devenv = devenv.packages.${system}.default;
               vim-plugins-overlay = vim-plugins.overlays.default;
             };
           };
