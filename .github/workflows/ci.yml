@@ -17,7 +17,7 @@ jobs:
       - name: Check Nix flake inputs
         uses: DeterminateSystems/flake-checker-action@v5
       - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@v8
+        uses: cachix/install-nix-action@v24
       - name: Build configuration
         run: nix run home-manager/master -- build --flake ${{ github.workspace }}
       - name: Activate the configuration
