@@ -5,7 +5,7 @@
     devenv.url = "github:cachix/devenv";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
     vim-plugins.url = "github:sestrella/vim-plugins.nix";
   };
 
