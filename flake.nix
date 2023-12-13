@@ -1,6 +1,4 @@
 {
-  description = "My home-manager configuration";
-
   inputs = {
     devenv.url = "github:cachix/devenv";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -17,12 +15,12 @@
           home-manager.lib.homeManagerConfiguration {
             inherit modules;
             pkgs = nixpkgs.legacyPackages.${system};
-            extraSpecialArgs = {
-              devenv-overlay = (final: prev: {
-                devenv = devenv.packages.${system}.default;
-              });
-              vim-plugins-overlay = vim-plugins.overlays.default;
-            };
+            # extraSpecialArgs = {
+              # devenv-overlay = (final: prev: {
+              #   devenv = devenv.packages.${system}.default;
+              # });
+              # vim-plugins-overlay = vim-plugins.overlays.default;
+            # };
           };
       in
       {

@@ -1,4 +1,5 @@
-{ config, pkgs, devenv-overlay, vim-plugins-overlay, ... }:
+# { config, pkgs, devenv-overlay, vim-plugins-overlay, ... }:
+{ config, pkgs, ... }:
 
 {
   # This value determines the Home Manager release that your configuration is
@@ -26,7 +27,7 @@
     pkgs.bottom
     pkgs.btop
     pkgs.cachix
-    pkgs.devenv
+    # pkgs.devenv
     pkgs.jq
     pkgs.nix-prefetch
     pkgs.nixpkgs-fmt
@@ -73,8 +74,8 @@
 
   programs.home-manager.enable = true;
 
-  nixpkgs.overlays = [
-    devenv-overlay
+  # nixpkgs.overlays = [
+    # devenv-overlay
     # vim-plugins-overlay
-  ];
+  # ];
 }
