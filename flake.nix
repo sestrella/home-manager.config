@@ -15,14 +15,12 @@
         mkHomeManagerConfig = { system, modules }:
           home-manager.lib.homeManagerConfiguration {
             inherit modules;
-            pkgs = import nixpkgs {
-              inherit system;
-              overlays = [
-                (final: prev: {
-                  devenv = devenv.packages.${system}.default;
-                })
-                vim-plugins.overlays.default
-              ];
+            pkgs = nixpkgs.legacyPackages.${system};
+            extraSpecialArgs = {
+              devenv-overlay = (final: prev: {
+                devenv = devenv.packages.${system}.default;
+              });
+              vim-plugins-overlay = vim-plugins.overlays.default;
             };
           };
       in

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, devenv-overlay, vim-plugins-overlay, ... }:
 
 {
   # This value determines the Home Manager release that your configuration is
@@ -29,6 +29,7 @@
     pkgs.devenv
     pkgs.jq
     pkgs.nix-prefetch
+    pkgs.nixpkgs-fmt
     pkgs.noti
     pkgs.pstree
     pkgs.tmate
@@ -71,4 +72,9 @@
   programs.starship.enable = true;
 
   programs.home-manager.enable = true;
+
+  nixpkgs.overlays = [
+    devenv-overlay
+    vim-plugins-overlay
+  ];
 }
