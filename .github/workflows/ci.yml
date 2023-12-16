@@ -17,10 +17,10 @@ jobs:
         uses: DeterminateSystems/flake-checker-action@v5
       - name: Install Nix
         uses: cachix/install-nix-action@v24
-      - name: Setup Cachix
-        uses: cachix/cachix-action@v12
         with:
-          name: devenv
+          extra_nix_config: |
+            extra-substituters = "https://devenv.cachix.org";
+            extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
       - name: Build configuration
         run: nix run home-manager/release-23.11 -- build --flake ${{ github.workspace }}
         timeout-minutes: 2
