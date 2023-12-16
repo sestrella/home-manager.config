@@ -1,4 +1,6 @@
 {
+  description = "My Home Manager configuration";
+
   inputs = {
     devenv.url = "github:cachix/devenv";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
