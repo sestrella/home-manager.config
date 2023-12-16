@@ -21,6 +21,7 @@ jobs:
         uses: cachix/cachix-action@v12
         with:
           name: devenv
+      - run: cat /etc/nix/nix.conf
       - name: Build configuration
         run: nix run home-manager/release-23.11 -- build --flake ${{ github.workspace }}
         timeout-minutes: 2
