@@ -28,6 +28,7 @@
     pkgs.cachix
     pkgs.devenv
     pkgs.jq
+    pkgs.nix-index
     pkgs.nix-prefetch
     pkgs.nixpkgs-fmt
     pkgs.noti
