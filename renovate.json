@@ -3,6 +3,9 @@
   "extends": [
     "config:recommended"
   ],
+  "reviewers": [
+    "sestrella"
+  ],
   "nix": {
     "enabled": true
   },
