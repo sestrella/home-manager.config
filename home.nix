@@ -33,6 +33,7 @@
     pkgs.nixpkgs-fmt
     pkgs.noti
     pkgs.pstree
+    pkgs.tailspin
     pkgs.tmate
     pkgs.tree
     pkgs.watch
