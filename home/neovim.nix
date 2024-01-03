@@ -12,6 +12,7 @@
       pkgs.pyright
       pkgs.stylua
       pkgs.terraform-ls
+      pkgs.vscode-langservers-extracted
       pkgs.yaml-language-server
     ];
     extraLuaConfig = builtins.readFile ./neovim/extra-config.lua;
