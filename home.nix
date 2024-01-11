@@ -14,6 +14,7 @@
   imports = [
     ./home/bat.nix
     ./home/git.nix
+    ./home/home-manager.nix
     ./home/neovim.nix
     ./home/ripgrep.nix
     ./home/tmux.nix
@@ -89,6 +90,4 @@
   };
 
   programs.starship.enable = true;
-
-  programs.home-manager.enable = true;
 }
