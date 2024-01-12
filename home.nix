@@ -76,4 +76,13 @@
   programs.starship.enable = true;
 
   programs.zoxide.enable = true;
+
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      import = [ "${pkgs.alacritty-theme}/solarized_dark.yaml" ];
+      font.size = 16;
+      shell.program = "${pkgs.fish}/bin/fish";
+    };
+  };
 }
