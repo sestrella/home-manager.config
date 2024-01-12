@@ -94,6 +94,7 @@
 
   programs.starship.enable = true;
 
+  # Reload configuration (⌃+⌘+,)
   programs.kitty = {
     enable = true;
     font.name = "FiraCode Nerd Font Mono";
