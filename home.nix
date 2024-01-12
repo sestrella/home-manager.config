@@ -20,6 +20,8 @@
     ./home/tmux.nix
   ];
 
+  fonts.fontconfig.enable = true;
+
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages =
     let
@@ -45,6 +47,7 @@
       pkgs.btop
       pkgs.cachix
       pkgs.devenv
+      pkgs.fira-code-nerdfont
       pkgs.jq
       pkgs.nix-index
       pkgs.nix-prefetch
@@ -91,12 +94,11 @@
 
   programs.starship.enable = true;
 
-  programs.alacritty = {
+  programs.kitty = {
     enable = true;
-    settings = {
-      import = [ "${pkgs.alacritty-theme}/solarized_dark.yaml" ];
-      font.size = 16;
-      shell.program = "${pkgs.fish}/bin/fish";
-    };
+    font.name = "FiraCode Nerd Font Mono";
+    font.size = 16;
+    settings.shell = "${pkgs.fish}/bin/fish";
+    theme = "Solarized Dark";
   };
 }
