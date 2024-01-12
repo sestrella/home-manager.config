@@ -36,6 +36,8 @@ A list of projects that inspired me to write this one:
 - https://github.com/gvolpe/nix-config
 - https://github.com/ryantm/home-manager-template
 
-## Awesome Lists
+I also took some ideas from the following Awesome lists:
 
-- [awesome-tmux](https://github.com/rothgar/awesome-tmux)
+- [nvim](https://github.com/rockerBOO/awesome-neovim)
+- [rust-tools](https://github.com/unpluggedcoder/awesome-rust-tools)
+- [tmux](https://github.com/rothgar/awesome-tmux)
