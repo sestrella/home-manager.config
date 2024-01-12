@@ -28,10 +28,14 @@ nix run home-manager/release-23.11 -- switch
 
 **Note:** For future activations, run the `home-manager switch` command.
 
-## Inspired By
+## Credits
 
 A list of projects that inspired me to write this one:
 
 - https://github.com/HugoReeves/nix-home
 - https://github.com/gvolpe/nix-config
 - https://github.com/ryantm/home-manager-template
+
+## Awesome Lists
+
+- [awesome-tmux](https://github.com/rothgar/awesome-tmux)
