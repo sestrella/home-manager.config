@@ -20,47 +20,26 @@
     ./home/tmux.nix
   ];
 
-  fonts.fontconfig.enable = true;
-
   # https://github.com/unpluggedcoder/awesome-rust-tools
-  home.packages =
-    let
-      hrvst-cli = pkgs.buildNpmPackage rec {
-        pname = "hrvst-cli";
-        version = "2.0.1";
-
-        src = pkgs.fetchFromGitHub {
-          owner = "kgajera";
-          repo = "hrvst-cli";
-          rev = "v${version}";
-          hash = "sha256-Xq0q5K0BniVv4AGcEGMFG/rAhvdMy1+to1+9gow2MaA=";
-        };
-
-        npmDepsHash = "sha256-Grx3szP5oFpMCr+dWFPmo0V7RRFrltjxGtbz7CAxUEo=";
-      };
-    in
-    [
-      hrvst-cli
-      pkgs.aws-vault
-      pkgs.awscli2
-      pkgs.bottom
-      pkgs.btop
-      pkgs.cachix
-      pkgs.devenv
-      pkgs.fira-code-nerdfont
-      pkgs.jq
-      pkgs.nix-index
-      pkgs.nix-prefetch
-      pkgs.nixpkgs-fmt
-      pkgs.noti
-      pkgs.pstree
-      pkgs.tailspin
-      pkgs.tmate
-      pkgs.tree
-      pkgs.watch
-      pkgs.wget
-      pkgs.yq
-    ];
+  home.packages = [
+    pkgs.bottom
+    pkgs.btop
+    pkgs.cachix
+    pkgs.devenv
+    pkgs.fira-code-nerdfont
+    pkgs.jq
+    pkgs.nix-index
+    pkgs.nix-prefetch
+    pkgs.nixpkgs-fmt
+    pkgs.noti
+    pkgs.pstree
+    pkgs.tailspin
+    pkgs.tmate
+    pkgs.tree
+    pkgs.watch
+    pkgs.wget
+    pkgs.yq
+  ];
 
   programs.autojump.enable = true;
 
@@ -93,13 +72,4 @@
   };
 
   programs.starship.enable = true;
-
-  # Reload configuration (⌃+⌘+,)
-  programs.kitty = {
-    enable = true;
-    font.name = "FiraCode Nerd Font Mono";
-    font.size = 16;
-    settings.shell = "${pkgs.fish}/bin/fish";
-    theme = "Solarized Dark";
-  };
 }
