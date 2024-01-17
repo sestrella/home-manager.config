@@ -28,7 +28,7 @@
           rtpFilePath = "main.tmux";
           src = pkgs.fetchFromGitHub {
             owner = "erikw";
-            repo = "tmux-dark-notify";
+            repo = pluginName;
             rev = version;
             hash = "sha256-dTtgWPZpu02BNuJ4QgXLXKpw/fSvDBZkLdqRKKCRBRA";
           };

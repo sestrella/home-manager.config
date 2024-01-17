@@ -6,11 +6,9 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-    vim-plugins.inputs.nixpkgs.follows = "nixpkgs";
-    vim-plugins.url = "github:sestrella/vim-plugins.nix";
   };
 
-  outputs = { devenv, nixpkgs, home-manager, vim-plugins, ... }: {
+  outputs = { self, devenv, nixpkgs, home-manager }: {
     homeConfigurations =
       let
         mkHomeManagerConfig = { system, modules }:
@@ -18,12 +16,7 @@
             inherit modules;
             pkgs = import nixpkgs {
               inherit system;
-              overlays = [
-                (final: prev: {
-                  devenv = devenv.packages.${system}.default;
-                })
-                vim-plugins.overlays.default
-              ];
+              overlays = [ devenv.overlays.default ];
             };
           };
       in
