@@ -19,6 +19,29 @@
           set -g @colors-solarized 'light'
         '';
       }
+      {
+        # TODO: Install dark-notify via Nix
+        # https://github.com/cormacrelf/dark-notify
+        plugin = pkgs.tmuxPlugins.mkTmuxPlugin rec {
+          pluginName = "tmux-dark-notify";
+          version = "23b27ed6cc8880960db49c69ca1bca7616348965";
+          rtpFilePath = "main.tmux";
+          src = pkgs.fetchFromGitHub {
+            owner = "erikw";
+            repo = "tmux-dark-notify";
+            rev = version;
+            hash = "sha256-dTtgWPZpu02BNuJ4QgXLXKpw/fSvDBZkLdqRKKCRBRA";
+          };
+        };
+        extraConfig =
+          let
+            path = "${pkgs.tmuxPlugins.tmux-colors-solarized}/share/tmux-plugins/tmuxcolors";
+          in
+          ''
+            set -g @dark-notify-theme-path-dark '${path}/tmuxcolors-dark.conf'
+            set -g @dark-notify-theme-path-light '${path}/tmuxcolors-light.conf'
+          '';
+      }
     ];
     shortcut = "a";
     terminal = "screen-256color";
