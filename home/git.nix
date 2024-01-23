@@ -30,6 +30,7 @@
 
   programs.fish.shellAbbrs = {
     "gc!" = "git commit -v --amend";
+    "gd!" = "git diff --cached";
     "gp!" = "git push --force-with-lease";
     ga = "git add";
     gaa = "git add --all";

@@ -21,3 +21,7 @@ vim.keymap.set("n", "n", "nzz", {})
 -- https://twitter.com/adib_hanna/status/1657074745978781701
 vim.keymap.set("n", "j", "jzz", {})
 vim.keymap.set("n", "k", "kzz", {})
+-- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
+-- https://vimtricks.com/p/vimtrick-moving-lines/
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
