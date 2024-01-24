@@ -3,7 +3,7 @@
 [
   {
     plugin = pkgs.vimPlugins.nvim-lspconfig;
-    config = builtins.readFile ./lspconfig.lua;
+    config = builtins.readFile ./config.lua;
     type = "lua";
   }
 ]

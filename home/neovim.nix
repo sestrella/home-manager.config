@@ -20,7 +20,7 @@
       ./neovim/plugins/auto-dark-mode.nix
       ./neovim/plugins/cmp.nix
       ./neovim/plugins/comment.nix
-      ./neovim/plugins/lspconfig.nix
+      ./neovim/plugins/lspconfig
       ./neovim/plugins/lualine.nix
       ./neovim/plugins/null-ls.nix
       ./neovim/plugins/solarized.nix
