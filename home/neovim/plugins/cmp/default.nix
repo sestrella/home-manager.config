@@ -3,7 +3,7 @@
 [
   {
     plugin = pkgs.vimPlugins.nvim-cmp;
-    config = builtins.readFile ./cmp.lua;
+    config = builtins.readFile ./config.lua;
     type = "lua";
   }
   pkgs.vimPlugins.cmp-buffer

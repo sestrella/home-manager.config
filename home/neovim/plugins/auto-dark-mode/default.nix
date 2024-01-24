@@ -11,7 +11,7 @@
         hash = "sha256-uJ4LxczgWl4aQCFuG4cR+2zwhNo7HB6R7ZPTdgjvyfY";
       };
     };
-    config = builtins.readFile ./auto-dark-mode.lua;
+    config = builtins.readFile ./config.lua;
     type = "lua";
   }
 ]

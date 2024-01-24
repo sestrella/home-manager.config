@@ -3,7 +3,7 @@
 [
   {
     plugin = pkgs.vimPlugins.telescope-nvim;
-    config = builtins.readFile ./telescope.lua;
+    config = builtins.readFile ./config.lua;
     type = "lua";
   }
 ]
