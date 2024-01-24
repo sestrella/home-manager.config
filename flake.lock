@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "auto-dark-mode-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1695457749,
+        "narHash": "sha256-uJ4LxczgWl4aQCFuG4cR+2zwhNo7HB6R7ZPTdgjvyfY=",
+        "owner": "f-person",
+        "repo": "auto-dark-mode.nvim",
+        "rev": "76e8d40d1e1544bae430f739d827391cbcb42fcc",
+        "type": "github"
+      },
+      "original": {
+        "owner": "f-person",
+        "repo": "auto-dark-mode.nvim",
+        "type": "github"
+      }
+    },
     "devenv": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -232,9 +248,11 @@
     },
     "root": {
       "inputs": {
+        "auto-dark-mode-nvim": "auto-dark-mode-nvim",
         "devenv": "devenv",
         "home-manager": "home-manager",
-        "nixpkgs": "nixpkgs_2"
+        "nixpkgs": "nixpkgs_2",
+        "tmux-dark-notify": "tmux-dark-notify"
       }
     },
     "systems": {
@@ -249,6 +267,22 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default",
+        "type": "github"
+      }
+    },
+    "tmux-dark-notify": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1687251590,
+        "narHash": "sha256-dTtgWPZpu02BNuJ4QgXLXKpw/fSvDBZkLdqRKKCRBRA=",
+        "owner": "erikw",
+        "repo": "tmux-dark-notify",
+        "rev": "23b27ed6cc8880960db49c69ca1bca7616348965",
+        "type": "github"
+      },
+      "original": {
+        "owner": "erikw",
+        "repo": "tmux-dark-notify",
         "type": "github"
       }
     }
