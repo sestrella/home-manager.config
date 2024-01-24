@@ -25,7 +25,7 @@
       ./neovim/plugins/null-ls.nix
       ./neovim/plugins/solarized.nix
       ./neovim/plugins/telescope.nix
-      ./neovim/plugins/treesitter.nix
+      ./neovim/plugins/treesitter
       ./neovim/plugins/which-key.nix
       ./neovim/plugins/whitespace.nix
     ];

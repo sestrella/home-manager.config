@@ -14,7 +14,7 @@
         plugins.tree-sitter-terraform
         plugins.tree-sitter-yaml
       ]);
-    config = builtins.readFile ./treesitter.lua;
+    config = builtins.readFile ./config.lua;
     type = "lua";
   }
   {
