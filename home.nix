@@ -12,8 +12,8 @@
 
   # Custom configuration
   imports = [
-    ./home/bat.nix
-    ./home/git.nix
+    ./home/bat
+    ./home/git
     ./home/home-manager.nix
     ./home/neovim
     ./home/ripgrep.nix
