@@ -15,9 +15,9 @@
     ./home/bat.nix
     ./home/git.nix
     ./home/home-manager.nix
-    ./home/neovim.nix
+    ./home/neovim
     ./home/ripgrep.nix
-    ./home/tmux.nix
+    ./home/tmux
   ];
 
   # https://github.com/unpluggedcoder/awesome-rust-tools

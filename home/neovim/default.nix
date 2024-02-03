@@ -15,19 +15,19 @@
       pkgs.vscode-langservers-extracted
       pkgs.yaml-language-server
     ];
-    extraLuaConfig = builtins.readFile ./neovim/extra-config.lua;
+    extraLuaConfig = builtins.readFile ./extra-config.lua;
     plugins = builtins.concatMap (plugin: pkgs.callPackage plugin { }) [
-      ./neovim/plugins/auto-dark-mode
-      ./neovim/plugins/cmp
-      ./neovim/plugins/comment
-      ./neovim/plugins/lspconfig
-      ./neovim/plugins/lualine
-      ./neovim/plugins/null-ls
-      ./neovim/plugins/solarized
-      ./neovim/plugins/telescope
-      ./neovim/plugins/treesitter
-      ./neovim/plugins/which-key
-      ./neovim/plugins/whitespace
+      ./plugins/auto-dark-mode
+      ./plugins/cmp
+      ./plugins/comment
+      ./plugins/lspconfig
+      ./plugins/lualine
+      ./plugins/null-ls
+      ./plugins/solarized
+      ./plugins/telescope
+      ./plugins/treesitter
+      ./plugins/which-key
+      ./plugins/whitespace
     ];
     vimdiffAlias = true;
   };
