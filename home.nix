@@ -14,9 +14,9 @@
   imports = [
     ./home/bat
     ./home/git
-    ./home/home-manager.nix
+    ./home/home-manager
     ./home/neovim
-    ./home/ripgrep.nix
+    ./home/ripgrep
     ./home/tmux
   ];
 
