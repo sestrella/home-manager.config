@@ -16,6 +16,7 @@
     ./home/git
     ./home/home-manager
     ./home/neovim
+    ./home/nix
     ./home/ripgrep
     ./home/tmux
   ];
@@ -28,9 +29,6 @@
     pkgs.devenv
     pkgs.fira-code-nerdfont
     pkgs.jq
-    pkgs.nix-index
-    pkgs.nix-prefetch
-    pkgs.nixpkgs-fmt
     pkgs.noti
     pkgs.pstree
     pkgs.tailspin
