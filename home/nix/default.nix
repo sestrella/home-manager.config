@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 
 {
   home.packages = [
@@ -20,7 +20,7 @@
       };
     in
     {
-      netrc-file = "/Users/sestrella/.config/nix/netrc";
+      netrc-file = "${config.home.homeDirectory}/.config/nix/netrc";
       substituters = builtins.map (domain: "https://${domain}") (builtins.attrNames caches);
       trusted-public-keys = builtins.attrValues (builtins.mapAttrs (domain: key: "${domain}-1:${key}") caches);
     };
