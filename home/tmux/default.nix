@@ -42,6 +42,12 @@
             set -g @dark-notify-theme-path-light '${path}/tmuxcolors-light.conf'
           '';
       }
+      {
+        plugin = pkgs.tmuxPlugins.tmux-fzf;
+        extraConfig = ''
+          bind-key "s" run-shell -b "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf/scripts/session.sh switch"
+        '';
+      }
     ];
     shortcut = "a";
     terminal = "screen-256color";
