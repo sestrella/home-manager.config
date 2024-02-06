@@ -12,6 +12,7 @@
     let
       caches = {
         "cache.nixos.org" = "6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=";
+        "devenv.cachix.org" = "w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
         "nixpkgs-python.cachix.org" = "hxjI7pFxTyuTHn2NkvWCrAUcNZLNS3ZAvfYNuYifcEU=";
         "nixpkgs-ruby.cachix.org" = "vrcdi50fTolOxWCZZkw0jakOnUI1T19oYJ+PRYdK4SM=";
         "nixpkgs-terraform.cachix.org" = "8Sit092rIdAVENA3ZVeH9hzSiqI/jng6JiCrQ1Dmusw=";
