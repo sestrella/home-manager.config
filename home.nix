@@ -52,6 +52,8 @@
     };
   };
 
+  programs.hmd.enable = true;
+
   programs.lsd = {
     enable = true;
     enableAliases = true;

@@ -5,6 +5,7 @@
     auto-dark-mode-nvim.flake = false;
     auto-dark-mode-nvim.url = "github:f-person/auto-dark-mode.nvim";
     devenv.url = "github:cachix/devenv";
+    home-manager-diff.url = "github:pedorich-n/home-manager-diff";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-23.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
@@ -12,12 +13,15 @@
     tmux-dark-notify.url = "github:erikw/tmux-dark-notify";
   };
 
-  outputs = inputs@{ self, devenv, nixpkgs, home-manager, ... }: {
+  outputs = inputs@{ self, devenv, nixpkgs, home-manager-diff, home-manager, ... }: {
     homeConfigurations =
       let
-        mkHomeManagerConfig = { system, modules }:
+        mkHomeManagerConfig = { system, module }:
           home-manager.lib.homeManagerConfiguration {
-            inherit modules;
+            modules = [
+              home-manager-diff.hmModules.default
+              module
+            ];
             pkgs = import nixpkgs {
               inherit system;
               # https://nixos.wiki/wiki/Overlays
@@ -45,11 +49,11 @@
       {
         runner = mkHomeManagerConfig {
           system = "x86_64-linux";
-          modules = [ ./runner.nix ];
+          module = ./runner.nix;
         };
         sestrella = mkHomeManagerConfig {
           system = "aarch64-darwin";
-          modules = [ ./sestrella.nix ];
+          module = ./sestrella.nix;
         };
       };
   };
