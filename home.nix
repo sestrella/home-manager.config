@@ -23,6 +23,7 @@
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
+    pkgs.asdf-vm
     pkgs.bottom
     pkgs.btop
     pkgs.cachix
