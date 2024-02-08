@@ -27,6 +27,8 @@
     pkgs.btop
     pkgs.cachix
     pkgs.devenv
+    pkgs.entr
+    pkgs.fd
     pkgs.fira-code-nerdfont
     pkgs.jq
     pkgs.noti
