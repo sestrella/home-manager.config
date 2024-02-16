@@ -24,7 +24,5 @@ jobs:
           name: sestrella
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           extraPullNames: devenv
-      - name: Build configuration
-        run: nix run home-manager/release-23.11 -- build --flake ${{ github.workspace }}
-      - name: Activate the configuration
-        run: ./result/activate -b bak
+      - name: Build and activate configuration
+        run: nix run home-manager/release-23.11 -- switch --flake ${{ github.workspace }} -b bak
