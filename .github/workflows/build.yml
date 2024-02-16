@@ -25,6 +25,6 @@ jobs:
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
           extraPullNames: devenv
       - name: Build configuration
-        run: nix run home-manager/release-23.11 -- build --flake ${{ github.workspace }} -b bak
+        run: nix run home-manager/release-23.11 -- build --flake ${{ github.workspace }}
       - name: Activate the configuration
-        run: ./result/activate
+        run: ./result/activate -b bak
