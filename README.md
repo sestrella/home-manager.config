@@ -12,6 +12,14 @@ Alternatively, use the official Nix
 [installer](https://nixos.org/guides/install-nix.html) and enable
 [Flakes](https://nixos.wiki/wiki/Flakes).
 
+Optionally, mark your user as a trusted user in the global Nix configuration
+file
+
+```
+# /etc/nix/nix.conf
+extra-trusted-users = <user>
+```
+
 ## Getting Started
 
 Clone the repository:
