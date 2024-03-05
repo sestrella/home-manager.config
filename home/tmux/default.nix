@@ -45,6 +45,8 @@
       {
         plugin = pkgs.tmuxPlugins.tmux-fzf;
         extraConfig = ''
+          TMUX_FZF_PREVIEW=0
+
           bind-key "s" run-shell -b "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf/scripts/session.sh switch"
         '';
       }
