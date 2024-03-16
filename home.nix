@@ -31,6 +31,7 @@
     pkgs.entr
     pkgs.fd
     pkgs.fira-code-nerdfont
+    pkgs.gnumake
     pkgs.jq
     pkgs.noti
     pkgs.pstree
