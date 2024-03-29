@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+args@{ config, pkgs, ... }:
 
 {
   # This value determines the Home Manager release that your configuration is
@@ -23,11 +23,11 @@
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
+    args.devenv
     pkgs.asdf-vm
     pkgs.bottom
     pkgs.btop
     pkgs.cachix
-    pkgs.devenv
     pkgs.entr
     pkgs.fd
     pkgs.fira-code-nerdfont
