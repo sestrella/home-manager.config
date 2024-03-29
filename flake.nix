@@ -22,6 +22,7 @@
               home-manager-diff.hmModules.default
               module
             ];
+            # TODO: Refactor taking into account: https://zimbatm.com/notes/1000-instances-of-nixpkgs
             pkgs = import nixpkgs {
               inherit system;
               # https://nixos.wiki/wiki/Overlays
