@@ -2,6 +2,10 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+vim.o.colorcolumn = "80"
+vim.o.cursorline = true
+vim.o.inccommand = "split"
+
 -- clipboard
 vim.o.clipboard = "unnamedplus"
 vim.api.nvim_create_autocmd("TextYankPost", {
@@ -11,10 +15,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     vim.highlight.on_yank()
   end,
 })
-
-vim.o.colorcolumn = "80"
-vim.o.cursorline = true
-vim.o.inccommand = "split"
 
 -- tabs
 vim.o.expandtab = true

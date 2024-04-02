@@ -20,6 +20,7 @@
       ./plugins/auto-dark-mode
       ./plugins/cmp
       ./plugins/comment
+      ./plugins/gitsigns
       ./plugins/lspconfig
       ./plugins/lualine
       ./plugins/null-ls
