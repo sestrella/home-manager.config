@@ -26,6 +26,12 @@ vim.o.hlsearch = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 
+-- arrows
+vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
+vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
+vim.keymap.set('n', '<up>', '<cmd>echo "Use k to move!!"<CR>')
+vim.keymap.set('n', '<down>', '<cmd>echo "Use j to move!!"<CR>')
+
 -- https://twitter.com/theprimeagen/status/1591996471951429633
 vim.keymap.set('n', '<C-u>', '<C-u>zz', {})
 vim.keymap.set('n', '<C-d>', '<C-d>zz', {})
