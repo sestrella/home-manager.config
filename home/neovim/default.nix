@@ -29,11 +29,8 @@
       ./plugins/treesitter
       ./plugins/whitespace
     ];
+    viAlias = true;
+    vimAlias = true;
     vimdiffAlias = true;
-  };
-
-  programs.fish.shellAbbrs = {
-    vi = "nvim";
-    vim = "nvim";
   };
 }
