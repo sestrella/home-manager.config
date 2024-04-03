@@ -63,6 +63,10 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = desc })
 		end
 
+		local builtin = require("telescope.builtin")
+		map("gd", builtin.lsp_definitions, "[G]oto [D]efinition")
+		map("gr", builtin.lsp_references, "[G]oto [R]eferences")
+
 		map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 		map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
