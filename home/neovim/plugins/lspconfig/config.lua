@@ -53,20 +53,22 @@ for server, options in pairs(servers) do
 	}))
 end
 
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-
+-- https://github.com/neovim/nvim-lspconfig
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-	callback = function(ev)
-		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+	callback = function(event)
+		vim.bo[event.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-		local opts = { buffer = ev.buf }
+		local map = function(keys, func, desc)
+			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = desc })
+		end
 
-		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-		vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("n", "<space>f", function()
+		map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+		map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+
+		-- TODO: Replace this with https://github.com/stevearc/conform.nvim
+		map("<space>f", function()
 			vim.lsp.buf.format({ async = true })
-		end, opts)
+		end, "[F]ormat [C]ode")
 	end,
 })
