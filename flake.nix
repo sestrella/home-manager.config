@@ -13,21 +13,20 @@
     tmux-dark-notify.url = "github:erikw/tmux-dark-notify";
   };
 
-  outputs = inputs@{ self, devenv, nixpkgs, home-manager-diff, home-manager, ... }: {
+  outputs = inputs: {
     homeConfigurations =
       let
         mkHomeManagerConfig = { system, module }:
-          home-manager.lib.homeManagerConfiguration {
+          inputs.home-manager.lib.homeManagerConfiguration {
             modules = [
-              home-manager-diff.hmModules.default
+              inputs.home-manager-diff.hmModules.default
               module
             ];
-            # TODO: Refactor taking into account: https://zimbatm.com/notes/1000-instances-of-nixpkgs
-            pkgs = import nixpkgs {
+            pkgs = import inputs.nixpkgs {
               inherit system;
               # https://nixos.wiki/wiki/Overlays
               overlays = [
-                devenv.overlays.default
+                inputs.devenv.overlays.default
                 (final: prev: {
                   tmuxPlugins = prev.tmuxPlugins // {
                     tmux-dark-notify = prev.tmuxPlugins.mkTmuxPlugin {
