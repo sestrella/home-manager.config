@@ -10,6 +10,7 @@
       pkgs.nodePackages.bash-language-server
       pkgs.nodePackages.typescript-language-server
       pkgs.pyright
+      pkgs.ruby-lsp
       pkgs.stylua
       pkgs.terraform-ls
       pkgs.vscode-langservers-extracted
