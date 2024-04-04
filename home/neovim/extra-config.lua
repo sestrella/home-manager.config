@@ -38,6 +38,7 @@ vim.o.relativenumber = true
 -- search
 vim.o.hlsearch = true
 vim.o.ignorecase = true
+vim.o.smartcase = true
 
 -- arrows
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
