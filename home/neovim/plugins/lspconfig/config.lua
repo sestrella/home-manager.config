@@ -76,10 +76,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 		map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 		map("K", vim.lsp.buf.hover, "Hover Documentation")
-
-		-- TODO: Replace this with https://github.com/stevearc/conform.nvim
-		map("<space>f", function()
-			vim.lsp.buf.format({ async = true })
-		end, "[F]ormat [C]ode")
 	end,
 })
