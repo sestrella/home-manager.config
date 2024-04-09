@@ -55,21 +55,27 @@ for server, options in pairs(servers) do
 end
 
 -- https://github.com/neovim/nvim-lspconfig
+-- https://github.com/nvim-lua/kickstart.nvim
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(event)
 		vim.bo[event.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-		local map = function(keys, func, desc)
-			vim.keymap.set("n", keys, func, { buffer = event.buf, desc = desc })
+		local map = function(keys, f, desc)
+			vim.keymap.set("n", keys, f, { buffer = event.buf, desc = desc })
 		end
 
 		local builtin = require("telescope.builtin")
+		map("gI", builtin.lsp_implementations, "[G]oto [I]mplementation")
 		map("gd", builtin.lsp_definitions, "[G]oto [D]efinition")
 		map("gr", builtin.lsp_references, "[G]oto [R]eferences")
 
-		map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+		map("<leader>D", builtin.lsp_type_definitions, "Type [D]efinition")
+		map("<leader>ds", builtin.lsp_document_symbols, "[D]ocument [S]ymbols")
+
 		map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+		map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+		map("K", vim.lsp.buf.hover, "Hover Documentation")
 
 		-- TODO: Replace this with https://github.com/stevearc/conform.nvim
 		map("<space>f", function()
