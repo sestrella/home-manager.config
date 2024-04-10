@@ -1,6 +1,8 @@
 -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
 local servers = {
 	bashls = {},
+	gopls = {},
+	jsonls = {},
 	lua_ls = {
 		settings = {
 			Lua = {
@@ -29,7 +31,6 @@ local servers = {
 	rust_analyzer = {},
 	terraformls = {},
 	tsserver = {},
-	jsonls = {},
 	yamlls = {
 		settings = {
 			yaml = {

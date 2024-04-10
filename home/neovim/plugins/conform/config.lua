@@ -7,6 +7,7 @@ conform.setup({
 		lsp_fallback = true,
 	},
 	formatters_by_ft = {
+		go = { "gofmt" },
 		lua = { "stylua" },
 		python = { "black" },
 	},
