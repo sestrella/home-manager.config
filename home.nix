@@ -43,8 +43,6 @@
     pkgs.yq
   ];
 
-  programs.autojump.enable = true;
-
   programs.direnv.enable = true;
 
   programs.fzf.enable = true;
@@ -76,4 +74,6 @@
   };
 
   programs.starship.enable = true;
+
+  programs.zoxide.enable = true;
 }
