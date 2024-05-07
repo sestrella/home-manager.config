@@ -43,6 +43,19 @@
     pkgs.yq
   ];
 
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      import = [ "${pkgs.alacritty-theme}/solarized_light.yaml" ];
+      font.normal = {
+        family = "FiraCode Nerd Font Mono";
+        style = "Medium";
+      };
+      font.size = 16;
+      shell.program = "${pkgs.fish}/bin/fish";
+    };
+  };
+
   programs.direnv.enable = true;
 
   programs.fzf.enable = true;
@@ -76,13 +89,4 @@
   programs.starship.enable = true;
 
   programs.zoxide.enable = true;
-
-  programs.alacritty = {
-    enable = true;
-    settings = {
-      import = [ "${pkgs.alacritty-theme}/solarized_dark.yaml" ];
-      font.size = 16;
-      shell.program = "${pkgs.fish}/bin/fish";
-    };
-  };
 }
