@@ -46,12 +46,12 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [ "${pkgs.alacritty-theme}/solarized_light.yaml" ];
+      import = [ "${pkgs.alacritty-theme}/solarized_dark.yaml" ];
       font.normal = {
         family = "FiraCode Nerd Font Mono";
         style = "Medium";
       };
-      font.size = 16;
+      font.size = 15;
       shell.program = "${pkgs.fish}/bin/fish";
     };
   };
