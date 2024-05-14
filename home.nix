@@ -43,15 +43,17 @@
     pkgs.yq
   ];
 
+  home.sessionVariables.SHELL = "${pkgs.fish}/bin/fish";
+
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [ "${pkgs.alacritty-theme}/solarized_dark.yaml" ];
+      import = [ "${pkgs.alacritty-theme}/solarized_light.toml" ];
       font.normal = {
         family = "FiraCode Nerd Font Mono";
         style = "Medium";
       };
-      font.size = 15;
+      font.size = 16;
       shell.program = "${pkgs.fish}/bin/fish";
     };
   };
@@ -62,9 +64,7 @@
 
   programs.gh = {
     enable = true;
-    settings = {
-      git_protocol = "git";
-    };
+    settings.git_protocol = "git";
   };
 
   programs.hmd.enable = true;
