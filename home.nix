@@ -48,7 +48,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [ "${pkgs.alacritty-theme}/solarized_light.toml" ];
+      import = [ "${pkgs.alacritty-theme}/solarized_light.yaml" ];
       font.normal = {
         family = "FiraCode Nerd Font Mono";
         style = "Medium";
