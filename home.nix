@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # This value determines the Home Manager release that your configuration is
@@ -48,7 +48,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [ "${pkgs.alacritty-theme}/solarized_light.yaml" ];
+      import = [ "~/.config/alacritty/theme.yml" ];
       font.normal = {
         family = "FiraCode Nerd Font Mono";
         style = "Medium";
@@ -89,4 +89,17 @@
   programs.starship.enable = true;
 
   programs.zoxide.enable = true;
+
+  home.activation.alacrittyTheme = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    theme() {
+      local style=$(/usr/bin/defaults read -g AppleInterfaceStyle 2> /dev/null || echo "Light")
+      if [ "$style" == "Dark" ]; then
+        echo "${pkgs.alacritty-theme}/solarized_dark.yaml"
+      else
+        echo "${pkgs.alacritty-theme}/solarized_light.yaml"
+      fi
+    }
+
+    ln -sf "$(theme)" ~/.config/alacritty/theme.yml
+  '';
 }
