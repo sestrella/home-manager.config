@@ -7,6 +7,7 @@
         plugins.tree-sitter-dockerfile
         plugins.tree-sitter-haskell
         plugins.tree-sitter-hcl
+        plugins.tree-sitter-javascript
         plugins.tree-sitter-lua
         plugins.tree-sitter-markdown
         plugins.tree-sitter-nix
