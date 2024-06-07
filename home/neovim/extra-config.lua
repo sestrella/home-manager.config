@@ -41,10 +41,10 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- arrows
-vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
-vim.keymap.set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
-vim.keymap.set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
-vim.keymap.set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
+vim.keymap.set("n", "<left>", '<cmd>echo "Use h instead"<cr>')
+vim.keymap.set("n", "<right>", '<cmd>echo "Use l instead"<cr>')
+vim.keymap.set("n", "<up>", '<cmd>echo "Use k instead"<cr>')
+vim.keymap.set("n", "<down>", '<cmd>echo "Use j instead"<cr>')
 
 -- diagnostic
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
