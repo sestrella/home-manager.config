@@ -14,6 +14,7 @@
     };
   };
 
+  # TODO: Call the same script on the alacritty agent
   home.activation.alacrittyTheme = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     theme() {
       local style=$(/usr/bin/defaults read -g AppleInterfaceStyle 2> /dev/null || echo "Light")
@@ -27,6 +28,7 @@
     ln -sf "$(theme)" ~/.config/alacritty/theme.yml
   '';
 
+  # TODO: Install dark-notify via nix
   launchd.agents.alacritty.enable = true;
   launchd.agents.alacritty.config = {
     ProgramArguments =
