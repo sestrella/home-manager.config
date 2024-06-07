@@ -26,4 +26,24 @@
 
     ln -sf "$(theme)" ~/.config/alacritty/theme.yml
   '';
+
+  launchd.agents.alacritty.enable = true;
+  launchd.agents.alacritty.config = {
+    ProgramArguments =
+      let
+        alacrittyTheme = pkgs.writeScriptBin "alacritty-theme" ''
+          if [ "$1" == "dark" ]; then
+            ln -sf "${pkgs.alacritty-theme}/solarized_dark.yaml" ~/.config/alacritty/theme.yml
+          else
+            ln -sf "${pkgs.alacritty-theme}/solarized_light.yaml" ~/.config/alacritty/theme.yml
+          fi
+          touch -h ~/.config/alacritty/alacritty.yml
+        '';
+      in
+      [
+        "/opt/homebrew/bin/dark-notify"
+        "-c"
+        "${alacrittyTheme}/bin/alacritty-theme"
+      ];
+  };
 }
