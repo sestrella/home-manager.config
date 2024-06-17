@@ -5,6 +5,7 @@
     plugin = pkgs.vimPlugins.nvim-treesitter.withPlugins
       (plugins: [
         plugins.tree-sitter-dockerfile
+        plugins.tree-sitter-go
         plugins.tree-sitter-haskell
         plugins.tree-sitter-hcl
         plugins.tree-sitter-javascript
