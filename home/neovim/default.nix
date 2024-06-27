@@ -5,6 +5,7 @@
     enable = true;
     defaultEditor = true;
     extraPackages = [
+      pkgs.gopls
       pkgs.lua-language-server
       pkgs.nixd
       pkgs.nodePackages.bash-language-server

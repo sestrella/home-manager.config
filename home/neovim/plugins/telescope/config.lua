@@ -18,7 +18,7 @@ telescope.load_extension("ui-select")
 
 local builtin = require("telescope.builtin")
 
-vim.keymap.set("n", "<C-p>", builtin.find_files, { desc = "Search files" })
+vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Search files" })
 
 -- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
 vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [d]iagnostics" })
