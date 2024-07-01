@@ -25,6 +25,7 @@
       fi
     }
 
+    mkdir -p ~/.config/alacritty
     ln -sf "$(theme)" ~/.config/alacritty/theme.yml
   '';
 
