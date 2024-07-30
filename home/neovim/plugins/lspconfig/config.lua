@@ -25,7 +25,18 @@ local servers = {
 			},
 		},
 	},
-	nixd = {},
+	nixd = {
+		-- https://github.com/nix-community/nixd/blob/main/nixd/docs/configuration.md
+		-- settings = {
+		-- 	nixd = {
+		-- 		options = {
+		-- 			home_manager = {
+		-- 				expr = '(builtins.getFlake ("git+file://" + toString ./.)).homeConfigurations.sestrella.options',
+		-- 			},
+		-- 		},
+		-- 	},
+		-- },
+	},
 	pyright = {},
 	ruby_ls = {},
 	rust_analyzer = {},
