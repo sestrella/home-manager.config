@@ -25,6 +25,7 @@
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
     pkgs.asdf-vm
+    pkgs.aws-vault
     pkgs.bottom
     pkgs.btop
     pkgs.cachix
