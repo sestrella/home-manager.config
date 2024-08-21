@@ -660,7 +660,8 @@
         "home-manager-diff": "home-manager-diff",
         "nixd": "nixd",
         "nixpkgs": "nixpkgs_5",
-        "tmux-dark-notify": "tmux-dark-notify"
+        "tmux-dark-notify": "tmux-dark-notify",
+        "which-key-nvim": "which-key-nvim"
       }
     },
     "systems": {
@@ -721,6 +722,22 @@
       "original": {
         "owner": "erikw",
         "repo": "tmux-dark-notify",
+        "type": "github"
+      }
+    },
+    "which-key-nvim": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1721858377,
+        "narHash": "sha256-nv9s4/ax2BoL9IQdk42uN7mxIVFYiTK+1FVvWDKRnGM=",
+        "owner": "folke",
+        "repo": "which-key.nvim",
+        "rev": "6c1584eb76b55629702716995cca4ae2798a9cca",
+        "type": "github"
+      },
+      "original": {
+        "owner": "folke",
+        "repo": "which-key.nvim",
         "type": "github"
       }
     }

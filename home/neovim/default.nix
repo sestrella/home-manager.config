@@ -30,6 +30,7 @@
       ./plugins/solarized
       ./plugins/telescope
       ./plugins/treesitter
+      ./plugins/which-key
       ./plugins/whitespace
     ];
     viAlias = true;
