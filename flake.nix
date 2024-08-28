@@ -7,9 +7,9 @@
     devenv.url = "github:cachix/devenv";
     home-manager-diff.url = "github:pedorich-n/home-manager-diff";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager/release-23.11";
+    home-manager.url = "github:nix-community/home-manager/release-24.05";
     nixd.url = "github:nix-community/nixd";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     tmux-dark-notify.flake = false;
     tmux-dark-notify.url = "github:erikw/tmux-dark-notify";
     which-key-nvim.url = "github:folke/which-key.nvim";
