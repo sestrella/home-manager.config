@@ -38,7 +38,7 @@ local servers = {
 		-- },
 	},
 	pyright = {},
-	ruby_ls = {},
+	ruby_lsp = {},
 	rust_analyzer = {},
 	terraformls = {},
 	tsserver = {},
