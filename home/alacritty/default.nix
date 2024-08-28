@@ -4,7 +4,7 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [ "~/.config/alacritty/theme.yml" ];
+      import = [ "~/.config/alacritty/theme.toml" ];
       font.normal = {
         family = "FiraCode Nerd Font Mono";
         style = "Medium";
@@ -19,14 +19,14 @@
     theme() {
       local style=$(/usr/bin/defaults read -g AppleInterfaceStyle 2> /dev/null || echo "Light")
       if [ "$style" == "Dark" ]; then
-        echo "${pkgs.alacritty-theme}/solarized_dark.yaml"
+        echo "${pkgs.alacritty-theme}/solarized_dark.toml"
       else
-        echo "${pkgs.alacritty-theme}/solarized_light.yaml"
+        echo "${pkgs.alacritty-theme}/solarized_light.toml"
       fi
     }
 
     mkdir -p ~/.config/alacritty
-    ln -sf "$(theme)" ~/.config/alacritty/theme.yml
+    ln -sf "$(theme)" ~/.config/alacritty/theme.toml
   '';
 
   # TODO: Install dark-notify via nix
@@ -36,11 +36,11 @@
       let
         alacrittyTheme = pkgs.writeScriptBin "alacritty-theme" ''
           if [ "$1" == "dark" ]; then
-            ln -sf "${pkgs.alacritty-theme}/solarized_dark.yaml" ~/.config/alacritty/theme.yml
+            ln -sf "${pkgs.alacritty-theme}/solarized_dark.toml" ~/.config/alacritty/theme.toml
           else
-            ln -sf "${pkgs.alacritty-theme}/solarized_light.yaml" ~/.config/alacritty/theme.yml
+            ln -sf "${pkgs.alacritty-theme}/solarized_light.toml" ~/.config/alacritty/theme.toml
           fi
-          touch -h ~/.config/alacritty/alacritty.yml
+          touch -h ~/.config/alacritty/alacritty.toml
         '';
       in
       [
