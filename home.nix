@@ -29,6 +29,7 @@
     pkgs.bottom
     pkgs.btop
     pkgs.cachix
+    pkgs.coreutils
     pkgs.devenv
     pkgs.entr
     pkgs.fd
