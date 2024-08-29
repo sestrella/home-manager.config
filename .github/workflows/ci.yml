@@ -21,6 +21,10 @@ jobs:
         uses: cachix/cachix-action@v15
         with:
           name: devenv
-      - name: Build and activate configuration
+      - name: Build configuration
         run: nix run home-manager/release-24.05 -- build --flake ${{ github.workspace }}
         timeout-minutes: 5
+      - name: Activate the configuration
+        run: |
+          rm ~/.config/nix/nix.conf
+          ./result/activate
