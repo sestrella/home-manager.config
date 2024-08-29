@@ -22,5 +22,5 @@ jobs:
         with:
           name: devenv
       - name: Build and activate configuration
-        run: nix run home-manager/release-24.05 -- switch --flake ${{ github.workspace }} -b bak
+        run: nix run home-manager/release-24.05 -- build --flake ${{ github.workspace }}
         timeout-minutes: 5
