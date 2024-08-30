@@ -31,6 +31,7 @@
     pkgs.cachix
     pkgs.coreutils
     pkgs.devenv
+    pkgs.easyrsa
     pkgs.entr
     pkgs.fd
     pkgs.fira-code-nerdfont
@@ -39,6 +40,7 @@
     pkgs.noti
     pkgs.pstree
     pkgs.tailspin
+    pkgs.terminal-notifier
     pkgs.tmate
     pkgs.tree
     pkgs.watch
