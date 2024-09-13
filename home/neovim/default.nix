@@ -32,6 +32,14 @@
       ./plugins/treesitter
       ./plugins/which-key
       ./plugins/whitespace
+    ] ++ [
+      {
+        plugin = pkgs.vimPlugins.oil-nvim;
+        config = ''
+          require("oil").setup()
+        '';
+        type = "lua";
+      }
     ];
     viAlias = true;
     vimAlias = true;
