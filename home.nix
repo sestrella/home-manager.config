@@ -39,6 +39,7 @@
     pkgs.jq
     pkgs.noti
     pkgs.pstree
+    pkgs.rename
     pkgs.tailspin
     pkgs.terminal-notifier
     pkgs.tmate
