@@ -31,7 +31,7 @@ git clone https://github.com/sestrella/nix-darwin-config.git ~/.config/home-mana
 Active the configuration for the first time:
 
 ```
-nix run home-manager/release-23.11 -- switch
+nix run home-manager/release-24.05 -- switch
 ```
 
 **Note:** For future activations, run the `home-manager switch` command.
