@@ -81,5 +81,7 @@
 
   programs.starship.enable = true;
 
+  programs.zsh.enable = true;
+
   programs.zoxide.enable = true;
 }
