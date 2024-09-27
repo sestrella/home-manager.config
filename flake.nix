@@ -12,8 +12,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     tmux-dark-notify.flake = false;
     tmux-dark-notify.url = "github:erikw/tmux-dark-notify";
-    which-key-nvim.url = "github:folke/which-key.nvim";
     which-key-nvim.flake = false;
+    which-key-nvim.url = "github:folke/which-key.nvim";
   };
 
   outputs = inputs: {
