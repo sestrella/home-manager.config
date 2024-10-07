@@ -37,6 +37,7 @@
     pkgs.fira-code-nerdfont
     pkgs.gnumake
     pkgs.jq
+    pkgs.minikube
     pkgs.noti
     pkgs.pstree
     pkgs.rename
