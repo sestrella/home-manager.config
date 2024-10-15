@@ -14,6 +14,7 @@
     tmux-dark-notify.url = "github:erikw/tmux-dark-notify";
     which-key-nvim.flake = false;
     which-key-nvim.url = "github:folke/which-key.nvim";
+    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
   outputs = inputs: {
@@ -22,6 +23,7 @@
         mkHomeManagerConfig = { system, module }:
           inputs.home-manager.lib.homeManagerConfiguration {
             modules = [
+              inputs.mac-app-util.homeManagerModules.default
               inputs.home-manager-diff.hmModules.default
               module
             ];
