@@ -8,13 +8,13 @@
     home-manager-diff.url = "github:pedorich-n/home-manager-diff";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-24.05";
+    mac-app-util.url = "github:hraban/mac-app-util";
     nixd.url = "github:nix-community/nixd";
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     tmux-dark-notify.flake = false;
     tmux-dark-notify.url = "github:erikw/tmux-dark-notify";
     which-key-nvim.flake = false;
     which-key-nvim.url = "github:folke/which-key.nvim";
-    mac-app-util.url = "github:hraban/mac-app-util";
   };
 
   outputs = inputs: {
