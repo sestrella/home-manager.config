@@ -42,12 +42,13 @@
     pkgs.pstree
     pkgs.rename
     pkgs.tailspin
-    pkgs.terminal-notifier
     pkgs.tmate
     pkgs.tree
     pkgs.watch
     pkgs.wget
     pkgs.yq
+  ] ++ lib.optionals pkgs.stdenv.isDarwin [
+    pkgs.terminal-notifier
   ];
 
   home.sessionVariables.SHELL = "${pkgs.fish}/bin/fish";
