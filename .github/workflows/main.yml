@@ -10,6 +10,7 @@ concurrency:
 jobs:
   build:
     runs-on: macos-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -23,4 +24,3 @@ jobs:
           name: devenv
       - name: Build configuration
         run: nix run home-manager/release-24.05 -- build --flake ${{ github.workspace }}
-        timeout-minutes: 5
