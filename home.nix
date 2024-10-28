@@ -47,8 +47,6 @@
     pkgs.watch
     pkgs.wget
     pkgs.yq
-  ] ++ lib.optionals pkgs.stdenv.isDarwin [
-    pkgs.terminal-notifier
   ];
 
   home.sessionVariables.SHELL = "${pkgs.fish}/bin/fish";
