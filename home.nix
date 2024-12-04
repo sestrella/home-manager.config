@@ -85,4 +85,6 @@
   programs.starship.enable = true;
 
   programs.zoxide.enable = true;
+
+  programs.lazygit.enable = true;
 }
