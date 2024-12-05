@@ -46,9 +46,10 @@ local servers = {
 		settings = {
 			yaml = {
 				schemas = {
+					["https://devenv.sh/devenv.schema.json"] = "devenv.yaml",
 					["https://json.schemastore.org/circleciconfig.json"] = "/.circleci/config.yml",
-					["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*.yml",
 					["https://json.schemastore.org/dependabot-2.0.json"] = "/.github/dependabot.yml",
+					["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*.yml",
 					["kubernetes"] = "*.k8s.yml",
 				},
 			},
