@@ -26,6 +26,7 @@
   home.packages = [
     pkgs.asdf-vm
     pkgs.aws-vault
+    pkgs.awscli2
     pkgs.bottom
     pkgs.btop
     pkgs.cachix
