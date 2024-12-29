@@ -38,6 +38,7 @@
     pkgs.fira-code-nerdfont
     pkgs.gnumake
     pkgs.jq
+    pkgs.lazydocker
     pkgs.minikube
     pkgs.noti
     pkgs.pstree
