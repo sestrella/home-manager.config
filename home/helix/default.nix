@@ -3,15 +3,13 @@
 {
   programs.helix = {
     enable = true;
+    defaultEditor = true;
     extraPackages = [
       pkgs.golangci-lint-langserver
       pkgs.gopls
       pkgs.nil
       pkgs.terraform-ls
     ];
-    settings = {
-      theme = "solarized_dark";
-    };
     languages = {
       language = [
         {
@@ -21,6 +19,9 @@
           };
         }
       ];
+    };
+    settings = {
+      theme = "solarized_dark";
     };
   };
 }
