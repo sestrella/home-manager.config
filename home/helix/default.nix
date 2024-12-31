@@ -24,6 +24,12 @@
 
       language = [
         {
+          name = "go";
+          formatter = {
+            command = "${pkgs.go}/bin/gofmt";
+          };
+        }
+        {
           name = "nix";
           auto-format = true;
           formatter = {
