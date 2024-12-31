@@ -3,29 +3,17 @@
 {
   programs.helix = {
     enable = true;
+    extraPackages = [
+      pkgs.golangci-lint-langserver
+      pkgs.gopls
+      pkgs.nil
+      pkgs.terraform-ls
+    ];
     settings = {
       theme = "solarized_dark";
     };
     languages = {
-      language-server = {
-        gopls = {
-          command = "${pkgs.gopls}/bin/gopls";
-        };
-        nil = {
-          command = "${pkgs.nil}/bin/nil";
-        };
-        terraform-ls = {
-          command = "${pkgs.terraform-ls}/bin/terraform-ls";
-        };
-      };
-
       language = [
-        {
-          name = "go";
-          formatter = {
-            command = "${pkgs.go}/bin/gofmt";
-          };
-        }
         {
           name = "nix";
           formatter = {
