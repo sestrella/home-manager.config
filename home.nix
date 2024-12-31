@@ -13,7 +13,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "24.05"; # Please read the comment before changing.
+  home.stateVersion = "24.11"; # Please read the comment before changing.
 
   # Custom configuration
   imports = [
@@ -46,7 +46,7 @@
       pkgs.jq
       pkgs.lazydocker
       pkgs.minikube
-      pkgs.nerd-fonts.fira-code
+      pkgs.fira-code-nerdfont
       pkgs.noti
       pkgs.pstree
       pkgs.rename
