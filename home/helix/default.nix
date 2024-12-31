@@ -8,9 +8,6 @@
     };
     languages = {
       language-server = {
-        golangci-lint-langserver = {
-          command = "${pkgs.golangci-lint-langserver}/bin/golangci-lint-langserver";
-        };
         gopls = {
           command = "${pkgs.gopls}/bin/gopls";
         };
