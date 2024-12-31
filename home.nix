@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   # This value determines the Home Manager release that your configuration is
@@ -23,35 +28,37 @@
   ];
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
-  home.packages = [
-    pkgs.asdf-vm
-    pkgs.aws-vault
-    # pkgs.awscli2
-    pkgs.bottom
-    pkgs.btop
-    pkgs.cachix
-    pkgs.coreutils
-    pkgs.devenv
-    pkgs.easyrsa
-    pkgs.entr
-    pkgs.fd
-    pkgs.gnumake
-    pkgs.jq
-    pkgs.lazydocker
-    pkgs.minikube
-    pkgs.nerd-fonts.fira-code
-    pkgs.noti
-    pkgs.pstree
-    pkgs.rename
-    pkgs.tailspin
-    pkgs.tmate
-    pkgs.tree
-    pkgs.watch
-    pkgs.wget
-    pkgs.yq
-  ] ++ lib.optionals pkgs.stdenv.isDarwin [
-    pkgs.terminal-notifier
-  ];
+  home.packages =
+    [
+      pkgs.asdf-vm
+      pkgs.aws-vault
+      # pkgs.awscli2
+      pkgs.bottom
+      pkgs.btop
+      pkgs.cachix
+      pkgs.coreutils
+      pkgs.devenv
+      pkgs.easyrsa
+      pkgs.entr
+      pkgs.fd
+      pkgs.gnumake
+      pkgs.jq
+      pkgs.lazydocker
+      pkgs.minikube
+      pkgs.nerd-fonts.fira-code
+      pkgs.noti
+      pkgs.pstree
+      pkgs.rename
+      pkgs.tailspin
+      pkgs.tmate
+      pkgs.tree
+      pkgs.watch
+      pkgs.wget
+      pkgs.yq
+    ]
+    ++ lib.optionals pkgs.stdenv.isDarwin [
+      pkgs.terminal-notifier
+    ];
 
   home.sessionVariables.SHELL = "${pkgs.fish}/bin/fish";
 
@@ -96,12 +103,30 @@
       theme = "solarized_dark";
     };
     languages = {
-      language-server ={
-        golangci-lint-langserver = { command = "${pkgs.golangci-lint-langserver}/bin/golangci-lint-langserver"; };
-        gopls = { command = "${pkgs.gopls}/bin/gopls"; };
-        nil = { command = "${pkgs.nil}/bin/nil"; };
-        terraform-ls = { command = "${pkgs.terraform-ls}/bin/terraform-ls"; };
+      language-server = {
+        golangci-lint-langserver = {
+          command = "${pkgs.golangci-lint-langserver}/bin/golangci-lint-langserver";
+        };
+        gopls = {
+          command = "${pkgs.gopls}/bin/gopls";
+        };
+        nil = {
+          command = "${pkgs.nil}/bin/nil";
+        };
+        terraform-ls = {
+          command = "${pkgs.terraform-ls}/bin/terraform-ls";
+        };
       };
+
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+          formatter = {
+            command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
+          };
+        }
+      ];
     };
   };
 }
