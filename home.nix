@@ -97,12 +97,10 @@
     };
     languages = {
       language-server ={
-        nil = {
-          command = "${pkgs.nil}/bin/nil";
-        };
-        terraform-ls = {
-          command = "${pkgs.terraform-ls}/bin/terraform-ls";
-        };
+        golangci-lint-langserver = { command = "${pkgs.golangci-lint-langserver}/bin/golangci-lint-langserver"; };
+        gopls = { command = "${pkgs.gopls}/bin/gopls"; };
+        nil = { command = "${pkgs.nil}/bin/nil"; };
+        terraform-ls = { command = "${pkgs.terraform-ls}/bin/terraform-ls"; };
       };
     };
   };
