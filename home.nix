@@ -89,4 +89,21 @@
   programs.zoxide.enable = true;
 
   programs.lazygit.enable = true;
+
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "solarized_dark";
+    };
+    languages = {
+      language-server ={
+        nil = {
+          command = "${pkgs.nil}/bin/nil";
+        };
+        terraform-ls = {
+          command = "${pkgs.terraform-ls}/bin/terraform-ls";
+        };
+      };
+    };
+  };
 }
