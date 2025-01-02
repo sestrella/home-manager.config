@@ -33,7 +33,6 @@
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages =
     [
-
       # pkgs.awscli2
       pkgs.asdf-vm
       pkgs.aws-vault
