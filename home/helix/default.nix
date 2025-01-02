@@ -10,6 +10,7 @@
       pkgs.docker-compose-language-service
       pkgs.golangci-lint-langserver
       pkgs.gopls
+      pkgs.marksman
       pkgs.nil
       pkgs.terraform-ls
       pkgs.yaml-language-server
