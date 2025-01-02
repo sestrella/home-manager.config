@@ -19,8 +19,9 @@
   imports = [
     ./home/alacritty
     ./home/bat
-    ./home/git
+    ./home/fish
     ./home/ghostty
+    ./home/git
     ./home/helix
     ./home/home-manager
     ./home/neovim
@@ -81,17 +82,6 @@
     enableAliases = true;
     # https://github.com/lsd-rs/lsd#config-file-content
     settings.color.when = "never";
-  };
-
-  programs.fish = {
-    enable = true;
-    functions.fish_greeting = "";
-    shellInit = ''
-      fish_add_path /usr/local/bin
-      # https://github.com/Homebrew/brew/blob/master/Library/Homebrew/cmd/shellenv.sh
-      eval (/opt/homebrew/bin/brew shellenv)
-      . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
-    '';
   };
 
   programs.starship.enable = true;
