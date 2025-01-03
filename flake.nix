@@ -7,7 +7,7 @@
     devenv.url = "github:cachix/devenv";
     home-manager-diff.url = "github:pedorich-n/home-manager-diff";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:sestrella/home-manager/ghostty_validate_config";
     mac-app-util.url = "github:hraban/mac-app-util";
     nixd.url = "github:nix-community/nixd";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";

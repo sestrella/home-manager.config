@@ -27,7 +27,7 @@
       ];
     };
     settings = {
-      theme = "solarized_light";
+      theme = "solarized_dark";
     };
   };
 }
