@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs.helix = {
@@ -27,7 +32,17 @@
       ];
     };
     settings = {
-      theme = "solarized_dark";
+      theme = "solarized";
     };
   };
+
+  home.activation.helixTheme = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p ~/.config/helix/themes
+    style=$(/usr/bin/defaults read -g AppleInterfaceStyle 2> /dev/null || echo "Light")
+    if [ "$style" == "Dark" ]; then
+      ln -sf ${config.programs.helix.package}/lib/runtime/themes/solarized_dark.toml ~/.config/helix/themes/solarized.toml
+    else
+      ln -sf ${config.programs.helix.package}/lib/runtime/themes/solarized_light.toml ~/.config/helix/themes/solarized.toml
+    fi
+  '';
 }
