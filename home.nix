@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   # This value determines the Home Manager release that your configuration is
@@ -15,9 +20,9 @@
     ./home/alacritty
     ./home/bat
     ./home/fish
-    # ./home/ghostty
+    ./home/ghostty
     ./home/git
-    # ./home/helix
+    ./home/helix
     ./home/home-manager
     ./home/neovim
     ./home/nix
