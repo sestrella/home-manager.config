@@ -1,4 +1,9 @@
-{ lib, pkgs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
   programs.alacritty = {
@@ -10,7 +15,7 @@
       };
       font.size = 16;
       general.import = [ "~/.config/alacritty/theme.toml" ];
-      terminal.shell.program = "${pkgs.fish}/bin/fish";
+      terminal.shell.program = lib.getExe config.programs.fish.package;
     };
   };
 
@@ -29,7 +34,7 @@
             touch -h ~/.config/alacritty/alacritty.toml
           '';
         in
-          [
+        [
           "/opt/homebrew/bin/dark-notify"
           "-c"
           "${script}/bin/alacritty-theme"
