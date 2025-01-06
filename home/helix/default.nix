@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }:
@@ -32,7 +31,10 @@
       ];
     };
     settings = {
-      editor.file-picker.hidden = false;
+      editor = {
+        file-picker.hidden = false;
+        line-number = "relative";
+      };
       theme = "solarized";
     };
   };
