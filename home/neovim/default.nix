@@ -3,12 +3,12 @@
 {
   programs.neovim = {
     enable = true;
-    defaultEditor = false;
+    defaultEditor = true;
     extraPackages = [
       pkgs.gopls
       pkgs.lua-language-server
       pkgs.nixd
-      pkgs.nixfmt
+      pkgs.nixfmt-rfc-style
       pkgs.nodePackages.bash-language-server
       pkgs.nodePackages.typescript-language-server
       pkgs.pyright

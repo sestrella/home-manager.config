@@ -1,9 +1,4 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}:
+{ config, pkgs, lib, ... }:
 
 {
   # This value determines the Home Manager release that your configuration is
@@ -20,9 +15,9 @@
     ./home/alacritty
     ./home/bat
     ./home/fish
-    ./home/ghostty
+    # ./home/ghostty
     ./home/git
-    ./home/helix
+    # ./home/helix
     ./home/home-manager
     ./home/neovim
     ./home/nix
@@ -31,37 +26,33 @@
   ];
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
-  home.packages =
-    [
-      # pkgs.awscli2
-      pkgs.asdf-vm
-      pkgs.aws-vault
-      pkgs.bottom
-      pkgs.btop
-      pkgs.cachix
-      pkgs.coreutils
-      pkgs.devenv
-      pkgs.easyrsa
-      pkgs.entr
-      pkgs.fd
-      pkgs.fira-code-nerdfont
-      pkgs.gnumake
-      pkgs.jq
-      pkgs.lazydocker
-      pkgs.minikube
-      pkgs.noti
-      pkgs.pstree
-      pkgs.rename
-      pkgs.tailspin
-      pkgs.tmate
-      pkgs.tree
-      pkgs.watch
-      pkgs.wget
-      pkgs.yq
-    ]
-    ++ lib.optionals pkgs.stdenv.isDarwin [
-      pkgs.terminal-notifier
-    ];
+  home.packages = [
+    # pkgs.awscli2
+    pkgs.asdf-vm
+    pkgs.aws-vault
+    pkgs.bottom
+    pkgs.btop
+    pkgs.cachix
+    pkgs.coreutils
+    pkgs.devenv
+    pkgs.easyrsa
+    pkgs.entr
+    pkgs.fd
+    pkgs.fira-code-nerdfont
+    pkgs.gnumake
+    pkgs.jq
+    pkgs.lazydocker
+    pkgs.minikube
+    pkgs.noti
+    pkgs.pstree
+    pkgs.rename
+    pkgs.tailspin
+    pkgs.tmate
+    pkgs.tree
+    pkgs.watch
+    pkgs.wget
+    pkgs.yq
+  ] ++ lib.optionals pkgs.stdenv.isDarwin [ pkgs.terminal-notifier ];
 
   home.sessionVariables.SHELL = "${pkgs.fish}/bin/fish";
 
