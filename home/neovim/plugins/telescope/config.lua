@@ -20,8 +20,8 @@ telescope.load_extension("ui-select")
 local builtin = require("telescope.builtin")
 
 vim.keymap.set("n", "<leader>sd", builtin.diagnostics, { desc = "[S]earch [d]iagnostics" })
-vim.keymap.set("n", "<leader>sf", builtin.git_files, { desc = "[S]earch [f]iles" })
-vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "[S]earch by [g]rep" })
+vim.keymap.set("n", "<leader>f", builtin.git_files, { desc = "Search [f]iles" })
+vim.keymap.set("n", "<leader>g", builtin.live_grep, { desc = "Search by [g]rep" })
 vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [h]elp" })
 vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [k]eymaps" })
 
