@@ -1,6 +1,8 @@
 { config, lib, ... }:
 
 {
+  # INFO: ghostty package is flagged as broken for Darwin.
+  # https://github.com/NixOS/nixpkgs/pull/369788
   config.xdg.configFile."ghostty/config" = {
     text = ''
       command = "${lib.getExe config.programs.fish.package}"
