@@ -4,13 +4,13 @@
   programs.alacritty = {
     enable = true;
     settings = {
-      import = [ "~/.config/alacritty/theme.toml" ];
       font.normal = {
         family = "FiraCode Nerd Font Mono";
         style = "Medium";
       };
       font.size = 16;
-      shell.program = "${pkgs.fish}/bin/fish";
+      general.import = [ "~/.config/alacritty/theme.toml" ];
+      terminal.shell.program = "${pkgs.fish}/bin/fish";
     };
   };
 
