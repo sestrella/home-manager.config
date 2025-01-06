@@ -32,6 +32,7 @@
       ];
     };
     settings = {
+      editor.file-picker.hidden = false;
       theme = "solarized";
     };
   };
