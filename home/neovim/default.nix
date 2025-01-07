@@ -19,31 +19,21 @@
       pkgs.yaml-language-server
     ];
     extraLuaConfig = builtins.readFile ./extra-config.lua;
-    plugins =
-      builtins.concatMap (plugin: pkgs.callPackage plugin { }) [
-        ./plugins/auto-dark-mode
-        ./plugins/cmp
-        ./plugins/comment
-        ./plugins/conform
-        ./plugins/gitsigns
-        ./plugins/lspconfig
-        ./plugins/lualine
-        ./plugins/null-ls
-        ./plugins/solarized
-        ./plugins/telescope
-        ./plugins/treesitter
-        ./plugins/which-key
-        ./plugins/whitespace
-      ]
-      ++ [
-        {
-          plugin = pkgs.vimPlugins.oil-nvim;
-          config = ''
-            require("oil").setup()
-          '';
-          type = "lua";
-        }
-      ];
+    plugins = builtins.concatMap (plugin: pkgs.callPackage plugin { }) [
+      ./plugins/auto-dark-mode
+      ./plugins/cmp
+      ./plugins/comment
+      ./plugins/conform
+      ./plugins/gitsigns
+      ./plugins/lspconfig
+      ./plugins/lualine
+      ./plugins/null-ls
+      ./plugins/solarized
+      ./plugins/telescope
+      ./plugins/treesitter
+      ./plugins/which-key
+      ./plugins/whitespace
+    ];
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
