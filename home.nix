@@ -16,10 +16,10 @@
 
   # Custom configuration
   imports = [
-    # ./home/ghostty
     ./home/alacritty
     ./home/bat
     ./home/fish
+    ./home/ghostty
     ./home/git
     ./home/helix
     ./home/home-manager

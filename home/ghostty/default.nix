@@ -8,8 +8,8 @@
       command = "${lib.getExe config.programs.fish.package}"
       font-family = "FiraCode Nerd Font Mono"
       font-size = 16
-      font-style = "SemiBold"
-      theme = "light:Violet Light,dark:Violet Dark"
+      font-style = "Medium"
+      theme = "dark:Builtin Solarized Dark,light:Builtin Solarized Light"
     '';
     onChange = "/opt/homebrew/bin/ghostty +validate-config";
   };
