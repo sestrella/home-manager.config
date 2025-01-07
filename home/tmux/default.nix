@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   programs.tmux = {
@@ -8,7 +13,8 @@
     escapeTime = 0;
     # https://neovim.io/doc/user/term.html
     extraConfig = ''
-      set-option -sa terminal-overrides ",xterm-256color:RGB"
+      set -g default-command "${lib.getExe config.programs.fish.package}"
+      set -sa terminal-overrides ",xterm-256color:RGB"
     '';
     keyMode = "vi";
     plugins = [
@@ -46,13 +52,12 @@
         plugin = pkgs.tmuxPlugins.tmux-fzf;
         extraConfig = ''
           TMUX_FZF_PREVIEW=0
-
           bind-key "s" run-shell -b "${pkgs.tmuxPlugins.tmux-fzf}/share/tmux-plugins/tmux-fzf/scripts/session.sh switch"
         '';
       }
     ];
     shortcut = "a";
-    terminal = "screen-256color";
+    terminal = "xterm-256color";
     tmuxinator.enable = true;
   };
 
