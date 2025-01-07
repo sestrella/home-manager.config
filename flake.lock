@@ -592,8 +592,7 @@
         "mac-app-util": "mac-app-util",
         "nixd": "nixd",
         "nixpkgs": "nixpkgs_7",
-        "tmux-dark-notify": "tmux-dark-notify",
-        "which-key-nvim": "which-key-nvim"
+        "tmux-dark-notify": "tmux-dark-notify"
       }
     },
     "systems": {
@@ -660,22 +659,6 @@
       "original": {
         "owner": "numtide",
         "repo": "treefmt-nix",
-        "type": "github"
-      }
-    },
-    "which-key-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1736055319,
-        "narHash": "sha256-9V74V01dCqg1w5fpzzCmyfhR3/AYQg2MCIYkkjFv1go=",
-        "owner": "folke",
-        "repo": "which-key.nvim",
-        "rev": "1f8d414f61e0b05958c342df9b6a4c89ce268766",
-        "type": "github"
-      },
-      "original": {
-        "owner": "folke",
-        "repo": "which-key.nvim",
         "type": "github"
       }
     }

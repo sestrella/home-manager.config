@@ -13,8 +13,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     tmux-dark-notify.flake = false;
     tmux-dark-notify.url = "github:erikw/tmux-dark-notify";
-    which-key-nvim.flake = false;
-    which-key-nvim.url = "github:folke/which-key.nvim";
+    # which-key-nvim.flake = false;
+    # which-key-nvim.url = "github:folke/which-key.nvim";
   };
 
   outputs = inputs: {
@@ -46,10 +46,10 @@
                       name = "auto-dark-mode.nvim";
                       src = inputs.auto-dark-mode-nvim;
                     };
-                    which-key-nvim = prev.vimUtils.buildVimPlugin {
-                      name = "which-key.nvim";
-                      src = inputs.which-key-nvim;
-                    };
+                    # which-key-nvim = prev.vimUtils.buildVimPlugin {
+                    #   name = "which-key.nvim";
+                    #   src = inputs.which-key-nvim;
+                    # };
                   };
                   nixd = inputs.nixd.packages.${system}.default;
                 })
