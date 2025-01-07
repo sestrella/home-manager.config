@@ -68,11 +68,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1735883199,
-        "narHash": "sha256-whedwR4P34Ne5xFLTdac3qMCiGTNiwME5U37M4wmisg=",
+        "lastModified": 1736184348,
+        "narHash": "sha256-LvuuwJBlZjLgjl6uzhfXP0rBveoNx7q0nz21xYb1AII=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "d67d04ae2dd3bc3723e615003034ba752e8db8c3",
+        "rev": "07219f00c633f756d1f0cc5bb6c4c311b5c4cb0d",
         "type": "github"
       },
       "original": {
@@ -285,16 +285,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1735344290,
-        "narHash": "sha256-oJDtWPH1oJT34RJK1FSWjwX4qcGOBRkcNQPD0EbSfNM=",
+        "lastModified": 1736204492,
+        "narHash": "sha256-CoBPRgkUex9Iz6qGSzi/BFVUQjndB0PmME2B6eEyeCs=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "613691f285dad87694c2ba1c9e6298d04736292d",
+        "rev": "20665c6efa83d71020c8730f26706258ba5c6b2a",
         "type": "github"
       },
       "original": {
         "owner": "nix-community",
-        "ref": "release-24.11",
         "repo": "home-manager",
         "type": "github"
       }
@@ -308,11 +307,11 @@
         "systems": "systems"
       },
       "locked": {
-        "lastModified": 1735811935,
+        "lastModified": 1736170812,
         "narHash": "sha256-xzR8JYj9opcaIhcjLLe+XvoyuEuDJ7eEpaXxf6ujkFs=",
         "owner": "pedorich-n",
         "repo": "home-manager-diff",
-        "rev": "28a49c23a15bcd41d0b6c64ba78be61048032d1f",
+        "rev": "384b2b72d70d36de96dc499878f66e2b5612fcbc",
         "type": "github"
       },
       "original": {
@@ -535,16 +534,16 @@
     },
     "nixpkgs_7": {
       "locked": {
-        "lastModified": 1736118863,
-        "narHash": "sha256-NoaPRR2NlQJNR9DIzMKkNkBMZn9YIjJBfPo/CABRHoU=",
+        "lastModified": 1736042175,
+        "narHash": "sha256-jdd5UWtLVrNEW8K6u5sy5upNAFmF3S4Y+OIeToqJ1X8=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "9bff5fc6604bae831d0693cad8ec7658b0cd3f6f",
+        "rev": "bf689c40d035239a489de5997a4da5352434632e",
         "type": "github"
       },
       "original": {
         "owner": "NixOS",
-        "ref": "release-24.11",
+        "ref": "nixpkgs-unstable",
         "repo": "nixpkgs",
         "type": "github"
       }

@@ -43,7 +43,8 @@
     pkgs.easyrsa
     pkgs.entr
     pkgs.fd
-    pkgs.fira-code-nerdfont
+    pkgs.nerd-fonts.fira-code
+    # pkgs.fira-code-nerdfont
     pkgs.gnumake
     pkgs.jq
     pkgs.lazydocker
