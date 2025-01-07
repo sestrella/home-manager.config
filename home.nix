@@ -1,7 +1,6 @@
 {
-  config,
-  pkgs,
   lib,
+  pkgs,
   ...
 }:
 
@@ -17,12 +16,12 @@
 
   # Custom configuration
   imports = [
+    # ./home/ghostty
+    # ./home/helix
     ./home/alacritty
     ./home/bat
     ./home/fish
-    ./home/ghostty
     ./home/git
-    ./home/helix
     ./home/home-manager
     ./home/neovim
     ./home/nix
