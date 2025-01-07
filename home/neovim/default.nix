@@ -3,6 +3,7 @@
 {
   programs.neovim = {
     enable = true;
+    defaultEditor = true;
     extraPackages = [
       pkgs.gopls
       pkgs.lua-language-server

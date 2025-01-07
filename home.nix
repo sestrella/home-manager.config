@@ -16,12 +16,12 @@
 
   # Custom configuration
   imports = [
-    ./home/alacritty
+    # ./home/alacritty
+    # ./home/helix
     ./home/bat
     ./home/fish
     ./home/ghostty
     ./home/git
-    ./home/helix
     ./home/home-manager
     ./home/neovim
     ./home/nix
