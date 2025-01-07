@@ -11,7 +11,6 @@
     baseIndex = 1;
     disableConfirmationPrompt = true;
     escapeTime = 0;
-    # https://neovim.io/doc/user/term.html
     extraConfig = ''
       set -g default-command "${lib.getExe config.programs.fish.package}"
       set -sa terminal-overrides ",xterm-256color:RGB"
