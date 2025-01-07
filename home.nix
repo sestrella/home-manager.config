@@ -32,7 +32,7 @@
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
     # pkgs.awscli2
-    # pkgs.fira-code-nerdfont
+    # pkgs.nerd-fonts.fira-code
     pkgs.asdf-vm
     pkgs.aws-vault
     pkgs.bottom
@@ -43,11 +43,11 @@
     pkgs.easyrsa
     pkgs.entr
     pkgs.fd
+    pkgs.fira-code-nerdfont
     pkgs.gnumake
     pkgs.jq
     pkgs.lazydocker
     pkgs.minikube
-    pkgs.nerd-fonts.fira-code
     pkgs.noti
     pkgs.pstree
     pkgs.rename

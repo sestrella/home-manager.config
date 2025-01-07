@@ -7,14 +7,12 @@
     devenv.url = "github:cachix/devenv";
     home-manager-diff.url = "github:pedorich-n/home-manager-diff";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-24.11";
     mac-app-util.url = "github:hraban/mac-app-util";
     nixd.url = "github:nix-community/nixd";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
     tmux-dark-notify.flake = false;
     tmux-dark-notify.url = "github:erikw/tmux-dark-notify";
-    # which-key-nvim.flake = false;
-    # which-key-nvim.url = "github:folke/which-key.nvim";
   };
 
   outputs = inputs: {
@@ -46,10 +44,6 @@
                       name = "auto-dark-mode.nvim";
                       src = inputs.auto-dark-mode-nvim;
                     };
-                    # which-key-nvim = prev.vimUtils.buildVimPlugin {
-                    #   name = "which-key.nvim";
-                    #   src = inputs.which-key-nvim;
-                    # };
                   };
                   nixd = inputs.nixd.packages.${system}.default;
                 })
