@@ -62,12 +62,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(event)
 		-- vim.bo[event.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
+		local builtin = require("telescope.builtin")
 
 		local map = function(keys, f, desc)
 			vim.keymap.set("n", keys, f, { buffer = event.buf, desc = desc })
 		end
-
-		local builtin = require("telescope.builtin")
 
 		map("gd", builtin.lsp_definitions, "Goto definition")
 		map("gi", builtin.lsp_implementations, "Goto implementation")
