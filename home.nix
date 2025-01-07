@@ -17,11 +17,11 @@
   # Custom configuration
   imports = [
     # ./home/ghostty
-    # ./home/helix
     ./home/alacritty
     ./home/bat
     ./home/fish
     ./home/git
+    ./home/helix
     ./home/home-manager
     ./home/neovim
     ./home/nix
@@ -32,6 +32,7 @@
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
     # pkgs.awscli2
+    # pkgs.fira-code-nerdfont
     pkgs.asdf-vm
     pkgs.aws-vault
     pkgs.bottom
@@ -42,12 +43,11 @@
     pkgs.easyrsa
     pkgs.entr
     pkgs.fd
-    pkgs.nerd-fonts.fira-code
-    # pkgs.fira-code-nerdfont
     pkgs.gnumake
     pkgs.jq
     pkgs.lazydocker
     pkgs.minikube
+    pkgs.nerd-fonts.fira-code
     pkgs.noti
     pkgs.pstree
     pkgs.rename
