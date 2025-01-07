@@ -36,6 +36,10 @@ nix run home-manager/release-24.05 -- switch
 
 **Note:** For future activations, run the `home-manager switch` command.
 
+## Features
+
+- OS appearance sync - TODO
+
 ## Credits
 
 A list of projects that inspired me to write this one:
