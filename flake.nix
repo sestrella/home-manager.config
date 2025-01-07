@@ -53,7 +53,7 @@
       in
       {
         runner = mkHomeManagerConfig {
-          system = "x86_64-linux";
+          system = "aarch64-darwin";
           module = ./runner.nix;
         };
         sestrella = mkHomeManagerConfig {
