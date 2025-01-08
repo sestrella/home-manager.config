@@ -2,9 +2,8 @@
 
 [
   {
-    plugin = pkgs.vimPlugins.nvim-lspconfig;
+    plugin = pkgs.vimPlugins.copilot-lua;
     config = builtins.readFile ./config.lua;
     type = "lua";
   }
-  pkgs.vimPlugins.blink-cmp
 ]

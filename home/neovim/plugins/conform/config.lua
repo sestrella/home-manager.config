@@ -7,13 +7,6 @@ require("conform").setup({
 		go = { "gofmt" },
 		lua = { "stylua" },
 		nix = { "nixfmt" },
-		python = { "black" },
-		terraform = { "terraform" },
-	},
-	formatters = {
-		terraform = {
-			command = "terraform",
-			args = { "fmt" },
-		},
+		terraform = { "terraform_fmt" },
 	},
 })
