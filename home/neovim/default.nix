@@ -20,9 +20,7 @@
       pkgs.yaml-language-server
     ];
     plugins = builtins.concatMap (plugin: pkgs.callPackage plugin { }) [
-      # ./plugins/cmp
       # ./plugins/copilot
-      # ./plugins/null-ls
       ./plugins/auto-dark-mode
       ./plugins/blink
       ./plugins/comment
