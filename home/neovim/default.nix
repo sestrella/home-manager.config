@@ -6,6 +6,7 @@
     defaultEditor = true;
     extraLuaConfig = builtins.readFile ./extra-config.lua;
     extraPackages = [
+      # pkgs.nodejs
       pkgs.bash-language-server
       pkgs.gopls
       pkgs.lua-language-server
