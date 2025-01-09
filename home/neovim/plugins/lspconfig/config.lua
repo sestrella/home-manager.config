@@ -1,3 +1,6 @@
+local blink = require("blink.cmp")
+local lspconfig = require("lspconfig")
+
 -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
 local servers = {
 	bashls = {},
@@ -45,9 +48,6 @@ local servers = {
 		},
 	},
 }
-
-local blink = require("blink.cmp")
-local lspconfig = require("lspconfig")
 
 for server, config in pairs(servers) do
 	config.capabilities = blink.get_lsp_capabilities(config.capabilities)

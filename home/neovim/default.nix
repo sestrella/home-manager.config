@@ -4,6 +4,7 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    extraLuaConfig = builtins.readFile ./extra-config.lua;
     extraPackages = [
       pkgs.bash-language-server
       pkgs.gopls
@@ -18,12 +19,12 @@
       pkgs.vscode-langservers-extracted
       pkgs.yaml-language-server
     ];
-    extraLuaConfig = builtins.readFile ./extra-config.lua;
     plugins = builtins.concatMap (plugin: pkgs.callPackage plugin { }) [
       # ./plugins/cmp
       # ./plugins/copilot
       # ./plugins/null-ls
       ./plugins/auto-dark-mode
+      ./plugins/blink
       ./plugins/comment
       ./plugins/conform
       ./plugins/gitsigns
