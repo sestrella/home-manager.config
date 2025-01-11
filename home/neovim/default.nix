@@ -6,7 +6,6 @@
     defaultEditor = true;
     extraLuaConfig = builtins.readFile ./extra-config.lua;
     extraPackages = [
-      # pkgs.nodejs
       pkgs.bash-language-server
       pkgs.gopls
       pkgs.lua-language-server
@@ -21,7 +20,6 @@
       pkgs.yaml-language-server
     ];
     plugins = builtins.concatMap (plugin: pkgs.callPackage plugin { }) [
-      # ./plugins/copilot
       ./plugins/auto-dark-mode
       ./plugins/blink
       ./plugins/comment

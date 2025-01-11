@@ -28,7 +28,6 @@
             ];
             pkgs = import inputs.nixpkgs {
               inherit system;
-              config.allowUnfree = true;
               # https://nixos.wiki/wiki/Overlays
               overlays = [
                 inputs.devenv.overlays.default
