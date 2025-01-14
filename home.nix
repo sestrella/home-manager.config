@@ -16,7 +16,6 @@
 
   # Custom configuration
   imports = [
-    # ./home/alacritty
     ./home/bat
     ./home/fish
     ./home/ghostty
