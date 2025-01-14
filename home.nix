@@ -20,7 +20,6 @@
     ./home/fish
     ./home/ghostty
     ./home/git
-    ./home/helix
     ./home/home-manager
     ./home/neovim
     ./home/nix
