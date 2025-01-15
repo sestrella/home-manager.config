@@ -21,11 +21,10 @@
     ];
     plugins = builtins.concatMap (plugin: pkgs.callPackage plugin { }) [
       ./plugins/auto-dark-mode
-      # ./plugins/blink
       ./plugins/comment
       ./plugins/conform
       ./plugins/gitsigns
-      ./plugins/lspconfig
+      ./plugins/lsp
       ./plugins/lualine
       ./plugins/solarized
       ./plugins/telescope
