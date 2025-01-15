@@ -11,6 +11,7 @@
       pkgs.lua-language-server
       pkgs.nixd
       pkgs.nixfmt-rfc-style
+      pkgs.nodejs
       pkgs.pyright
       pkgs.ruby-lsp
       pkgs.stylua
