@@ -36,11 +36,20 @@ cmp.setup({
 	}),
 })
 
+local schemastore = require("schemastore")
+
 -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
 local servers = {
 	bashls = {},
 	gopls = {},
-	jsonls = {},
+	jsonls = {
+		settings = {
+			json = {
+				schemas = schemastore.json.schemas(),
+				validate = { enable = true },
+			},
+		},
+	},
 	lua_ls = {
 		settings = {
 			Lua = {
@@ -72,13 +81,14 @@ local servers = {
 	yamlls = {
 		settings = {
 			yaml = {
-				schemas = {
-					["https://devenv.sh/devenv.schema.json"] = "devenv.yaml",
-					["https://json.schemastore.org/circleciconfig.json"] = "/.circleci/config.yml",
-					["https://json.schemastore.org/dependabot-2.0.json"] = "/.github/dependabot.yml",
-					["https://json.schemastore.org/github-workflow.json"] = "/.github/workflows/*.yml",
-					["kubernetes"] = "*.k8s.yml",
+				schemaStore = {
+					-- You must disable built-in schemaStore support if you want to use
+					-- this plugin and its advanced options like `ignore`.
+					enable = false,
+					-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+					url = "",
 				},
+				schemas = schemastore.yaml.schemas(),
 			},
 		},
 	},
