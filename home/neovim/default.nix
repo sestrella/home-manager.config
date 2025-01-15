@@ -21,7 +21,7 @@
     ];
     plugins = builtins.concatMap (plugin: pkgs.callPackage plugin { }) [
       ./plugins/auto-dark-mode
-      ./plugins/blink
+      # ./plugins/blink
       ./plugins/comment
       ./plugins/conform
       ./plugins/gitsigns
