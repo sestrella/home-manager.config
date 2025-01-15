@@ -50,6 +50,7 @@ local schemastore = require("schemastore")
 local servers = {
 	bashls = {},
 	gopls = {},
+	-- https://github.com/b0o/SchemaStore.nvim
 	jsonls = {
 		settings = {
 			json = {
@@ -86,6 +87,7 @@ local servers = {
 	rust_analyzer = {},
 	terraformls = {},
 	ts_ls = {},
+	-- https://github.com/b0o/SchemaStore.nvim
 	yamlls = {
 		settings = {
 			yaml = {
