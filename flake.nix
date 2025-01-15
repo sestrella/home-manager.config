@@ -7,10 +7,10 @@
     devenv.url = "github:cachix/devenv";
     home-manager-diff.url = "github:pedorich-n/home-manager-diff";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager/release-24.11";
+    home-manager.url = "github:nix-community/home-manager";
     mac-app-util.url = "github:hraban/mac-app-util";
     nixd.url = "github:nix-community/nixd";
-    nixpkgs.url = "github:NixOS/nixpkgs/release-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     tmux-dark-notify.flake = false;
     tmux-dark-notify.url = "github:erikw/tmux-dark-notify";
   };

@@ -20,6 +20,7 @@
     ./home/fish
     ./home/ghostty
     ./home/git
+    ./home/helix
     ./home/home-manager
     ./home/neovim
     ./home/nix
@@ -29,10 +30,9 @@
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
-    # pkgs.awscli2
-    # pkgs.nerd-fonts.fira-code
     pkgs.asdf-vm
     pkgs.aws-vault
+    pkgs.awscli2
     pkgs.bottom
     pkgs.btop
     pkgs.cachix
@@ -41,11 +41,11 @@
     pkgs.easyrsa
     pkgs.entr
     pkgs.fd
-    pkgs.fira-code-nerdfont
     pkgs.gnumake
     pkgs.jq
     pkgs.lazydocker
     pkgs.minikube
+    pkgs.nerd-fonts.fira-code
     pkgs.noti
     pkgs.pstree
     pkgs.rename
