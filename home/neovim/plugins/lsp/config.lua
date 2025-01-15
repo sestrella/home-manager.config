@@ -1,9 +1,6 @@
--- local blink = require("blink.cmp")
---
--- require("blink.cmp").setup({})
-
 local cmp = require("cmp")
 
+-- https://github.com/hrsh7th/nvim-cmp
 cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		-- Select the [n]ext item
@@ -31,10 +28,12 @@ cmp.setup({
 		--  completions whenever it has completion options available.
 		["<C-Space>"] = cmp.mapping.complete({}),
 	}),
-	sources = {
+	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lsp_signature_help" },
-	},
+	}, {
+		{ name = "buffer" },
+	}),
 })
 
 -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
