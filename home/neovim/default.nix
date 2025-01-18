@@ -7,6 +7,7 @@
     extraLuaConfig = builtins.readFile ./extra-config.lua;
     extraPackages = [
       pkgs.bash-language-server
+      pkgs.golines
       pkgs.gopls
       pkgs.lua-language-server
       pkgs.nixd

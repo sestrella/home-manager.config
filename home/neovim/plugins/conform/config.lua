@@ -4,7 +4,7 @@ require("conform").setup({
 		lsp_format = "fallback",
 	},
 	formatters_by_ft = {
-		go = { "gofmt" },
+		go = { "golines" },
 		lua = { "stylua" },
 		nix = { "nixfmt" },
 		terraform = { "terraform_fmt" },
