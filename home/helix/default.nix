@@ -13,6 +13,7 @@
       pkgs.docker-compose-language-service
       pkgs.golangci-lint-langserver
       pkgs.gopls
+      pkgs.golines
       pkgs.marksman
       pkgs.nil
       pkgs.terraform-ls
@@ -20,6 +21,13 @@
     ];
     languages = {
       language = [
+        {
+          name = "go";
+          auto-format = true;
+          formatter = {
+            command = "${pkgs.golines}/bin/golines";
+          };
+        }
         {
           name = "nix";
           auto-format = true;
