@@ -19,26 +19,9 @@
       pkgs.terraform-ls
       pkgs.yaml-language-server
     ];
-    languages = {
-      language = [
-        {
-          name = "go";
-          auto-format = true;
-          formatter = {
-            command = "${pkgs.golines}/bin/golines";
-          };
-        }
-        {
-          name = "nix";
-          auto-format = true;
-          formatter = {
-            command = "${pkgs.nixfmt-rfc-style}/bin/nixfmt";
-          };
-        }
-      ];
-    };
     settings = {
       editor = {
+        end-of-line-diagnostics = "hint";
         file-picker.hidden = false;
         line-number = "relative";
       };

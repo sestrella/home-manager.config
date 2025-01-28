@@ -6,7 +6,7 @@ require("conform").setup({
 	formatters_by_ft = {
 		go = { "golines" },
 		lua = { "stylua" },
-		nix = { "nixfmt" },
+		-- nix = { "nixfmt" },
 		terraform = { "terraform_fmt" },
 	},
 })
