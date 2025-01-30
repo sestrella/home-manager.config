@@ -7,6 +7,7 @@
 {
   programs.helix = {
     enable = true;
+    defaultEditor = true;
     extraPackages = [
       pkgs.ansible-language-server
       pkgs.bash-language-server
@@ -23,6 +24,7 @@
       editor = {
         end-of-line-diagnostics = "hint";
         file-picker.hidden = false;
+        inline-diagnostics.cursor-line = "warning";
         line-number = "relative";
       };
       theme = "solarized";
