@@ -22,6 +22,7 @@
     ];
     settings = {
       editor = {
+        cursor-shape.insert = "bar";
         end-of-line-diagnostics = "hint";
         file-picker.hidden = false;
         inline-diagnostics.cursor-line = "warning";
