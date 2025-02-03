@@ -13,8 +13,8 @@
       pkgs.bash-language-server
       pkgs.docker-compose-language-service
       pkgs.golangci-lint-langserver
-      pkgs.gopls
       pkgs.golines
+      pkgs.gopls
       pkgs.marksman
       pkgs.nil
       pkgs.terraform-ls
