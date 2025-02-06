@@ -15,11 +15,25 @@
       pkgs.golangci-lint-langserver
       pkgs.golines
       pkgs.gopls
+      pkgs.helix-gpt
       pkgs.marksman
       pkgs.nil
       pkgs.terraform-ls
       pkgs.yaml-language-server
     ];
+    languages = {
+      language-server.gpt = {
+        command = "helix-gpt";
+        args = ["--handler" "copilot"];
+      };
+
+      language = [
+        {
+          name = "go";
+          language-servers = ["gopls" "golangci-lint-lsp" "gpt"];
+        }
+      ];
+    };
     settings = {
       editor = {
         cursor-shape.insert = "bar";
