@@ -41,6 +41,7 @@
         file-picker.hidden = false;
         inline-diagnostics.cursor-line = "warning";
         line-number = "relative";
+        rulers = [80];
       };
       theme = "solarized";
     };
