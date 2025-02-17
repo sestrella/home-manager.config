@@ -41,6 +41,7 @@
     pkgs.easyrsa
     pkgs.entr
     pkgs.fd
+    pkgs.gitleaks
     pkgs.gnumake
     pkgs.jq
     pkgs.lazydocker

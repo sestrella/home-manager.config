@@ -26,13 +26,10 @@
         command = "helix-gpt";
         args = ["--handler" "copilot"];
       };
-
-      language = [
-        {
-          name = "go";
-          language-servers = ["gopls" "golangci-lint-lsp" "gpt"];
-        }
-      ];
+      # language = [{
+      #   name = "go";
+      #   language-servers = ["gpt"];
+      # }];
     };
     settings = {
       editor = {
