@@ -84,6 +84,11 @@ require("auto-dark-mode").setup({
 	end,
 })
 
+require("nvim-treesitter.configs").setup({
+	auto_install = false,
+	highlight = { enable = true },
+})
+
 local telescope = require("telescope")
 
 telescope.setup({
