@@ -66,3 +66,65 @@ vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+
+-------------
+-- PLUGINS --
+-------------
+
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>f", builtin.find_files)
+vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols)
+
+local lspconfig = require("lspconfig")
+
+local servers = {
+  -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
+	lua_ls = {
+		on_init = function(client)
+			if client.workspace_folders then
+				local path = client.workspace_folders[1].name
+				if
+					path ~= vim.fn.stdpath("config")
+					and (vim.loop.fs_stat(path .. "/.luarc.json") or vim.loop.fs_stat(path .. "/.luarc.jsonc"))
+				then
+					return
+				end
+			end
+
+			client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+				runtime = {
+					-- Tell the language server which version of Lua you're using
+					-- (most likely LuaJIT in the case of Neovim)
+					version = "LuaJIT",
+				},
+				-- Make the server aware of Neovim runtime files
+				workspace = {
+					checkThirdParty = false,
+					library = {
+						vim.env.VIMRUNTIME,
+						-- Depending on the usage, you might want to add additional paths here.
+						-- "${3rd}/luv/library"
+						-- "${3rd}/busted/library",
+					},
+					-- or pull in all of 'runtimepath'. NOTE: this is a lot slower and will cause issues when working on your own configuration (see https://github.com/neovim/nvim-lspconfig/issues/3189)
+					-- library = vim.api.nvim_get_runtime_file("", true)
+				},
+			})
+		end,
+		settings = {
+			Lua = {},
+		},
+	},
+}
+
+-- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+for server, config in pairs(servers) do
+	-- config.capabilities = capabilities
+	lspconfig[server].setup(config)
+end
+
+require("conform").setup({
+	formatters_by_ft = {
+		lua = { "stylua" },
+	},
+})
