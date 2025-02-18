@@ -75,6 +75,46 @@ local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>f", builtin.find_files)
 vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols)
 
+-- From kickstart
+local cmp = require("cmp")
+cmp.setup({
+	snippet = {
+		expand = function(args)
+			vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+		end,
+	},
+	-- window = {
+	-- 	completion = cmp.config.window.bordered(),
+	-- 	documentation = cmp.config.window.bordered(),
+	-- },
+	mapping = cmp.mapping.preset.insert({
+		-- Select the [n]ext item
+		["<C-n>"] = cmp.mapping.select_next_item(),
+		-- Select the [p]revious item
+		["<C-p>"] = cmp.mapping.select_prev_item(),
+
+		-- Scroll the documentation window [b]ack / [f]orward
+		["<C-b>"] = cmp.mapping.scroll_docs(-4),
+		["<C-f>"] = cmp.mapping.scroll_docs(4),
+
+		-- Accept ([y]es) the completion.
+		--  This will auto-import if your LSP supports it.
+		--  This will expand snippets if the LSP sent a snippet.
+		["<C-y>"] = cmp.mapping.confirm({ select = true }),
+
+		-- Manually trigger a completion from nvim-cmp.
+		--  Generally you don't need this, because nvim-cmp will display
+		--  completions whenever it has completion options available.
+		["<C-Space>"] = cmp.mapping.complete({}),
+	}),
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "vsnip" },
+	}, {
+		{ name = "buffer" },
+	}),
+})
+
 local lspconfig = require("lspconfig")
 
 local servers = {
@@ -117,9 +157,9 @@ local servers = {
 	},
 }
 
--- local capabilities = require("cmp_nvim_lsp").default_capabilities()
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 for server, config in pairs(servers) do
-	-- config.capabilities = capabilities
+	config.capabilities = capabilities
 	lspconfig[server].setup(config)
 end
 

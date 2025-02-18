@@ -9,22 +9,23 @@
       # pkgs.bash-language-server
       # pkgs.golines
       # pkgs.gopls
-      pkgs.lua-language-server
       # pkgs.nixd
       # pkgs.nixfmt-rfc-style
       # pkgs.nodejs
       # pkgs.pyright
       # pkgs.ruby-lsp
-      pkgs.stylua
       # pkgs.terraform-ls
       # pkgs.typescript-language-server
       # pkgs.vscode-langservers-extracted
       # pkgs.yaml-language-server
+      pkgs.lua-language-server
+      pkgs.stylua
     ];
     plugins = [
-      # pkgs.vimPlugins.cmp-nvim-lsp
+      pkgs.vimPlugins.cmp-nvim-lsp
+      pkgs.vimPlugins.cmp-vsnip
       pkgs.vimPlugins.conform-nvim
-      # pkgs.vimPlugins.nvim-cmp
+      pkgs.vimPlugins.nvim-cmp
       pkgs.vimPlugins.nvim-lspconfig
       pkgs.vimPlugins.telescope-nvim
     ];
