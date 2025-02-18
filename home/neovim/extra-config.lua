@@ -78,7 +78,7 @@ vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols)
 local lspconfig = require("lspconfig")
 
 local servers = {
-  -- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
+	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md#lua_ls
 	lua_ls = {
 		on_init = function(client)
 			if client.workspace_folders then
@@ -126,5 +126,10 @@ end
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
+	},
+	format_on_save = {
+		-- These options will be passed to conform.format()
+		timeout_ms = 500,
+		lsp_format = "fallback",
 	},
 })
