@@ -71,6 +71,12 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- PLUGINS --
 -------------
 
+require("telescope").setup({
+	defaults = {
+		sorting_strategy = "ascending",
+	},
+})
+
 local builtin = require("telescope.builtin")
 
 vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Global search in workspace folder" })
