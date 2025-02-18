@@ -50,8 +50,8 @@ vim.keymap.set("n", "<up>", '<cmd>echo "Use k instead"<cr>')
 vim.keymap.set("n", "<down>", '<cmd>echo "Use j instead"<cr>')
 
 -- diagnostic
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Goto previous diagnostic" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Goto next diagnostic" })
 
 -- https://twitter.com/theprimeagen/status/1591996471951429633
 vim.keymap.set("n", "<C-u>", "<C-u>zz", {})
@@ -75,8 +75,9 @@ local builtin = require("telescope.builtin")
 
 vim.keymap.set("n", "<leader>S", builtin.lsp_workspace_symbols, { desc = "Open workspace symbol picker" })
 vim.keymap.set("n", "<leader>d", builtin.diagnostics, { desc = "Open diagnostics picker" })
-vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Open file pickerj" })
+vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Open file picker" })
 vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols, { desc = "Open symbol picker" })
+vim.keymap.set("n", "<leader>?", builtin.keymaps, { desc = "Open command palette" })
 
 -- TODO: check default keymaps
 require("Comment").setup()

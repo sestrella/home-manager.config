@@ -31,6 +31,7 @@
       pkgs.vimPlugins.nvim-lspconfig
       pkgs.vimPlugins.telescope-nvim
       pkgs.vimPlugins.vim-vsnip
+      pkgs.vimPlugins.which-key-nvim
     ];
     # plugins = builtins.concatMap (plugin: pkgs.callPackage plugin { }) [
     #   ./plugins/auto-dark-mode
