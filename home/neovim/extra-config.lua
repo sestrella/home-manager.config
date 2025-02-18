@@ -72,8 +72,14 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -------------
 
 local builtin = require("telescope.builtin")
-vim.keymap.set("n", "<leader>f", builtin.find_files)
-vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols)
+
+vim.keymap.set("n", "<leader>S", builtin.lsp_workspace_symbols, { desc = "Open workspace symbol picker" })
+vim.keymap.set("n", "<leader>d", builtin.diagnostics, { desc = "Open diagnostics picker" })
+vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Open file pickerj" })
+vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols, { desc = "Open symbol picker" })
+
+-- TODO: check default keymaps
+require("Comment").setup()
 
 -- From kickstart
 local cmp = require("cmp")
