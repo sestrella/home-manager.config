@@ -156,6 +156,7 @@ local servers = {
 			Lua = {},
 		},
 	},
+	nixd = {},
 }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -166,10 +167,11 @@ end
 
 require("conform").setup({
 	formatters_by_ft = {
+		go = { "golines" },
 		lua = { "stylua" },
+		nix = { "nixfmt" },
 	},
 	format_on_save = {
-		-- These options will be passed to conform.format()
 		timeout_ms = 500,
 		lsp_format = "fallback",
 	},

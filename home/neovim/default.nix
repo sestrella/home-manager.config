@@ -7,10 +7,9 @@
     extraLuaConfig = builtins.readFile ./extra-config.lua;
     extraPackages = [
       # pkgs.bash-language-server
-      # pkgs.golines
+      pkgs.golines
       # pkgs.gopls
-      # pkgs.nixd
-      # pkgs.nixfmt-rfc-style
+      pkgs.nixd
       # pkgs.nodejs
       # pkgs.pyright
       # pkgs.ruby-lsp
@@ -19,6 +18,7 @@
       # pkgs.vscode-langservers-extracted
       # pkgs.yaml-language-server
       pkgs.lua-language-server
+      pkgs.nixfmt-rfc-style
       pkgs.stylua
     ];
     plugins = [
@@ -29,6 +29,7 @@
       pkgs.vimPlugins.nvim-cmp
       pkgs.vimPlugins.nvim-lspconfig
       pkgs.vimPlugins.telescope-nvim
+      pkgs.vimPlugins.vim-vsnip
     ];
     # plugins = builtins.concatMap (plugin: pkgs.callPackage plugin { }) [
     #   ./plugins/auto-dark-mode
