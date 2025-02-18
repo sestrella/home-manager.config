@@ -73,11 +73,12 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 local builtin = require("telescope.builtin")
 
+vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Global search in workspace folder" })
+vim.keymap.set("n", "<leader>?", builtin.keymaps, { desc = "Open command palette" })
 vim.keymap.set("n", "<leader>S", builtin.lsp_workspace_symbols, { desc = "Open workspace symbol picker" })
 vim.keymap.set("n", "<leader>d", builtin.diagnostics, { desc = "Open diagnostics picker" })
 vim.keymap.set("n", "<leader>f", builtin.find_files, { desc = "Open file picker" })
 vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols, { desc = "Open symbol picker" })
-vim.keymap.set("n", "<leader>?", builtin.keymaps, { desc = "Open command palette" })
 
 -- TODO: check default keymaps
 require("Comment").setup()
@@ -202,4 +203,10 @@ require("conform").setup({
 		timeout_ms = 500,
 		lsp_format = "fallback",
 	},
+})
+
+local wk = require("which-key")
+wk.add({
+	{ "<leader>", group = "Space" },
+	{ "g", group = "Goto" },
 })
