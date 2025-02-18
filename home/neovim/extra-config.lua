@@ -174,11 +174,11 @@ end
 -- https://github.com/nvim-lua/kickstart.nvim
 vim.api.nvim_create_autocmd("LspAttach", {
 	-- TODO: rename group
-	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
 	callback = function(event)
 		local map = function(keys, func, desc, mode)
 			mode = mode or "n"
-			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc })
+			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
 		end
 
 		map("gd", builtin.lsp_definitions, "Goto definition")
