@@ -6,7 +6,7 @@
 
 {
   programs.helix = {
-    enable = true;
+    enable = false;
     defaultEditor = true;
     extraPackages = [
       pkgs.ansible-language-server
@@ -24,7 +24,10 @@
     languages = {
       language-server.gpt = {
         command = "helix-gpt";
-        args = ["--handler" "copilot"];
+        args = [
+          "--handler"
+          "copilot"
+        ];
       };
       # language = [{
       #   name = "go";
@@ -38,7 +41,7 @@
         file-picker.hidden = false;
         inline-diagnostics.cursor-line = "warning";
         line-number = "relative";
-        rulers = [80];
+        rulers = [ 80 ];
       };
       theme = "solarized";
     };

@@ -1,4 +1,5 @@
 -- https://github.com/nvim-lua/kickstart.nvim/blob/master/init.lua
+-- TODO: check nerdfonts integration
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
