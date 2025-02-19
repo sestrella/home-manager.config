@@ -7,7 +7,6 @@
     extraLuaConfig = builtins.readFile ./extra-config.lua;
     extraPackages = [
       # pkgs.bash-language-server
-      # pkgs.gopls
       # pkgs.nodejs
       # pkgs.pyright
       # pkgs.ruby-lsp
@@ -15,6 +14,7 @@
       # pkgs.vscode-langservers-extracted
       # pkgs.yaml-language-server
       pkgs.golines
+      pkgs.gopls
       pkgs.lua-language-server
       pkgs.nixd
       pkgs.nixfmt-rfc-style
