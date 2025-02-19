@@ -11,7 +11,6 @@
       # pkgs.nodejs
       # pkgs.pyright
       # pkgs.ruby-lsp
-      # pkgs.terraform-ls
       # pkgs.typescript-language-server
       # pkgs.vscode-langservers-extracted
       # pkgs.yaml-language-server
@@ -20,6 +19,7 @@
       pkgs.nixd
       pkgs.nixfmt-rfc-style
       pkgs.stylua
+      pkgs.terraform-ls
     ];
     plugins =
       let
