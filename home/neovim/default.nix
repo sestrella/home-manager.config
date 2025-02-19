@@ -12,7 +12,6 @@
       # pkgs.ruby-lsp
       # pkgs.typescript-language-server
       # pkgs.vscode-langservers-extracted
-      # pkgs.yaml-language-server
       pkgs.golines
       pkgs.gopls
       pkgs.lua-language-server
@@ -20,6 +19,7 @@
       pkgs.nixfmt-rfc-style
       pkgs.stylua
       pkgs.terraform-ls
+      pkgs.yaml-language-server
     ];
     plugins =
       let
@@ -40,6 +40,7 @@
         ]);
       in
       [
+        pkgs.vimPlugins.SchemaStore-nvim
         pkgs.vimPlugins.auto-dark-mode-nvim
         pkgs.vimPlugins.cmp-nvim-lsp
         pkgs.vimPlugins.cmp-nvim-lsp-signature-help

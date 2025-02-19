@@ -159,6 +159,7 @@ cmp.setup({
 })
 
 local lspconfig = require("lspconfig")
+local schemastore = require("schemastore")
 
 local servers = {
 	lua_ls = {
@@ -200,6 +201,17 @@ local servers = {
 	nixd = {},
 	terraformls = {},
 	gopls = {},
+	yamlls = {
+		settings = {
+			yaml = {
+				schemaStore = {
+					enable = false,
+					url = "",
+				},
+				schemas = schemastore.yaml.schemas(),
+			},
+		},
+	},
 }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
