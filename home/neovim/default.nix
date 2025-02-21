@@ -10,7 +10,6 @@
       # pkgs.pyright
       # pkgs.ruby-lsp
       # pkgs.typescript-language-server
-      # pkgs.vscode-langservers-extracted
       pkgs.golines
       pkgs.gopls
       pkgs.lua-language-server
@@ -19,6 +18,7 @@
       pkgs.nodejs
       pkgs.stylua
       pkgs.terraform-ls
+      pkgs.vscode-langservers-extracted
       pkgs.yaml-language-server
     ];
     plugins =
