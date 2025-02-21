@@ -116,6 +116,13 @@ vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols, { desc = "Open sy
 -- TODO: check default keymaps
 require("Comment").setup()
 
+require("copilot").setup({
+	suggestion = { enabled = false },
+	panel = { enabled = false },
+})
+
+require("copilot_cmp").setup()
+
 -- From kickstart
 local cmp = require("cmp")
 cmp.setup({
@@ -149,6 +156,7 @@ cmp.setup({
 		["<C-Space>"] = cmp.mapping.complete({}),
 	}),
 	sources = cmp.config.sources({
+		{ name = "copilot" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "vsnip" },
@@ -199,8 +207,16 @@ local servers = {
 		},
 	},
 	nixd = {},
-	terraformls = {},
 	gopls = {},
+	jsonls = {
+		settings = {
+			json = {
+				schemas = schemastore.json.schemas(),
+				validate = { enable = true },
+			},
+		},
+	},
+	terraformls = {},
 	yamlls = {
 		settings = {
 			yaml = {
