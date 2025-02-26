@@ -51,7 +51,6 @@
     pkgs.pstree
     pkgs.rename
     pkgs.ssm-session-manager-plugin
-    pkgs.tailspin
     pkgs.tmate
     pkgs.tree
     pkgs.watch
