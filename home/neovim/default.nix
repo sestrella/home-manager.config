@@ -15,7 +15,6 @@
       pkgs.lua-language-server
       pkgs.nixd
       pkgs.nixfmt-rfc-style
-      pkgs.nodejs
       pkgs.stylua
       pkgs.terraform-ls
       pkgs.vscode-langservers-extracted
@@ -47,8 +46,6 @@
         pkgs.vimPlugins.cmp-vsnip
         pkgs.vimPlugins.comment-nvim
         pkgs.vimPlugins.conform-nvim
-        pkgs.vimPlugins.copilot-cmp
-        pkgs.vimPlugins.copilot-lua
         pkgs.vimPlugins.nvim-cmp
         pkgs.vimPlugins.nvim-lspconfig
         pkgs.vimPlugins.nvim-solarized-lua
