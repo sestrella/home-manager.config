@@ -36,6 +36,7 @@
     pkgs.bottom
     pkgs.btop
     pkgs.cachix
+    pkgs.claude-code
     pkgs.coreutils
     pkgs.devenv
     pkgs.easyrsa
