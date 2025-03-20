@@ -6,8 +6,8 @@
 
 {
   programs.helix = {
-    enable = false;
-    defaultEditor = true;
+    enable = true;
+    # defaultEditor = true;
     extraPackages = [
       pkgs.ansible-language-server
       pkgs.bash-language-server
@@ -15,25 +15,12 @@
       pkgs.golangci-lint-langserver
       pkgs.golines
       pkgs.gopls
-      pkgs.helix-gpt
-      pkgs.marksman
+      # pkgs.helix-gpt
+      # pkgs.marksman
       pkgs.nil
       pkgs.terraform-ls
       pkgs.yaml-language-server
     ];
-    languages = {
-      language-server.gpt = {
-        command = "helix-gpt";
-        args = [
-          "--handler"
-          "copilot"
-        ];
-      };
-      # language = [{
-      #   name = "go";
-      #   language-servers = ["gpt"];
-      # }];
-    };
     settings = {
       editor = {
         cursor-shape.insert = "bar";
