@@ -15,12 +15,22 @@
       pkgs.golangci-lint-langserver
       pkgs.golines
       pkgs.gopls
-      # pkgs.helix-gpt
-      # pkgs.marksman
       pkgs.nil
+      pkgs.nixfmt-rfc-style
       pkgs.terraform-ls
       pkgs.yaml-language-server
     ];
+    languages = {
+      language = [
+        {
+          name = "nix";
+          auto-format = true;
+          formatter = {
+            command = "nixfmt";
+          };
+        }
+      ];
+    };
     settings = {
       editor = {
         cursor-shape.insert = "bar";
