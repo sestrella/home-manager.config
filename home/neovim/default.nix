@@ -2,8 +2,8 @@
 
 {
   programs.neovim = {
-    enable = true;
-    defaultEditor = true;
+    enable = false;
+    # defaultEditor = true;
     extraLuaConfig = builtins.readFile ./extra-config.lua;
     extraPackages = [
       # pkgs.bash-language-server

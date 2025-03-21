@@ -7,7 +7,7 @@
 {
   programs.helix = {
     enable = true;
-    # defaultEditor = true;
+    defaultEditor = true;
     extraPackages = [
       pkgs.ansible-language-server
       pkgs.bash-language-server
@@ -24,7 +24,6 @@
       language = [
         {
           name = "nix";
-          auto-format = true;
           formatter = {
             command = "nixfmt";
           };
