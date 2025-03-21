@@ -15,7 +15,7 @@
       pkgs.golangci-lint-langserver
       pkgs.golines
       pkgs.gopls
-      pkgs.nil
+      pkgs.nixd
       pkgs.nixfmt-rfc-style
       pkgs.terraform-ls
       pkgs.yaml-language-server
