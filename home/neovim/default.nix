@@ -2,14 +2,10 @@
 
 {
   programs.neovim = {
-    enable = false;
+    enable = true;
     # defaultEditor = true;
     extraLuaConfig = builtins.readFile ./extra-config.lua;
     extraPackages = [
-      # pkgs.bash-language-server
-      # pkgs.pyright
-      # pkgs.ruby-lsp
-      # pkgs.typescript-language-server
       pkgs.golines
       pkgs.gopls
       pkgs.lua-language-server

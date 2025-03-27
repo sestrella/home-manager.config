@@ -12,8 +12,6 @@
       pkgs.ansible-language-server
       pkgs.bash-language-server
       pkgs.docker-compose-language-service
-      pkgs.golangci-lint-langserver
-      pkgs.golines
       pkgs.gopls
       pkgs.nixd
       pkgs.nixfmt-rfc-style
