@@ -188,27 +188,7 @@ for server, config in pairs(servers) do
 	lspconfig[server].setup(config)
 end
 
-local builtin = require("telescope.builtin")
-
 -- https://github.com/nvim-lua/kickstart.nvim
-vim.api.nvim_create_autocmd("LspAttach", {
-	-- TODO: rename group
-	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
-	callback = function(event)
-		local map = function(keys, func, desc, mode)
-			mode = mode or "n"
-			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
-		end
-
-		map("gd", builtin.lsp_definitions, "Goto definition")
-		map("gi", builtin.lsp_implementations, "Goto implementation")
-		map("gr", builtin.lsp_references, "Goto references")
-		map("gy", builtin.lsp_type_definitions, "Goto type definition")
-
-		map("<leader>a", vim.lsp.buf.code_action, "Perform code action", { "n", "x" })
-		map("<leader>r", vim.lsp.buf.rename, "Rename symbol")
-	end,
-})
 
 require("conform").setup({
 	formatters_by_ft = {
