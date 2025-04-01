@@ -85,6 +85,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
 -- PLUGINS --
 -------------
 
+require("copilot").setup({
+	suggestion = { enabled = false },
+	panel = { enabled = false },
+})
+
+require("copilot_cmp").setup()
+
 -- TODO: check default keymaps
 require("Comment").setup()
 
@@ -121,6 +128,7 @@ cmp.setup({
 		["<C-Space>"] = cmp.mapping.complete({}),
 	}),
 	sources = cmp.config.sources({
+		{ name = "copilot" },
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lsp_signature_help" },
 		{ name = "vsnip" },
