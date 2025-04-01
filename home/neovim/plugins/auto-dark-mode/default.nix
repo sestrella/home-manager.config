@@ -6,4 +6,5 @@
     config = builtins.readFile ./config.lua;
     type = "lua";
   }
+  pkgs.vimPlugins.nvim-solarized-lua
 ]

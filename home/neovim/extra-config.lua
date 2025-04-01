@@ -72,11 +72,6 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- PLUGINS --
 -------------
 
-require("nvim-treesitter.configs").setup({
-	auto_install = false,
-	highlight = { enable = true },
-})
-
 -- TODO: check default keymaps
 require("Comment").setup()
 
