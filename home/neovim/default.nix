@@ -35,11 +35,11 @@
         ]);
       in
       (builtins.concatMap (f: pkgs.callPackage f { }) [
+        ./plugins/auto-dark-mode
         ./plugins/telescope
       ])
       ++ [
         pkgs.vimPlugins.SchemaStore-nvim
-        pkgs.vimPlugins.auto-dark-mode-nvim
         pkgs.vimPlugins.cmp-nvim-lsp
         pkgs.vimPlugins.cmp-nvim-lsp-signature-help
         pkgs.vimPlugins.cmp-vsnip
