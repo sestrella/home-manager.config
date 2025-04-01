@@ -68,6 +68,19 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("extra-config-lsp-attach", { clear = true }),
+	callback = function(event)
+		local map = function(keys, func, desc, mode)
+			mode = mode or "n"
+			vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
+		end
+
+		map("<leader>a", vim.lsp.buf.code_action, "Apply code action (LSP)", { "n", "x" })
+		map("<leader>r", vim.lsp.buf.rename, "Rename symbol (LSP)")
+	end,
+})
+
 -------------
 -- PLUGINS --
 -------------
