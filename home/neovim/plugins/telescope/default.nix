@@ -7,5 +7,4 @@
     type = "lua";
   }
   pkgs.vimPlugins.telescope-fzf-native-nvim
-  pkgs.vimPlugins.telescope-ui-select-nvim
 ]

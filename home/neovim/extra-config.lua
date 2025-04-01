@@ -89,30 +89,6 @@ require("nvim-treesitter.configs").setup({
 	highlight = { enable = true },
 })
 
-local telescope = require("telescope")
-
-telescope.setup({
-	defaults = {
-		sorting_strategy = "ascending",
-	},
-	pickers = {
-		git_files = {
-			show_untracked = true,
-		},
-	},
-})
-
-telescope.load_extension("fzf")
-
-local builtin = require("telescope.builtin")
-
-vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Global search in workspace folder" })
-vim.keymap.set("n", "<leader>?", builtin.keymaps, { desc = "Open command palette" })
-vim.keymap.set("n", "<leader>S", builtin.lsp_workspace_symbols, { desc = "Open workspace symbol picker" })
-vim.keymap.set("n", "<leader>d", builtin.diagnostics, { desc = "Open diagnostics picker" })
-vim.keymap.set("n", "<leader>f", builtin.git_files, { desc = "Open file picker" })
-vim.keymap.set("n", "<leader>s", builtin.lsp_document_symbols, { desc = "Open symbol picker" })
-
 -- TODO: check default keymaps
 require("Comment").setup()
 
@@ -223,10 +199,13 @@ local servers = {
 }
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 for server, config in pairs(servers) do
 	config.capabilities = capabilities
 	lspconfig[server].setup(config)
 end
+
+local builtin = require("telescope.builtin")
 
 -- https://github.com/nvim-lua/kickstart.nvim
 vim.api.nvim_create_autocmd("LspAttach", {

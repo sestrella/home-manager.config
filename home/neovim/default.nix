@@ -34,7 +34,10 @@
           plugins.tree-sitter-yaml
         ]);
       in
-      [
+      (builtins.concatMap (f: pkgs.callPackage f { }) [
+        ./plugins/telescope
+      ])
+      ++ [
         pkgs.vimPlugins.SchemaStore-nvim
         pkgs.vimPlugins.auto-dark-mode-nvim
         pkgs.vimPlugins.cmp-nvim-lsp
@@ -45,8 +48,6 @@
         pkgs.vimPlugins.nvim-cmp
         pkgs.vimPlugins.nvim-lspconfig
         pkgs.vimPlugins.nvim-solarized-lua
-        pkgs.vimPlugins.telescope-fzf-native-nvim
-        pkgs.vimPlugins.telescope-nvim
         pkgs.vimPlugins.vim-vsnip
         pkgs.vimPlugins.which-key-nvim
         treesitter
