@@ -30,8 +30,6 @@
         pkgs.vimPlugins.cmp-vsnip
         pkgs.vimPlugins.comment-nvim
         pkgs.vimPlugins.conform-nvim
-        pkgs.vimPlugins.copilot-cmp
-        pkgs.vimPlugins.copilot-lua
         pkgs.vimPlugins.nvim-cmp
         pkgs.vimPlugins.nvim-lspconfig
         pkgs.vimPlugins.vim-vsnip
