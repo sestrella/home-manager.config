@@ -1,5 +1,7 @@
 -- https://github.com/nvim-lua/kickstart.nvim
-require("conform").setup({
+local conform = require("conform")
+
+conform.setup({
 	formatters_by_ft = {
 		go = { "golines" },
 		lua = { "stylua" },
@@ -9,3 +11,7 @@ require("conform").setup({
 		lsp_format = "fallback",
 	},
 })
+
+vim.api.nvim_create_user_command("Format", function()
+	conform.format({ async = true, lsp_format = "fallback" })
+end, {})
