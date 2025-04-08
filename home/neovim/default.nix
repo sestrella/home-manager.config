@@ -20,7 +20,7 @@
     plugins =
       (builtins.concatMap (f: pkgs.callPackage f { }) [
         ./plugins/auto-dark-mode
-        ./plugins/mini
+        ./plugins/surround
         ./plugins/telescope
         ./plugins/treesitter
       ])
