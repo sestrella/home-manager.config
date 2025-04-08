@@ -20,6 +20,7 @@
     plugins =
       (builtins.concatMap (f: pkgs.callPackage f { }) [
         ./plugins/auto-dark-mode
+        ./plugins/conform
         ./plugins/surround
         ./plugins/telescope
         ./plugins/treesitter
@@ -31,7 +32,6 @@
         pkgs.vimPlugins.cmp-nvim-lsp-signature-help
         pkgs.vimPlugins.cmp-vsnip
         pkgs.vimPlugins.comment-nvim
-        pkgs.vimPlugins.conform-nvim
         pkgs.vimPlugins.nvim-cmp
         pkgs.vimPlugins.nvim-lspconfig
         pkgs.vimPlugins.vim-vsnip
