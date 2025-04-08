@@ -18,6 +18,16 @@
       pkgs.terraform-ls
       pkgs.yaml-language-server
     ];
+    languages = {
+      language = [
+        {
+          name = "nix";
+          formatter = {
+            command = "nixfmt";
+          };
+        }
+      ];
+    };
     settings = {
       editor = {
         cursor-shape.insert = "bar";
