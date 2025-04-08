@@ -214,9 +214,3 @@ require("conform").setup({
 		lsp_format = "fallback",
 	},
 })
-
-local wk = require("which-key")
-wk.add({
-	{ "<leader>", group = "Space" },
-	{ "g", group = "Goto" },
-})

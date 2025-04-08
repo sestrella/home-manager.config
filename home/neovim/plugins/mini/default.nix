@@ -1,3 +1,4 @@
+# INFO: Unused plugin
 { pkgs }:
 
 [

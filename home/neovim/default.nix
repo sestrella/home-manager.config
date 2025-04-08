@@ -23,6 +23,7 @@
         ./plugins/surround
         ./plugins/telescope
         ./plugins/treesitter
+        ./plugins/which-key
       ])
       ++ [
         pkgs.vimPlugins.SchemaStore-nvim
@@ -34,7 +35,6 @@
         pkgs.vimPlugins.nvim-cmp
         pkgs.vimPlugins.nvim-lspconfig
         pkgs.vimPlugins.vim-vsnip
-        pkgs.vimPlugins.which-key-nvim
       ];
     viAlias = true;
     vimAlias = true;
