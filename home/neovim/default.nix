@@ -2,8 +2,7 @@
 
 {
   programs.neovim = {
-    enable = true;
-    # defaultEditor = true;
+    enable = false;
     extraLuaConfig = builtins.readFile ./extra-config.lua;
     extraPackages = [
       pkgs.golines
