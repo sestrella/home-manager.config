@@ -6,8 +6,8 @@
 
 {
   programs.helix = {
-    enable = true;
-    defaultEditor = true;
+    enable = false;
+    defaultEditor = false;
     extraPackages = [
       pkgs.ansible-language-server
       pkgs.bash-language-server
