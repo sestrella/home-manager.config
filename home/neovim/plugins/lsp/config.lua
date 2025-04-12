@@ -80,7 +80,12 @@ blink.setup({
 	-- https://cmp.saghen.dev/configuration/fuzzy.html
 	fuzzy = { implementation = "rust" },
 	-- https://cmp.saghen.dev/configuration/signature.html
-	signature = { enabled = true },
+	signature = {
+		enabled = true,
+		window = {
+			border = "rounded",
+		},
+	},
 })
 
 for server, config in pairs(servers) do
