@@ -2,7 +2,7 @@
 
 {
   programs.neovim = {
-    enable = true; 
+    enable = true;
     defaultEditor = true;
     extraLuaConfig = builtins.readFile ./extra-config.lua;
     extraPackages = [
@@ -21,20 +21,14 @@
       (builtins.concatMap (f: pkgs.callPackage f { }) [
         ./plugins/auto-dark-mode
         ./plugins/conform
+        ./plugins/lsp
         ./plugins/surround
         ./plugins/telescope
         ./plugins/treesitter
         ./plugins/which-key
       ])
       ++ [
-        pkgs.vimPlugins.SchemaStore-nvim
-        pkgs.vimPlugins.cmp-nvim-lsp
-        pkgs.vimPlugins.cmp-nvim-lsp-signature-help
-        pkgs.vimPlugins.cmp-vsnip
         pkgs.vimPlugins.comment-nvim
-        pkgs.vimPlugins.nvim-cmp
-        pkgs.vimPlugins.nvim-lspconfig
-        pkgs.vimPlugins.vim-vsnip
       ];
     viAlias = true;
     vimAlias = true;
