@@ -3,9 +3,7 @@
 [
   {
     plugin = pkgs.vimPlugins.comment-nvim;
-    config = ''
-      require("Comment").setup()
-    '';
+    config = builtins.readFile ./config.lua;
     type = "lua";
   }
 ]

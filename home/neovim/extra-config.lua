@@ -80,10 +80,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		map("<leader>r", vim.lsp.buf.rename, "Rename symbol (LSP)")
 	end,
 })
-
--------------
--- PLUGINS --
--------------
-
--- TODO: check default keymaps
-require("Comment").setup()
