@@ -76,7 +76,9 @@ local servers = {
 local blink = require("blink.cmp")
 local lspconfig = require("lspconfig")
 
-blink.setup()
+blink.setup({
+	signature = { enabled = true },
+})
 
 for server, config in pairs(servers) do
 	config.capabilities = blink.get_lsp_capabilities(config.capabilities)
