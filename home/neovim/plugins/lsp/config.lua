@@ -77,6 +77,7 @@ local blink = require("blink.cmp")
 local lspconfig = require("lspconfig")
 
 blink.setup({
+	fuzzy = { implementation = "rust" },
 	signature = { enabled = true },
 })
 
