@@ -4,7 +4,7 @@
   inputs = {
     auto-dark-mode-nvim.flake = false;
     auto-dark-mode-nvim.url = "github:f-person/auto-dark-mode.nvim";
-    devenv.url = "github:cachix/devenv";
+    devenv.url = "github:cachix/devenv/latest";
     home-manager-diff.url = "github:pedorich-n/home-manager-diff";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
