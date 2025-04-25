@@ -6,6 +6,7 @@ vim.g.maplocalleader = " "
 vim.o.colorcolumn = "80"
 vim.o.cursorline = true
 vim.o.inccommand = "split"
+vim.o.mouse = ""
 
 -- clipboard
 vim.schedule(function()
