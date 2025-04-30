@@ -8,6 +8,7 @@
     home-manager-diff.url = "github:pedorich-n/home-manager-diff";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
+    iecs.url = "github:sestrella/iecs";
     mac-app-util.url = "github:hraban/mac-app-util";
     nixd.url = "github:nix-community/nixd";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
@@ -32,6 +33,7 @@
               # https://nixos.wiki/wiki/Overlays
               overlays = [
                 inputs.devenv.overlays.default
+                inputs.iecs.overlays.default
                 (final: prev: {
                   tmuxPlugins = prev.tmuxPlugins // {
                     tmux-dark-notify = prev.tmuxPlugins.mkTmuxPlugin {

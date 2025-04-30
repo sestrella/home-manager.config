@@ -43,6 +43,7 @@
     pkgs.fd
     pkgs.gitleaks
     pkgs.gnumake
+    pkgs.iecs
     pkgs.jq
     pkgs.lazydocker
     pkgs.minikube
