@@ -22,6 +22,7 @@
         ./plugins/auto-dark-mode
         ./plugins/comment
         ./plugins/conform
+        ./plugins/copilot
         ./plugins/lsp
         ./plugins/oil
         ./plugins/surround
