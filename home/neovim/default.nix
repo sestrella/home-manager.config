@@ -23,6 +23,7 @@
         ./plugins/comment
         ./plugins/conform
         ./plugins/copilot
+        ./plugins/gitsigns
         ./plugins/lsp
         ./plugins/oil
         ./plugins/surround
