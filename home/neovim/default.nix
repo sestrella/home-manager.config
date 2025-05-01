@@ -23,6 +23,7 @@
         ./plugins/comment
         ./plugins/conform
         ./plugins/lsp
+        ./plugins/oil
         ./plugins/surround
         ./plugins/telescope
         ./plugins/treesitter
