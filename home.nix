@@ -74,7 +74,7 @@
 
   programs.lsd = {
     enable = true;
-    enableAliases = true;
+    enableFishIntegration = true;
     # https://github.com/lsd-rs/lsd#config-file-content
     settings.color.when = "never";
   };
