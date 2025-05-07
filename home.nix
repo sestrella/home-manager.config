@@ -43,6 +43,7 @@
     pkgs.fd
     pkgs.gitleaks
     pkgs.gnumake
+    pkgs.gnused
     pkgs.iecs
     pkgs.jq
     pkgs.lazydocker
