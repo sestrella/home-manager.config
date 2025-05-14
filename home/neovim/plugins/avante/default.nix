@@ -2,7 +2,7 @@
 
 [
   {
-    plugin = pkgs.vimPlugins.CopilotChat-nvim;
+    plugin = pkgs.vimPlugins.avante-nvim;
     config = builtins.readFile ./config.lua;
     type = "lua";
   }
