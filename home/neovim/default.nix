@@ -20,10 +20,8 @@
     plugins = (
       builtins.concatMap (f: pkgs.callPackage f { }) [
         ./plugins/auto-dark-mode
-        ./plugins/avante
         ./plugins/comment
         ./plugins/conform
-        ./plugins/copilot
         ./plugins/gitsigns
         ./plugins/lsp
         ./plugins/oil
