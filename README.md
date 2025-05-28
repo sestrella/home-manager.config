@@ -36,9 +36,10 @@ nix run home-manager/release-24.11 -- switch
 
 **Note:** For future activations, run the `home-manager switch` command.
 
-## Features
+## TODOs
 
-- OS appearance sync - TODO
+- Migrate Neovim configuration to [nixvim](https://github.com/nix-community/nixvim)
+- Improve README file
 
 ## Credits
 

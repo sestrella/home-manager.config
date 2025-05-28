@@ -16,6 +16,7 @@
 
   # Custom configuration
   imports = [
+    ./home/aider
     ./home/bat
     ./home/fish
     ./home/ghostty
@@ -29,7 +30,6 @@
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
-    pkgs.aider-chat
     pkgs.asdf-vm
     pkgs.aws-vault
     pkgs.awscli2

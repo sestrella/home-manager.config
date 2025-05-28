@@ -1,4 +1,5 @@
+.aider*
 .devenv/
 .direnv/
-result
 .pre-commit-config.yaml
+result
