@@ -1,4 +1,9 @@
-{ config, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
   home.packages = [
@@ -24,7 +29,7 @@
 
       # Launch aider with the environment variable set
       echo "Starting aider..."
-      exec ${pkgs.aider-chat}/bin/aider "$@"
+      exec ${lib.getExe pkgs.aider-chat} "$@"
     '')
   ];
 
