@@ -39,6 +39,7 @@
     in
     {
       "${config.home.homeDirectory}/.aider.conf.yml".text = ''
+        openai-api-base: https://api.githubcopilot.com
         model: openai/gpt-4o
         weak-model: openai/gpt-4o-mini
         show-model-warnings: false
@@ -46,14 +47,12 @@
       "${config.home.homeDirectory}/.aider.model.settings.yml".text = ''
         - name: openai/gpt-4o
           extra_params:
-            api_base: https://api.githubcopilot.com
             extra_headers:
               Editor-Version: ${editorVersion}
               Copilot-Integration-Id: vscode-chat
             max_tokens: 8192
         - name: openai/gpt-4o-mini
           extra_params:
-            api_base: https://api.githubcopilot.com
             extra_headers:
               Editor-Version: ${editorVersion}
               Copilot-Integration-Id: vscode-chat

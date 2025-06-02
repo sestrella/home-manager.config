@@ -35,6 +35,15 @@
                 inputs.devenv.overlays.default
                 inputs.iecs.overlays.default
                 (final: prev: {
+                  aider-chat = prev.aider-chat.overrideAttrs (oldAttrs: rec {
+                    version = "0.84.0";
+                    src = prev.fetchFromGitHub {
+                      owner = "Aider-AI";
+                      repo = "aider";
+                      rev = "v${version}";
+                      hash = "sha256-TOlqwJM9wIAURSimuh9mysYDwgH9AfFev8jY9elLNk8=";
+                    };
+                  });
                   tmuxPlugins = prev.tmuxPlugins // {
                     tmux-dark-notify = prev.tmuxPlugins.mkTmuxPlugin {
                       pluginName = "tmux-dark-notify";
