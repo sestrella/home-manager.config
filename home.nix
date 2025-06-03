@@ -61,7 +61,7 @@
     pkgs.yq
   ] ++ lib.optionals pkgs.stdenv.isDarwin [ pkgs.terminal-notifier ];
 
-  home.sessionVariables.SHELL = "${pkgs.fish}/bin/fish";
+  home.sessionVariables.SHELL = lib.getExe pkgs.fish;
 
   programs.direnv.enable = true;
 

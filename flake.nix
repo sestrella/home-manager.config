@@ -35,13 +35,17 @@
                 inputs.devenv.overlays.default
                 inputs.iecs.overlays.default
                 (final: prev: {
-                  aider-chat = prev.aider-chat.overrideAttrs (oldAttrs: rec {
-                    version = "0.84.0";
+                  aider-chat = prev.aider-chat.overrideAttrs (oldAttrs: {
+                    version = "0.84.1.dev";
                     src = prev.fetchFromGitHub {
                       owner = "Aider-AI";
                       repo = "aider";
-                      rev = "v${version}";
-                      hash = "sha256-TOlqwJM9wIAURSimuh9mysYDwgH9AfFev8jY9elLNk8=";
+                      # TODO: Pin the version when the following change is
+                      # included in the next release:
+                      #
+                      # https://github.com/Aider-AI/aider/pull/4156
+                      rev = "c67f6905a5a885e3904b4cfe04caaf918f6d84fb";
+                      hash = "sha256-HgLxvK08GHSaxaxPak87ldQvIYbLms3K+7x2n9XacIY=";
                     };
                   });
                   tmuxPlugins = prev.tmuxPlugins // {

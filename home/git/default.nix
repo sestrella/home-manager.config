@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   home.packages = [
@@ -21,9 +21,9 @@
       # https://github.com/dandavison/delta/issues/447
       package = pkgs.writeScriptBin "delta" ''
         if defaults read -g AppleInterfaceStyle &> /dev/null; then
-          ${pkgs.delta}/bin/delta "$@"
+          ${lib.getExe pkgs.delta} "$@"
         else
-          ${pkgs.delta}/bin/delta --light "$@"
+          ${lib.getExe pkgs.delta} --light "$@"
         fi
       '';
       options.line-numbers = true;
