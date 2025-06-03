@@ -25,4 +25,3 @@ jobs:
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build configuration
         run: nix run home-manager/release-24.11 -- build --flake ${{ github.workspace }}
-        timeout-minutes: 10
