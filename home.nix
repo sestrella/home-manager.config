@@ -51,6 +51,7 @@
     pkgs.minikube
     pkgs.nerd-fonts.fira-code
     pkgs.noti
+    pkgs.pgcli
     pkgs.pstree
     pkgs.rename
     pkgs.ssm-session-manager-plugin
