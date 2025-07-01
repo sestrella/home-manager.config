@@ -30,9 +30,7 @@
               overlays = [
                 inputs.devenv.overlays.default
                 inputs.iecs.overlays.default
-                (final: prev: {
-                  nixd = inputs.nixd.packages.${prev.system}.default;
-                })
+                inputs.nixd.overlays.default
                 (import ./overlays/aider)
                 (import ./overlays/gemini-cli)
                 (import ./overlays/tmux-plugins)
