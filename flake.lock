@@ -1,21 +1,5 @@
 {
   "nodes": {
-    "auto-dark-mode-nvim": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1750682188,
-        "narHash": "sha256-zedwqG5PeJiSAZCl3GeyHwKDH/QjTz2OqDsFRTMTH/A=",
-        "owner": "f-person",
-        "repo": "auto-dark-mode.nvim",
-        "rev": "97a86c9402c784a254e5465ca2c51481eea310e3",
-        "type": "github"
-      },
-      "original": {
-        "owner": "f-person",
-        "repo": "auto-dark-mode.nvim",
-        "type": "github"
-      }
-    },
     "cachix": {
       "inputs": {
         "devenv": [
@@ -674,15 +658,13 @@
     },
     "root": {
       "inputs": {
-        "auto-dark-mode-nvim": "auto-dark-mode-nvim",
         "devenv": "devenv",
         "home-manager": "home-manager",
         "home-manager-diff": "home-manager-diff",
         "iecs": "iecs",
         "mac-app-util": "mac-app-util",
         "nixd": "nixd",
-        "nixpkgs": "nixpkgs_8",
-        "tmux-dark-notify": "tmux-dark-notify"
+        "nixpkgs": "nixpkgs_8"
       }
     },
     "systems": {
@@ -742,22 +724,6 @@
       "original": {
         "owner": "nix-systems",
         "repo": "default-darwin",
-        "type": "github"
-      }
-    },
-    "tmux-dark-notify": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1746183899,
-        "narHash": "sha256-pwiDpW0W8KIRfnO095y2kx6Ooq83EZRh9yyJ3S3HzYw=",
-        "owner": "erikw",
-        "repo": "tmux-dark-notify",
-        "rev": "59a6789f0a4f0d86e5b69629750f35905a7f1a88",
-        "type": "github"
-      },
-      "original": {
-        "owner": "erikw",
-        "repo": "tmux-dark-notify",
         "type": "github"
       }
     },
