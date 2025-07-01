@@ -34,6 +34,7 @@
               overlays = [
                 inputs.devenv.overlays.default
                 inputs.iecs.overlays.default
+                (import ./overlays/gemini-cli)
                 (final: prev: {
                   aider-chat = prev.aider-chat.overrideAttrs (oldAttrs: {
                     version = "0.84.1.dev";
