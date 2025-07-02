@@ -16,7 +16,6 @@
 
   # Custom configuration
   imports = [
-    ./home/aider
     ./home/bat
     ./home/fish
     ./home/ghostty
