@@ -60,6 +60,7 @@
     pkgs.tree
     pkgs.watch
     pkgs.wget
+    pkgs.wireguard-tools
     pkgs.yq
   ];
 
