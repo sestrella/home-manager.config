@@ -2,7 +2,6 @@
 
 [
   {
-    # plugin = pkgs.vimPlugins.auto-dark-mode-nvim;
     plugin = pkgs.vimUtils.buildVimPlugin {
       name = "auto-dark-mode.nvim";
       src = pkgs.fetchFromGitHub {
