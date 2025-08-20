@@ -29,13 +29,13 @@
         # https://github.com/cormacrelf/dark-notify
         plugin = pkgs.tmuxPlugins.mkTmuxPlugin rec {
           pluginName = "tmux-dark-notify";
-          version = "23b27ed6cc8880960db49c69ca1bca7616348965";
+          version = "59a6789f0a4f0d86e5b69629750f35905a7f1a88";
           rtpFilePath = "main.tmux";
           src = pkgs.fetchFromGitHub {
             owner = "erikw";
             repo = pluginName;
             rev = version;
-            hash = "sha256-dTtgWPZpu02BNuJ4QgXLXKpw/fSvDBZkLdqRKKCRBRA";
+            hash = "sha256-pwiDpW0W8KIRfnO095y2kx6Ooq83EZRh9yyJ3S3HzYw=";
           };
         };
         extraConfig =

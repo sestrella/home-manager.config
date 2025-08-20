@@ -31,9 +31,6 @@
                 inputs.devenv.overlays.default
                 inputs.iecs.overlays.default
                 inputs.nixd.overlays.default
-                (import ./overlays/gemini-cli)
-                (import ./overlays/tmux-plugins)
-                (import ./overlays/vim-plugins)
               ];
             };
           };
