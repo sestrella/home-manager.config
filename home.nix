@@ -29,7 +29,6 @@
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
-    pkgs.asdf-vm
     pkgs.aws-vault
     pkgs.awscli2
     pkgs.bottom

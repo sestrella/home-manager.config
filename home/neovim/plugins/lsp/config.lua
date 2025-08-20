@@ -3,6 +3,9 @@ local schemastore = require("schemastore")
 -- https://github.com/neovim/nvim-lspconfig#suggested-configuration
 local servers = {
 	bashls = {},
+	elixirls = {
+		cmd = { vim.fn.expand("~/.nix-profile/bin/elixirls") },
+	},
 	gopls = {},
 	-- https://github.com/b0o/SchemaStore.nvim
 	jsonls = {

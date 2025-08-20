@@ -1,6 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
+  home.packages = [
+    (pkgs.writeShellScriptBin "elixirls" ''
+      ${lib.makeLibraryPath [ pkgs.elixir_ls ]}/language_server.sh "$@"
+    '')
+  ];
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
