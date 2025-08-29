@@ -32,7 +32,6 @@
     pkgs.aws-vault
     pkgs.awscli2
     pkgs.bottom
-    pkgs.btop
     pkgs.cachix
     pkgs.claude-code
     pkgs.coreutils
@@ -40,17 +39,14 @@
     pkgs.easyrsa
     pkgs.entr
     pkgs.fd
-    pkgs.gemini-cli
     pkgs.gitleaks
     pkgs.gnumake
     pkgs.gnused
     pkgs.iecs
     pkgs.jq
     pkgs.lazydocker
-    pkgs.minikube
     pkgs.nerd-fonts.fira-code
     pkgs.noti
-    pkgs.pgcli
     pkgs.pstree
     pkgs.rename
     pkgs.ssm-session-manager-plugin
@@ -59,7 +55,6 @@
     pkgs.tree
     pkgs.watch
     pkgs.wget
-    pkgs.wireguard-tools
     pkgs.yq
   ];
 

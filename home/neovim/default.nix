@@ -1,9 +1,9 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = [
     (pkgs.writeShellScriptBin "elixirls" ''
-      ${lib.makeLibraryPath [ pkgs.elixir_ls ]}/language_server.sh "$@"
+      ${pkgs.elixir-ls}/scripts/language_server.sh "$@"
     '')
   ];
 
