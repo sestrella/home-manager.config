@@ -39,6 +39,7 @@
     pkgs.easyrsa
     pkgs.entr
     pkgs.fd
+    pkgs.gemini-cli
     pkgs.gitleaks
     pkgs.gnumake
     pkgs.gnused
