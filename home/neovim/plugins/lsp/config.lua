@@ -4,7 +4,7 @@ local schemastore = require("schemastore")
 local servers = {
 	bashls = {},
 	elixirls = {
-		cmd = { vim.fn.expand("~/.nix-profile/bin/elixirls") },
+		cmd = { "elixirls" },
 	},
 	gopls = {},
 	-- https://github.com/b0o/SchemaStore.nvim
