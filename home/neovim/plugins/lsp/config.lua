@@ -79,6 +79,8 @@ local servers = {
 local blink = require("blink.cmp")
 local lspconfig = require("lspconfig")
 
+-- TODO: Install lspsaga
+
 blink.setup({
 	-- https://cmp.saghen.dev/configuration/fuzzy.html
 	fuzzy = { implementation = "rust" },
