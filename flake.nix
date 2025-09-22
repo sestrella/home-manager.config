@@ -10,6 +10,7 @@
     mac-app-util.url = "github:hraban/mac-app-util";
     nixd.url = "github:nix-community/nixd";
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+    nixpkgs-master.url = "github:NixOS/nixpkgs/master";
   };
 
   outputs = inputs: {
@@ -31,6 +32,9 @@
                 inputs.devenv.overlays.default
                 inputs.iecs.overlays.default
                 inputs.nixd.overlays.default
+                (final: prev: {
+                  gemini-cli = inputs.nixpkgs-master.legacyPackages.${prev.system}.gemini-cli;
+                })
               ];
             };
           };
