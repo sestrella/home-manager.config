@@ -10,7 +10,7 @@
       pkgs.docker-compose-language-service
       pkgs.gopls
       pkgs.nixd
-              pkgs.nixfmt-rfc-style
+      pkgs.nixfmt-rfc-style
       pkgs.terraform-ls
       pkgs.yaml-language-server
       pkgs.elixir-ls
