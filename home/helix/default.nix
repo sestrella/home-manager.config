@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 
 {
   programs.helix = {
@@ -14,20 +10,22 @@
       pkgs.docker-compose-language-service
       pkgs.gopls
       pkgs.nixd
-      pkgs.nixfmt-rfc-style
+              pkgs.nixfmt-rfc-style
       pkgs.terraform-ls
       pkgs.yaml-language-server
+      pkgs.elixir-ls
     ];
-    # languages = {
-    #   language = [
-    #     {
-    #       name = "nix";
-    #       formatter = {
-    #         command = "nixfmt";
-    #       };
-    #     }
-    #   ];
-    # };
+    languages = {
+      language = [
+        {
+          name = "nix";
+          formatter = {
+            command = "nixfmt";
+          };
+          auto-format = true;
+        }
+      ];
+    };
     settings = {
       editor = {
         cursor-shape.insert = "bar";
