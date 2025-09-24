@@ -18,6 +18,10 @@
     languages = {
       language = [
         {
+          name = "elixir";
+          auto-format = true;
+        }
+        {
           name = "nix";
           formatter = {
             command = "nixfmt";
