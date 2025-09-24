@@ -25,7 +25,7 @@ extra-trusted-users = <user>
 Clone the repository:
 
 ```
-git clone https://github.com/sestrella/nix-darwin-config.git ~/.config/home-manager
+git clone https://github.com/sestrella/home-manager.config.git ~/.config/home-manager
 ```
 
 Active the configuration for the first time:
