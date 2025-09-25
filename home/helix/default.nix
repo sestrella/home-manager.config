@@ -22,6 +22,10 @@
           auto-format = true;
         }
         {
+          name = "go";
+          auto-format = true;
+        }
+        {
           name = "nix";
           formatter = {
             command = "nixfmt";
