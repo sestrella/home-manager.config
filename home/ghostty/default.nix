@@ -10,6 +10,8 @@
       font-size = 16
       font-style = "SemiBold"
       theme = "dark:Builtin Solarized Dark,light:Builtin Solarized Light"
+      window-width = 95
+      window-height = 20
     '';
     onChange = "/opt/homebrew/bin/ghostty +validate-config";
   };

@@ -3,7 +3,7 @@
 {
   programs.neovim = {
     enable = true;
-    defaultEditor = true;
+    defaultEditor = false;
     extraLuaConfig = builtins.readFile ./extra-config.lua;
     extraPackages =
       let

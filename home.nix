@@ -30,6 +30,8 @@
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
+    pkgs.asciinema
+    pkgs.asciinema-agg
     pkgs.aws-vault
     pkgs.awscli2
     pkgs.bottom
@@ -37,6 +39,7 @@
     pkgs.claude-code
     pkgs.coreutils
     pkgs.devenv
+    pkgs.dotenv-cli
     pkgs.easyrsa
     pkgs.entr
     pkgs.fd
