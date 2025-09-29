@@ -3,7 +3,7 @@
 {
   dotenv.enable = true;
 
-  git-hooks.hooks.prepare-commit-msg = {
+  git-hooks.hooks.autocommitmsg = {
     enable = true;
     entry = lib.getExe pkgs.autocommitmsg;
     stages = [ "prepare-commit-msg" ];
