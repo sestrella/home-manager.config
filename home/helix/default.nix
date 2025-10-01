@@ -5,7 +5,6 @@
     enable = true;
     defaultEditor = true;
     extraPackages = [
-      pkgs.ansible-language-server
       pkgs.bash-language-server
       pkgs.docker-compose-language-service
       pkgs.gopls
@@ -41,6 +40,7 @@
         file-picker.hidden = false;
         inline-diagnostics.cursor-line = "warning";
         line-number = "relative";
+        mouse = false;
         rulers = [ 80 ];
       };
       theme = "solarized_dark";

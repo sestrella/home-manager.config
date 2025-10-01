@@ -22,7 +22,8 @@
     ./home/git
     ./home/helix
     ./home/home-manager
-    ./home/neovim
+    # TODO: remove this module
+    # ./home/neovim
     ./home/nix
     ./home/ripgrep
     ./home/tmux
