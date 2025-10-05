@@ -31,7 +31,7 @@ git clone https://github.com/sestrella/home-manager.config.git ~/.config/home-ma
 Active the configuration for the first time:
 
 ```
-nix run home-manager/release-24.11 -- switch
+nix run github:nix-community/home-manager -- switch
 ```
 
 **Note:** For future activations, run the `home-manager switch` command.
