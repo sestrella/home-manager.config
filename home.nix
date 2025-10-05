@@ -50,6 +50,7 @@
     pkgs.gnused
     pkgs.iecs
     pkgs.jq
+    pkgs.jujutsu
     pkgs.lazydocker
     pkgs.nerd-fonts.fira-code
     pkgs.noti

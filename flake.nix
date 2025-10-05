@@ -7,10 +7,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
     iecs.url = "github:sestrella/iecs";
+    jj.url = "github:jj-vcs/jj";
     mac-app-util.url = "github:hraban/mac-app-util";
     nixd.url = "github:nix-community/nixd";
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nixpkgs-master.url = "github:NixOS/nixpkgs/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
   };
 
   outputs = inputs: {
@@ -32,6 +33,7 @@
                 inputs.devenv.overlays.default
                 inputs.iecs.overlays.default
                 inputs.nixd.overlays.default
+                inputs.jj.overlays.default
                 (final: prev: {
                   gemini-cli = inputs.nixpkgs-master.legacyPackages.${prev.system}.gemini-cli;
                 })
