@@ -56,6 +56,7 @@
     pkgs.noti
     pkgs.pstree
     pkgs.rename
+    pkgs.secretspec
     pkgs.ssm-session-manager-plugin
     pkgs.terminal-notifier
     pkgs.tmate

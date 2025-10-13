@@ -1,7 +1,12 @@
-{ pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 
 {
-  dotenv.enable = true;
+  env.GEMINI_API_KEY = config.secretspec.secrets.GEMINI_API_KEY or "";
 
   git-hooks.hooks.autocommitmsg = {
     enable = true;
