@@ -8,10 +8,10 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1759902625,
+        "lastModified": 1760034035,
         "owner": "sestrella",
         "repo": "autocommitmsg",
-        "rev": "063e311c7a67318ca9b127c0577f23a402b74f64",
+        "rev": "50928341854dd63fc0dbc4dcbff3beee12074aa4",
         "type": "github"
       },
       "original": {
@@ -23,10 +23,10 @@
     "devenv": {
       "locked": {
         "dir": "src/modules",
-        "lastModified": 1759939975,
+        "lastModified": 1760162706,
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "6eda3b7af3010d289e6e8e047435956fc80c1395",
+        "rev": "0d5ad578728fe4bce66eb4398b8b1e66deceb4e4",
         "type": "github"
       },
       "original": {
@@ -146,10 +146,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1759831965,
+        "lastModified": 1760038930,
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c9b6fb798541223bbb396d287d16f43520250518",
+        "rev": "0b4defa2584313f3b781240b29d61f6f9f7e0df3",
         "type": "github"
       },
       "original": {
