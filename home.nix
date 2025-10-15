@@ -54,6 +54,7 @@
     pkgs.lazydocker
     pkgs.nerd-fonts.fira-code
     pkgs.noti
+    pkgs.openvpn
     pkgs.pstree
     pkgs.rename
     pkgs.secretspec
