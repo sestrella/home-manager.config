@@ -23,10 +23,10 @@
     "devenv": {
       "locked": {
         "dir": "src/modules",
-        "lastModified": 1760162706,
+        "lastModified": 1760560333,
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "0d5ad578728fe4bce66eb4398b8b1e66deceb4e4",
+        "rev": "0a4043938f540027e562c5a0feebbe6be872c3ea",
         "type": "github"
       },
       "original": {
@@ -72,19 +72,18 @@
       "inputs": {
         "flake-compat": "flake-compat",
         "gitignore": "gitignore",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
+        "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1759523803,
-        "owner": "cachix",
+        "lastModified": 1760739870,
+        "owner": "sestrella",
         "repo": "git-hooks.nix",
-        "rev": "cfc9f7bb163ad8542029d303e599c0f7eee09835",
+        "rev": "477000ba2023e305c4a61cd20e26e51af24d2263",
         "type": "github"
       },
       "original": {
-        "owner": "cachix",
+        "owner": "sestrella",
+        "ref": "add_gitleaks_hook",
         "repo": "git-hooks.nix",
         "type": "github"
       }
@@ -146,10 +145,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1760038930,
+        "lastModified": 1760524057,
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "0b4defa2584313f3b781240b29d61f6f9f7e0df3",
+        "rev": "544961dfcce86422ba200ed9a0b00dd4b1486ec5",
         "type": "github"
       },
       "original": {
@@ -160,6 +159,21 @@
       }
     },
     "nixpkgs_2": {
+      "locked": {
+        "lastModified": 1760596604,
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "3cbe716e2346710d6e1f7c559363d14e11c32a43",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixpkgs-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs_3": {
       "locked": {
         "lastModified": 1758532697,
         "owner": "cachix",
@@ -179,7 +193,7 @@
         "autocommitmsg": "autocommitmsg",
         "devenv": "devenv",
         "git-hooks": "git-hooks",
-        "nixpkgs": "nixpkgs_2",
+        "nixpkgs": "nixpkgs_3",
         "pre-commit-hooks": [
           "git-hooks"
         ]
