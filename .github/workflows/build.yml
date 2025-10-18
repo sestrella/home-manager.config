@@ -8,15 +8,26 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
-    runs-on: macos-latest
+  check:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Install Nix
-        uses: cachix/install-nix-action@v30
-      - name: Check flake.lock
-        uses: DeterminateSystems/flake-checker-action@v9
+        uses: cachix/install-nix-action@v31
+      - name: Install devenv
+        run: nix profile install nixpkgs#devenv
+      - name: Run tests
+        run: devenv test
+
+  build:
+    runs-on: macos-latest
+    needs: [check]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
       - name: Setup Cachix
         uses: cachix/cachix-action@v15
         with:
@@ -24,4 +35,4 @@ jobs:
           extraPullNames: devenv
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build configuration
-        run: nix run home-manager/release-24.11 -- build --flake ${{ github.workspace }}
+        run: nix run home-manager/master -- build --flake ${{ github.workspace }}
