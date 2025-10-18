@@ -19,6 +19,8 @@ jobs:
         run: nix profile install nixpkgs#devenv
       - name: Run tests
         run: devenv test
+        env:
+          SECRETSPEC_PROVIDER: env
 
   build:
     runs-on: macos-latest
