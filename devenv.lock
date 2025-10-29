@@ -1,6 +1,6 @@
 {
   "nodes": {
-    "autocommitmsg": {
+    "auto-commit-msg": {
       "inputs": {
         "gomod2nix": "gomod2nix",
         "nix-filter": "nix-filter",
@@ -112,7 +112,7 @@
       "inputs": {
         "flake-utils": "flake-utils",
         "nixpkgs": [
-          "autocommitmsg",
+          "auto-commit-msg",
           "nixpkgs"
         ]
       },
@@ -145,10 +145,10 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1760524057,
+        "lastModified": 1761373498,
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "544961dfcce86422ba200ed9a0b00dd4b1486ec5",
+        "rev": "6a08e6bb4e46ff7fcbb53d409b253f6bad8a28ce",
         "type": "github"
       },
       "original": {
@@ -190,7 +190,7 @@
     },
     "root": {
       "inputs": {
-        "autocommitmsg": "autocommitmsg",
+        "auto-commit-msg": "auto-commit-msg",
         "devenv": "devenv",
         "git-hooks": "git-hooks",
         "nixpkgs": "nixpkgs_3",
