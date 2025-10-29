@@ -7,7 +7,9 @@
 
   programs.git = {
     enable = true;
-    extraConfig = {
+    settings.user = {
+      email = "2049686+sestrella@users.noreply.github.com";
+      name = "Sebastian Estrella";
       init.defaultBranch = "main";
       pull.rebase = true;
       push = {
@@ -16,20 +18,12 @@
       };
       rerere.enabled = true;
     };
-    delta = {
-      enable = true;
-      # https://github.com/dandavison/delta/issues/447
-      package = pkgs.writeScriptBin "delta" ''
-        if defaults read -g AppleInterfaceStyle &> /dev/null; then
-          ${lib.getExe pkgs.delta} "$@"
-        else
-          ${lib.getExe pkgs.delta} --light "$@"
-        fi
-      '';
-      options.line-numbers = true;
-    };
-    userEmail = "2049686+sestrella@users.noreply.github.com";
-    userName = "Sebastian Estrella";
+  };
+
+  programs.delta = {
+    enable = true;
+    options.line-numbers = true;
+    enableGitIntegration = true;
   };
 
   programs.fish.shellAbbrs = {

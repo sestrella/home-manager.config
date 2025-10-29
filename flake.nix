@@ -35,6 +35,8 @@
                 inputs.nixd.overlays.default
                 inputs.jj.overlays.default
                 (final: prev: {
+                  # TODO: Pulling an entire channel just for a single package
+                  # may be overkill, try using overrideAttrs instead.
                   gemini-cli = inputs.nixpkgs-master.legacyPackages.${prev.system}.gemini-cli;
                 })
               ];
