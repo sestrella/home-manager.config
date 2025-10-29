@@ -8,15 +8,15 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1760034035,
+        "lastModified": 1761661933,
         "owner": "sestrella",
-        "repo": "autocommitmsg",
-        "rev": "50928341854dd63fc0dbc4dcbff3beee12074aa4",
+        "repo": "auto-commit-msg",
+        "rev": "101792ef0554ead55956b15b0481b2cd51c6a6c9",
         "type": "github"
       },
       "original": {
         "owner": "sestrella",
-        "repo": "autocommitmsg",
+        "repo": "auto-commit-msg",
         "type": "github"
       }
     },
