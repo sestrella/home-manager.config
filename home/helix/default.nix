@@ -31,6 +31,9 @@
           };
           auto-format = true;
         }
+        {
+          name = "rust";
+        }
       ];
     };
     settings = {
