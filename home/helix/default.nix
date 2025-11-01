@@ -7,13 +7,13 @@
     extraPackages = [
       pkgs.bash-language-server
       pkgs.docker-compose-language-service
+      pkgs.elixir-ls
       pkgs.gopls
       pkgs.nixd
       pkgs.nixfmt-rfc-style
       pkgs.terraform-ls
       pkgs.vscode-json-languageserver
       pkgs.yaml-language-server
-      pkgs.elixir-ls
     ];
     languages = {
       language = [
