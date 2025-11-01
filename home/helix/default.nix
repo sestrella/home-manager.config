@@ -11,6 +11,7 @@
       pkgs.nixd
       pkgs.nixfmt-rfc-style
       pkgs.terraform-ls
+      pkgs.vscode-json-languageserver
       pkgs.yaml-language-server
       pkgs.elixir-ls
     ];
@@ -21,18 +22,8 @@
           auto-format = true;
         }
         {
-          name = "go";
-          auto-format = true;
-        }
-        {
           name = "nix";
-          formatter = {
-            command = "nixfmt";
-          };
           auto-format = true;
-        }
-        {
-          name = "rust";
         }
       ];
     };
