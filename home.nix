@@ -66,17 +66,11 @@
 
   programs.fzf.enable = true;
 
-  programs.gh = {
-    enable = true;
-    # settings.git_protocol = "git";
-  };
-
-  # programs.hmd.enable = true;
+  programs.gh.enable = true;
 
   programs.lsd = {
     enable = true;
     enableFishIntegration = true;
-    # https://github.com/lsd-rs/lsd#config-file-content
     settings.color.when = "never";
   };
 
