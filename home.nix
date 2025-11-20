@@ -24,11 +24,11 @@
     ./home/home-manager
     ./home/nix
     ./home/ripgrep
-    ./home/tmux
   ];
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
+    # pkgs.iecs
     pkgs.asciinema
     pkgs.asciinema-agg
     pkgs.aws-vault
@@ -38,7 +38,6 @@
     pkgs.claude-code
     pkgs.coreutils
     pkgs.devenv
-    pkgs.dotenv-cli
     pkgs.easyrsa
     pkgs.entr
     pkgs.fd
@@ -46,10 +45,7 @@
     pkgs.gitleaks
     pkgs.gnumake
     pkgs.gnused
-    pkgs.iecs
     pkgs.jq
-    pkgs.jujutsu
-    pkgs.lazydocker
     pkgs.nerd-fonts.fira-code
     pkgs.noti
     pkgs.openvpn
@@ -58,7 +54,6 @@
     pkgs.secretspec
     pkgs.ssm-session-manager-plugin
     pkgs.terminal-notifier
-    pkgs.tmate
     pkgs.tree
     pkgs.watch
     pkgs.wget
@@ -73,10 +68,10 @@
 
   programs.gh = {
     enable = true;
-    settings.git_protocol = "git";
+    # settings.git_protocol = "git";
   };
 
-  programs.hmd.enable = true;
+  # programs.hmd.enable = true;
 
   programs.lsd = {
     enable = true;
@@ -87,7 +82,7 @@
 
   programs.starship.enable = true;
 
-  programs.zoxide.enable = true;
+  programs.zellij.enable = true;
 
-  programs.lazygit.enable = true;
+  programs.zoxide.enable = true;
 }
