@@ -2,10 +2,12 @@
   description = "Home Manager configuration of sestrella";
 
   inputs = {
-    devenv.url = "github:cachix/devenv/latest";
+    devenv.url = "github:cachix/devenv?ref=latest";
     # home-manager-diff.url = "github:pedorich-n/home-manager-diff";
-    home-manager.inputs.nixpkgs.follows = "nixpkgs";
-    home-manager.url = "github:nix-community/home-manager";
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # iecs.url = "github:sestrella/iecs";
     # jj.url = "github:jj-vcs/jj";
     # mac-app-util.url = "github:hraban/mac-app-util";
