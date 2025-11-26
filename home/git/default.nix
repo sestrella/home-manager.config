@@ -7,9 +7,7 @@
 
   programs.git = {
     enable = true;
-    settings.user = {
-      email = "2049686+sestrella@users.noreply.github.com";
-      name = "Sebastian Estrella";
+    settings = {
       init.defaultBranch = "main";
       pull.rebase = true;
       push = {
@@ -17,6 +15,10 @@
         default = "simple";
       };
       rerere.enabled = true;
+      user = {
+        email = "2049686+sestrella@users.noreply.github.com";
+        name = "Sebastian Estrella";
+      };
     };
   };
 
