@@ -28,7 +28,6 @@
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
-    # pkgs.iecs
     pkgs.asciinema
     pkgs.asciinema-agg
     pkgs.aws-vault
@@ -45,6 +44,7 @@
     pkgs.gitleaks
     pkgs.gnumake
     pkgs.gnused
+    pkgs.iecs
     pkgs.jq
     pkgs.nerd-fonts.fira-code
     pkgs.noti
