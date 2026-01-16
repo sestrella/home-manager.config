@@ -48,6 +48,7 @@
     pkgs.jq
     pkgs.nerd-fonts.fira-code
     pkgs.noti
+    pkgs.opencode
     pkgs.openvpn
     pkgs.pstree
     pkgs.rename
