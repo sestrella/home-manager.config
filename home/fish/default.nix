@@ -13,6 +13,11 @@
       . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
     '';
     shellAbbrs = {
+      # terraform
+      tf = "terraform";
+      tfa = "terraform apply";
+      tfp = "terraform plan";
+      # zellij
       za = "zellij attach";
       zk = "zellij kill-session";
       zls = "zellij list-sessions";
