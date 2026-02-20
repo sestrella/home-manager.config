@@ -34,7 +34,7 @@
         mouse = false;
         rulers = [ 80 ];
       };
-      theme = "solarized_dark";
+      theme = "solarized_light";
     };
   };
 }
