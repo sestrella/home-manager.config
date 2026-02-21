@@ -6,7 +6,7 @@
 }:
 
 {
-  env.GEMINI_API_KEY = config.secretspec.secrets.GEMINI_API_KEY or "";
+  env.ACM_API_KEY = config.secretspec.secrets.GEMINI_API_KEY or "";
 
   git-hooks.hooks = {
     auto-commit-msg = {
@@ -15,5 +15,6 @@
       stages = [ "prepare-commit-msg" ];
     };
     gitleaks.enable = true;
+    nixfmt.enable = true;
   };
 }
