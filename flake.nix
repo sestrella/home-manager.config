@@ -41,7 +41,6 @@
                     in
                     {
                       fish = pkgs-master.fish;
-                      gemini-cli = pkgs-master.gemini-cli;
                     }
                   )
                 ];

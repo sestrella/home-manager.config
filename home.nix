@@ -28,19 +28,15 @@
 
   # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
-    pkgs.asciinema
-    pkgs.asciinema-agg
     pkgs.aws-vault
     pkgs.awscli2
     pkgs.bottom
     pkgs.cachix
-    pkgs.claude-code
     pkgs.coreutils
     pkgs.devenv
     pkgs.easyrsa
     pkgs.entr
     pkgs.fd
-    pkgs.gemini-cli
     pkgs.gitleaks
     pkgs.gnumake
     pkgs.gnused
@@ -48,7 +44,6 @@
     pkgs.jq
     pkgs.nerd-fonts.fira-code
     pkgs.noti
-    pkgs.opencode
     pkgs.openvpn
     pkgs.pstree
     pkgs.rename
