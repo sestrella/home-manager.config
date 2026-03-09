@@ -40,13 +40,13 @@
       "flake": false,
       "locked": {
         "lastModified": 1767039857,
-        "owner": "edolstra",
+        "owner": "NixOS",
         "repo": "flake-compat",
         "rev": "5edf11c44bc78a0d334f6334cdaf7d60d732daab",
         "type": "github"
       },
       "original": {
-        "owner": "edolstra",
+        "owner": "NixOS",
         "repo": "flake-compat",
         "type": "github"
       }
@@ -75,10 +75,10 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1760739870,
+        "lastModified": 1772850925,
         "owner": "sestrella",
         "repo": "git-hooks.nix",
-        "rev": "477000ba2023e305c4a61cd20e26e51af24d2263",
+        "rev": "082984b9afe1010ebdf00c739af502084b67c012",
         "type": "github"
       },
       "original": {
@@ -177,10 +177,10 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1772736753,
+        "lastModified": 1772771118,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "917fec990948658ef1ccd07cef2a1ef060786846",
+        "rev": "e38213b91d3786389a446dfce4ff5a8aaf6012f2",
         "type": "github"
       },
       "original": {
