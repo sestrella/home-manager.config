@@ -14,7 +14,10 @@
       entry = lib.getExe pkgs.auto-commit-msg;
       stages = [ "prepare-commit-msg" ];
     };
-    gitleaks.enable = true;
+    gitleaks = {
+      enable = true;
+      verbose = true;
+    };
     nixfmt.enable = true;
   };
 }
