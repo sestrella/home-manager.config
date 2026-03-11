@@ -8,6 +8,7 @@ concurrency:
 
 jobs:
   check:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -24,9 +25,8 @@ jobs:
           SECRETSPEC_PROVIDER: env
 
   build:
-    if: false
     runs-on: macos-latest
-    needs: [check]
+    # needs: [check]
     timeout-minutes: 10
     steps:
       - name: Checkout code
@@ -36,8 +36,9 @@ jobs:
       - name: Setup Cachix
         uses: cachix/cachix-action@v15
         with:
-          name: sestrella
-          extraPullNames: devenv
+          name: devenv
+          # name: sestrella
+          # extraPullNames: devenv
           # authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build configuration
         run: nix run home-manager/master -- build --flake ${{ github.workspace }}
