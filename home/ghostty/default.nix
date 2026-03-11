@@ -9,7 +9,7 @@
       font-family = "FiraCode Nerd Font Mono";
       font-size = 16;
       font-style = "SemiBold";
-      theme = "dark:Builtin Solarized Dark,light:Builtin Solarized Light";
+      theme = "dark:iTerm2 Solarized Dark,light:iTerm2 Solarized Light";
     };
   };
 }
