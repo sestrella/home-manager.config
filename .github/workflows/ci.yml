@@ -1,5 +1,4 @@
----
-name: Build
+name: CI
 
 on: push
 
@@ -12,9 +11,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Install Nix
         uses: cachix/install-nix-action@v31
+        with:
+          name: devenv
       - name: Install devenv
         run: nix profile add nixpkgs#devenv
       - name: Run tests
@@ -23,12 +24,13 @@ jobs:
           SECRETSPEC_PROVIDER: env
 
   build:
+    if: false
     runs-on: macos-latest
     needs: [check]
     timeout-minutes: 10
     steps:
       - name: Checkout code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
       - name: Install Nix
         uses: cachix/install-nix-action@v31
       - name: Setup Cachix
@@ -36,6 +38,6 @@ jobs:
         with:
           name: sestrella
           extraPullNames: devenv
-          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+          # authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build configuration
         run: nix run home-manager/master -- build --flake ${{ github.workspace }}
