@@ -1,5 +1,4 @@
 {
-  lib,
   pkgs,
   ...
 }:
@@ -16,63 +15,25 @@
 
   # Custom configuration
   imports = [
-    ./home/bat
     ./home/fish
     ./home/ghostty
     ./home/git
     ./home/helix
     ./home/home-manager
-    ./home/nix
-    ./home/ripgrep
   ];
 
-  # https://github.com/unpluggedcoder/awesome-rust-tools
   home.packages = [
     pkgs.aws-vault
     pkgs.awscli2
-    pkgs.bottom
-    pkgs.cachix
-    pkgs.coreutils
-    pkgs.devenv
-    pkgs.easyrsa
-    pkgs.entr
-    pkgs.fd
-    pkgs.gitleaks
-    pkgs.gnumake
-    pkgs.gnused
-    pkgs.iecs
-    pkgs.jq
     pkgs.nerd-fonts.fira-code
-    pkgs.noti
-    pkgs.openvpn
-    pkgs.pstree
-    pkgs.rename
-    pkgs.secretspec
     pkgs.ssm-session-manager-plugin
-    pkgs.terminal-notifier
-    pkgs.tree
-    pkgs.watch
-    pkgs.wget
-    pkgs.yq
   ];
-
-  home.sessionVariables.SHELL = lib.getExe pkgs.fish;
 
   programs.direnv.enable = true;
 
-  programs.fzf.enable = true;
-
   programs.gh.enable = true;
-
-  programs.lsd = {
-    enable = true;
-    enableFishIntegration = true;
-    settings.color.when = "never";
-  };
 
   programs.starship.enable = true;
 
   programs.zellij.enable = true;
-
-  programs.zoxide.enable = true;
 }
