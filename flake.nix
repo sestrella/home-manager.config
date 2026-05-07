@@ -4,19 +4,17 @@
   inputs = {
     devenv.url = "github:cachix/devenv?ref=latest";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    iecs.url = "github:sestrella/iecs";
     nixpkgs-master.url = "github:nixos/nixpkgs";
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
   };
 
   outputs =
     {
       devenv,
       home-manager,
-      iecs,
       nixpkgs-master,
       nixpkgs,
       ...
@@ -33,7 +31,6 @@
                 # https://nixos.wiki/wiki/Overlays
                 overlays = [
                   devenv.overlays.default
-                  iecs.overlays.default
                   (
                     final: prev:
                     let
