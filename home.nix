@@ -22,6 +22,7 @@
     ./home/git
     ./home/helix
     ./home/home-manager
+    ./home/zellij
   ];
 
   home.packages = [
@@ -36,10 +37,4 @@
   programs.gh.enable = true;
 
   programs.starship.enable = true;
-
-  programs.zellij = {
-    enable = true;
-    enableFishIntegration = true;
-    settings.default_shell = lib.getExe config.programs.fish.package;
-  };
 }

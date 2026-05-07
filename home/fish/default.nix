@@ -17,10 +17,6 @@
       tf = "terraform";
       tfa = "terraform apply";
       tfp = "terraform plan";
-      # zellij
-      za = "zellij attach";
-      zk = "zellij kill-session";
-      zls = "zellij list-sessions";
     };
   };
 }
