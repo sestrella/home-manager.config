@@ -34,10 +34,13 @@
         in
         {
           runner = mkHomeManagerConfig {
-            module = ./runner.nix;
+            module = ./ci.nix;
+          };
+          "sebastian.estrella" = mkHomeManagerConfig {
+            module = ./work.nix;
           };
           sestrella = mkHomeManagerConfig {
-            module = ./sestrella.nix;
+            module = ./personal.nix;
           };
         };
     };
