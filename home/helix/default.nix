@@ -9,7 +9,7 @@
       pkgs.docker-compose-language-service
       pkgs.elixir-ls
       pkgs.nixd
-      pkgs.nixfmt-rfc-style
+      pkgs.nixfmt
       pkgs.terraform-ls
       pkgs.vscode-json-languageserver
       pkgs.yaml-language-server
