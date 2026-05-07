@@ -1,4 +1,6 @@
 {
+  config,
+  lib,
   pkgs,
   ...
 }:
@@ -35,5 +37,9 @@
 
   programs.starship.enable = true;
 
-  programs.zellij.enable = true;
+  programs.zellij = {
+    enable = true;
+    enableFishIntegration = true;
+    settings.default_shell = lib.getExe config.programs.fish.package;
+  };
 }
