@@ -2,12 +2,11 @@
   description = "Home Manager configuration of sestrella";
 
   inputs = {
-    devenv.url = "github:cachix/devenv?ref=latest";
+    devenv.url = "github:cachix/devenv/v2.0";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs-master.url = "github:nixos/nixpkgs";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
   };
 
@@ -15,7 +14,6 @@
     {
       devenv,
       home-manager,
-      nixpkgs-master,
       nixpkgs,
       ...
     }:
@@ -28,19 +26,7 @@
               pkgs = import nixpkgs {
                 system = "aarch64-darwin";
                 config.allowUnfree = true;
-                # https://nixos.wiki/wiki/Overlays
-                overlays = [
-                  devenv.overlays.default
-                  (
-                    final: prev:
-                    let
-                      pkgs-master = nixpkgs-master.legacyPackages.${prev.stdenv.hostPlatform.system};
-                    in
-                    {
-                      fish = pkgs-master.fish;
-                    }
-                  )
-                ];
+                overlays = [ devenv.overlays.default ];
               };
 
               modules = [ module ];
