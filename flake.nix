@@ -21,25 +21,32 @@
       homeConfigurations =
         let
           mkHomeManagerConfig =
-            { module }:
+            { username }:
             home-manager.lib.homeManagerConfiguration {
               pkgs = import nixpkgs {
                 system = "aarch64-darwin";
                 overlays = [ devenv.overlays.default ];
               };
 
-              modules = [ module ];
+              modules = [
+                {
+                  home.username = username;
+                  home.homeDirectory = "/Users/${username}";
+
+                  imports = [ ./home.nix ];
+                }
+              ];
             };
         in
         {
           runner = mkHomeManagerConfig {
-            module = ./ci.nix;
+            username = "runner";
           };
           "sebastian.estrella" = mkHomeManagerConfig {
-            module = ./work.nix;
+            username = "sebastian.estrella";
           };
           sestrella = mkHomeManagerConfig {
-            module = ./personal.nix;
+            username = "sestrella";
           };
         };
     };
