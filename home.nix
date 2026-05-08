@@ -17,8 +17,6 @@ in
   imports = listDirFiles ./home;
 
   home.packages = [
-    pkgs.aws-vault
-    pkgs.awscli2
     pkgs.nerd-fonts.fira-code
     pkgs.ssm-session-manager-plugin
     pkgs.tree
