@@ -17,9 +17,15 @@
       rerere.enabled = true;
       user = {
         email = "2049686+sestrella@users.noreply.github.com";
-        name = "Sebastian Estrella";
+        name = "Sebastián Estrella";
       };
     };
+    includes = [
+      {
+        condition = "gitdir:~/work/";
+        path = "~/.config/git/work.config";
+      }
+    ];
   };
 
   programs.delta = {
