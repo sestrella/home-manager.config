@@ -30,7 +30,7 @@ git clone https://github.com/sestrella/home-manager.config.git ~/.config/home-ma
 Run [home-manager](https://github.com/nix-community/home-manager) directly from the `master` branch to apply the configuration:
 
 ```sh
-nix run home-manager/master -- switch
+nix run home-manager/release-25.11 -- switch
 ```
 
 After the first run, use the following command to apply additional configuration changes:
