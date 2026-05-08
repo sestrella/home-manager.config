@@ -1,4 +1,0 @@
-name: sestrella/home-manager
-windows:
-  - editor: nvim .
-  - shell: null
