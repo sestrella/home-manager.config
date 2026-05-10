@@ -17,6 +17,7 @@ in
   imports = listDirFiles ./home;
 
   home.packages = [
+    pkgs.github-copilot-cli
     pkgs.nerd-fonts.fira-code
     pkgs.ssm-session-manager-plugin
     pkgs.tree

@@ -25,6 +25,7 @@
             home-manager.lib.homeManagerConfiguration {
               pkgs = import nixpkgs {
                 system = "aarch64-darwin";
+                config.allowUnfree = true;
                 overlays = [ devenv.overlays.default ];
               };
 
