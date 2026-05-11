@@ -3,6 +3,7 @@
 {
   programs.ghostty = {
     enable = true;
+    enableFishIntegration = true;
     package = null;
     settings = {
       command = lib.getExe config.programs.fish.package;
