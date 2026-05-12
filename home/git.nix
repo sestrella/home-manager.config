@@ -32,8 +32,8 @@
   programs.delta = {
     enable = true;
 
-    options.line-numbers = true;
     enableGitIntegration = true;
+    options.line-numbers = true;
   };
 
   programs.fish.shellAbbrs = {

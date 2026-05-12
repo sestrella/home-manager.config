@@ -14,7 +14,6 @@
       . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
     '';
     shellAbbrs = {
-      # terraform
       tf = "terraform";
       tfa = "terraform apply";
       tfp = "terraform plan";

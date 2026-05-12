@@ -24,9 +24,9 @@ in
     pkgs.tree
   ];
 
-  programs.direnv.enable = true;
-
-  programs.gh.enable = true;
-
-  programs.starship.enable = true;
+  programs = {
+    direnv.enable = true;
+    gh.enable = true;
+    starship.enable = true;
+  };
 }
