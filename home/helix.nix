@@ -38,4 +38,7 @@
       theme = "solarized_light";
     };
   };
+
+  # This has already been implemented in the master branch.
+  xdg.configFile."helix/config.toml".onChange = "/usr/bin/pkill -USR1 hx";
 }
