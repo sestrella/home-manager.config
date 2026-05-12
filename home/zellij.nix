@@ -4,8 +4,10 @@
   programs.zellij = {
     enable = true;
 
-    enableFishIntegration = true;
-    settings.default_shell = lib.getExe config.programs.fish.package;
+    settings = {
+      default_shell = lib.getExe config.programs.fish.package;
+      theme = "solarized";
+    };
   };
 
   programs.fish.shellAbbrs = {
