@@ -19,6 +19,7 @@ in
   home.packages = [
     pkgs.devenv
     pkgs.github-copilot-cli
+    pkgs.gitleaks
     pkgs.nerd-fonts.fira-code
     pkgs.ssm-session-manager-plugin
     pkgs.tree
