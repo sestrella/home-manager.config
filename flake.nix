@@ -22,38 +22,39 @@
       nixpkgs,
       ...
     }:
-    {
-      homeConfigurations =
-        let
-          mkHomeManagerConfig =
-            { username }:
-            home-manager.lib.homeManagerConfiguration {
-              pkgs = import nixpkgs {
-                system = "aarch64-darwin";
-                config.allowUnfree = true; # Required to install GH Copilot CLI
-                overlays = [ devenv.overlays.default ];
+    let
+      mkHomeManagerConfig =
+        { username }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            system = "aarch64-darwin";
+            config.allowUnfree = true; # Required to install GH Copilot CLI
+            overlays = [ devenv.overlays.default ];
+          };
+
+          modules = [
+            {
+              home = {
+                homeDirectory = "/Users/${username}";
+                username = username;
               };
 
-              modules = [
-                {
-                  home.username = username;
-                  home.homeDirectory = "/Users/${username}";
-
-                  imports = [ ./home.nix ];
-                }
-              ];
-            };
-        in
-        {
-          runner = mkHomeManagerConfig {
-            username = "runner";
-          };
-          "sebastian.estrella" = mkHomeManagerConfig {
-            username = "sebastian.estrella";
-          };
-          sestrella = mkHomeManagerConfig {
-            username = "sestrella";
-          };
+              imports = [ ./home.nix ];
+            }
+          ];
         };
+    in
+    {
+      homeConfigurations = {
+        "sebastian.estrella" = mkHomeManagerConfig {
+          username = "sebastian.estrella";
+        };
+        runner = mkHomeManagerConfig {
+          username = "runner";
+        };
+        sestrella = mkHomeManagerConfig {
+          username = "sestrella";
+        };
+      };
     };
 }
