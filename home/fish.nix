@@ -3,6 +3,7 @@
 {
   programs.fish = {
     enable = true;
+
     loginShellInit = ''
       # fish_add_path /usr/local/bin
       # https://github.com/Homebrew/brew/blob/master/Library/Homebrew/cmd/shellenv.sh

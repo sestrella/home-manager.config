@@ -7,6 +7,7 @@
 
   programs.git = {
     enable = true;
+
     settings = {
       init.defaultBranch = "main";
       pull.rebase = true;
@@ -30,6 +31,7 @@
 
   programs.delta = {
     enable = true;
+
     options.line-numbers = true;
     enableGitIntegration = true;
   };

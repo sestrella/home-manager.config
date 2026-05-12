@@ -3,6 +3,7 @@
 {
   programs.zellij = {
     enable = true;
+
     enableFishIntegration = true;
     settings.default_shell = lib.getExe config.programs.fish.package;
   };
