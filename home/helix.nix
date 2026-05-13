@@ -1,6 +1,7 @@
 { pkgs, ... }:
 
 let
+  # TODO: Make this a service instead than testing it on each bootstrap
   helixWrapper = pkgs.writeShellScriptBin "hx" ''
     # Detect macOS system appearance and set theme symlink accordingly
     if command -v defaults &> /dev/null; then
@@ -15,6 +16,9 @@ let
 
       # Update the solarized.toml symlink
       ln -sf "${pkgs.helix}/lib/runtime/themes/$THEME_FILE" "$HOME/.config/helix/themes/solarized.toml"
+
+      # Reload the configuration for all running instances
+      pkill -USR1 hx
     fi
 
     exec ${pkgs.helix}/bin/hx "$@"
