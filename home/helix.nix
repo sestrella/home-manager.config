@@ -1,5 +1,25 @@
 { pkgs, ... }:
 
+let
+  helixWrapper = pkgs.writeShellScriptBin "hx" ''
+    # Detect macOS system appearance and set theme symlink accordingly
+    if command -v defaults &> /dev/null; then
+      if [[ $(defaults read -g AppleInterfaceStyle 2> /dev/null) == "Dark" ]]; then
+        THEME_FILE="solarized_dark.toml"
+      else
+        THEME_FILE="solarized_light.toml"
+      fi
+
+      # Create themes directory if it doesn't exist
+      mkdir -p "$HOME/.config/helix/themes"
+
+      # Update the solarized.toml symlink
+      ln -sf "${pkgs.helix}/lib/runtime/themes/$THEME_FILE" "$HOME/.config/helix/themes/solarized.toml"
+    fi
+
+    exec ${pkgs.helix}/bin/hx "$@"
+  '';
+in
 {
   programs.helix = {
     enable = true;
@@ -27,6 +47,7 @@
         }
       ];
     };
+    package = helixWrapper;
     settings = {
       editor = {
         cursor-shape.insert = "bar";
@@ -35,7 +56,7 @@
         mouse = false;
         rulers = [ 80 ];
       };
-      theme = "solarized_light";
+      theme = "solarized";
     };
   };
 
