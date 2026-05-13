@@ -2,9 +2,26 @@
 
 [![Build](https://github.com/sestrella/home-manager.config/actions/workflows/build.yml/badge.svg)](https://github.com/sestrella/home-manager.config/actions/workflows/build.yml)
 
-My [Home Manager](https://github.com/nix-community/home-manager) configuration.
+My [Home Manager](https://github.com/nix-community/home-manager) configuration for macOS.
 
-## Requirements
+This repository contains declarative configuration for development tools, shell environment, and utilities using Nix and Home Manager.
+
+## Features
+
+- **Shell**: Fish shell with Starship prompt
+- **Editor**: Helix with terminal integration
+- **Tools**: Git, AWS CLI, SSH, Zellij, Ghostty terminal emulator
+- **DevEnv**: Direnv for environment management
+- **GitHub**: GitHub CLI integration
+
+## Prerequisites
+
+- **macOS** (ARM64/M1/M2+ supported)
+- Nix package manager
+
+## Installation
+
+### 1. Install Nix
 
 Install Nix using the [nix-installer](https://github.com/DeterminateSystems/nix-installer):
 
@@ -12,14 +29,16 @@ Install Nix using the [nix-installer](https://github.com/DeterminateSystems/nix-
 curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 ```
 
-Add your user to the `extra-trusted-users` in your Nix configuration:
+### 2. Configure Nix
 
-```
+Add your user to `extra-trusted-users` in your Nix configuration:
+
+```sh
 # /etc/nix/nix.custom.conf
-extra-trusted-users = <user>
+extra-trusted-users = <username>
 ```
 
-## Getting Started
+### 3. Clone Repository
 
 Clone the repository to your Home Manager configuration directory:
 
@@ -27,33 +46,50 @@ Clone the repository to your Home Manager configuration directory:
 git clone https://github.com/sestrella/home-manager.config.git ~/.config/home-manager
 ```
 
-Run `home-manager` via `nix run` the first time to apply the configuration:
+### 4. Apply Configuration
+
+Run `home-manager` via `nix run` for the first time:
 
 ```sh
 nix run home-manager/release-25.11 -- switch
 ```
 
-After the first run, use the following command to apply additional configuration changes:
+After initial setup, apply changes with:
 
 ```sh
 home-manager switch
 ```
 
-## Credits
+## Updating
 
-This configuration was inspired by the following projects:
+To update inputs and apply the latest versions:
 
-- https://github.com/nvim-lua/kickstart.nvim
-- https://github.com/HugoReeves/nix-home
-- https://github.com/gvolpe/nix-config
-- https://github.com/ryantm/home-manager-template
+```sh
+nix flake update
+home-manager switch
+```
 
-I also got some inspiration from the following awesome lists:
+## Troubleshooting
 
-- [nvim](https://github.com/rockerBOO/awesome-neovim)
-- [rust-tools](https://github.com/unpluggedcoder/awesome-rust-tools)
-- [tmux](https://github.com/rothgar/awesome-tmux)
+If you encounter issues with Nix permissions, ensure your user is in `extra-trusted-users` and restart the Nix daemon:
 
-# License
+```sh
+sudo launchctl stop org.nixos.nix-daemon
+sudo launchctl start org.nixos.nix-daemon
+```
+
+## Inspiration
+
+This configuration was inspired by:
+
+- [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
+- [HugoReeves/nix-home](https://github.com/HugoReeves/nix-home)
+- [gvolpe/nix-config](https://github.com/gvolpe/nix-config)
+- [ryantm/home-manager-template](https://github.com/ryantm/home-manager-template)
+- [rockerBOO/awesome-neovim](https://github.com/rockerBOO/awesome-neovim)
+- [unpluggedcoder/awesome-rust-tools](https://github.com/unpluggedcoder/awesome-rust-tools)
+- [rothgar/awesome-tmux](https://github.com/rothgar/awesome-tmux)
+
+## License
 
 This project is licensed under the [MIT License](LICENSE).
