@@ -9,7 +9,7 @@ My [Home Manager](https://github.com/nix-community/home-manager) configuration.
 Install Nix using the [nix-installer](https://github.com/DeterminateSystems/nix-installer):
 
 ```sh
-curl -fsSL https://install.determinate.systems/nix | sh -s -- install --prefer-upstream-nix
+curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 ```
 
 Add your user to the `extra-trusted-users` in your Nix configuration:
@@ -27,7 +27,7 @@ Clone the repository to your Home Manager configuration directory:
 git clone https://github.com/sestrella/home-manager.config.git ~/.config/home-manager
 ```
 
-Run [home-manager](https://github.com/nix-community/home-manager) directly from the `master` branch to apply the configuration:
+Run `home-manager` via `nix run` the first time to apply the configuration:
 
 ```sh
 nix run home-manager/release-25.11 -- switch
