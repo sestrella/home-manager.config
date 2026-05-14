@@ -16,18 +16,24 @@ in
   # Custom configuration
   imports = listDirFiles ./home;
 
-  home.packages = [
-    pkgs.devenv
-    pkgs.github-copilot-cli
-    pkgs.gitleaks
-    pkgs.kubectl
-    pkgs.kubernetes-helm
-    pkgs.nerd-fonts.fira-code
-    pkgs.secretspec
-    pkgs.ssm-session-manager-plugin
-    pkgs.tree
-    pkgs.yq
-  ];
+  home.packages =
+    let
+      helm = pkgs.wrapHelm pkgs.kubernetes-helm {
+        plugins = [ pkgs.kubernetes-helmPlugins.helm-diff ];
+      };
+    in
+    [
+      helm
+      pkgs.devenv
+      pkgs.github-copilot-cli
+      pkgs.gitleaks
+      pkgs.kubectl
+      pkgs.nerd-fonts.fira-code
+      pkgs.secretspec
+      pkgs.ssm-session-manager-plugin
+      pkgs.tree
+      pkgs.yq
+    ];
 
   programs = {
     direnv.enable = true;
