@@ -30,7 +30,6 @@ in
       pkgs.kubectl
       pkgs.nerd-fonts.fira-code
       pkgs.secretspec
-      pkgs.ssm-session-manager-plugin
       pkgs.tree
       pkgs.yq
     ];

@@ -6,5 +6,6 @@
   home.packages = [
     pkgs.aws-vault
     pkgs.awscli2
+    pkgs.ssm-session-manager-plugin
   ];
 }
