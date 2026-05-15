@@ -21,6 +21,13 @@ let
     echo "[helix-theme-sync] DARK_THEME: $DARK_THEME"
     echo "[helix-theme-sync] LIGHT_THEME: $LIGHT_THEME"
 
+    cleanup() {
+      echo "[helix-theme-sync] Received shutdown signal, exiting gracefully"
+      exit 0
+    }
+
+    trap cleanup SIGTERM SIGINT
+
     get_mode() {
       if defaults read -g AppleInterfaceStyle &>/dev/null; then
         echo dark
@@ -115,7 +122,7 @@ in
     config = {
       Program = lib.getExe helixThemeSync;
       RunAtLoad = true;
-      KeepAlive = true;
+      KeepAlive = false;
       StandardOutPath = /Users/sestrella/.local/state/helix-theme-sync.log;
       StandardErrPath = /Users/sestrella/.local/state/helix-theme-sync.log;
     };
