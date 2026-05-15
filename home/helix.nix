@@ -1,27 +1,59 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
-  # TODO: Make this a service instead than testing it on each bootstrap
-  helixWrapper = pkgs.writeShellScriptBin "hx" ''
-    # Detect macOS system appearance and set theme symlink accordingly
-    if command -v defaults &> /dev/null; then
-      if [[ $(defaults read -g AppleInterfaceStyle 2> /dev/null) == "Dark" ]]; then
-        THEME_FILE="solarized_dark.toml"
+  helixThemeSync = pkgs.writeShellScriptBin "helix-theme-sync" ''
+    set -euo pipefail
+
+    THEME_DIR="$HOME/.config/helix/themes"
+    LINK="$THEME_DIR/solarized.toml"
+
+    FOO="${config.programs.helix.package}/lib/runtime/themes"
+    DARK_THEME="$FOO/solarized_dark.toml"
+    LIGHT_THEME="$FOO/solarized_light.toml"
+
+    get_mode() {
+      if defaults read -g AppleInterfaceStyle &>/dev/null; then
+        echo dark
       else
-        THEME_FILE="solarized_light.toml"
+        echo light
+      fi
+    }
+
+    apply_theme() {
+      local mode="$1"
+      local target
+
+      if [[ "$mode" == "dark" ]]; then
+        target="$DARK_THEME"
+      else
+        target="$LIGHT_THEME"
       fi
 
-      # Create themes directory if it doesn't exist
-      mkdir -p "$HOME/.config/helix/themes"
+      mkdir -p "$THEME_DIR"
 
-      # Update the solarized.toml symlink
-      ln -sf "${pkgs.helix}/lib/runtime/themes/$THEME_FILE" "$HOME/.config/helix/themes/solarized.toml"
+      if [[ "$(readlink "$LINK" 2>/dev/null || true)" != "$target" ]]; then
+        ln -sf "$target" "$LINK"
+        pkill -USR1 hx || true
+      fi
+    }
 
-      # Reload the configuration for all running instances
-      pkill -USR1 hx
-    fi
+    last_mode=""
 
-    exec ${pkgs.helix}/bin/hx "$@"
+    while true; do
+      current_mode="$(get_mode)"
+
+      if [[ "$current_mode" != "$last_mode" ]]; then
+        apply_theme "$current_mode"
+        last_mode="$current_mode"
+      fi
+
+      sleep 2
+    done
   '';
 in
 {
@@ -51,7 +83,6 @@ in
         }
       ];
     };
-    package = helixWrapper;
     settings = {
       editor = {
         cursor-shape.insert = "bar";
@@ -65,5 +96,15 @@ in
   };
 
   # This has already been implemented in the master branch.
-  xdg.configFile."helix/config.toml".onChange = "/usr/bin/pkill -USR1 hx";
+  xdg.configFile."helix/config.toml".onChange = "/usr/bin/pkill -USR1 hx || true";
+
+  launchd.agents.helix-theme-sync = {
+    enable = true;
+
+    config = {
+      Program = lib.getExe helixThemeSync;
+      RunAtLoad = true;
+      KeepAlive = true;
+    };
+  };
 }
