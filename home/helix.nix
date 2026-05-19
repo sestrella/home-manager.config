@@ -12,17 +12,21 @@ let
     THEME_DIR="$HOME/.config/helix/themes"
     LINK="$THEME_DIR/solarized.toml"
 
-    FOO="${config.programs.helix.package}/lib/runtime/themes"
-    DARK_THEME="$FOO/solarized_dark.toml"
-    LIGHT_THEME="$FOO/solarized_light.toml"
+    HELIX_THEME_DIR="${config.programs.helix.package}/lib/runtime/themes"
+    DARK_THEME="$HELIX_THEME_DIR/solarized_dark.toml"
+    LIGHT_THEME="$HELIX_THEME_DIR/solarized_light.toml"
 
-    echo "[helix-theme-sync] Starting helix theme sync daemon"
-    echo "[helix-theme-sync] THEME_DIR: $THEME_DIR"
-    echo "[helix-theme-sync] DARK_THEME: $DARK_THEME"
-    echo "[helix-theme-sync] LIGHT_THEME: $LIGHT_THEME"
+    log "Starting helix theme sync daemon"
+    log "THEME_DIR: $THEME_DIR"
+    log "DARK_THEME: $DARK_THEME"
+    log "LIGHT_THEME: $LIGHT_THEME"
+
+    log() {
+      printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$1"
+    }
 
     cleanup() {
-      echo "[helix-theme-sync] Received shutdown signal, exiting gracefully"
+      log "Received shutdown signal, exiting gracefully"
       exit 0
     }
 
@@ -46,16 +50,16 @@ let
         target="$LIGHT_THEME"
       fi
 
-      echo "[helix-theme-sync] Applying theme: $mode -> $target"
+      log "Applying theme: $mode -> $target"
       mkdir -p "$THEME_DIR"
 
       if [[ "$(readlink "$LINK" 2>/dev/null || true)" != "$target" ]]; then
-        echo "[helix-theme-sync] Linking $LINK to $target"
+        log "Linking $LINK to $target"
         ln -sf "$target" "$LINK"
-        echo "[helix-theme-sync] Signaling helix with USR1"
-        pkill -USR1 hx || echo "[helix-theme-sync] Warning: helix not running"
+        log "Signaling helix with USR1"
+        pkill -USR1 hx || log "Warning: helix not running"
       else
-        echo "[helix-theme-sync] Theme already linked correctly"
+        log "Theme already linked correctly"
       fi
     }
 
@@ -63,7 +67,6 @@ let
 
     while true; do
       current_mode="$(get_mode)"
-      echo "[helix-theme-sync] Current mode: $current_mode (last: $last_mode)"
 
       if [[ "$current_mode" != "$last_mode" ]]; then
         apply_theme "$current_mode"
@@ -122,9 +125,9 @@ in
     config = {
       Program = lib.getExe helixThemeSync;
       RunAtLoad = true;
-      KeepAlive = false;
-      StandardOutPath = /Users/sestrella/.local/state/helix-theme-sync.log;
-      StandardErrPath = /Users/sestrella/.local/state/helix-theme-sync.log;
+      KeepAlive = true;
+      StandardOutPath = "${config.home.homeDirectory}/.local/state/helix-theme-sync.log";
+      StandardErrPath = "${config.home.homeDirectory}/.local/state/helix-theme-sync.log";
     };
   };
 }
