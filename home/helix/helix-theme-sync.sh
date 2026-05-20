@@ -1,8 +1,4 @@
-#!/usr/bin/env bash
-
-set -euo pipefail
-
-THEME_DIR="$HOME/.config/helix/themes"
+THEME_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/helix/themes"
 LINK="$THEME_DIR/solarized.toml"
 
 HELIX_THEME_DIR="$HELIX_RUNTIME_DIR/themes"
