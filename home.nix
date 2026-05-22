@@ -29,6 +29,7 @@ in
       pkgs.gitleaks
       pkgs.kubectl
       pkgs.nerd-fonts.fira-code
+      pkgs.ripgrep
       pkgs.secretspec
       pkgs.tree
       pkgs.yq
