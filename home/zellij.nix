@@ -6,6 +6,7 @@
 
     settings = {
       default_shell = lib.getExe config.programs.fish.package;
+      show_startup_tips = false;
       theme = "solarized";
     };
   };
