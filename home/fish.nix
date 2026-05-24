@@ -13,6 +13,9 @@
 
       . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.fish
     '';
+    interactiveShellInit = ''
+      set -U fish_greeting
+    '';
     shellAbbrs = {
       tf = "terraform";
       tfa = "terraform apply";
