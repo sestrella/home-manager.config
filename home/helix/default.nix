@@ -59,7 +59,7 @@ in
 
     config = {
       Program = lib.getExe helixThemeSync;
-      EnvironmentVariables.HELIX_RUNTIME_DIR = "${config.programs.helix.package}/lib/runtime";
+      ProgramArguments = [ "${config.programs.helix.package}/lib/runtime" ];
       ProcessType = "Background";
       RunAtLoad = true;
       KeepAlive = {

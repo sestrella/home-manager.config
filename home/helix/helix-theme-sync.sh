@@ -1,8 +1,9 @@
-if [[ -z "$HELIX_RUNTIME_DIR" ]]; then
-  echo "Error: HELIX_RUNTIME_DIR is not defined" >&2
+if [[ -z "$1" ]]; then
+  echo "Usage: $0 <HELIX_RUNTIME_DIR>" >&2
   exit 1
 fi
 
+HELIX_RUNTIME_DIR="$1"
 THEME_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/helix/themes"
 LINK="$THEME_DIR/solarized.toml"
 
