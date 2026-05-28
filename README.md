@@ -51,7 +51,7 @@ git clone https://github.com/sestrella/home-manager.config.git ~/.config/home-ma
 Run `home-manager` via `nix run` for the first time:
 
 ```sh
-nix run home-manager/release-25.11 -- switch
+nix run home-manager/release-26.05 -- switch
 ```
 
 After initial setup, apply changes with:
