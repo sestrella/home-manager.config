@@ -5,19 +5,19 @@
     enable = true;
 
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "github.com" = {
-        addKeysToAgent = "yes";
-        extraOptions.UseKeychain = "yes";
-        identitiesOnly = true;
-        identityFile = "~/.ssh/id_ed25519";
+        AddKeysToAgent = "yes";
+        IdentitiesOnly = true;
+        IdentityFile = "~/.ssh/id_ed25519";
+        UseKeychain = "yes";
       };
       github-personal = {
-        addKeysToAgent = "yes";
-        extraOptions.UseKeychain = "yes";
-        hostname = "github.com";
-        identitiesOnly = true;
-        identityFile = "~/.ssh/personal.id_ed25519";
+        AddKeysToAgent = "yes";
+        Hostname = "github.com";
+        IdentitiesOnly = true;
+        IdentityFile = "~/.ssh/personal.id_ed25519";
+        UseKeychain = "yes";
       };
     };
   };
