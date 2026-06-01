@@ -59,7 +59,10 @@ in
 
     config = {
       Program = lib.getExe helixThemeSync;
-      ProgramArguments = [ "${pkgs.helix-unwrapped.HELIX_DEFAULT_RUNTIME}/themes" ];
+      ProgramArguments = [
+        "${pkgs.helix-unwrapped.HELIX_DEFAULT_RUNTIME}/themes"
+        "${config.programs.helix.settings.theme}"
+      ];
       ProcessType = "Background";
       RunAtLoad = true;
       KeepAlive = {
