@@ -1,15 +1,14 @@
 if [[ -z "$1" ]]; then
-  echo "Usage: $0 <HELIX_RUNTIME_DIR>" >&2
+  echo "Usage: $0 <HELIX_THEMES_DIR>" >&2
   exit 1
 fi
 
-HELIX_RUNTIME_DIR="$1"
+HELIX_THEMES_DIR="$1"
 THEME_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/helix/themes"
 LINK="$THEME_DIR/solarized.toml"
 
-HELIX_THEME_DIR="$HELIX_RUNTIME_DIR/themes"
-DARK_THEME="$HELIX_THEME_DIR/solarized_dark.toml"
-LIGHT_THEME="$HELIX_THEME_DIR/solarized_light.toml"
+DARK_THEME="$HELIX_THEMES_DIR/solarized_dark.toml"
+LIGHT_THEME="$HELIX_THEMES_DIR/solarized_light.toml"
 
 log() {
   printf '[%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$1"
