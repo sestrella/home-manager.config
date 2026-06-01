@@ -8,7 +8,7 @@
 let
   helixThemeSync = pkgs.writeShellApplication {
     name = "helix-theme-sync";
-    text = builtins.readFile ./helix-theme-sync.sh;
+    text = builtins.readFile ./helix-theme-sync.bash;
   };
 in
 {

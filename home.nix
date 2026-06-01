@@ -31,6 +31,7 @@ in
       pkgs.nerd-fonts.fira-code
       pkgs.ripgrep
       pkgs.secretspec
+      pkgs.shellcheck
       pkgs.tree
       pkgs.yq
     ];
