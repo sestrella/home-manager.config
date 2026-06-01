@@ -1,5 +1,4 @@
----
-name: Build
+name: CI
 
 on: push
 
@@ -8,8 +7,25 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v17
+        with:
+          name: devenv
+      - name: Install devenv
+        run: nix profile add nixpkgs#devenv
+      - name: Run tests
+        run: devenv test
+    
   build:
     runs-on: macos-latest
+    needs: [test]
     timeout-minutes: 10
     steps:
       - name: Checkout code
