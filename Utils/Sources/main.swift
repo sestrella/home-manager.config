@@ -87,12 +87,13 @@ final class BluetoothWatcher: NSObject {
   }
 }
 let args = CommandLine.arguments
-guard args.count == 3 else {
-  print("Usage: \(args[0]) <display> <input>")
+guard args.count == 4 else {
+  print("Usage: \(args[0]) <m1ddc-path> <display> <input>")
   exit(1)
 }
-let display = args[1]
-let input = args[2]
+let m1ddcPath = args[1]
+let display = args[2]
+let input = args[3]
 
-let watcher = BluetoothWatcher(display: display, input: input)
+let watcher = BluetoothWatcher(m1ddcPath: m1ddcPath, display: display, input: input)
 RunLoop.main.run()
