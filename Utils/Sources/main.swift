@@ -9,10 +9,12 @@ final class BluetoothWatcher: NSObject {
   private var connectNotification: IOBluetoothUserNotification?
   private let displayArg: String
   private let inputArg: String
+  private let m1ddcPath: String
 
-  init(display: String, input: String) {
+  init(display: String, input: String, m1ddcPath: String = "m1ddc") {
     self.displayArg = display
     self.inputArg = input
+    self.m1ddcPath = m1ddcPath
     super.init()
 
     connectNotification =
@@ -60,7 +62,7 @@ final class BluetoothWatcher: NSObject {
 
     let process = Process()
     process.launchPath = "/usr/bin/env"
-    process.arguments = ["m1ddc", displayArg, inputArg]
+    process.arguments = [m1ddcPath, displayArg, inputArg]
 
     let outPipe = Pipe()
     let errPipe = Pipe()
@@ -86,15 +88,16 @@ final class BluetoothWatcher: NSObject {
   }
 }
 let args = CommandLine.arguments
-guard args.count == 3 else {
-  print("Usage: \(args[0]) <display> <input>")
+if args.count != 3 && args.count != 4 {
+  print("Usage: \(args[0]) <display> <input> [m1ddc_path]")
   exit(1)
 }
 let display = args[1]
 let input = args[2]
+let m1ddcPath = (args.count == 4) ? args[3] : "m1ddc"
 
 print("Starting with PID \(ProcessInfo.processInfo.processIdentifier)")
-let watcher = BluetoothWatcher(display: display, input: input)
+let watcher = BluetoothWatcher(display: display, input: input, m1ddcPath: m1ddcPath)
 
 let signals: [Int32] = [SIGINT, SIGTERM]
 for sig in signals {
