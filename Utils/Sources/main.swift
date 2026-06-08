@@ -93,6 +93,7 @@ guard args.count == 3 else {
 let display = args[1]
 let input = args[2]
 
+print("Starting with PID \(ProcessInfo.processInfo.processIdentifier)")
 let watcher = BluetoothWatcher(display: display, input: input)
 
 let signals: [Int32] = [SIGINT, SIGTERM]
