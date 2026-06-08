@@ -94,4 +94,18 @@ let display = args[1]
 let input = args[2]
 
 let watcher = BluetoothWatcher(display: display, input: input)
+
+let signals: [Int32] = [SIGINT, SIGTERM]
+for sig in signals {
+  // Let Dispatch handle these signals
+  signal(sig, SIG_IGN)
+  let source = DispatchSource.makeSignalSource(signal: sig, queue: .main)
+  source.setEventHandler {
+    print("Utils is shutting down gracefully...")
+    source.cancel()
+    exit(0)
+  }
+  source.resume()
+}
+
 RunLoop.main.run()
