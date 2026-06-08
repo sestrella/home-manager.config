@@ -1,17 +1,16 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
+import AppleSiliconDDC
 import Foundation
 import IOBluetooth
 
 final class BluetoothWatcher: NSObject {
   private var connectNotification: IOBluetoothUserNotification?
-  private let m1ddcPath: String
   private let displayArg: String
   private let inputArg: String
 
-  init(m1ddcPath: String, display: String, input: String) {
-    self.m1ddcPath = m1ddcPath
+  init(display: String, input: String) {
     self.displayArg = display
     self.inputArg = input
     super.init()
@@ -23,7 +22,7 @@ final class BluetoothWatcher: NSObject {
       )
 
     print("Watching for Bluetooth devices...")
-    print("Using m1ddc: \(m1ddcPath), display: \(displayArg), input: \(inputArg)")
+    print("Using display: \(displayArg), input: \(inputArg)")
   }
 
   @objc func deviceConnected(
@@ -60,8 +59,8 @@ final class BluetoothWatcher: NSObject {
     print("Device changed, switching display input...")
 
     let process = Process()
-    process.executableURL = URL(fileURLWithPath: m1ddcPath)
-    process.arguments = [displayArg, inputArg]
+    process.launchPath = "/usr/bin/env"
+    process.arguments = ["m1ddc", displayArg, inputArg]
 
     let outPipe = Pipe()
     let errPipe = Pipe()
@@ -87,13 +86,12 @@ final class BluetoothWatcher: NSObject {
   }
 }
 let args = CommandLine.arguments
-guard args.count == 4 else {
-  print("Usage: \(args[0]) <m1ddc-path> <display> <input>")
+guard args.count == 3 else {
+  print("Usage: \(args[0]) <display> <input>")
   exit(1)
 }
-let m1ddcPath = args[1]
-let display = args[2]
-let input = args[3]
+let display = args[1]
+let input = args[2]
 
-let watcher = BluetoothWatcher(m1ddcPath: m1ddcPath, display: display, input: input)
+let watcher = BluetoothWatcher(display: display, input: input)
 RunLoop.main.run()

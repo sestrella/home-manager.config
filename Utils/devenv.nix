@@ -10,4 +10,10 @@
     enable = true;
     lsp.enable = true;
   };
+
+  # stdenv = pkgs.stdenv.override {
+  #   extraBuildInputs = [ ];
+  # };
+
+  # apple.sdk = null;
 }
