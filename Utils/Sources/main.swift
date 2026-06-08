@@ -6,91 +6,86 @@ import Foundation
 import IOBluetooth
 
 final class BluetoothWatcher: NSObject {
-  private var connectNotification: IOBluetoothUserNotification?
-  private let displayArg: String
-  private let inputArg: String
-  private let m1ddcPath: String
+    private var connectNotification: IOBluetoothUserNotification?
+    private let displayArg: String
+    private let inputArg: String
+    private let m1ddcPath: String
 
-  init(display: String, input: String, m1ddcPath: String = "m1ddc") {
-    self.displayArg = display
-    self.inputArg = input
-    self.m1ddcPath = m1ddcPath
-    super.init()
+    init(display: String, input: String, m1ddcPath: String = "m1ddc") {
+        self.displayArg = display
+        self.inputArg = input
+        self.m1ddcPath = m1ddcPath
+        super.init()
 
-    connectNotification =
-      IOBluetoothDevice.register(
-        forConnectNotifications: self,
-        selector: #selector(deviceConnected(_:device:))
-      )
+        connectNotification =
+            IOBluetoothDevice.register(
+                forConnectNotifications: self,
+                selector: #selector(deviceConnected(_:device:))
+            )
 
-    print("Watching for Bluetooth devices...")
-    print("Using display: \(displayArg), input: \(inputArg)")
-  }
-
-  @objc func deviceConnected(
-    _ notification: IOBluetoothUserNotification,
-    device: IOBluetoothDevice
-  ) {
-
-    guard let name = device.name else {
-      return
+        print("Watching for Bluetooth devices...")
+        print("Using display: \(displayArg), input: \(inputArg)")
     }
 
-    print("Connected: \(name)")
-
-    if name.contains("MX Keys") {
-      runScript()
+    deinit {
+        unregister()
     }
 
-    device.register(
-      forDisconnectNotification: self,
-      selector: #selector(deviceDisconnected(_:device:))
-    )
-  }
-
-  @objc func deviceDisconnected(
-    _ notification: IOBluetoothUserNotification,
-    device: IOBluetoothDevice
-  ) {
-
-    let name = device.name ?? "<unknown>"
-    print("Disconnected: \(name)")
-  }
-
-  private func runScript() {
-    print("Device changed, switching display input...")
-
-    let process = Process()
-    process.launchPath = "/usr/bin/env"
-    process.arguments = [m1ddcPath, displayArg, inputArg]
-
-    let outPipe = Pipe()
-    let errPipe = Pipe()
-    process.standardOutput = outPipe
-    process.standardError = errPipe
-
-    do {
-      try process.run()
-      process.waitUntilExit()
-
-      let outData = outPipe.fileHandleForReading.readDataToEndOfFile()
-      let errData = errPipe.fileHandleForReading.readDataToEndOfFile()
-      if let outStr = String(data: outData, encoding: .utf8), !outStr.isEmpty {
-        print("m1ddc output: \(outStr)")
-      }
-      if let errStr = String(data: errData, encoding: .utf8), !errStr.isEmpty {
-        print("m1ddc error: \(errStr)")
-      }
-      print("m1ddc exited with code \(process.terminationStatus)")
-    } catch {
-      print("Failed to run m1ddc: \(error)")
+    func unregister() {
+        print("Deregistering Bluetooth hook...")
+        connectNotification?.unregister()
     }
-  }
+
+    @objc func deviceConnected(
+        _ notification: IOBluetoothUserNotification,
+        device: IOBluetoothDevice
+    ) {
+
+        guard let name = device.name else {
+            return
+        }
+
+        print("Connected: \(name)")
+
+        if name.contains("MX Keys") {
+            runScript()
+        }
+    }
+
+    private func runScript() {
+        print("Device changed, switching display input...")
+
+        let process = Process()
+        process.launchPath = "/usr/bin/env"
+        process.arguments = [m1ddcPath, displayArg, inputArg]
+
+        let outPipe = Pipe()
+        let errPipe = Pipe()
+        process.standardOutput = outPipe
+        process.standardError = errPipe
+
+        do {
+            try process.run()
+            process.waitUntilExit()
+
+            let outData = outPipe.fileHandleForReading.readDataToEndOfFile()
+            let errData = errPipe.fileHandleForReading.readDataToEndOfFile()
+            if let outStr = String(data: outData, encoding: .utf8), !outStr.isEmpty {
+                print("m1ddc output: \(outStr)")
+            }
+            if let errStr = String(data: errData, encoding: .utf8), !errStr.isEmpty {
+                print("m1ddc error: \(errStr)")
+            }
+            print("m1ddc exited with code \(process.terminationStatus)")
+        } catch {
+            print("Failed to run m1ddc: \(error)")
+        }
+    }
 }
 let args = CommandLine.arguments
 if args.count != 3 && args.count != 4 {
-  print("Usage: \(args[0]) <display> <input> [m1ddc_path]")
-  exit(1)
+    print("Usage: \(args[0]) <display> <input> [m1ddc_path]")
+    exit(1)
 }
 let display = args[1]
 let input = args[2]
@@ -101,15 +96,16 @@ let watcher = BluetoothWatcher(display: display, input: input, m1ddcPath: m1ddcP
 
 let signals: [Int32] = [SIGINT, SIGTERM]
 for sig in signals {
-  // Let Dispatch handle these signals
-  signal(sig, SIG_IGN)
-  let source = DispatchSource.makeSignalSource(signal: sig, queue: .main)
-  source.setEventHandler {
-    print("Utils is shutting down gracefully...")
-    source.cancel()
-    exit(0)
-  }
-  source.resume()
+    // Let Dispatch handle these signals
+    signal(sig, SIG_IGN)
+    let source = DispatchSource.makeSignalSource(signal: sig, queue: .main)
+    source.setEventHandler {
+        print("Utils is shutting down gracefully...")
+        watcher.unregister()
+        source.cancel()
+        exit(0)
+    }
+    source.resume()
 }
 
 RunLoop.main.run()
