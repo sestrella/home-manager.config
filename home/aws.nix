@@ -8,4 +8,10 @@
     pkgs.awscli2
     pkgs.ssm-session-manager-plugin
   ];
+
+  programs.fish.shellAbbrs = {
+    av = "aws-vault";
+    ave = "aws-vault exec";
+    avl = "aws-vault list";
+  };
 }
