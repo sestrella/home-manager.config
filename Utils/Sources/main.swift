@@ -5,6 +5,10 @@ import AppleSiliconDDC
 import ArgumentParser
 import Foundation
 import IOBluetooth
+import Darwin
+import Logging
+
+let logger = Logger(label: "com.sestrella.Utils")
 
 final class BluetoothWatcher: NSObject {
     private var connectNotification: IOBluetoothUserNotification?
@@ -21,8 +25,8 @@ final class BluetoothWatcher: NSObject {
                 selector: #selector(deviceConnected(_:device:))
             )
 
-        print("Watching for Bluetooth devices...")
-        print("Using display: \(displayArg), input: \(inputArg)")
+        logger.info("Watching for Bluetooth devices...")
+        logger.info("Using display: \(self.displayArg), input: \(self.inputArg)")
     }
 
     deinit {
@@ -30,7 +34,7 @@ final class BluetoothWatcher: NSObject {
     }
 
     func unregister() {
-        print("Deregistering Bluetooth hook...")
+        logger.info("Deregistering Bluetooth hook...")
         connectNotification?.unregister()
     }
 
@@ -43,7 +47,7 @@ final class BluetoothWatcher: NSObject {
             return
         }
 
-        print("Connected: \(name)")
+        logger.info("Connected: \(name)")
 
         if name.contains("MX Keys") {
             runScript()
@@ -51,7 +55,7 @@ final class BluetoothWatcher: NSObject {
     }
 
     private func runScript() {
-        print("Device changed, switching display input via AppleSiliconDDC...")
+        logger.info("Device changed, switching display input via AppleSiliconDDC...")
 
         // Find matching display by ioDisplayLocation or serial; fall back to first detected
         let displays = AppleSiliconDDC.getIoregServicesForMatching()
@@ -65,9 +69,9 @@ final class BluetoothWatcher: NSObject {
         if target == nil {
             if displays.count > 0 {
                 target = displays[0]
-                print("Warning: target display not found; using first detected display: \(displays[0].ioDisplayLocation)")
+                logger.warning("Target display not found; using first detected display: \(displays[0].ioDisplayLocation)")
             } else {
-                print("No displays found to switch")
+                logger.error("No displays found to switch")
                 return
             }
         }
@@ -85,15 +89,15 @@ final class BluetoothWatcher: NSObject {
         }
 
         guard let valueInt = parseInput(inputArg) else {
-            print("Invalid input value: \(inputArg)")
+            logger.error("Invalid input value: \(inputArg)")
             return
         }
 
         let writeOK = AppleSiliconDDC.write(service: target!.service, command: UInt8(0x60), value: UInt16(valueInt))
         if writeOK {
-            print("Input switched (VCP 0x60) to value \(valueInt)")
+            logger.info("Input switched (VCP 0x60) to value \(valueInt)")
         } else {
-            print("Failed to switch input via AppleSiliconDDC")
+            logger.error("Failed to switch input via AppleSiliconDDC")
         }
     }
 }
@@ -109,7 +113,7 @@ struct UtilsCommand: ParsableCommand {
     var input: String
 
     mutating func run() throws {
-        print("Starting with PID \(ProcessInfo.processInfo.processIdentifier)")
+        logger.info("Starting with PID \(ProcessInfo.processInfo.processIdentifier)")
         let watcher = BluetoothWatcher(display: display, input: input)
 
         var sources: [DispatchSourceSignal] = []
@@ -119,9 +123,10 @@ struct UtilsCommand: ParsableCommand {
             signal(sig, SIG_IGN)
             let source = DispatchSource.makeSignalSource(signal: sig, queue: .main)
             source.setEventHandler {
-                print("Utils is shutting down gracefully...")
+                logger.info("Utils is shutting down gracefully...")
                 watcher.unregister()
                 source.cancel()
+                Darwin.exit(0)
             }
             sources.append(source)
             source.resume()

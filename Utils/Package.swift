@@ -11,7 +11,10 @@ let package = Package(
             revision: "97af3818b9803e51412fb50cac1506db1d73b5bf"),
         .package(
             url: "https://github.com/apple/swift-argument-parser.git",
-            from: "1.2.0")
+            from: "1.2.0"),
+        .package(
+            url: "https://github.com/apple/swift-log.git",
+            from: "1.5.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -20,7 +23,8 @@ let package = Package(
             name: "Utils",
             dependencies: [
                 .product(name: "AppleSiliconDDC", package: "AppleSiliconDDC"),
-                .product(name: "ArgumentParser", package: "swift-argument-parser")
+                .product(name: "ArgumentParser", package: "swift-argument-parser"),
+                .product(name: "Logging", package: "swift-log")
             ]
         )
     ]
