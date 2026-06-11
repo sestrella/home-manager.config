@@ -2,6 +2,7 @@
 // https://docs.swift.org/swift-book
 
 import AppleSiliconDDC
+import ArgumentParser
 import Foundation
 import IOBluetooth
 
@@ -97,29 +98,35 @@ final class BluetoothWatcher: NSObject {
     }
 }
 
-let args = CommandLine.arguments
-if args.count != 3 {
-    print("Usage: \(args[0]) <display> <input>")
-    exit(1)
-}
-let display = args[1]
-let input = args[2]
+@main
+struct UtilsCommand: ParsableCommand {
+    static var configuration = CommandConfiguration(abstract: "Bluetooth display input switcher (watcher)")
 
-print("Starting with PID \(ProcessInfo.processInfo.processIdentifier)")
-let watcher = BluetoothWatcher(display: display, input: input)
+    @Argument(help: "ioDisplayLocation or serial of the target display")
+    var display: String
 
-let signals: [Int32] = [SIGINT, SIGTERM]
-for sig in signals {
-    // Let Dispatch handle these signals
-    signal(sig, SIG_IGN)
-    let source = DispatchSource.makeSignalSource(signal: sig, queue: .main)
-    source.setEventHandler {
-        print("Utils is shutting down gracefully...")
-        watcher.unregister()
-        source.cancel()
-        exit(0)
+    @Argument(help: "Input value to set (decimal or hex like 0xNN)")
+    var input: String
+
+    mutating func run() throws {
+        print("Starting with PID \(ProcessInfo.processInfo.processIdentifier)")
+        let watcher = BluetoothWatcher(display: display, input: input)
+
+        var sources: [DispatchSourceSignal] = []
+        let signals: [Int32] = [SIGINT, SIGTERM]
+        for sig in signals {
+            // Let Dispatch handle these signals
+            signal(sig, SIG_IGN)
+            let source = DispatchSource.makeSignalSource(signal: sig, queue: .main)
+            source.setEventHandler {
+                print("Utils is shutting down gracefully...")
+                watcher.unregister()
+                source.cancel()
+            }
+            sources.append(source)
+            source.resume()
+        }
+
+        RunLoop.main.run()
     }
-    source.resume()
 }
-
-RunLoop.main.run()
