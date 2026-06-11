@@ -9,12 +9,9 @@ final class BluetoothWatcher: NSObject {
     private var connectNotification: IOBluetoothUserNotification?
     private let displayArg: String
     private let inputArg: String
-    private let m1ddcPath: String
-
-    init(display: String, input: String, m1ddcPath: String = "m1ddc") {
+    init(display: String, input: String) {
         self.displayArg = display
         self.inputArg = input
-        self.m1ddcPath = m1ddcPath
         super.init()
 
         connectNotification =
@@ -53,46 +50,63 @@ final class BluetoothWatcher: NSObject {
     }
 
     private func runScript() {
-        print("Device changed, switching display input...")
+        print("Device changed, switching display input via AppleSiliconDDC...")
 
-        let process = Process()
-        process.launchPath = "/usr/bin/env"
-        process.arguments = [m1ddcPath, displayArg, inputArg]
-
-        let outPipe = Pipe()
-        let errPipe = Pipe()
-        process.standardOutput = outPipe
-        process.standardError = errPipe
-
-        do {
-            try process.run()
-            process.waitUntilExit()
-
-            let outData = outPipe.fileHandleForReading.readDataToEndOfFile()
-            let errData = errPipe.fileHandleForReading.readDataToEndOfFile()
-            if let outStr = String(data: outData, encoding: .utf8), !outStr.isEmpty {
-                print("m1ddc output: \(outStr)")
+        // Find matching display by ioDisplayLocation or serial; fall back to first detected
+        let displays = AppleSiliconDDC.getIoregServicesForMatching()
+        var target: AppleSiliconDDC.IOregService? = nil
+        for d in displays {
+            if d.ioDisplayLocation == displayArg || d.alphanumericSerialNumber == displayArg {
+                target = d
+                break
             }
-            if let errStr = String(data: errData, encoding: .utf8), !errStr.isEmpty {
-                print("m1ddc error: \(errStr)")
+        }
+        if target == nil {
+            if displays.count > 0 {
+                target = displays[0]
+                print("Warning: target display not found; using first detected display: \(displays[0].ioDisplayLocation)")
+            } else {
+                print("No displays found to switch")
+                return
             }
-            print("m1ddc exited with code \(process.terminationStatus)")
-        } catch {
-            print("Failed to run m1ddc: \(error)")
+        }
+
+        // Parse inputArg into integer (supports decimal or hex like 0xNN or xNN)
+        func parseInput(_ s: String) -> Int? {
+            let lower = s.lowercased()
+            if lower.hasPrefix("0x") {
+                return Int(lower.dropFirst(2), radix: 16)
+            } else if lower.hasPrefix("x") {
+                return Int(lower.dropFirst(1), radix: 16)
+            } else {
+                return Int(s)
+            }
+        }
+
+        guard let valueInt = parseInput(inputArg) else {
+            print("Invalid input value: \(inputArg)")
+            return
+        }
+
+        let writeOK = AppleSiliconDDC.write(service: target!.service, command: UInt8(0x60), value: UInt16(valueInt))
+        if writeOK {
+            print("Input switched (VCP 0x60) to value \(valueInt)")
+        } else {
+            print("Failed to switch input via AppleSiliconDDC")
         }
     }
 }
+
 let args = CommandLine.arguments
-if args.count != 3 && args.count != 4 {
-    print("Usage: \(args[0]) <display> <input> [m1ddc_path]")
+if args.count != 3 {
+    print("Usage: \(args[0]) <display> <input>")
     exit(1)
 }
 let display = args[1]
 let input = args[2]
-let m1ddcPath = (args.count == 4) ? args[3] : "m1ddc"
 
 print("Starting with PID \(ProcessInfo.processInfo.processIdentifier)")
-let watcher = BluetoothWatcher(display: display, input: input, m1ddcPath: m1ddcPath)
+let watcher = BluetoothWatcher(display: display, input: input)
 
 let signals: [Int32] = [SIGINT, SIGTERM]
 for sig in signals {
