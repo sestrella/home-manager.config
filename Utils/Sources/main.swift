@@ -3,9 +3,9 @@
 
 import AppleSiliconDDC
 import ArgumentParser
+import Darwin
 import Foundation
 import IOBluetooth
-import Darwin
 import Logging
 
 let logger = Logger(label: "com.sestrella.Utils")
@@ -14,6 +14,7 @@ final class BluetoothWatcher: NSObject {
     private var connectNotification: IOBluetoothUserNotification?
     private let displayArg: String
     private let inputArg: String
+
     init(display: String, input: String) {
         self.displayArg = display
         self.inputArg = input
@@ -69,7 +70,9 @@ final class BluetoothWatcher: NSObject {
         if target == nil {
             if displays.count > 0 {
                 target = displays[0]
-                logger.warning("Target display not found; using first detected display: \(displays[0].ioDisplayLocation)")
+                logger.warning(
+                    "Target display not found; using first detected display: \(displays[0].ioDisplayLocation)"
+                )
             } else {
                 logger.error("No displays found to switch")
                 return
@@ -93,7 +96,8 @@ final class BluetoothWatcher: NSObject {
             return
         }
 
-        let writeOK = AppleSiliconDDC.write(service: target!.service, command: UInt8(0x60), value: UInt16(valueInt))
+        let writeOK = AppleSiliconDDC.write(
+            service: target!.service, command: UInt8(0x60), value: UInt16(valueInt))
         if writeOK {
             logger.info("Input switched (VCP 0x60) to value \(valueInt)")
         } else {
@@ -102,9 +106,34 @@ final class BluetoothWatcher: NSObject {
     }
 }
 
+struct Config: Codable {
+    let deviceFilter: String
+    let display: String
+    let input: String
+}
+
+func loadConfig(path: String) -> Config? {
+    let url = URL(fileURLWithPath: path)
+
+    guard let data = try? Data(contentsOf: url) else {
+        print("Error: Configuration file not found at \(path)")
+        return nil
+    }
+
+    let decoder = JSONDecoder()
+    do {
+        let config = try decoder.decode(Config.self, from: data)
+        return config
+    } catch {
+        logger.error("Error parsing configuration: \(error)")
+        return nil
+    }
+}
+
 @main
 struct UtilsCommand: ParsableCommand {
-    static var configuration = CommandConfiguration(abstract: "Bluetooth display input switcher (watcher)")
+    static var configuration = CommandConfiguration(
+        abstract: "Bluetooth display input switcher (watcher)")
 
     @Argument(help: "ioDisplayLocation or serial of the target display")
     var display: String
