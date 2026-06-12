@@ -14,7 +14,7 @@ let package = Package(
             from: "1.2.0"),
         .package(
             url: "https://github.com/apple/swift-log.git",
-            from: "1.5.0")
+            from: "1.5.0"),
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
@@ -24,7 +24,7 @@ let package = Package(
             dependencies: [
                 .product(name: "AppleSiliconDDC", package: "AppleSiliconDDC"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),
-                .product(name: "Logging", package: "swift-log")
+                .product(name: "Logging", package: "swift-log"),
             ]
         )
     ]
