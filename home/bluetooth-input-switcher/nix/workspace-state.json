@@ -1,0 +1,58 @@
+{
+  "object": {
+    "artifacts": [],
+    "dependencies": [
+      {
+        "basedOn": null,
+        "packageRef": {
+          "identity": "applesiliconddc",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/waydabber/AppleSiliconDDC.git",
+          "name": "AppleSiliconDDC"
+        },
+        "state": {
+          "checkoutState": {
+            "revision": "97af3818b9803e51412fb50cac1506db1d73b5bf"
+          },
+          "name": "sourceControlCheckout"
+        },
+        "subpath": "AppleSiliconDDC"
+      },
+      {
+        "basedOn": null,
+        "packageRef": {
+          "identity": "swift-argument-parser",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/apple/swift-argument-parser.git",
+          "name": "swift-argument-parser"
+        },
+        "state": {
+          "checkoutState": {
+            "revision": "626b5b7b2f45e1b0b1c6f4a309296d1d21d7311b",
+            "version": "1.7.1"
+          },
+          "name": "sourceControlCheckout"
+        },
+        "subpath": "swift-argument-parser"
+      },
+      {
+        "basedOn": null,
+        "packageRef": {
+          "identity": "swift-log",
+          "kind": "remoteSourceControl",
+          "location": "https://github.com/apple/swift-log.git",
+          "name": "swift-log"
+        },
+        "state": {
+          "checkoutState": {
+            "revision": "ce592ae52f982c847a4efc0dd881cc9eb32d29f2",
+            "version": "1.6.4"
+          },
+          "name": "sourceControlCheckout"
+        },
+        "subpath": "swift-log"
+      }
+    ]
+  },
+  "version": 6
+}

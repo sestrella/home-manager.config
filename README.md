@@ -8,6 +8,7 @@ This repository contains declarative configuration for development tools, shell 
 
 ## Features
 
+- **Bluetooth Input Switcher**: Automatic switching of input devices when Bluetooth keyboards or mice connect; configurable rules in home/bluetooth-input-switcher.
 - **Shell**: Fish shell with Starship prompt
 - **Editor**: Helix with terminal integration
 - **Tools**: Git, AWS CLI, SSH, Zellij, Ghostty terminal emulator

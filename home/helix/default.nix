@@ -70,7 +70,7 @@ in
         SuccessfulExit = false;
       };
       StandardOutPath = "${config.home.homeDirectory}/.local/state/helix-theme-sync/logs/out.log";
-      StandardErrPath = "${config.home.homeDirectory}/.local/state/helix-theme-sync/logs/err.log";
+      StandardErrorPath = "${config.home.homeDirectory}/.local/state/helix-theme-sync/logs/err.log";
     };
   };
 }
