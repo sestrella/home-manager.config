@@ -8,5 +8,5 @@
 
   languages.swift.enable = true;
 
-  outputs.default = import ./default.nix { inherit pkgs; };
+  outputs.default = import ./package.nix { inherit pkgs; };
 }

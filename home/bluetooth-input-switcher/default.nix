@@ -1,36 +1,27 @@
 {
-  pkgs ? import <nixpkgs> { },
+  config,
+  lib,
+  pkgs,
+  ...
 }:
 
 let
-  generated = pkgs.swiftpm2nix.helpers ./nix;
+  bluetoothInputSwitcher = import ./package.nix { inherit pkgs; };
 in
-pkgs.stdenv.mkDerivation rec {
-  pname = "bluetooth-input-switcher";
-  version = "0.1.0";
+{
+  launchd.agents.bluetooth-input-switcher = {
+    enable = true;
 
-  src = ./.;
-
-  nativeBuildInputs = [
-    pkgs.swift
-    pkgs.swiftpm
-  ];
-
-  configurePhase = ''
-    runHook preConfigure
-
-    ${generated.configure}
-
-    runHook postConfigure
-  '';
-
-  installPhase = ''
-    runHook preInstall
-
-    binPath="$(swiftpmBinPath)"
-    mkdir -p $out/bin
-    cp $binPath/${pname} $out/bin/
-
-    runHook postInstall
-  '';
+    config = {
+      Program = lib.getExe bluetoothInputSwitcher;
+      ProcessType = "Background";
+      RunAtLoad = true;
+      KeepAlive = {
+        Crashed = true;
+        SuccessfulExit = false;
+      };
+      StandardOutPath = "${config.home.homeDirectory}/.local/state/bluetooth-input-switcher/logs/out.log";
+      StandardErrPath = "${config.home.homeDirectory}/.local/state/bluetooth-input-switcher/logs/err.log";
+    };
+  };
 }
