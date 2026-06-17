@@ -18,7 +18,7 @@ in
       RunAtLoad = true;
       KeepAlive = false;
       StandardOutPath = "${config.home.homeDirectory}/.local/state/bluetooth-input-switcher/logs/out.log";
-      StandardErrPath = "${config.home.homeDirectory}/.local/state/bluetooth-input-switcher/logs/err.log";
+      StandardErrorPath = "${config.home.homeDirectory}/.local/state/bluetooth-input-switcher/logs/err.log";
     };
   };
 }
