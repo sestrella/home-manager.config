@@ -2,18 +2,12 @@
 
 {
   packages = [
-    pkgs.swift-format
-    pkgs.swiftPackages.swiftpm
+    # pkgs.swift-format
+    # pkgs.swiftPackages.swiftpm
+    pkgs.swiftpm2nix
   ];
 
-  languages.swift = {
-    enable = true;
-    lsp.enable = true;
-  };
+  languages.swift.enable = true;
 
-  # stdenv = pkgs.stdenv.override {
-  #   extraBuildInputs = [ ];
-  # };
-
-  # apple.sdk = null;
+  outputs.default = import ./default.nix { inherit pkgs; };
 }
