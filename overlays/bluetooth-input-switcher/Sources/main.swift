@@ -9,6 +9,9 @@ import Logging
 
 let logger = Logger(label: "com.sestrella.BluetoohInputSwitcher")
 
+// TODO: Improvements
+// - Check if the input is different before attempting to change it
+// - Set external monitor as the main display
 final class BluetoothWatcher: NSObject {
     private var connectNotification: IOBluetoothUserNotification?
     private let displayArg: String
