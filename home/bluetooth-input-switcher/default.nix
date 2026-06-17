@@ -10,16 +10,13 @@ let
 in
 {
   launchd.agents.bluetooth-input-switcher = {
-    enable = false;
+    enable = true;
 
     config = {
       Program = lib.getExe bluetoothInputSwitcher;
       ProcessType = "Background";
       RunAtLoad = true;
-      KeepAlive = {
-        Crashed = true;
-        SuccessfulExit = false;
-      };
+      KeepAlive = false;
       StandardOutPath = "${config.home.homeDirectory}/.local/state/bluetooth-input-switcher/logs/out.log";
       StandardErrPath = "${config.home.homeDirectory}/.local/state/bluetooth-input-switcher/logs/err.log";
     };
