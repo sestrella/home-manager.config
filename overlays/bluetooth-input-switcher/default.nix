@@ -1,19 +1,22 @@
 {
-  pkgs ? import <nixpkgs> { },
+  stdenv,
+  swift,
+  swiftpm,
+  swiftpm2nix,
 }:
 
 let
-  generated = pkgs.swiftpm2nix.helpers ./nix;
+  generated = swiftpm2nix.helpers ./nix;
 in
-pkgs.stdenv.mkDerivation rec {
+stdenv.mkDerivation rec {
   pname = "bluetooth-input-switcher";
   version = "0.1.0";
 
   src = ./.;
 
   nativeBuildInputs = [
-    pkgs.swift
-    pkgs.swiftpm
+    swift
+    swiftpm
   ];
 
   configurePhase = ''

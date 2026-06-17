@@ -29,7 +29,10 @@
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
             config.allowUnfree = true; # Required to install GH Copilot CLI
-            overlays = [ devenv.overlays.default ];
+            overlays = [
+              devenv.overlays.default
+              (import ./overlays)
+            ];
           };
 
           modules = [

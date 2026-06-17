@@ -4,16 +4,12 @@
   pkgs,
   ...
 }:
-
-let
-  bluetoothInputSwitcher = import ./package.nix { inherit pkgs; };
-in
 {
   launchd.agents.bluetooth-input-switcher = {
     enable = true;
 
     config = {
-      Program = lib.getExe bluetoothInputSwitcher;
+      Program = lib.getExe pkgs.bluetooth-input-switcher;
       ProcessType = "Background";
       RunAtLoad = true;
       KeepAlive = false;
