@@ -2,22 +2,23 @@
 // https://docs.swift.org/swift-book
 
 import AppleSiliconDDC
-import ArgumentParser
 import Darwin
 import Foundation
 import IOBluetooth
 import Logging
 
-let logger = Logger(label: "com.sestrella.Utils")
+let logger = Logger(label: "com.sestrella.BluetoohInputSwitcher")
 
 final class BluetoothWatcher: NSObject {
     private var connectNotification: IOBluetoothUserNotification?
     private let displayArg: String
     private let inputArg: String
+    private let deviceFilter: String
 
-    init(display: String, input: String) {
+    init(display: String, input: String, deviceFilter: String) {
         self.displayArg = display
         self.inputArg = input
+        self.deviceFilter = deviceFilter
         super.init()
 
         connectNotification =
@@ -27,7 +28,7 @@ final class BluetoothWatcher: NSObject {
             )
 
         logger.info("Watching for Bluetooth devices...")
-        logger.info("Using display: \(self.displayArg), input: \(self.inputArg)")
+        logger.info("Using display: \(self.displayArg), input: \(self.inputArg), deviceFilter: \(self.deviceFilter)")
     }
 
     deinit {
@@ -50,7 +51,7 @@ final class BluetoothWatcher: NSObject {
 
         logger.info("Connected: \(name)")
 
-        if name.contains("MX Keys") {
+        if name.contains(self.deviceFilter) {
             runScript()
         }
     }
@@ -113,10 +114,17 @@ struct Config: Codable {
 }
 
 func loadConfig(path: String) -> Config? {
-    let url = URL(fileURLWithPath: path)
+    let expanded = (path as NSString).expandingTildeInPath
+    let fileManager = FileManager.default
+    guard fileManager.fileExists(atPath: expanded) else {
+        logger.error("Configuration file not found at \(expanded)")
+        return nil
+    }
+
+    let url = URL(fileURLWithPath: expanded)
 
     guard let data = try? Data(contentsOf: url) else {
-        print("Error: Configuration file not found at \(path)")
+        logger.error("Error reading configuration file at \(expanded)")
         return nil
     }
 
@@ -131,28 +139,26 @@ func loadConfig(path: String) -> Config? {
 }
 
 @main
-struct BluetoothInputSwitcher: ParsableCommand {
-    static var configuration = CommandConfiguration(
-        abstract: "Bluetooth display input switcher (watcher)")
-
-    @Argument(help: "ioDisplayLocation or serial of the target display")
-    var display: String
-
-    @Argument(help: "Input value to set (decimal or hex like 0xNN)")
-    var input: String
-
-    mutating func run() throws {
+struct BluetoothInputSwitcher {
+    static func main() {
         logger.info("Starting with PID \(ProcessInfo.processInfo.processIdentifier)")
-        let watcher = BluetoothWatcher(display: display, input: input)
+
+        // TODO: Remove hard-coded config path
+        let configPath = "~/.config/bluetooth-input-switcher/config.json"
+        guard let config = loadConfig(path: configPath) else {
+            logger.error("Failed to load configuration; exiting.")
+            Darwin.exit(1)
+        }
+
+        let watcher = BluetoothWatcher(display: config.display, input: config.input, deviceFilter: config.deviceFilter)
 
         var sources: [DispatchSourceSignal] = []
         let signals: [Int32] = [SIGINT, SIGTERM]
         for sig in signals {
-            // Let Dispatch handle these signals
             signal(sig, SIG_IGN)
             let source = DispatchSource.makeSignalSource(signal: sig, queue: .main)
             source.setEventHandler {
-                logger.info("Utils is shutting down gracefully...")
+                logger.info("bluetooth-input-switcher is shutting down gracefully...")
                 watcher.unregister()
                 source.cancel()
                 Darwin.exit(0)
