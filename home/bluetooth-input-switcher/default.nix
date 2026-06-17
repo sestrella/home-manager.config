@@ -10,7 +10,7 @@ let
 in
 {
   launchd.agents.bluetooth-input-switcher = {
-    enable = true;
+    enable = false;
 
     config = {
       Program = lib.getExe bluetoothInputSwitcher;
