@@ -131,7 +131,7 @@ func loadConfig(path: String) -> Config? {
 }
 
 @main
-struct UtilsCommand: ParsableCommand {
+struct BluetoothInputSwitcher: ParsableCommand {
     static var configuration = CommandConfiguration(
         abstract: "Bluetooth display input switcher (watcher)")
 

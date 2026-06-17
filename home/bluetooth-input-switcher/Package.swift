@@ -4,7 +4,7 @@
 import PackageDescription
 
 let package = Package(
-    name: "Utils",
+    name: "bluetooth-input-switcher",
     dependencies: [
         .package(
             url: "https://github.com/waydabber/AppleSiliconDDC.git",
@@ -20,7 +20,7 @@ let package = Package(
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .executableTarget(
-            name: "Utils",
+            name: "bluetooth-input-switcher",
             dependencies: [
                 .product(name: "AppleSiliconDDC", package: "AppleSiliconDDC"),
                 .product(name: "ArgumentParser", package: "swift-argument-parser"),

@@ -6,7 +6,7 @@ let
   generated = pkgs.swiftpm2nix.helpers ./nix;
 in
 pkgs.stdenv.mkDerivation rec {
-  pname = "Utils";
+  pname = "bluetooth-input-switcher";
   version = "0.1.0";
 
   src = ./.;

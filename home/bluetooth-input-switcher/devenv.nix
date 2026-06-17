@@ -2,8 +2,7 @@
 
 {
   packages = [
-    # pkgs.swift-format
-    # pkgs.swiftPackages.swiftpm
+    pkgs.swiftpm
     pkgs.swiftpm2nix
   ];
 
