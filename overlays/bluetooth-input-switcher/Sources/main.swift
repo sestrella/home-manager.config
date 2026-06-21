@@ -15,10 +15,10 @@ let logger = Logger(label: "com.sestrella.BluetoohInputSwitcher")
 final class BluetoothWatcher: NSObject {
     private var connectNotification: IOBluetoothUserNotification?
     private let displayArg: String
-    private let inputArg: String
+    private let inputArg: UInt16
     private let deviceFilter: String
 
-    init(display: String, input: String, deviceFilter: String) {
+    init(display: String, input: UInt16, deviceFilter: String) {
         self.displayArg = display
         self.inputArg = input
         self.deviceFilter = deviceFilter
@@ -83,27 +83,10 @@ final class BluetoothWatcher: NSObject {
             }
         }
 
-        // Parse inputArg into integer (supports decimal or hex like 0xNN or xNN)
-        func parseInput(_ s: String) -> Int? {
-            let lower = s.lowercased()
-            if lower.hasPrefix("0x") {
-                return Int(lower.dropFirst(2), radix: 16)
-            } else if lower.hasPrefix("x") {
-                return Int(lower.dropFirst(1), radix: 16)
-            } else {
-                return Int(s)
-            }
-        }
-
-        guard let valueInt = parseInput(inputArg) else {
-            logger.error("Invalid input value: \(inputArg)")
-            return
-        }
-
         let writeOK = AppleSiliconDDC.write(
-            service: target!.service, command: UInt8(0x60), value: UInt16(valueInt))
+            service: target!.service, command: UInt8(0x60), value: inputArg)
         if writeOK {
-            logger.info("Input switched (VCP 0x60) to value \(valueInt)")
+            logger.info("Input switched (VCP 0x60) to value \(inputArg)")
         } else {
             logger.error("Failed to switch input via AppleSiliconDDC")
         }
@@ -113,7 +96,7 @@ final class BluetoothWatcher: NSObject {
 struct Config: Codable {
     let deviceFilter: String
     let display: String
-    let input: String
+    let input: UInt16
 }
 
 func loadConfig(path: String) -> Config? {
