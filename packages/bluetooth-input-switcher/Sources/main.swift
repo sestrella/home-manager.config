@@ -65,7 +65,7 @@ final class BluetoothWatcher: NSObject {
     let displays = AppleSiliconDDC.getIoregServicesForMatching()
     var target: AppleSiliconDDC.IOregService? = nil
     for d in displays {
-      if d.ioDisplayLocation == self.display || d.alphanumericSerialNumber == self.display {
+      if d.alphanumericSerialNumber == self.display {
         target = d
         break
       }
