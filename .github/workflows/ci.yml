@@ -25,7 +25,9 @@ jobs:
       - name: Run tests
         run: devenv test
       - name: Build packages
-        run: devenv build
+        run: |
+          echo '{ cachix.push = "sestrella"; }' > devenv.local.nix
+          devenv build
     
   hm-build:
     runs-on: macos-latest
