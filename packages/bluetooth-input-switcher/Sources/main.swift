@@ -51,14 +51,13 @@ final class BluetoothWatcher: NSObject {
       return
     }
 
-    logger.info("Connected: \(name)")
-
     if name.contains(self.deviceFilter) {
-      runScript()
+      logger.info("Connected: \(name)")
+      switchDisplayInput()
     }
   }
 
-  private func runScript() {
+  private func switchDisplayInput() {
     logger.info("Device changed, switching display input via AppleSiliconDDC...")
 
     // Find matching display by ioDisplayLocation or serial; fall back to first detected
