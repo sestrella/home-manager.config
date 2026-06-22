@@ -81,14 +81,18 @@ final class BluetoothWatcher: NSObject {
       }
     }
 
-    let readValue = AppleSiliconDDC.read(service: target!.service, command: INPUT_COMMAND)
+    guard let service = target?.service else {
+      logger.error("No service found for display \(display)")
+      return
+    }
+
+    let readValue = AppleSiliconDDC.read(service: service, command: INPUT_COMMAND)
     guard readValue!.current & 0x00FF != input else {
       logger.info("Input \(input) is already selected")
       return
     }
 
-    let writeOK = AppleSiliconDDC.write(
-      service: target!.service, command: INPUT_COMMAND, value: input)
+    let writeOK = AppleSiliconDDC.write(service: service, command: INPUT_COMMAND, value: input)
     guard writeOK else {
       logger.error("Failed to switch input via AppleSiliconDDC")
       return
