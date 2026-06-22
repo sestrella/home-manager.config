@@ -83,7 +83,7 @@ final class BluetoothWatcher: NSObject {
     }
 
     let readValue = AppleSiliconDDC.read(service: target!.service, command: INPUT_COMMAND)
-    guard readValue!.current != input else {
+    guard readValue!.current & 0x00FF != input else {
       logger.info("Input \(input) is already selected")
       return
     }
