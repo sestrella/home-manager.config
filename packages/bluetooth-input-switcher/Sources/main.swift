@@ -7,6 +7,8 @@ import Foundation
 import IOBluetooth
 import Logging
 
+let INPUT_COMMAND: UInt8 = 0x60
+
 let logger = Logger(label: "com.sestrella.BluetoohInputSwitcher")
 
 // TODO: Improvements
@@ -83,8 +85,14 @@ final class BluetoothWatcher: NSObject {
             }
         }
 
+        let readValue = AppleSiliconDDC.read(service: target!.service, command: INPUT_COMMAND)
+        guard readValue!.current != input else {
+            logger.info("Input \(input) is already selected")
+            return
+        }
+
         let writeOK = AppleSiliconDDC.write(
-            service: target!.service, command: UInt8(0x60), value: input)
+            service: target!.service, command: INPUT_COMMAND, value: input)
         if writeOK {
             logger.info("Input switched (VCP 0x60) to value \(input)")
         } else {
