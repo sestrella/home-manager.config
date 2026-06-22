@@ -60,6 +60,7 @@ final class BluetoothWatcher: NSObject {
   private func switchDisplayInput() {
     logger.info("Device changed, switching display input via AppleSiliconDDC...")
 
+    // TODO: Use AppleSiliconDDC.getIORegServiceAppleCDC2Properties instead
     // Find matching display by ioDisplayLocation or serial; fall back to first detected
     let displays = AppleSiliconDDC.getIoregServicesForMatching()
     var target: AppleSiliconDDC.IOregService? = nil
