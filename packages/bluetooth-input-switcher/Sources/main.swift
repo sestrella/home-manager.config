@@ -14,13 +14,13 @@ let logger = Logger(label: "com.sestrella.BluetoohInputSwitcher")
 // - Set external monitor as the main display
 final class BluetoothWatcher: NSObject {
     private var connectNotification: IOBluetoothUserNotification?
-    private let displayArg: String
-    private let inputArg: UInt16
+    private let display: String
+    private let input: UInt16
     private let deviceFilter: String
 
     init(display: String, input: UInt16, deviceFilter: String) {
-        self.displayArg = display
-        self.inputArg = input
+        self.display = display
+        self.input = input
         self.deviceFilter = deviceFilter
         super.init()
 
@@ -31,7 +31,7 @@ final class BluetoothWatcher: NSObject {
             )
 
         logger.info("Watching for Bluetooth devices...")
-        logger.info("Using display: \(self.displayArg), input: \(self.inputArg), deviceFilter: \(self.deviceFilter)")
+        logger.info("Using display: \(self.display), input: \(self.input), deviceFilter: \(self.deviceFilter)")
     }
 
     deinit {
@@ -66,7 +66,7 @@ final class BluetoothWatcher: NSObject {
         let displays = AppleSiliconDDC.getIoregServicesForMatching()
         var target: AppleSiliconDDC.IOregService? = nil
         for d in displays {
-            if d.ioDisplayLocation == displayArg || d.alphanumericSerialNumber == displayArg {
+            if d.ioDisplayLocation == self.display || d.alphanumericSerialNumber == self.display {
                 target = d
                 break
             }
@@ -84,9 +84,9 @@ final class BluetoothWatcher: NSObject {
         }
 
         let writeOK = AppleSiliconDDC.write(
-            service: target!.service, command: UInt8(0x60), value: inputArg)
+            service: target!.service, command: UInt8(0x60), value: input)
         if writeOK {
-            logger.info("Input switched (VCP 0x60) to value \(inputArg)")
+            logger.info("Input switched (VCP 0x60) to value \(input)")
         } else {
             logger.error("Failed to switch input via AppleSiliconDDC")
         }
