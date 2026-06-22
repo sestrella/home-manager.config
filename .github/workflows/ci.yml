@@ -14,8 +14,6 @@ jobs:
         uses: actions/checkout@v6
       - name: Install Nix
         uses: cachix/install-nix-action@v31
-      - name: Setup Cachix
-        uses: cachix/cachix-action@v17
       - name: Install devenv
         run: nix profile add nixpkgs#devenv
       - name: Run tests
@@ -29,8 +27,6 @@ jobs:
         uses: actions/checkout@v6
       - name: Install Nix
         uses: cachix/install-nix-action@v31
-      - name: Setup Cachix
-        uses: cachix/cachix-action@v17
       - name: Install devenv
         run: nix profile add nixpkgs#devenv
       - name: Build packages
