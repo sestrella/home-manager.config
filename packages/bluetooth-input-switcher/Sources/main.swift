@@ -36,10 +36,6 @@ final class BluetoothWatcher: NSObject {
         logger.info("Using display: \(self.display), input: \(self.input), deviceFilter: \(self.deviceFilter)")
     }
 
-    deinit {
-        unregister()
-    }
-
     func unregister() {
         logger.info("Deregistering Bluetooth hook...")
         connectNotification?.unregister()
