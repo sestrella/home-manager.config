@@ -10,6 +10,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
   };
 
+  # TODO: Review cache warnings on the CI
   nixConfig = {
     extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw= cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM=";
     extra-substituters = "https://devenv.cachix.org https://cachix.cachix.org";
@@ -31,7 +32,7 @@
             config.allowUnfree = true; # Required to install GH Copilot CLI
             overlays = [
               devenv.overlays.default
-              (import ./overlays)
+              (final: prev: import ./packages { pkgs = final; })
             ];
           };
 
