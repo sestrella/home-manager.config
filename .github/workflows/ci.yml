@@ -7,8 +7,25 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  devenv-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+      - name: Setup Cachix
+        uses: cachix/cachix-action@v17
+        with:
+          name: devenv
+      - name: Install devenv
+        run: nix profile add nixpkgs#devenv
+      - name: Run tests
+        run: devenv test
+
   devenv-build:
     runs-on: macos-latest
+    needs: [devenv-test]
     steps:
       - name: Checkout code
         uses: actions/checkout@v6
@@ -18,20 +35,18 @@ jobs:
         uses: cachix/cachix-action@v17
         with:
           name: sestrella
-          extraPullNames: devenv
-          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Install devenv
         run: nix profile add nixpkgs#devenv
-      - name: Run tests
-        run: devenv test
       - name: Build packages
         run: |
           echo '{ cachix.push = "sestrella"; }' > devenv.local.nix
           devenv build
+        env:
+          CACHIX_AUTH_TOKEN: ${{ secrets.CACHIX_AUTH_TOKEN }}
     
   hm-build:
     runs-on: macos-latest
-    needs: [devenv-build]
+    needs: [devenv-test]
     timeout-minutes: 10
     steps:
       - name: Checkout code
