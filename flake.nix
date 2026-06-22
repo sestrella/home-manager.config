@@ -31,7 +31,7 @@
             config.allowUnfree = true; # Required to install GH Copilot CLI
             overlays = [
               devenv.overlays.default
-              (import ./overlays)
+              (final: prev: import ./packages { pkgs = final; })
             ];
           };
 
