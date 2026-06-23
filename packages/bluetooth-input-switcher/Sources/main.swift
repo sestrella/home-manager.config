@@ -60,25 +60,12 @@ final class BluetoothWatcher: NSObject {
   private func switchDisplayInput() {
     logger.info("Device changed, switching display input via AppleSiliconDDC...")
 
-    // TODO: Use AppleSiliconDDC.getIORegServiceAppleCDC2Properties instead
-    // Find matching display by ioDisplayLocation or serial; fall back to first detected
     let displays = AppleSiliconDDC.getIoregServicesForMatching()
     var target: AppleSiliconDDC.IOregService? = nil
-    for d in displays {
-      if d.alphanumericSerialNumber == self.display {
-        target = d
+    for display in displays {
+      if display.alphanumericSerialNumber == self.display {
+        target = display
         break
-      }
-    }
-    if target == nil {
-      if displays.count > 0 {
-        target = displays[0]
-        logger.warning(
-          "Target display not found; using first detected display: \(displays[0].ioDisplayLocation)"
-        )
-      } else {
-        logger.error("No displays found to switch")
-        return
       }
     }
 
@@ -88,9 +75,11 @@ final class BluetoothWatcher: NSObject {
     }
 
     let readValue = AppleSiliconDDC.read(service: service, command: INPUT_COMMAND)
-    guard readValue!.current & 0x00FF != input else {
-      logger.info("Input \(input) is already selected")
-      return
+    if let currentValue = readValue?.current {
+      guard currentValue & 0x00FF != input else {
+        logger.info("Input \(input) is already selected")
+        return
+      }
     }
 
     let writeOK = AppleSiliconDDC.write(service: service, command: INPUT_COMMAND, value: input)
