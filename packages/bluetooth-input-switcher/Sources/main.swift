@@ -16,7 +16,15 @@ let logger = Logger(label: "com.sestrella.BluetoohInputSwitcher")
 // - Check if the input is different before attempting to change it
 // - Set external monitor as the main display
 final class BluetoothWatcher: NSObject {
+  struct DisplayOrigin {
+    let displayID: CGDirectDisplayID
+    let x: Int32
+    let y: Int32
+  }
+
   private var connectNotification: IOBluetoothUserNotification?
+  private var disconnectNotification: IOBluetoothUserNotification?
+
   private let display: String
   private let input: UInt16
   private let deviceFilter: String
@@ -27,35 +35,59 @@ final class BluetoothWatcher: NSObject {
     self.deviceFilter = deviceFilter
     super.init()
 
-    // connectNotification =
-    //   IOBluetoothDevice.register(
-    //     forConnectNotifications: self,
-    //     selector: #selector(deviceConnected(_:device:))
-    //   )
+    connectNotification =
+      IOBluetoothDevice.register(
+        forConnectNotifications: self,
+        selector: #selector(deviceConnected(_:device:))
+      )
+
+    disconnectNotification =
+      IOBluetoothDevice.register(
+        forDisconnectNotification: self,
+        selector: #selector(deviceDisconnected(_:device:))
+      )
 
     logger.info("Watching for Bluetooth devices...")
     logger.info(
       "Using display: \(self.display), input: \(self.input), deviceFilter: \(self.deviceFilter)")
   }
 
+  deinit {
+    unregister()
+  }
+  
+
   func unregister() {
-    logger.info("Deregistering Bluetooth hook...")
+    logger.info("Deregistering Bluetooth hooks...")
     connectNotification?.unregister()
+    disconnectNotification?.unregister()
   }
 
   @objc func deviceConnected(
     _ notification: IOBluetoothUserNotification,
     device: IOBluetoothDevice
   ) {
-
     guard let name = device.name else {
       return
     }
 
     if name.contains(self.deviceFilter) {
       logger.info("Connected: \(name)")
-      // switchDisplayInput()
-      foo()
+      switchDisplayInput()
+      // TODO: Remove hard-coded displayIDs
+      swapDisplays(main: CGDirectDisplayID(2), extended: CGDirectDisplayID(1))
+    }
+  }
+
+  @objc func deviceDisconnected(_ notification: IOBluetoothUserNotification, device: IOBluetoothDevice) {
+    guard let name = device.name else {
+      return
+    }
+
+    if name.contains(self.deviceFilter) {
+      logger.info("Disconnected: \(name)")
+      // TODO: Remove hard-coded displayIDs
+      swapDisplays(main: CGDirectDisplayID(1), extended: CGDirectDisplayID(2))
     }
   }
 
@@ -94,85 +126,23 @@ final class BluetoothWatcher: NSObject {
 
   }
 
-  func foo() {
-    // var displayCount: UInt32 = 0
-    // CGGetActiveDisplayList(0, nil, &displayCount)
-
-    // var displayIDs = [CGDirectDisplayID](repeating: 0, count: Int(displayCount))
-    // CGGetActiveDisplayList(displayCount, &displayIDs, &displayCount)
-
-    // for displayID in displayIDs {
-    //   if CGDisplayIsBuiltin(displayID) == 1 {
-    //     // builtinDisplay = displayID
-    //   }
-    // }
-
-    let builtinDisplay = CGDirectDisplayID(1)
-
-    if CGDisplayBounds(builtinDisplay).origin == CGPoint(x: 0, y: 0) {
-      setDisplaysOrigin(displays: [
-        DisplayOrigin(displayID: builtinDisplay, x: -1710, y: 0),
-        DisplayOrigin(displayID: CGDirectDisplayID(2), x: 0, y: 0),
-      ])
-    } else {
-      setDisplaysOrigin(displays: [
-        DisplayOrigin(displayID: builtinDisplay, x: 0, y: 0),
-        DisplayOrigin(displayID: CGDirectDisplayID(2), x: 1710, y: 0),
-      ])
+  func swapDisplays(main: CGDirectDisplayID, extended: CGDirectDisplayID) {
+    if CGDisplayIsMain(main) == 1 {
+      logger.info("Display \(main) is already the main display")
+      return
     }
 
-    // let builtinBounds = CGDisplayBounds(builtinDisplay)
-    // let externalBounds = CGDisplayBounds(externalDisplay)
+    let origin = CGDisplayBounds(main).origin
 
-    // TODO: Built-in display is set to main
-    // if CGDisplayBounds(builtinDisplay).origin == CGPoint(x: 0, y: 0) {
-    //   logger.info("Setting external display to main")
-    //   setDisplayOrigin(displayID: builtinDisplay, x: -1710, y: 0)
-    //   setDisplayOrigin(displayID: externalDisplay, x: 0, y: 0)
-    // } else {
-    //   logger.info("Setting built-in display to main")
-    //   setDisplayOrigin(displayID: externalDisplay, x: 1710, y: 0)
-    //   setDisplayOrigin(displayID: builtinDisplay, x: 0, y: 0)
-    // }
-
-    // guard let foo = target else {
-    //   logger.error("Target not found")
-    //   return
-    // }
-
-    // let displayID: CGDirectDisplayID = 2
-
-    // var config: CGDisplayConfigRef?
-    // let beginDisplay = CGBeginDisplayConfiguration(&config)
-    // guard beginDisplay == .success else {
-    //   logger.error("Could not begin display configuration \(beginDisplay)")
-    //   return
-    // }
-
-    // let configureDisplay = CGConfigureDisplayOrigin(config, displayID, 0, 0)
-    // guard configureDisplay == .success else {
-    //   logger.error("Failed to configure display origin: \(configureDisplay)")
-    //   return
-    // }
-
-    // let completeDisplay = CGCompleteDisplayConfiguration(config, .permanently)
-    // guard completeDisplay == .success else {
-    //   logger.error("Could not complete display configuration: \(completeDisplay)")
-    //   return
-    // }
-
-    // logger.info("Display serial number: \(CGDisplaySerialNumber(displayID))")
-    // logger.info("Display Built-in: \(CGDisplayBounds(1))")
-    // logger.info("Display DELL P2422HE: \(CGDisplayBounds(2))")
+    logger.info(
+      "Setting display \(main) as the main display and \(extended) as the extended display")
+    setDisplaysOrigin(origins: [
+      DisplayOrigin(displayID: main, x: 0, y: 0),
+      DisplayOrigin(displayID: extended, x: Int32(-origin.x), y: 0),
+    ])
   }
 
-  struct DisplayOrigin {
-    let displayID: CGDirectDisplayID
-    let x: Int32
-    let y: Int32
-  }
-
-  func setDisplaysOrigin(displays: [DisplayOrigin]) {
+  func setDisplaysOrigin(origins: [DisplayOrigin]) {
     var config: CGDisplayConfigRef?
 
     let beginDisplay = CGBeginDisplayConfiguration(&config)
@@ -181,13 +151,12 @@ final class BluetoothWatcher: NSObject {
       return
     }
 
-    for display in displays {
+    for origin in origins {
       let configureDisplay = CGConfigureDisplayOrigin(
-        config, display.displayID, display.x, display.y)
+        config, origin.displayID, origin.x, origin.y)
       guard configureDisplay == .success else {
         logger.error(
-          "Failed to configure origin for display \(display.displayID): \(configureDisplay)")
-        // TODO: Do not exit immediately
+          "Failed to configure origin for display \(origin.displayID): \(configureDisplay)")
         return
       }
     }
@@ -245,7 +214,6 @@ struct BluetoothInputSwitcher {
 
     let watcher = BluetoothWatcher(
       display: config.display, input: config.input, deviceFilter: config.deviceFilter)
-    watcher.foo()
 
     var sources: [DispatchSourceSignal] = []
     let signals: [Int32] = [SIGINT, SIGTERM]
@@ -262,6 +230,6 @@ struct BluetoothInputSwitcher {
       source.resume()
     }
 
-    // RunLoop.main.run()
+    RunLoop.main.run()
   }
 }
