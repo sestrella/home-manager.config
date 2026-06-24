@@ -2,6 +2,7 @@
 // https://docs.swift.org/swift-book
 
 import AppleSiliconDDC
+import CoreGraphics
 import Darwin
 import Foundation
 import IOBluetooth
@@ -26,11 +27,11 @@ final class BluetoothWatcher: NSObject {
     self.deviceFilter = deviceFilter
     super.init()
 
-    connectNotification =
-      IOBluetoothDevice.register(
-        forConnectNotifications: self,
-        selector: #selector(deviceConnected(_:device:))
-      )
+    // connectNotification =
+    //   IOBluetoothDevice.register(
+    //     forConnectNotifications: self,
+    //     selector: #selector(deviceConnected(_:device:))
+    //   )
 
     logger.info("Watching for Bluetooth devices...")
     logger.info(
@@ -53,7 +54,8 @@ final class BluetoothWatcher: NSObject {
 
     if name.contains(self.deviceFilter) {
       logger.info("Connected: \(name)")
-      switchDisplayInput()
+      // switchDisplayInput()
+      foo()
     }
   }
 
@@ -89,6 +91,112 @@ final class BluetoothWatcher: NSObject {
     }
 
     logger.info("Input switched (VCP 0x60) to value \(input)")
+
+  }
+
+  func foo() {
+    // var displayCount: UInt32 = 0
+    // CGGetActiveDisplayList(0, nil, &displayCount)
+
+    // var displayIDs = [CGDirectDisplayID](repeating: 0, count: Int(displayCount))
+    // CGGetActiveDisplayList(displayCount, &displayIDs, &displayCount)
+
+    // for displayID in displayIDs {
+    //   if CGDisplayIsBuiltin(displayID) == 1 {
+    //     // builtinDisplay = displayID
+    //   }
+    // }
+
+    let builtinDisplay = CGDirectDisplayID(1)
+
+    if CGDisplayBounds(builtinDisplay).origin == CGPoint(x: 0, y: 0) {
+      setDisplaysOrigin(displays: [
+        DisplayOrigin(displayID: builtinDisplay, x: -1710, y: 0),
+        DisplayOrigin(displayID: CGDirectDisplayID(2), x: 0, y: 0),
+      ])
+    } else {
+      setDisplaysOrigin(displays: [
+        DisplayOrigin(displayID: builtinDisplay, x: 0, y: 0),
+        DisplayOrigin(displayID: CGDirectDisplayID(2), x: 1710, y: 0),
+      ])
+    }
+
+    // let builtinBounds = CGDisplayBounds(builtinDisplay)
+    // let externalBounds = CGDisplayBounds(externalDisplay)
+
+    // TODO: Built-in display is set to main
+    // if CGDisplayBounds(builtinDisplay).origin == CGPoint(x: 0, y: 0) {
+    //   logger.info("Setting external display to main")
+    //   setDisplayOrigin(displayID: builtinDisplay, x: -1710, y: 0)
+    //   setDisplayOrigin(displayID: externalDisplay, x: 0, y: 0)
+    // } else {
+    //   logger.info("Setting built-in display to main")
+    //   setDisplayOrigin(displayID: externalDisplay, x: 1710, y: 0)
+    //   setDisplayOrigin(displayID: builtinDisplay, x: 0, y: 0)
+    // }
+
+    // guard let foo = target else {
+    //   logger.error("Target not found")
+    //   return
+    // }
+
+    // let displayID: CGDirectDisplayID = 2
+
+    // var config: CGDisplayConfigRef?
+    // let beginDisplay = CGBeginDisplayConfiguration(&config)
+    // guard beginDisplay == .success else {
+    //   logger.error("Could not begin display configuration \(beginDisplay)")
+    //   return
+    // }
+
+    // let configureDisplay = CGConfigureDisplayOrigin(config, displayID, 0, 0)
+    // guard configureDisplay == .success else {
+    //   logger.error("Failed to configure display origin: \(configureDisplay)")
+    //   return
+    // }
+
+    // let completeDisplay = CGCompleteDisplayConfiguration(config, .permanently)
+    // guard completeDisplay == .success else {
+    //   logger.error("Could not complete display configuration: \(completeDisplay)")
+    //   return
+    // }
+
+    // logger.info("Display serial number: \(CGDisplaySerialNumber(displayID))")
+    // logger.info("Display Built-in: \(CGDisplayBounds(1))")
+    // logger.info("Display DELL P2422HE: \(CGDisplayBounds(2))")
+  }
+
+  struct DisplayOrigin {
+    let displayID: CGDirectDisplayID
+    let x: Int32
+    let y: Int32
+  }
+
+  func setDisplaysOrigin(displays: [DisplayOrigin]) {
+    var config: CGDisplayConfigRef?
+
+    let beginDisplay = CGBeginDisplayConfiguration(&config)
+    guard beginDisplay == .success else {
+      logger.error("Could not begin configuration: \(beginDisplay)")
+      return
+    }
+
+    for display in displays {
+      let configureDisplay = CGConfigureDisplayOrigin(
+        config, display.displayID, display.x, display.y)
+      guard configureDisplay == .success else {
+        logger.error(
+          "Failed to configure origin for display \(display.displayID): \(configureDisplay)")
+        // TODO: Do not exit immediately
+        return
+      }
+    }
+
+    let completeDisplay = CGCompleteDisplayConfiguration(config, .permanently)
+    guard completeDisplay == .success else {
+      logger.error("Could not complete configuration: \(completeDisplay)")
+      return
+    }
   }
 }
 
@@ -137,6 +245,7 @@ struct BluetoothInputSwitcher {
 
     let watcher = BluetoothWatcher(
       display: config.display, input: config.input, deviceFilter: config.deviceFilter)
+    watcher.foo()
 
     var sources: [DispatchSourceSignal] = []
     let signals: [Int32] = [SIGINT, SIGTERM]
@@ -153,6 +262,6 @@ struct BluetoothInputSwitcher {
       source.resume()
     }
 
-    RunLoop.main.run()
+    // RunLoop.main.run()
   }
 }
