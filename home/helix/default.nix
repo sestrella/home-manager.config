@@ -37,6 +37,10 @@ in
           name = "nix";
           auto-format = true;
         }
+        {
+          name = "swift";
+          auto-format = true;
+        }
       ];
     };
     settings = {
