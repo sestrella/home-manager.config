@@ -12,9 +12,6 @@ let INPUT_COMMAND: UInt8 = 0x60
 
 let logger = Logger(label: "com.sestrella.BluetoohInputSwitcher")
 
-// TODO: Improvements
-// - Check if the input is different before attempting to change it
-// - Set external monitor as the main display
 final class BluetoothWatcher: NSObject {
   struct DisplayOrigin {
     let displayID: CGDirectDisplayID
@@ -51,7 +48,7 @@ final class BluetoothWatcher: NSObject {
     disconnectNotification?.unregister()
   }
 
-  @objc func deviceConnected(
+  @objc private func deviceConnected(
     _ notification: IOBluetoothUserNotification,
     device: IOBluetoothDevice
   ) {
@@ -67,11 +64,14 @@ final class BluetoothWatcher: NSObject {
       )
 
       switchDisplayInput()
-      swapDisplays(main: CGDirectDisplayID(2), extended: CGDirectDisplayID(1))
+      swapDisplays(
+        mainDisplayID: CGDirectDisplayID(2),
+        extendedDisplayID: CGDirectDisplayID(1)
+      )
     }
   }
 
-  @objc func deviceDisconnected(
+  @objc private func deviceDisconnected(
     _ notification: IOBluetoothUserNotification,
     device: IOBluetoothDevice
   ) {
@@ -81,7 +81,10 @@ final class BluetoothWatcher: NSObject {
 
     logger.info("Disconnected: \(name)")
     // TODO: Remove hard-coded displayIDs
-    swapDisplays(main: CGDirectDisplayID(1), extended: CGDirectDisplayID(2))
+    swapDisplays(
+      mainDisplayID: CGDirectDisplayID(1),
+      extendedDisplayID: CGDirectDisplayID(2)
+    )
   }
 
   private func switchDisplayInput() {
@@ -119,23 +122,27 @@ final class BluetoothWatcher: NSObject {
 
   }
 
-  func swapDisplays(main: CGDirectDisplayID, extended: CGDirectDisplayID) {
-    if CGDisplayIsMain(main) == 1 {
-      logger.info("Display \(main) is already the main display")
+  private func swapDisplays(
+    mainDisplayID: CGDirectDisplayID,
+    extendedDisplayID: CGDirectDisplayID
+  ) {
+    if CGDisplayIsMain(mainDisplayID) == 1 {
+      logger.info("Display \(mainDisplayID) is already the main display")
       return
     }
 
-    let origin = CGDisplayBounds(main).origin
+    let origin = CGDisplayBounds(mainDisplayID).origin
 
     logger.info(
-      "Setting display \(main) as the main display and \(extended) as the extended display")
+      "Setting display \(mainDisplayID) as the main display and \(extendedDisplayID) as the extended display"
+    )
     setDisplaysOrigin(origins: [
-      DisplayOrigin(displayID: main, x: 0, y: 0),
-      DisplayOrigin(displayID: extended, x: Int32(-origin.x), y: 0),
+      DisplayOrigin(displayID: mainDisplayID, x: 0, y: 0),
+      DisplayOrigin(displayID: extendedDisplayID, x: Int32(-origin.x), y: 0),
     ])
   }
 
-  func setDisplaysOrigin(origins: [DisplayOrigin]) {
+  private func setDisplaysOrigin(origins: [DisplayOrigin]) {
     var config: CGDisplayConfigRef?
 
     let beginDisplay = CGBeginDisplayConfiguration(&config)
