@@ -79,11 +79,9 @@ final class BluetoothWatcher: NSObject {
       return
     }
 
-    if name.contains(self.deviceFilter) {
-      logger.info("Disconnected: \(name)")
-      // TODO: Remove hard-coded displayIDs
-      swapDisplays(main: CGDirectDisplayID(1), extended: CGDirectDisplayID(2))
-    }
+    logger.info("Disconnected: \(name)")
+    // TODO: Remove hard-coded displayIDs
+    swapDisplays(main: CGDirectDisplayID(1), extended: CGDirectDisplayID(2))
   }
 
   private func switchDisplayInput() {
