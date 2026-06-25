@@ -23,7 +23,6 @@ final class BluetoothWatcher: NSObject {
   }
 
   private var connectNotification: IOBluetoothUserNotification?
-  private var disconnectNotification: IOBluetoothUserNotification?
 
   private let display: String
   private let input: UInt16
@@ -35,32 +34,19 @@ final class BluetoothWatcher: NSObject {
     self.deviceFilter = deviceFilter
     super.init()
 
-    connectNotification =
-      IOBluetoothDevice.register(
-        forConnectNotifications: self,
-        selector: #selector(deviceConnected(_:device:))
-      )
-
-    disconnectNotification =
-      IOBluetoothDevice.register(
-        forDisconnectNotification: self,
-        selector: #selector(deviceDisconnected(_:device:))
-      )
+    connectNotification = IOBluetoothDevice.register(
+      forConnectNotifications: self,
+      selector: #selector(deviceConnected(_:device:))
+    )
 
     logger.info("Watching for Bluetooth devices...")
     logger.info(
       "Using display: \(self.display), input: \(self.input), deviceFilter: \(self.deviceFilter)")
   }
 
-  deinit {
-    unregister()
-  }
-  
-
   func unregister() {
     logger.info("Deregistering Bluetooth hooks...")
     connectNotification?.unregister()
-    disconnectNotification?.unregister()
   }
 
   @objc func deviceConnected(
@@ -73,13 +59,20 @@ final class BluetoothWatcher: NSObject {
 
     if name.contains(self.deviceFilter) {
       logger.info("Connected: \(name)")
+      device.register(
+        forDisconnectNotification: self,
+        selector: #selector(deviceDisconnected(_:device:))
+      )
+
       switchDisplayInput()
-      // TODO: Remove hard-coded displayIDs
       swapDisplays(main: CGDirectDisplayID(2), extended: CGDirectDisplayID(1))
     }
   }
 
-  @objc func deviceDisconnected(_ notification: IOBluetoothUserNotification, device: IOBluetoothDevice) {
+  @objc func deviceDisconnected(
+    _ notification: IOBluetoothUserNotification,
+    device: IOBluetoothDevice
+  ) {
     guard let name = device.name else {
       return
     }
