@@ -23,6 +23,7 @@ final class BluetoothWatcher: NSObject {
   }
 
   private var connectNotification: IOBluetoothUserNotification?
+  private var disconnectNotification: IOBluetoothUserNotification?
 
   private let display: String
   private let input: UInt16
@@ -47,6 +48,7 @@ final class BluetoothWatcher: NSObject {
   func unregister() {
     logger.info("Deregistering Bluetooth hooks...")
     connectNotification?.unregister()
+    disconnectNotification?.unregister()
   }
 
   @objc func deviceConnected(
@@ -59,7 +61,7 @@ final class BluetoothWatcher: NSObject {
 
     if name.contains(self.deviceFilter) {
       logger.info("Connected: \(name)")
-      device.register(
+      disconnectNotification = device.register(
         forDisconnectNotification: self,
         selector: #selector(deviceDisconnected(_:device:))
       )
