@@ -6,11 +6,59 @@ import CoreGraphics
 import Darwin
 import Foundation
 import IOBluetooth
+import IOKit.hid
 import Logging
 
 let INPUT_COMMAND: UInt8 = 0x60
 
 let logger = Logger(label: "com.sestrella.BluetoohInputSwitcher")
+
+class IOWatcher {
+  private let manager = IOHIDManagerCreate(
+    kCFAllocatorDefault,
+    IOOptionBits(kIOHIDOptionsTypeNone)
+  )
+
+  init() {
+    logger.info("Starting IOWatcher")
+    let matching =
+      [
+        kIOHIDDeviceUsagePageKey: kHIDPage_GenericDesktop,
+        kIOHIDDeviceUsageKey: kHIDUsage_GD_Keyboard,
+      ] as CFDictionary
+
+    IOHIDManagerSetDeviceMatching(manager, matching)
+
+    IOHIDManagerRegisterDeviceMatchingCallback(
+      manager,
+      { context, result, sender, device in
+
+        let monitor = Unmanaged<IOWatcher>
+          .fromOpaque(context!)
+          .takeUnretainedValue()
+
+        monitor.deviceConnected(device)
+
+      },
+      Unmanaged.passUnretained(self).toOpaque()
+    )
+
+    IOHIDManagerScheduleWithRunLoop(
+      manager,
+      CFRunLoopGetCurrent(),
+      CFRunLoopMode.defaultMode.rawValue
+    )
+
+    IOHIDManagerOpen(
+      manager,
+      IOOptionBits(kIOHIDOptionsTypeNone)
+    )
+  }
+
+  private func deviceConnected(_ device: IOHIDDevice) {
+    logger.info("Connected: \(device)")
+  }
+}
 
 final class BluetoothWatcher: NSObject {
   struct DisplayOrigin {
@@ -212,8 +260,9 @@ struct BluetoothInputSwitcher {
       Darwin.exit(1)
     }
 
-    let watcher = BluetoothWatcher(
-      display: config.display, input: config.input, deviceFilter: config.deviceFilter)
+    IOWatcher()
+    // let watcher = BluetoothWatcher(
+    //   display: config.display, input: config.input, deviceFilter: config.deviceFilter)
 
     var sources: [DispatchSourceSignal] = []
     let signals: [Int32] = [SIGINT, SIGTERM]
@@ -222,7 +271,7 @@ struct BluetoothInputSwitcher {
       let source = DispatchSource.makeSignalSource(signal: sig, queue: .main)
       source.setEventHandler {
         logger.info("bluetooth-input-switcher is shutting down gracefully...")
-        watcher.unregister()
+        // watcher.unregister()
         source.cancel()
         Darwin.exit(0)
       }
