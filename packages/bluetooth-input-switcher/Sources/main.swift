@@ -2,6 +2,7 @@
 // https://docs.swift.org/swift-book
 
 import AppleSiliconDDC
+import CoreBluetooth
 import CoreGraphics
 import Darwin
 import Foundation
@@ -12,6 +13,62 @@ import Logging
 let INPUT_COMMAND: UInt8 = 0x60
 
 let logger = Logger(label: "com.sestrella.BluetoohInputSwitcher")
+
+final class BTWatcher: NSObject, CBCentralManagerDelegate {
+  private var centralManager: CBCentralManager!
+
+  override init() {
+    logger.info("BTWatcher starting...")
+    super.init()
+    centralManager = CBCentralManager(
+      delegate: self,
+      queue: DispatchQueue.main
+    )
+  }
+
+  func centralManagerDidUpdateState(_ central: CBCentralManager) {
+    if central.state == .poweredOn {
+      logger.info("Bluetooth is ON")
+      // let services = [CBUUID(string: "d1-1f-28-68-66-9d")]
+      // let services = []
+      let connectedDevices = centralManager.retrieveConnectedPeripherals(
+        withServices: []
+      )
+
+      logger.info("Connected devices")
+      for peripheral in connectedDevices {
+        logger.info("Already connected: \(peripheral.name ?? "Unknown")")
+      }
+      return
+    }
+
+    logger.info("Bluetooth state: \(central.state)")
+  }
+
+  // func centralManager(
+  //   _ central: CBCentralManager,
+  //   didDiscover peripheral: CBPeripheral,
+  //   advertisementData: [String: Any],
+  //   rssi RSSI: NSNumber
+  // ) {
+  //   logger.info("Found device: \(peripheral.name ?? "Unknown")")
+  // }
+
+  func centralManager(
+    _ central: CBCentralManager,
+    didConnect peripheral: CBPeripheral
+  ) {
+    logger.info("Connected: \(peripheral.name ?? "Unknown")")
+  }
+
+  // func centralManager(
+  //   _ central: CBCentralManager,
+  //   didDisconnectPeripheral peripheral: CBPeripheral,
+  //   error: Error?
+  // ) {
+  //   logger.info("Disconnected: \(peripheral.name ?? "Unknown")")
+  // }
+}
 
 class IOWatcher {
   private let manager = IOHIDManagerCreate(
@@ -106,16 +163,16 @@ final class BluetoothWatcher: NSObject {
 
     if name.contains(self.deviceFilter) {
       logger.info("Connected: \(name)")
-      disconnectNotification = device.register(
+      device.register(
         forDisconnectNotification: self,
         selector: #selector(deviceDisconnected(_:device:))
       )
 
-      switchDisplayInput()
-      swapDisplays(
-        mainDisplayID: CGDirectDisplayID(2),
-        extendedDisplayID: CGDirectDisplayID(1)
-      )
+      // switchDisplayInput()
+      // swapDisplays(
+      //   mainDisplayID: CGDirectDisplayID(2),
+      //   extendedDisplayID: CGDirectDisplayID(1)
+      // )
     }
   }
 
@@ -129,10 +186,10 @@ final class BluetoothWatcher: NSObject {
 
     logger.info("Disconnected: \(name)")
     // TODO: Remove hard-coded displayIDs
-    swapDisplays(
-      mainDisplayID: CGDirectDisplayID(1),
-      extendedDisplayID: CGDirectDisplayID(2)
-    )
+    // swapDisplays(
+    //   mainDisplayID: CGDirectDisplayID(1),
+    //   extendedDisplayID: CGDirectDisplayID(2)
+    // )
   }
 
   private func switchDisplayInput() {
@@ -260,7 +317,8 @@ struct BluetoothInputSwitcher {
       Darwin.exit(1)
     }
 
-    IOWatcher()
+    let watcher = BTWatcher()
+    // let watcher = IOWatcher()
     // let watcher = BluetoothWatcher(
     //   display: config.display, input: config.input, deviceFilter: config.deviceFilter)
 
