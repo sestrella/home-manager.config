@@ -34,6 +34,13 @@ in
           auto-format = true;
         }
         {
+          name = "hcl";
+          language-servers = [
+            "efm"
+            "terraform-ls"
+          ];
+        }
+        {
           name = "nix";
           auto-format = true;
         }
@@ -42,6 +49,15 @@ in
           auto-format = true;
         }
       ];
+      language-server = {
+        efm = {
+          command = lib.getExe pkgs.efm-langserver;
+          config.tools.checkov = {
+            lint-command = "${lib.getExe pkgs.checkov} -f \${INPUT} -o json";
+            lint-stdin = true;
+          };
+        };
+      };
     };
     settings = {
       editor = {
