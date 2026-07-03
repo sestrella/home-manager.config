@@ -30,6 +30,7 @@ in
       pkgs.kubectl
       pkgs.m1ddc
       pkgs.nerd-fonts.fira-code
+      pkgs.rename
       pkgs.ripgrep
       pkgs.secretspec
       pkgs.tree
