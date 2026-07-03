@@ -16,6 +16,7 @@
       tf = "terraform";
       tfa = "terraform apply";
       tfp = "terraform plan";
+      tfv = "terraform validate";
     };
   };
 }
