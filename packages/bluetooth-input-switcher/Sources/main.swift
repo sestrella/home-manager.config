@@ -33,7 +33,6 @@ enum Input: String, CustomStringConvertible, Decodable {
 }
 
 // TODO: Improvements
-// - Check if the input is different before attempting to change it
 // - Set external monitor as the main display
 final class BluetoothWatcher: NSObject {
     private var connectNotification: IOBluetoothUserNotification?
