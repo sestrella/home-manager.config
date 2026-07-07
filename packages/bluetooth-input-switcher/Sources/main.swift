@@ -11,148 +11,172 @@ let INPUT_COMMAND: UInt8 = 0x60
 
 let logger = Logger(label: "com.sestrella.BluetoohInputSwitcher")
 
+enum Input: String, CustomStringConvertible, Decodable {
+    case displayPort = "display-port"
+    case usbC = "usb-c"
+
+    var description: String {
+        if self == .displayPort {
+            return "DisplayPort"
+        }
+
+        return "USB-C"
+    }
+
+    var rawValue: UInt16 {
+        if self == .displayPort {
+            return 16
+        }
+
+        return 27
+    }
+}
+
 // TODO: Improvements
 // - Check if the input is different before attempting to change it
 // - Set external monitor as the main display
 final class BluetoothWatcher: NSObject {
-  private var connectNotification: IOBluetoothUserNotification?
-  private let display: String
-  private let input: UInt16
-  private let deviceFilter: String
+    private var connectNotification: IOBluetoothUserNotification?
+    private let display: String
+    private let input: Input
+    private let deviceFilter: String
 
-  init(display: String, input: UInt16, deviceFilter: String) {
-    self.display = display
-    self.input = input
-    self.deviceFilter = deviceFilter
-    super.init()
+    init(display: String, input: Input, deviceFilter: String) {
+        self.display = display
+        self.input = input
+        self.deviceFilter = deviceFilter
+        super.init()
 
-    connectNotification =
-      IOBluetoothDevice.register(
-        forConnectNotifications: self,
-        selector: #selector(deviceConnected(_:device:))
-      )
+        connectNotification =
+            IOBluetoothDevice.register(
+                forConnectNotifications: self,
+                selector: #selector(deviceConnected(_:device:))
+            )
 
-    logger.info("Watching for Bluetooth devices...")
-    logger.info(
-      "Using display: \(self.display), input: \(self.input), deviceFilter: \(self.deviceFilter)")
-  }
-
-  func unregister() {
-    logger.info("Deregistering Bluetooth hook...")
-    connectNotification?.unregister()
-  }
-
-  @objc func deviceConnected(
-    _ notification: IOBluetoothUserNotification,
-    device: IOBluetoothDevice
-  ) {
-
-    guard let name = device.name else {
-      return
+        logger.info("Watching for Bluetooth devices...")
+        logger.info(
+            "Using display: \(self.display), input: \(self.input), deviceFilter: \(self.deviceFilter)"
+        )
     }
 
-    if name.contains(self.deviceFilter) {
-      logger.info("Connected: \(name)")
-      switchDisplayInput()
-    }
-  }
-
-  private func switchDisplayInput() {
-    logger.info("Device changed, switching display input via AppleSiliconDDC...")
-
-    let displays = AppleSiliconDDC.getIoregServicesForMatching()
-    var target: AppleSiliconDDC.IOregService? = nil
-    for display in displays {
-      if display.alphanumericSerialNumber == self.display {
-        target = display
-        break
-      }
+    func unregister() {
+        logger.info("Deregistering Bluetooth hook...")
+        connectNotification?.unregister()
     }
 
-    guard let service = target?.service else {
-      logger.error("No service found for display \(display)")
-      return
+    @objc func deviceConnected(
+        _ notification: IOBluetoothUserNotification,
+        device: IOBluetoothDevice
+    ) {
+
+        guard let name = device.name else {
+            return
+        }
+
+        if name.contains(self.deviceFilter) {
+            logger.info("Connected: \(name)")
+            switchDisplayInput()
+        }
     }
 
-    let readValue = AppleSiliconDDC.read(service: service, command: INPUT_COMMAND)
-    if let currentValue = readValue?.current {
-      guard currentValue & 0x00FF != input else {
-        logger.info("Input \(input) is already selected")
-        return
-      }
-    }
+    private func switchDisplayInput() {
+        logger.info("Device changed, switching display input via AppleSiliconDDC...")
 
-    let writeOK = AppleSiliconDDC.write(service: service, command: INPUT_COMMAND, value: input)
-    guard writeOK else {
-      logger.error("Failed to switch input via AppleSiliconDDC")
-      return
-    }
+        let displays = AppleSiliconDDC.getIoregServicesForMatching()
+        var target: AppleSiliconDDC.IOregService? = nil
+        for display in displays {
+            if display.alphanumericSerialNumber == self.display {
+                target = display
+                break
+            }
+        }
 
-    logger.info("Input switched (VCP 0x60) to value \(input)")
-  }
+        guard let service = target?.service else {
+            logger.error("No service found for display \(display)")
+            return
+        }
+
+        let readValue = AppleSiliconDDC.read(service: service, command: INPUT_COMMAND)
+        if let currentValue = readValue?.current {
+            guard currentValue & 0x00FF != input.rawValue else {
+                logger.info("Input \(input) is already selected")
+                return
+            }
+        }
+
+        let writeOK = AppleSiliconDDC.write(
+            service: service, command: INPUT_COMMAND, value: input.rawValue)
+        guard writeOK else {
+            logger.error("Failed to switch input via AppleSiliconDDC")
+            return
+        }
+
+        logger.info("Input switched (VCP 0x60) to value \(input)")
+    }
 }
 
-struct Config: Codable {
-  let deviceFilter: String
-  let display: String
-  let input: UInt16
+struct Config: Decodable {
+    let deviceFilter: String
+    let display: String
+    let input: Input
 }
 
 func loadConfig(path: String) -> Config? {
-  let expanded = (path as NSString).expandingTildeInPath
-  let fileManager = FileManager.default
-  guard fileManager.fileExists(atPath: expanded) else {
-    logger.error("Configuration file not found at \(expanded)")
-    return nil
-  }
+    let expanded = (path as NSString).expandingTildeInPath
+    let fileManager = FileManager.default
+    guard fileManager.fileExists(atPath: expanded) else {
+        logger.error("Configuration file not found at \(expanded)")
+        return nil
+    }
 
-  let url = URL(fileURLWithPath: expanded)
+    let url = URL(fileURLWithPath: expanded)
 
-  guard let data = try? Data(contentsOf: url) else {
-    logger.error("Error reading configuration file at \(expanded)")
-    return nil
-  }
+    guard let data = try? Data(contentsOf: url) else {
+        logger.error("Error reading configuration file at \(expanded)")
+        return nil
+    }
 
-  let decoder = JSONDecoder()
-  do {
-    let config = try decoder.decode(Config.self, from: data)
-    return config
-  } catch {
-    logger.error("Error parsing configuration: \(error)")
-    return nil
-  }
+    let decoder = JSONDecoder()
+    do {
+        let config = try decoder.decode(Config.self, from: data)
+        return config
+    } catch {
+        logger.error("Error parsing configuration: \(error)")
+        return nil
+    }
 }
 
 @main
 struct BluetoothInputSwitcher {
-  static func main() {
-    logger.info("Starting with PID \(ProcessInfo.processInfo.processIdentifier)")
+    static func main() {
+        logger.info("Starting with PID \(ProcessInfo.processInfo.processIdentifier)")
 
-    // TODO: Remove hard-coded config path
-    let configPath = "~/.config/bluetooth-input-switcher/config.json"
-    guard let config = loadConfig(path: configPath) else {
-      logger.error("Failed to load configuration; exiting.")
-      Darwin.exit(1)
+        // TODO: Remove hard-coded config path
+        let configPath = "~/.config/bluetooth-input-switcher/config.json"
+        guard let config = loadConfig(path: configPath) else {
+            logger.error("Failed to load configuration; exiting.")
+            Darwin.exit(1)
+        }
+
+        let watcher = BluetoothWatcher(
+            display: config.display, input: config.input, deviceFilter: config.deviceFilter
+        )
+
+        var sources: [DispatchSourceSignal] = []
+        let signals: [Int32] = [SIGINT, SIGTERM]
+        for sig in signals {
+            signal(sig, SIG_IGN)
+            let source = DispatchSource.makeSignalSource(signal: sig, queue: .main)
+            source.setEventHandler {
+                logger.info("bluetooth-input-switcher is shutting down gracefully...")
+                watcher.unregister()
+                source.cancel()
+                Darwin.exit(0)
+            }
+            sources.append(source)
+            source.resume()
+        }
+
+        RunLoop.main.run()
     }
-
-    let watcher = BluetoothWatcher(
-      display: config.display, input: config.input, deviceFilter: config.deviceFilter)
-
-    var sources: [DispatchSourceSignal] = []
-    let signals: [Int32] = [SIGINT, SIGTERM]
-    for sig in signals {
-      signal(sig, SIG_IGN)
-      let source = DispatchSource.makeSignalSource(signal: sig, queue: .main)
-      source.setEventHandler {
-        logger.info("bluetooth-input-switcher is shutting down gracefully...")
-        watcher.unregister()
-        source.cancel()
-        Darwin.exit(0)
-      }
-      sources.append(source)
-      source.resume()
-    }
-
-    RunLoop.main.run()
-  }
 }
