@@ -24,6 +24,7 @@ in
     in
     [
       helm
+
       pkgs.devenv
       pkgs.github-copilot-cli
       pkgs.gitleaks
@@ -32,6 +33,8 @@ in
       pkgs.rename
       pkgs.ripgrep
       pkgs.secretspec
+      pkgs.sops
+      pkgs.terraform
       pkgs.tree
       pkgs.yq
     ];
