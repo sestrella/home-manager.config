@@ -11,4 +11,12 @@ DistributedNotificationCenter.default().addObserver(
 	print("Appearance changed")
 }
 
+NSWorkspace.shared.notificationCenter.addObserver(
+	forName: NSWorkspace.didWakeNotification,
+	object: nil,
+	queue: nil
+) { _ in
+	print("Wake up hook")
+}
+
 NSApplication.shared.run()
