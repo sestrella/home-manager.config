@@ -66,12 +66,18 @@ class ThemeChangedObserver {
 				withIntermediateDirectories: true
 			)
 
-			let symlinkPath = "\(runtimeDir)/themes/\(theme)_\(suffix).toml"
+			let destinationPath = "\(runtimeDir)/themes/\(theme)_\(suffix).toml"
 			let themePath = "\(themesDir)/\(theme).toml"
-			print("Symlinking \(themePath) into \(symlinkPath)")
+
+			if fileManager.fileExists(atPath: themePath) {
+				print("Removing existing file: \(themePath)")
+				try fileManager.removeItem(atPath: themePath)
+			}
+
+			print("Symlinking \(destinationPath) into \(themePath)")
 			try fileManager.createSymbolicLink(
-				atPath: symlinkPath,
-				withDestinationPath: themePath
+				atPath: themePath,
+				withDestinationPath: destinationPath
 			)
 		} catch {
 			// TODO: Handle errors
@@ -81,7 +87,7 @@ class ThemeChangedObserver {
 }
 
 let observer = ThemeChangedObserver(
-	configDir: "~/.config/helix",
+	configDir: "/Users/sestrella/.config/helix",
 	runtimeDir: "/nix/store/gk2kj3ngbdbmhmgphcmsff5m8i4xf874-helix-default-runtime",
 	theme: "solarized"
 )
