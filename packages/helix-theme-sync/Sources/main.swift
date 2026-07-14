@@ -1,10 +1,10 @@
 // The Swift Programming Language
 // https://docs.swift.org/swift-book
 
+import ArgumentParser
 import Cocoa
 import Foundation
 import Logging
-import ArgumentParser
 
 let logger = Logger(label: "com.sestrella.helix-theme-sync")
 
@@ -65,68 +65,76 @@ class ThemeChangedObserver {
 		let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
 
 		if isDark {
-            _ = symlinkTheme(suffix: "dark")
-            return
-        }
+			_ = symlinkTheme(suffix: "dark")
+			return
+		}
 
-        _ = symlinkTheme(suffix: "light")
+		_ = symlinkTheme(suffix: "light")
 	}
 
 	private func symlinkTheme(suffix: String) -> Bool {
+		let destinationPath = "\(runtimeDir)/themes/\(theme)_\(suffix).toml"
+		let themesDir = "\(configDir)/themes"
+		let themePath = "\(themesDir)/\(theme).toml"
+
 		do {
-			let themesDir = "\(configDir)/themes"
+			// Validate destination exists
+			if !fileManager.fileExists(atPath: destinationPath) {
+				logger.error("Destination theme file does not exist: \(destinationPath)")
+				return false
+			}
+
 			logger.info("Creating themes directory at \(themesDir)")
 			try fileManager.createDirectory(
 				atPath: themesDir,
 				withIntermediateDirectories: true
 			)
 
-			let destinationPath = "\(runtimeDir)/themes/\(theme)_\(suffix).toml"
-			let themePath = "\(themesDir)/\(theme).toml"
-
 			if fileManager.fileExists(atPath: themePath) {
-                // If it's a symlink, check if it already points to the correct destination
-                if let currentDest = try? fileManager.destinationOfSymbolicLink(atPath: themePath), currentDest == destinationPath {
-                    logger.info("Symlink already up to date: \(themePath) -> \(destinationPath)")
-                    return false
-                }
-                logger.info("Removing existing theme file at \(themePath)")
-                try fileManager.removeItem(atPath: themePath)
-            }
+				// If it's a symlink, check if it already points to the correct destination
+				let currentDest = try fileManager.destinationOfSymbolicLink(atPath: themePath)
+				if currentDest == destinationPath {
+					logger.info("Symlink already up to date: \(themePath) -> \(destinationPath)")
+					return false
+				}
+
+				logger.info("Removing existing theme file at \(themePath)")
+				try fileManager.removeItem(atPath: themePath)
+			}
 
 			logger.info("Creating symlink from \(themePath) to \(destinationPath)")
-            try fileManager.createSymbolicLink(
-                atPath: themePath,
-                withDestinationPath: destinationPath
-            )
-            return true
-        } catch {
-            logger.error("Error in symlinkTheme: \(error.localizedDescription)")
-            return false
-        }
+			try fileManager.createSymbolicLink(
+				atPath: themePath,
+				withDestinationPath: destinationPath
+			)
+			return true
+		} catch {
+			logger.error("Error in symlinkTheme: \(error.localizedDescription)")
+			return false
+		}
 	}
 }
 
 struct HelixThemeSync: ParsableCommand {
-    @Option(name: .shortAndLong, help: "Helix config directory")
-    var configDir: String
+	@Option(name: .shortAndLong, help: "Helix config directory")
+	var configDir: String
 
-    @Option(name: .shortAndLong, help: "Helix runtime directory")
-    var runtimeDir: String
+	@Option(name: .shortAndLong, help: "Helix runtime directory")
+	var runtimeDir: String
 
-    @Option(name: .shortAndLong, help: "Theme name")
-    var theme: String
+	@Option(name: .shortAndLong, help: "Theme name")
+	var theme: String
 
-    func run() throws {
-        let observer = ThemeChangedObserver(
-            configDir: configDir,
-            runtimeDir: runtimeDir,
-            theme: theme
-        )
-        observer.add()
-        NSApplication.shared.run()
-        observer.remove()
-    }
+	func run() throws {
+		let observer = ThemeChangedObserver(
+			configDir: configDir,
+			runtimeDir: runtimeDir,
+			theme: theme
+		)
+		observer.add()
+		NSApplication.shared.run()
+		observer.remove()
+	}
 }
 
 HelixThemeSync.main()
