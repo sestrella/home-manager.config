@@ -16,6 +16,10 @@ in
   # Custom configuration
   imports = listDirFiles ./home;
 
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
+
   home.packages =
     let
       helm = pkgs.wrapHelm pkgs.kubernetes-helm {
@@ -30,6 +34,7 @@ in
       pkgs.gitleaks
       pkgs.kubectl
       pkgs.nerd-fonts.fira-code
+      pkgs.opencode
       pkgs.rename
       pkgs.ripgrep
       pkgs.secretspec
