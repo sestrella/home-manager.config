@@ -3,6 +3,9 @@
 
 import Cocoa
 import Foundation
+import Logging
+
+let logger = Logger(label: "com.sestrella.helix-theme-sync")
 
 class ThemeChangedObserver {
 	let center = DistributedNotificationCenter.default
@@ -21,6 +24,7 @@ class ThemeChangedObserver {
 	}
 
 	func add() {
+		logger.info("Object")
 		observer = center.addObserver(
 			forName: Notification.Name("AppleInterfaceThemeChangedNotification"),
 			object: nil,
