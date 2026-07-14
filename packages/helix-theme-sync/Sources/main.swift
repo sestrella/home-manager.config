@@ -95,8 +95,7 @@ class ThemeChangedObserver {
 				withDestinationPath: destinationPath
 			)
 		} catch {
-			logger.error("Failed to update theme symlink: \(error.localizedDescription)")
-			print(error)
+			logger.error("Error in symlinkTheme: \(error.localizedDescription)")
 		}
 	}
 }
