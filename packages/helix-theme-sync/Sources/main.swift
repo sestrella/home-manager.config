@@ -15,7 +15,8 @@ class ThemeChangedObserver {
 	private var runtimeDir: String
 	private var theme: String
 
-	private var observer: NSObjectProtocol?
+	private var centralObserver: NSObjectProtocol?
+	private var workspaceObserver: NSObjectProtocol?
 
 	init(configDir: String, runtimeDir: String, theme: String) {
 		self.configDir = configDir
@@ -24,8 +25,8 @@ class ThemeChangedObserver {
 	}
 
 	func add() {
-		logger.info("Object")
-		observer = center.addObserver(
+		logger.info("Adding central observer...")
+		centralObserver = center.addObserver(
 			forName: Notification.Name("AppleInterfaceThemeChangedNotification"),
 			object: nil,
 			queue: .main
@@ -33,7 +34,8 @@ class ThemeChangedObserver {
 			self.themeChanged()
 		}
 
-		NSWorkspace.shared.notificationCenter.addObserver(
+		logger.info("Adding workspace observer...")
+		workspaceObserver = NSWorkspace.shared.notificationCenter.addObserver(
 			forName: NSWorkspace.didWakeNotification,
 			object: nil,
 			queue: nil
@@ -43,11 +45,19 @@ class ThemeChangedObserver {
 	}
 
 	func remove() {
-		guard let foo = observer else {
+		guard let observer = centralObserver else {
 			return
 		}
 
-		center.removeObserver(foo)
+		logger.info("Removing central observer...")
+		center.removeObserver(observer)
+
+		guard let observer = workspaceObserver else {
+			return
+		}
+
+		logger.info("Removing central observer...")
+		NSWorkspace.shared.notificationCenter.removeObserver(observer)
 	}
 
 	private func themeChanged() {
