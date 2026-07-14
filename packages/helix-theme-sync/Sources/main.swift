@@ -4,6 +4,7 @@
 import Cocoa
 import Foundation
 import Logging
+import ArgumentParser
 
 let logger = Logger(label: "com.sestrella.helix-theme-sync")
 
@@ -100,11 +101,26 @@ class ThemeChangedObserver {
 	}
 }
 
-let observer = ThemeChangedObserver(
-	configDir: "/Users/sestrella/.config/helix",
-	runtimeDir: "/nix/store/gk2kj3ngbdbmhmgphcmsff5m8i4xf874-helix-default-runtime",
-	theme: "solarized"
-)
-observer.add()
-NSApplication.shared.run()
-observer.remove()
+struct HelixThemeSync: ParsableCommand {
+    @Option(name: .shortAndLong, help: "Helix config directory")
+    var configDir: String
+
+    @Option(name: .shortAndLong, help: "Helix runtime directory")
+    var runtimeDir: String
+
+    @Option(name: .shortAndLong, help: "Theme name")
+    var theme: String
+
+    func run() throws {
+        let observer = ThemeChangedObserver(
+            configDir: configDir,
+            runtimeDir: runtimeDir,
+            theme: theme
+        )
+        observer.add()
+        NSApplication.shared.run()
+        observer.remove()
+    }
+}
+
+HelixThemeSync.main()
