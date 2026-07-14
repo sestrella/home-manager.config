@@ -172,7 +172,6 @@ struct HelixThemeSync: ParsableCommand {
 			runtimeDir: NSString(string: runtimeDir).expandingTildeInPath,
 			theme: theme
 		)
-
 		observer.add()
 		NSApplication.shared.run()
 		observer.remove()
