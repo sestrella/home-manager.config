@@ -74,7 +74,7 @@ class ThemeChangedObserver {
 	private func symlinkTheme(suffix: String) {
 		do {
 			let themesDir = "\(configDir)/themes"
-			print("Creating directory \(themesDir)")
+			logger.info("Creating themes directory at \(themesDir)")
 			try fileManager.createDirectory(
 				atPath: themesDir,
 				withIntermediateDirectories: true
@@ -84,17 +84,17 @@ class ThemeChangedObserver {
 			let themePath = "\(themesDir)/\(theme).toml"
 
 			if fileManager.fileExists(atPath: themePath) {
-				print("Removing existing file: \(themePath)")
+				logger.info("Removing existing theme file at \(themePath)")
 				try fileManager.removeItem(atPath: themePath)
 			}
 
-			print("Symlinking \(destinationPath) into \(themePath)")
+			logger.info("Creating symlink from \(themePath) to \(destinationPath)")
 			try fileManager.createSymbolicLink(
 				atPath: themePath,
 				withDestinationPath: destinationPath
 			)
 		} catch {
-			// TODO: Handle errors
+			logger.error("Failed to update theme symlink: \(error.localizedDescription)")
 			print(error)
 		}
 	}

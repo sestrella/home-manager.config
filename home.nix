@@ -24,10 +24,12 @@ in
     in
     [
       helm
+
       pkgs.devenv
       pkgs.github-copilot-cli
       pkgs.gitleaks
       pkgs.kubectl
+      pkgs.opencode
       pkgs.nerd-fonts.fira-code
       pkgs.rename
       pkgs.ripgrep
