@@ -119,41 +119,41 @@ class ThemeChangedObserver {
 		}
 	}
 
-    private func reloadConfig() {
-        let process = Process()
-        process.launchPath = "/usr/bin/pgrep"
-        process.arguments = ["hx"]
+	private func reloadConfig() {
+		let process = Process()
+		process.launchPath = "/usr/bin/pgrep"
+		process.arguments = ["hx"]
 
-        let pipe = Pipe()
-        process.standardOutput = pipe
+		let pipe = Pipe()
+		process.standardOutput = pipe
 
-        do {
-            try process.run()
-            process.waitUntilExit()
+		do {
+			try process.run()
+			process.waitUntilExit()
 
-            let data = pipe.fileHandleForReading.readDataToEndOfFile()
-            guard let output = String(data: data, encoding: .utf8) else {
-                logger.error("Failed to read pgrep output")
-                return
-            }
+			let data = pipe.fileHandleForReading.readDataToEndOfFile()
+			guard let output = String(data: data, encoding: .utf8) else {
+				logger.error("Failed to read pgrep output")
+				return
+			}
 
-            let pids = output.split(separator: "\n").compactMap { Int32($0) }
-            if pids.isEmpty {
-                logger.error("No running hx process found to signal")
-                return
-            }
+			let pids = output.split(separator: "\n").compactMap { Int32($0) }
+			if pids.isEmpty {
+				logger.error("No running hx process found to signal")
+				return
+			}
 
-            for pid in pids {
-                if kill(pid, SIGUSR1) == 0 {
-                    logger.info("Sent SIGUSR1 to hx process with PID \(pid)")
-                } else {
-                    logger.error("Failed to send SIGUSR1 to hx process with PID \(pid)")
-                }
-            }
-        } catch {
-            logger.error("Failed to reload hx config: \(error.localizedDescription)")
-        }
-    }
+			for pid in pids {
+				if kill(pid, SIGUSR1) == 0 {
+					logger.info("Sent SIGUSR1 to hx process with PID \(pid)")
+				} else {
+					logger.error("Failed to send SIGUSR1 to hx process with PID \(pid)")
+				}
+			}
+		} catch {
+			logger.error("Failed to reload hx config: \(error.localizedDescription)")
+		}
+	}
 }
 
 struct HelixThemeSync: ParsableCommand {
@@ -168,8 +168,8 @@ struct HelixThemeSync: ParsableCommand {
 
 	func run() throws {
 		let observer = ThemeChangedObserver(
-			configDir: configDir,
-			runtimeDir: runtimeDir,
+			configDir: NSString(string: configDir).expandingTildeInPath,
+			runtimeDir: NSString(string: runtimeDir).expandingTildeInPath,
 			theme: theme
 		)
 		observer.add()
