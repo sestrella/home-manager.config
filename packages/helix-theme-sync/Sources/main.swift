@@ -65,14 +65,14 @@ class ThemeChangedObserver {
 		let isDark = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
 
 		if isDark {
-			symlinkTheme(suffix: "dark")
-			return
-		}
+            _ = symlinkTheme(suffix: "dark")
+            return
+        }
 
-		symlinkTheme(suffix: "light")
+        _ = symlinkTheme(suffix: "light")
 	}
 
-	private func symlinkTheme(suffix: String) {
+	private func symlinkTheme(suffix: String) -> Bool {
 		do {
 			let themesDir = "\(configDir)/themes"
 			logger.info("Creating themes directory at \(themesDir)")
@@ -85,18 +85,25 @@ class ThemeChangedObserver {
 			let themePath = "\(themesDir)/\(theme).toml"
 
 			if fileManager.fileExists(atPath: themePath) {
-				logger.info("Removing existing theme file at \(themePath)")
-				try fileManager.removeItem(atPath: themePath)
-			}
+                // If it's a symlink, check if it already points to the correct destination
+                if let currentDest = try? fileManager.destinationOfSymbolicLink(atPath: themePath), currentDest == destinationPath {
+                    logger.info("Symlink already up to date: \(themePath) -> \(destinationPath)")
+                    return false
+                }
+                logger.info("Removing existing theme file at \(themePath)")
+                try fileManager.removeItem(atPath: themePath)
+            }
 
 			logger.info("Creating symlink from \(themePath) to \(destinationPath)")
-			try fileManager.createSymbolicLink(
-				atPath: themePath,
-				withDestinationPath: destinationPath
-			)
-		} catch {
-			logger.error("Error in symlinkTheme: \(error.localizedDescription)")
-		}
+            try fileManager.createSymbolicLink(
+                atPath: themePath,
+                withDestinationPath: destinationPath
+            )
+            return true
+        } catch {
+            logger.error("Error in symlinkTheme: \(error.localizedDescription)")
+            return false
+        }
 	}
 }
 
