@@ -30,7 +30,6 @@ in
       helm
 
       pkgs.devenv
-      pkgs.github-copilot-cli
       pkgs.gitleaks
       pkgs.herdr
       pkgs.kubectl
@@ -40,7 +39,6 @@ in
       pkgs.ripgrep
       pkgs.secretspec
       pkgs.sops
-      pkgs.terraform
       pkgs.tree
       pkgs.yq
     ];
