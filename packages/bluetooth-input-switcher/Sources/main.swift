@@ -11,6 +11,7 @@ let INPUT_COMMAND: UInt8 = 0x60
 
 let logger = Logger(label: "com.sestrella.BluetoohInputSwitcher")
 
+// TODO: Remove this enum in favor or int values (revert commit)
 enum Input: String, CustomStringConvertible, Decodable {
   case displayPort = "display-port"
   case usbC = "usb-c"

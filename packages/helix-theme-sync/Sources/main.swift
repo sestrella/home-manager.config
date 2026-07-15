@@ -178,4 +178,5 @@ struct HelixThemeSync: ParsableCommand {
 	}
 }
 
+// TODO: Rename this file and add @main annotation to HelixThemeSync.
 HelixThemeSync.main()
