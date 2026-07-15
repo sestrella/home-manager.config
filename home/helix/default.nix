@@ -58,9 +58,13 @@ in
     enable = true;
 
     config = {
-      Program = lib.getExe helixThemeSync;
+      Program = lib.getExe pkgs.helix-theme-sync;
       ProgramArguments = [
-        "${pkgs.helix-unwrapped.HELIX_DEFAULT_RUNTIME}/themes"
+        "--config-dir"
+        "~/.config/helix"
+        "--runtime-dir"
+        "${pkgs.helix-unwrapped.HELIX_DEFAULT_RUNTIME}"
+        "--theme"
         "${config.programs.helix.settings.theme}"
       ];
       ProcessType = "Background";
