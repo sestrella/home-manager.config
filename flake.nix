@@ -3,6 +3,7 @@
 
   inputs = {
     devenv.url = "github:cachix/devenv/v2.1.2";
+    herdr.url = "github:ogulcancelik/herdr/v0.7.3";
     home-manager = {
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,6 +20,7 @@
   outputs =
     {
       devenv,
+      herdr,
       home-manager,
       nixpkgs,
       ...
@@ -32,6 +34,7 @@
             config.allowUnfree = true; # Required to install GH Copilot CLI
             overlays = [
               devenv.overlays.default
+              herdr.overlays.default
               (final: prev: import ./packages { pkgs = final; })
             ];
           };

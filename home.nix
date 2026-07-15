@@ -32,6 +32,7 @@ in
       pkgs.devenv
       pkgs.github-copilot-cli
       pkgs.gitleaks
+      pkgs.herdr
       pkgs.kubectl
       pkgs.nerd-fonts.fira-code
       pkgs.opencode
