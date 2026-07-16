@@ -5,17 +5,17 @@
     devenv.url = "github:cachix/devenv/v2.1.2";
     herdr.url = "github:ogulcancelik/herdr/v0.7.3";
     home-manager = {
-      url = "github:nix-community/home-manager/release-26.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
   };
 
   # TODO: Review cache warnings on the CI
-  nixConfig = {
-    extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw= cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM=";
-    extra-substituters = "https://devenv.cachix.org https://cachix.cachix.org";
-  };
+  # nixConfig = {
+  #   extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw= cachix.cachix.org-1:eWNHQldwUO7G2VkjpnjDbWwy4KQ/HNxht7H4SSoMckM=";
+  #   extra-substituters = "https://devenv.cachix.org https://cachix.cachix.org";
+  # };
 
   outputs =
     {
