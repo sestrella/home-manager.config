@@ -37,6 +37,8 @@ in
       pkgs.rename
       pkgs.ripgrep
       pkgs.secretspec
+      pkgs.shellcheck
+      pkgs.sops
       pkgs.tree
       pkgs.yq
     ];

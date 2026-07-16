@@ -22,7 +22,6 @@ in
       pkgs.elixir-ls
       pkgs.nixd
       pkgs.nixfmt
-      pkgs.shellcheck
       pkgs.terraform-ls
       pkgs.vscode-json-languageserver
       pkgs.yaml-language-server
