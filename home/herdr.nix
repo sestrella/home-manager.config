@@ -18,8 +18,4 @@
       update.version_check = false;
     };
   };
-
-  # TODO: Remove once https://github.com/nix-community/home-manager/pull/9662 gets merged
-  xdg.configFile."herdr/config.toml".onChange =
-    "${lib.getExe config.programs.herdr.package} server reload-config || true";
 }

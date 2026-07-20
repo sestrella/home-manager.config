@@ -5,12 +5,6 @@
   ...
 }:
 
-let
-  helixThemeSync = pkgs.writeShellApplication {
-    name = "helix-theme-sync";
-    text = builtins.readFile ./helix-theme-sync.bash;
-  };
-in
 {
   programs.helix = {
     enable = true;
@@ -49,9 +43,6 @@ in
       theme = "solarized";
     };
   };
-
-  # This has already been implemented in the master branch.
-  xdg.configFile."helix/config.toml".onChange = "/usr/bin/pkill -USR1 hx || true";
 
   launchd.agents.helix-theme-sync = {
     enable = true;
