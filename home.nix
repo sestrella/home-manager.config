@@ -29,6 +29,7 @@ in
     [
       helm
 
+      pkgs.checkov
       pkgs.devenv
       pkgs.gitleaks
       pkgs.kubectl
