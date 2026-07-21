@@ -13,7 +13,10 @@
 
     settings = {
       terminal.default_shell = lib.getExe config.programs.fish.package;
-      theme.name = "solarized";
+      theme = {
+        auto_switch = true;
+        name = "solarized";
+      };
       ui.sidebar_collapsed_mode = "hidden";
       update.version_check = false;
     };
