@@ -33,7 +33,6 @@ in
       pkgs.gitleaks
       pkgs.kubectl
       pkgs.nerd-fonts.fira-code
-      pkgs.opencode
       pkgs.rename
       pkgs.ripgrep
       pkgs.secretspec
