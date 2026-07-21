@@ -20,27 +20,18 @@ in
     "$HOME/.local/bin"
   ];
 
-  home.packages =
-    let
-      helm = pkgs.wrapHelm pkgs.kubernetes-helm {
-        plugins = [ pkgs.kubernetes-helmPlugins.helm-diff ];
-      };
-    in
-    [
-      helm
-
-      pkgs.devenv
-      pkgs.gitleaks
-      pkgs.kubectl
-      pkgs.nerd-fonts.fira-code
-      pkgs.rename
-      pkgs.ripgrep
-      pkgs.secretspec
-      pkgs.shellcheck
-      pkgs.sops
-      pkgs.tree
-      pkgs.yq
-    ];
+  home.packages = [
+    pkgs.devenv
+    pkgs.gitleaks
+    pkgs.nerd-fonts.fira-code
+    pkgs.rename
+    pkgs.ripgrep
+    pkgs.secretspec
+    pkgs.shellcheck
+    pkgs.sops
+    pkgs.tree
+    pkgs.yq
+  ];
 
   programs = {
     direnv.enable = true;
