@@ -4,6 +4,6 @@
   programs.opencode = {
     enable = true;
 
-    settings.attention.enabled = true;
+    tui.attention.enabled = true;
   };
 }
