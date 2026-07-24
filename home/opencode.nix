@@ -4,6 +4,6 @@
   programs.opencode = {
     enable = true;
 
-    tui.attention.enabled = true;
+    tui.theme = "solarized";
   };
 }
