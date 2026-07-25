@@ -4,6 +4,7 @@
   programs.opencode = {
     enable = true;
 
-    tui.theme = "solarized";
+    settings.autoupdate = false;
+    tui.theme = "system";
   };
 }
