@@ -21,6 +21,8 @@ in
   ];
 
   home.packages = [
+    pkgs.check-jsonschema
+
     pkgs.devenv
     pkgs.gitleaks
     pkgs.nerd-fonts.fira-code

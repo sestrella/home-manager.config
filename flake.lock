@@ -626,15 +626,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1784546264,
-        "narHash": "sha256-jxVr5EHMYAOkFvS2k0abIvt6NqyshyWmiHHzV17sT2g=",
-        "owner": "nix-community",
+        "lastModified": 1784967358,
+        "narHash": "sha256-HWoWo7uGdvKt4VwuzttozF2jjz5Iu3R61lPxB1kKh78=",
+        "owner": "sestrella",
         "repo": "home-manager",
-        "rev": "e3dea8e4792b09a6c0eb5836b0284ad05b1acba0",
+        "rev": "54603d3ebf38bd60d0fc3ba8ea8a5775d3c98c2e",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "sestrella",
+        "ref": "opencode/validate-config",
         "repo": "home-manager",
         "type": "github"
       }

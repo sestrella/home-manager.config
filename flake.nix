@@ -5,7 +5,7 @@
     devenv.url = "github:cachix/devenv/v2.1.2";
     herdr.url = "github:ogulcancelik/herdr/v0.7.3";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "github:sestrella/home-manager/opencode/validate-config";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
