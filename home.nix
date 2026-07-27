@@ -22,7 +22,9 @@ in
 
   home.packages = [
     pkgs.devenv
+    pkgs.findutils
     pkgs.gitleaks
+    pkgs.gnused
     pkgs.nerd-fonts.fira-code
     pkgs.rename
     pkgs.ripgrep
