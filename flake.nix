@@ -2,7 +2,7 @@
   description = "Home Manager configuration of sestrella";
 
   inputs = {
-    devenv.url = "github:cachix/devenv/v2.1.2";
+    devenv.url = "github:cachix/devenv/v2.2";
     herdr.url = "github:ogulcancelik/herdr/v0.7.3";
     home-manager = {
       url = "github:nix-community/home-manager";
