@@ -3,7 +3,7 @@
 
   inputs = {
     devenv.url = "github:cachix/devenv/v2.1.2";
-    herdr.url = "github:ogulcancelik/herdr/v0.7.3";
+    herdr.url = "github:ogulcancelik/herdr/v0.7.5";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
