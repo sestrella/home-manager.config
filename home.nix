@@ -38,6 +38,5 @@ in
   programs = {
     direnv.enable = true;
     gh.enable = true;
-    starship.enable = true;
   };
 }
