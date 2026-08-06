@@ -5,6 +5,9 @@
     enable = true;
 
     settings = {
+      model = "anthropic/claude-sonnet-4-5";
+      small_model = "anthropic/claude-haiku-4-5";
+
       permission = {
         read = {
           "*" = "allow";
