@@ -5,8 +5,9 @@
     enable = true;
 
     settings = {
-      model = "anthropic/claude-sonnet-4-5";
-      small_model = "anthropic/claude-haiku-4-5";
+      model = "github-copilot/claude-sonnet-4-6";
+      small_model = "github-copilot/claude-haiku-4-5";
+      disabled_providers = [ "opencode" ];
 
       permission = {
         read = {
