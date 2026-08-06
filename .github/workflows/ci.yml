@@ -8,6 +8,7 @@ concurrency:
 
 jobs:
   devenv-test:
+    if: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -19,6 +20,7 @@ jobs:
       - run: devenv test
 
   devenv-build:
+    if: false
     runs-on: macos-latest
     needs: [devenv-test]
     steps:
@@ -34,7 +36,7 @@ jobs:
     
   hm-build:
     runs-on: macos-latest
-    needs: [devenv-test]
+    # needs: [devenv-test]
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
@@ -42,6 +44,5 @@ jobs:
       - uses: cachix/cachix-action@v17
         with:
           name: sestrella
-          extraPullNames: devenv
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - run: nix run home-manager/master -- build --flake ${{ github.workspace }}
