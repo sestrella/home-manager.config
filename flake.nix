@@ -2,13 +2,24 @@
   description = "Home Manager configuration of sestrella";
 
   inputs = {
-    devenv.url = "github:cachix/devenv/v2.1.2";
-    herdr.url = "github:ogulcancelik/herdr/v0.7.5";
+    devenv.url = "github:cachix/devenv/v2.1";
+    herdr.url = "github:ogulcancelik/herdr/v0.8.0";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+  };
+
+  nixConfig = {
+    extra-substituters = [
+      "https://devenv.cachix.org"
+      "https://herdr.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
+      "herdr.cachix.org-1:3nH7IStRsS0ASfdonA0DCRR2ZrSCeWitZ7Kwew0cR4I="
+    ];
   };
 
   outputs =
