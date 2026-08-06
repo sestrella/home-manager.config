@@ -11,5 +11,10 @@
 
   git-hooks.hooks.shellcheck.enable = true;
 
+  cachix.pull = [
+    "git-hooks"
+    "sestrella"
+  ];
+
   outputs = import ./packages { inherit pkgs; };
 }
