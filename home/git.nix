@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   home.packages = [
@@ -16,7 +16,7 @@
         default = "simple";
       };
       rerere.enabled = true;
-      user = {
+      user = lib.mkMerge {
         email = "2049686+sestrella@users.noreply.github.com";
         name = "Sebastián Estrella";
       };

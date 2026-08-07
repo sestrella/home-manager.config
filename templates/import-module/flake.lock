@@ -652,13 +652,18 @@
         "nixpkgs": "nixpkgs_8"
       },
       "locked": {
-        "narHash": "sha256-GqUzjCX1AisH/rxz2+e+Wgv/HsiV0xl+h4R1877ON68=",
-        "path": "/Users/sestrella/.config/home-manager",
-        "type": "path"
+        "lastModified": 1786067071,
+        "narHash": "sha256-HX2mk43Y0C44EY/zDzoC+k934/81NFG+MD0+ZUgIqpQ=",
+        "owner": "sestrella",
+        "repo": "home-manager.config",
+        "rev": "e138d4c12ab8c91c11c8fdde89b56db1acae915f",
+        "type": "github"
       },
       "original": {
-        "path": "/Users/sestrella/.config/home-manager",
-        "type": "path"
+        "owner": "sestrella",
+        "ref": "export-module",
+        "repo": "home-manager.config",
+        "type": "github"
       }
     },
     "home-manager_2": {

@@ -1,16 +1,11 @@
-{ ... }:
+{ lib, ... }:
 
 {
   programs.opencode = {
     enable = true;
 
     settings = {
-      model = "github-copilot/gpt-5.6-terra";
-      small_model = "github-copilot/gpt-5.6-luna";
-
-      disabled_providers = [ "opencode" ];
-
-      permission = {
+      permission = lib.mkMerge {
         read = {
           "*" = "allow";
           "**/.env" = "deny";

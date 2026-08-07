@@ -25,7 +25,7 @@
         pkgs = import nixpkgs { inherit system; };
         modules = [
           home-manager-config.homeModules.default
-          # ./home.nix
+          ./home.nix
         ];
       };
     };
