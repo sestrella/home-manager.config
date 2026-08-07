@@ -35,17 +35,24 @@
       ...
     }:
     let
+      system = "aarch64-darwin";
+
+      homeModules = {
+        default = {
+          nixpkgs.overlays = [
+            devenv.overlays.default
+            herdr.overlays.default
+            (final: prev: import ./packages { pkgs = final; })
+          ];
+
+          imports = [ ./home.nix ];
+        };
+      };
+
       mkHomeManagerConfig =
         { username }:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = "aarch64-darwin";
-            overlays = [
-              devenv.overlays.default
-              herdr.overlays.default
-              (final: prev: import ./packages { pkgs = final; })
-            ];
-          };
+          pkgs = import nixpkgs { inherit system; };
 
           modules = [
             {
@@ -53,17 +60,16 @@
                 homeDirectory = "/Users/${username}";
                 username = username;
               };
-
-              imports = [ ./home.nix ];
             }
+            homeModules.default
           ];
         };
     in
     {
+      inherit homeModules;
+      homeManagerModules = homeModules;
+
       homeConfigurations = {
-        "sebastian.estrella" = mkHomeManagerConfig {
-          username = "sebastian.estrella";
-        };
         runner = mkHomeManagerConfig {
           username = "runner";
         };
