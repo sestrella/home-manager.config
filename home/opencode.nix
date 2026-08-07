@@ -4,8 +4,8 @@
   programs.opencode = {
     enable = true;
 
-    settings = {
-      permission = lib.mkMerge {
+    settings = lib.mkDefault {
+      permission = {
         read = {
           "*" = "allow";
           "**/.env" = "deny";

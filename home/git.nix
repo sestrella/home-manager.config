@@ -16,7 +16,7 @@
         default = "simple";
       };
       rerere.enabled = true;
-      user = lib.mkMerge {
+      user = lib.mkDefault {
         email = "2049686+sestrella@users.noreply.github.com";
         name = "Sebastián Estrella";
       };
