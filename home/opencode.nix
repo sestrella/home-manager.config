@@ -1,10 +1,10 @@
-{ lib, ... }:
+{ ... }:
 
 {
   programs.opencode = {
     enable = true;
 
-    settings = lib.mkDefault {
+    settings = {
       permission = {
         read = {
           "*" = "allow";
