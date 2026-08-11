@@ -21,12 +21,6 @@
         name = "Sebastián Estrella";
       };
     };
-    includes = [
-      {
-        condition = "gitdir:~/work/";
-        path = "~/.config/git/work.config";
-      }
-    ];
   };
 
   programs.delta = {
