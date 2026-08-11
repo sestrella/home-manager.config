@@ -2,6 +2,7 @@
 .devenv/
 .direnv/
 .pre-commit-config.yaml
+.ssh/
 result
 
 **/.claude/settings.local.json
