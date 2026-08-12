@@ -28,6 +28,7 @@
 
   outputs =
     {
+      self,
       devenv,
       herdr,
       home-manager,
@@ -35,8 +36,23 @@
       ...
     }:
     let
-      system = "aarch64-darwin";
+      mkHomeManagerConfig =
+        { username }:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
 
+          modules = [
+            {
+              home = {
+                homeDirectory = "/Users/${username}";
+                username = username;
+              };
+            }
+            self.homeModules.default
+          ];
+        };
+    in
+    {
       homeModules = {
         default = {
           nixpkgs.overlays = [
@@ -48,26 +64,6 @@
           imports = [ ./home.nix ];
         };
       };
-
-      mkHomeManagerConfig =
-        { username }:
-        home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { inherit system; };
-
-          modules = [
-            {
-              home = {
-                homeDirectory = "/Users/${username}";
-                username = username;
-              };
-            }
-            homeModules.default
-          ];
-        };
-    in
-    {
-      inherit homeModules;
-      homeManagerModules = homeModules;
 
       homeConfigurations = {
         runner = mkHomeManagerConfig {
