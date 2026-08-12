@@ -5,11 +5,6 @@
     enable = true;
 
     settings = {
-      model = "github-copilot/gpt-5.6-terra";
-      small_model = "github-copilot/gpt-5.6-luna";
-
-      disabled_providers = [ "opencode" ];
-
       permission = {
         read = {
           "*" = "allow";

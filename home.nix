@@ -21,6 +21,7 @@ in
   ];
 
   home.packages = [
+    pkgs.actionlint
     pkgs.devenv
     pkgs.findutils
     pkgs.gitleaks

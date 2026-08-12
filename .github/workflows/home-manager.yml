@@ -1,0 +1,38 @@
+name: Home Manager
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - LICENSE
+      - README.md
+  pull_request:
+    branches:
+      - main
+    paths-ignore:
+      - LICENSE
+      - README.md
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: accept-flake-config = true
+      - name: Set up Cachix
+        uses: cachix/cachix-action@v17
+        with:
+          name: sestrella
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: Build home configuration
+        run: nix run home-manager/master -- build --flake .

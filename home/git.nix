@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 
 {
   home.packages = [
@@ -17,16 +17,10 @@
       };
       rerere.enabled = true;
       user = {
-        email = "2049686+sestrella@users.noreply.github.com";
+        email = lib.mkDefault "2049686+sestrella@users.noreply.github.com";
         name = "Sebastián Estrella";
       };
     };
-    includes = [
-      {
-        condition = "gitdir:~/work/";
-        path = "~/.config/git/work.config";
-      }
-    ];
   };
 
   programs.delta = {

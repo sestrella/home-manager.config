@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of sestrella";
+  description = "sestrella's Home Manager configuration";
 
   inputs = {
     devenv.url = "github:cachix/devenv/v2.1.2";
@@ -28,6 +28,7 @@
 
   outputs =
     {
+      self,
       devenv,
       herdr,
       home-manager,
@@ -38,14 +39,7 @@
       mkHomeManagerConfig =
         { username }:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = "aarch64-darwin";
-            overlays = [
-              devenv.overlays.default
-              herdr.overlays.default
-              (final: prev: import ./packages { pkgs = final; })
-            ];
-          };
+          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
 
           modules = [
             {
@@ -53,17 +47,25 @@
                 homeDirectory = "/Users/${username}";
                 username = username;
               };
-
-              imports = [ ./home.nix ];
             }
+            self.homeModules.default
           ];
         };
     in
     {
-      homeConfigurations = {
-        "sebastian.estrella" = mkHomeManagerConfig {
-          username = "sebastian.estrella";
+      homeModules = {
+        default = {
+          nixpkgs.overlays = [
+            devenv.overlays.default
+            herdr.overlays.default
+            (final: prev: import ./packages { pkgs = final; })
+          ];
+
+          imports = [ ./home.nix ];
         };
+      };
+
+      homeConfigurations = {
         runner = mkHomeManagerConfig {
           username = "runner";
         };

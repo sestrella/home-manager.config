@@ -1,6 +1,8 @@
 # Home Manager Configuration
 
-[![CI](https://github.com/sestrella/home-manager.config/actions/workflows/ci.yml/badge.svg)](https://github.com/sestrella/home-manager.config/actions/workflows/ci.yml)
+[![Devenv](https://github.com/sestrella/home-manager.config/actions/workflows/devenv.yml/badge.svg)](https://github.com/sestrella/home-manager.config/actions/workflows/devenv.yml)
+[![Home Manager](https://github.com/sestrella/home-manager.config/actions/workflows/home-manager.yml/badge.svg)](https://github.com/sestrella/home-manager.config/actions/workflows/home-manager.yml)
+[![Templates](https://github.com/sestrella/home-manager.config/actions/workflows/templates.yml/badge.svg)](https://github.com/sestrella/home-manager.config/actions/workflows/templates.yml)
 
 My [Home Manager](https://github.com/nix-community/home-manager) configuration for macOS.
 
@@ -22,15 +24,11 @@ This repository contains declarative configuration for development tools, shell 
 
 ## Installation
 
-### 1. Install Nix
-
 Install Nix using the [nix-installer](https://github.com/DeterminateSystems/nix-installer):
 
 ```sh
 curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 ```
-
-### 2. Configure Nix
 
 Add your user to `extra-trusted-users` in your Nix configuration:
 
@@ -39,23 +37,42 @@ Add your user to `extra-trusted-users` in your Nix configuration:
 extra-trusted-users = <username>
 ```
 
-### 3. Clone Repository
+## Usage
 
-Clone the repository to your Home Manager configuration directory:
+There are two ways to use this configuration: fork it and make it your own, or extend it from a fresh project via the included template.
+
+### Option 1: Fork and customize
+
+Fork this repository, then clone it into your Home Manager configuration directory:
 
 ```sh
-git clone https://github.com/sestrella/home-manager.config.git ~/.config/home-manager
+git clone https://github.com/<username>/home-manager.config.git ~/.config/home-manager
 ```
 
-### 4. Apply Configuration
+Adjust the configuration to your liking:
 
-Run `home-manager` via `nix run` for the first time:
+- Set your username in `flake.nix` (the `homeConfigurations` section).
+- Toggle modules and tweak settings in `home.nix` and the `home/` directory.
+
+### Option 2: Extend via the template
+
+If you already have a Home Manager setup (or prefer to keep this configuration separate), bootstrap a new project that extends this one:
+
+```sh
+nix flake init -t github:sestrella/home-manager.config#default
+```
+
+Then customize `home.nix` with your own settings. The template wires up this repository as a flake input; to use it from GitHub instead of a local path, uncomment the `home-manager-config` input in `flake.nix`.
+
+### Activating the configuration
+
+With either approach, activate the configuration by running `home-manager` via `nix run` the first time:
 
 ```sh
 nix run home-manager/master -- switch
 ```
 
-After initial setup, apply changes with:
+Subsequent updates just need:
 
 ```sh
 home-manager switch
