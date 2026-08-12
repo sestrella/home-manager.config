@@ -7,7 +7,6 @@ result
 
 **/.claude/settings.local.json
 templates/import-module/flake.lock
-templates/import-module/flake.nix
 
 # Devenv
 .devenv*
