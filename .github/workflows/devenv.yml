@@ -29,7 +29,7 @@ jobs:
       - run: devenv test
 
   build:
-    needs: [devenv-test]
+    needs: [test]
     runs-on: macos-latest
     timeout-minutes: 5
     steps:
