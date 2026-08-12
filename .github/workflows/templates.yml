@@ -2,14 +2,12 @@ name: Templates
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
     paths-ignore:
       - LICENSE
       - README.md
   pull_request:
-    branches:
-      - main
+    branches: [main]
     paths-ignore:
       - LICENSE
       - README.md

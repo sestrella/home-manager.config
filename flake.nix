@@ -34,12 +34,15 @@
       home-manager,
       nixpkgs,
       ...
-    }:
+    }@inputs:
     let
+      system = "aarch64-darwin";
+      pkgs = nixpkgs.legacyPackages.${system};
+
       mkHomeManagerConfig =
         { username }:
         home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.aarch64-darwin;
+          inherit pkgs;
 
           modules = [
             {
@@ -53,6 +56,27 @@
         };
     in
     {
+      devShells.${system}.default = devenv.lib.mkShell {
+        inherit inputs pkgs;
+        modules = [
+          {
+            packages = [
+              pkgs.swift-format
+              pkgs.swiftpm
+              pkgs.swiftpm2nix
+            ];
+
+            languages.swift.enable = true;
+
+            git-hooks.hooks.shellcheck.enable = true;
+          }
+        ];
+      };
+
+      checks = self.packages;
+
+      packages.${system} = import ./packages { inherit pkgs; };
+
       homeModules = {
         default = {
           nixpkgs.overlays = [

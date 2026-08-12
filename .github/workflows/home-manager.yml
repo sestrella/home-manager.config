@@ -2,14 +2,12 @@ name: Home Manager
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
     paths-ignore:
       - LICENSE
       - README.md
   pull_request:
-    branches:
-      - main
+    branches: [main]
     paths-ignore:
       - LICENSE
       - README.md
@@ -19,7 +17,26 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  check:
+    runs-on: macos-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+        with:
+          extra_nix_config: accept-flake-config = true
+      - name: Set up Cachix
+        uses: cachix/cachix-action@v17
+        with:
+          name: sestrella
+          authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
+      - name: Check flake
+        run: nix flake check --no-pure-eval
+
   build:
+    needs: [check]
     runs-on: macos-latest
     timeout-minutes: 10
     steps:
