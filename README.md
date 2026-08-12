@@ -10,12 +10,13 @@ This repository contains declarative configuration for development tools, shell 
 
 ## Features
 
-- **Bluetooth Input Switcher**: Automatic switching of input devices when Bluetooth keyboards or mice connect; configurable rules in home/bluetooth-input-switcher.
-- **Shell**: Fish shell with Starship prompt
-- **Editor**: Helix with terminal integration
-- **Tools**: Git, AWS CLI, SSH, Zellij, Ghostty terminal emulator
-- **DevEnv**: Direnv for environment management
-- **GitHub**: GitHub CLI integration
+The top features by custom configuration and built-in packages:
+
+- **OpenCode**: CLI with extensive permission rules — sensitive files (`.env`, `.aws/`, `.ssh/`, `.gnupg/`, `.kube/`, keys) blocked from reads, destructive commands (`rm -rf`, force pushes, rebases) denied, and guarded access to secrets and external directories
+- **Editor**: Helix as the default editor with LSPs (Bash, Docker Compose, Elixir, Nix, Terraform, JSON, YAML), auto-formatting, relative line numbers, and a launchd agent that syncs the Solarized theme to Helix runtime themes
+- **Git**: Configured with Delta as the pager, `rerere`, auto-setup of remote branches, and a rich set of Fish abbreviations for common workflows
+- **Shell**: Fish as the login shell with Starship prompt, Homebrew/Nix daemon integration, and abbreviations for Terraform, AWS, Git, Zellij, and Home Manager
+- **Bluetooth Input Switcher**: A custom-built Swift package run as a launchd agent that automatically switches input devices when Bluetooth keyboards or mice connect
 
 ## Prerequisites
 
