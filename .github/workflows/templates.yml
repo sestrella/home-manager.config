@@ -18,4 +18,4 @@ jobs:
       - uses: cachix/install-nix-action@v31
       - run: pwd
       - run: ls -al
-      - run: nix run home-manager/master -- build
+      - run: nix run home-manager/master -- build --flake .
