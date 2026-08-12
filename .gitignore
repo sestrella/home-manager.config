@@ -1,33 +1,5 @@
-.aider*
-.devenv/
 .direnv/
 .pre-commit-config.yaml
 .ssh/
 result
-
-**/.claude/settings.local.json
 templates/*/flake.lock
-
-# Devenv
-.devenv*
-devenv.local.nix
-
-# direnv
-.direnv
-
-# pre-commit
-.pre-commit-config.yaml
-
-# project specific
-.env
-
-# Devenv
-.devenv*
-devenv.local.nix
-devenv.local.yaml
-
-# direnv
-.direnv
-
-# pre-commit
-.pre-commit-config.yaml
