@@ -23,22 +23,32 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v7
-      - uses: cachix/install-nix-action@v31
-      - run: nix profile add nixpkgs#devenv
-      - run: devenv test
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+      - name: Install devenv
+        run: nix profile add nixpkgs#devenv
+      - name: Run devenv tests
+        run: devenv test
 
   build:
     needs: [test]
     runs-on: macos-latest
     timeout-minutes: 5
     steps:
-      - uses: actions/checkout@v7
-      - uses: cachix/install-nix-action@v31
-      - uses: cachix/cachix-action@v17
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+      - name: Set up Cachix
+        uses: cachix/cachix-action@v17
         with:
           name: sestrella
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-      - run: nix profile add nixpkgs#devenv
-      - run: echo '{ cachix.push = "sestrella"; }' > devenv.local.nix
-      - run: devenv build
+      - name: Install devenv
+        run: nix profile add nixpkgs#devenv
+      - name: Configure Cachix push
+        run: echo '{ cachix.push = "sestrella"; }' > devenv.local.nix
+      - name: Build devenv
+        run: devenv build

@@ -31,8 +31,11 @@ jobs:
       run:
         working-directory: ${{ matrix.template }}
     steps:
-      - uses: actions/checkout@v7
-      - uses: cachix/install-nix-action@v31
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
         with:
           extra_nix_config: accept-flake-config = true
-      - run: nix run home-manager/master -- build --flake .
+      - name: Build template
+        run: nix run home-manager/master -- build --flake .

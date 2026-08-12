@@ -23,12 +23,16 @@ jobs:
     runs-on: macos-latest
     timeout-minutes: 10
     steps:
-      - uses: actions/checkout@v7
-      - uses: cachix/install-nix-action@v31
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
         with:
           extra_nix_config: accept-flake-config = true
-      - uses: cachix/cachix-action@v17
+      - name: Set up Cachix
+        uses: cachix/cachix-action@v17
         with:
           name: sestrella
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-      - run: nix run home-manager/master -- build --flake .
+      - name: Build home configuration
+        run: nix run home-manager/master -- build --flake .
