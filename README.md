@@ -41,26 +41,38 @@ Add your user to `extra-trusted-users` in your Nix configuration:
 extra-trusted-users = <username>
 ```
 
-### 3. Clone Repository
+## Usage
+
+### Option 1: Forking the repository
+
+Fork this repository
 
 Clone the repository to your Home Manager configuration directory:
 
 ```sh
-git clone https://github.com/sestrella/home-manager.config.git ~/.config/home-manager
+git clone https://github.com/<username>/home-manager.config.git ~/.config/home-manager
 ```
 
-### 4. Apply Configuration
+Change the settings to adjust to your preferences.
+
+### Option 2: Extends existing configuration
+
+Use the configuration on this repo as a start point and overwrite with your custom settings.
+
+Use the default template to create a starting project that extends from the configuration on this repo
+
+```
+nix flake init -t github:sestrella/home-manager.config#default
+```
+
+Modify the home.nix with your own custom configuration
+
+### Activate config
 
 Run `home-manager` via `nix run` for the first time:
 
 ```sh
 nix run home-manager/master -- switch
-```
-
-After initial setup, apply changes with:
-
-```sh
-home-manager switch
 ```
 
 ## Updating
