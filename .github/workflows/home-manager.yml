@@ -32,7 +32,8 @@ jobs:
         with:
           name: sestrella
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-      - run: nix flake check --no-pure-eval
+      - name: Check flake
+        run: nix flake check --no-pure-eval
 
   build:
     needs: [check]
