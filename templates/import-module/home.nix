@@ -1,14 +1,13 @@
 { ... }:
 
 {
-  home.homeDirectory = "/Users/sestrella";
-  home.username = "sestrella";
+  home = {
+    homeDirectory = "/Users/runner";
+    username = "runner";
+  };
 
   programs.git.settings = {
-    user = {
-      email = "john.doe@acme.com";
-      name = "John Doe";
-    };
+    user.email = "john.doe@acme.com";
   };
 
   programs.opencode.settings = {

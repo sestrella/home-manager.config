@@ -16,8 +16,8 @@
         default = "simple";
       };
       rerere.enabled = true;
-      user = lib.mkDefault {
-        email = "2049686+sestrella@users.noreply.github.com";
+      user = {
+        email = lib.mkDefault "2049686+sestrella@users.noreply.github.com";
         name = "Sebastián Estrella";
       };
     };
