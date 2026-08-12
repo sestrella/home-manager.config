@@ -41,5 +41,5 @@ jobs:
         with:
           name: sestrella
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
-      - run: nix run home-manager/master -- build --flake ${{ github.workspace }}
+      - run: nix run home-manager/master -- build --flake .
         timeout-minutes: 10
