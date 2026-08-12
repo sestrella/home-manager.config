@@ -14,12 +14,13 @@ concurrency:
 
 jobs:
   build:
-    runs-on: macos-latest
     strategy:
       matrix:
         template:
           - templates/default
       fail-fast: false
+    runs-on: macos-latest
+    timeout-minutes: 10
     defaults:
       run:
         working-directory: ${{ matrix.template }}
@@ -29,4 +30,3 @@ jobs:
         with:
           extra_nix_config: accept-flake-config = true
       - run: nix run home-manager/master -- build --flake .
-        timeout-minutes: 10
