@@ -1,4 +1,4 @@
-name: CI
+name: Home Manager
 
 on:
   push:
