@@ -56,6 +56,15 @@
         };
     in
     {
+      apps.${system}.default = {
+        type = "app";
+        program = "${pkgs.lib.getExe home-manager.packages.${system}.default}";
+        meta.description = ''
+          This wrapper is intended to be used only the first time home-manager
+          is invoked. Subsequent calls can invoke home-manager directly from PATH.
+        '';
+      };
+
       devShells.${system}.default = devenv.lib.mkShell {
         inherit inputs pkgs;
         modules = [
