@@ -43,36 +43,43 @@ extra-trusted-users = <username>
 
 ## Usage
 
-### Option 1: Forking the repository
+There are two ways to use this configuration: fork it and make it your own, or extend it from a fresh project via the included template.
 
-Fork this repository
+### Option 1: Fork and customize
 
-Clone the repository to your Home Manager configuration directory:
+Fork this repository, then clone it into your Home Manager configuration directory:
 
 ```sh
 git clone https://github.com/<username>/home-manager.config.git ~/.config/home-manager
 ```
 
-Change the settings to adjust to your preferences.
+Adjust the configuration to your liking:
 
-### Option 2: Extends existing configuration
+- Set your username in `flake.nix` (the `homeConfigurations` section).
+- Toggle modules and tweak settings in `home.nix` and the `home/` directory.
 
-Use the configuration on this repo as a start point and overwrite with your custom settings.
+### Option 2: Extend via the template
 
-Use the default template to create a starting project that extends from the configuration on this repo
+If you already have a Home Manager setup (or prefer to keep this configuration separate), bootstrap a new project that extends this one:
 
-```
+```sh
 nix flake init -t github:sestrella/home-manager.config#default
 ```
 
-Modify the home.nix with your own custom configuration
+Then customize `home.nix` with your own settings. The template wires up this repository as a flake input; to use it from GitHub instead of a local path, uncomment the `home-manager-config` input in `flake.nix`.
 
-### Activate config
+### Activating the configuration
 
-Run `home-manager` via `nix run` for the first time:
+With either approach, activate the configuration by running `home-manager` via `nix run` the first time:
 
 ```sh
 nix run home-manager/master -- switch
+```
+
+Subsequent updates just need:
+
+```sh
+home-manager switch
 ```
 
 ## Updating
