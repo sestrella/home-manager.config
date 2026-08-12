@@ -1,0 +1,21 @@
+name: Templates
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        template:
+          - templates/import-module
+      fail-fast: false
+    defaults:
+      run:
+        working-directory: ${{ matrix.template }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: cachix/install-nix-action@v31
+      - run: pwd
+      - run: ls -al
+      - run: nix run home-manager/master -- build
