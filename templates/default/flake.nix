@@ -1,5 +1,5 @@
 {
-  description = "TODO";
+  description = "Extends sestrella's Home Manager configuration";
 
   inputs = {
     home-manager = {

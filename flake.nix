@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of sestrella";
+  description = "sestrella's Home Manager configuration";
 
   inputs = {
     devenv.url = "github:cachix/devenv/v2.1.2";
