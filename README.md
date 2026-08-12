@@ -24,15 +24,11 @@ This repository contains declarative configuration for development tools, shell 
 
 ## Installation
 
-### 1. Install Nix
-
 Install Nix using the [nix-installer](https://github.com/DeterminateSystems/nix-installer):
 
 ```sh
 curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 ```
-
-### 2. Configure Nix
 
 Add your user to `extra-trusted-users` in your Nix configuration:
 
