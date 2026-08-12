@@ -73,6 +73,8 @@
         ];
       };
 
+      checks = self.packages;
+
       packages.${system} = import ./packages { inherit pkgs; };
 
       homeModules = {
