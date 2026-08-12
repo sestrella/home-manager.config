@@ -8,7 +8,6 @@ concurrency:
 
 jobs:
   devenv-test:
-    if: false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -33,7 +32,6 @@ jobs:
   hm-build:
     runs-on: macos-latest
     needs: [devenv-test]
-    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v7
       - uses: cachix/install-nix-action@v31
@@ -44,3 +42,4 @@ jobs:
           name: sestrella
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - run: nix run home-manager/master -- build --flake ${{ github.workspace }}
+        timeout-minutes: 10
