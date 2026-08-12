@@ -1,6 +1,5 @@
 # Home Manager Configuration
 
-[![Devenv](https://github.com/sestrella/home-manager.config/actions/workflows/devenv.yml/badge.svg)](https://github.com/sestrella/home-manager.config/actions/workflows/devenv.yml)
 [![Home Manager](https://github.com/sestrella/home-manager.config/actions/workflows/home-manager.yml/badge.svg)](https://github.com/sestrella/home-manager.config/actions/workflows/home-manager.yml)
 [![Templates](https://github.com/sestrella/home-manager.config/actions/workflows/templates.yml/badge.svg)](https://github.com/sestrella/home-manager.config/actions/workflows/templates.yml)
 
