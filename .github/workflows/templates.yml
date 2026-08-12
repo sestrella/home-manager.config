@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         template:
-          - templates/import-module
+          - templates/default
       fail-fast: false
     defaults:
       run:
