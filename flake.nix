@@ -77,7 +77,23 @@
 
             languages.swift.enable = true;
 
-            git-hooks.hooks.shellcheck.enable = true;
+            git-hooks.hooks = {
+              shellcheck.enable = true;
+
+              gitleaks = {
+                enable = true;
+                entry = pkgs.lib.getExe pkgs.gitleaks;
+                args = [
+                  "git"
+                  "--pre-commit"
+                  "--redact"
+                  "--staged"
+                  "--verbose"
+                ];
+                pass_filenames = false;
+                verbose = true;
+              };
+            };
           }
         ];
       };
