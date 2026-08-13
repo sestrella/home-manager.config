@@ -86,6 +86,8 @@
 
       packages.${system} = import ./packages { inherit pkgs; };
 
+      formatter.${system} = pkgs.nixfmt-tree;
+
       homeModules = {
         default = {
           nixpkgs.overlays = [
