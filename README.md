@@ -66,10 +66,10 @@ Then customize `home.nix` with your own settings. The template wires up this rep
 
 ### Activating the configuration
 
-With either approach, activate the configuration by running `home-manager` via `nix run` the first time:
+With either approach, activate the configuration the first time by running this flake's default app (a wrapper around `home-manager` that only exists for the initial bootstrap):
 
 ```sh
-nix run home-manager/master -- switch
+nix run .# -- switch
 ```
 
 Subsequent updates just need:
