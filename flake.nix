@@ -108,5 +108,10 @@
           username = "sestrella";
         };
       };
+
+      templates.default = {
+        path = ./templates/default;
+        description = "Extends sestrella's Home Manager configuration";
+      };
     };
 }
