@@ -27,6 +27,10 @@
           auto-format = true;
         }
         {
+          name = "markdown";
+          soft-wrap.enable = true;
+        }
+        {
           name = "nix";
           auto-format = true;
         }
