@@ -16,6 +16,10 @@ in
   # Custom configuration
   imports = listDirFiles ./home;
 
+  home.sessionVariables = {
+    DEVENV_INCLUDE_ENVRC = 1;
+  };
+
   home.sessionPath = [
     "$HOME/.local/bin"
   ];
