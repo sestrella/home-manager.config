@@ -2,7 +2,8 @@
   description = "sestrella's Home Manager configuration";
 
   inputs = {
-    devenv.url = "github:cachix/devenv/v2.2.2";
+    devenv.url = "github:cachix/devenv/v2.1.2";
+    helix-theme-sync.url = "github:sestrella/helix-theme-sync/hm-module";
     herdr.url = "github:ogulcancelik/herdr/v0.8.0";
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -30,6 +31,7 @@
     {
       self,
       devenv,
+      helix-theme-sync,
       herdr,
       home-manager,
       nixpkgs,
@@ -51,6 +53,7 @@
                 username = username;
               };
             }
+            helix-theme-sync.homeManagerModules.default
             self.homeModules.default
           ];
         };
@@ -104,10 +107,12 @@
 
       formatter.${system} = pkgs.nixfmt-tree;
 
+      # TODO: rename to homeManagerModules
       homeModules = {
         default = {
           nixpkgs.overlays = [
             devenv.overlays.default
+            helix-theme-sync.overlays.default
             herdr.overlays.default
             (final: prev: import ./packages { pkgs = final; })
           ];
