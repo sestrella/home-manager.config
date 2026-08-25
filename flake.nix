@@ -106,7 +106,7 @@
                 (final: prev: import ./packages { pkgs = final; })
               ];
             }
-            helix-theme-sync.homeManagerModules.default
+            helix-theme-sync.homeModules.default
             ./home.nix
           ]
           ++ modules;
