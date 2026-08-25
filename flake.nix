@@ -89,16 +89,7 @@
 
       formatter.${system} = pkgs.nixfmt-tree;
 
-      homeConfigurations = {
-        runner = self.lib.homeConfiguration {
-          modules = [
-            {
-              home.username = "runner";
-            }
-          ];
-        };
-        sestrella = self.lib.homeConfiguration { };
-      };
+      homeConfigurations.sestrella = self.lib.homeConfiguration { };
 
       lib.homeConfiguration =
         {

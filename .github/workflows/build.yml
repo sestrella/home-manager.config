@@ -2,20 +2,18 @@ name: Build
 
 on:
   pull_request:
-    branches:
-      - main
+    branches: [main]
     paths:
-      - .github/workflows/home-manager.yml
+      - .github/workflows/build.yml
       - flake.*
       - home.nix
       - home/**
       - packages/**
       - templates/**
   push:
-    branches:
-      - main
+    branches: [main]
     paths:
-      - .github/workflows/home-manager.yml
+      - .github/workflows/build.yml
       - flake.*
       - home.nix
       - home/**
@@ -28,7 +26,6 @@ concurrency:
 
 jobs:
   check:
-    if: false
     runs-on: macos-latest
     timeout-minutes: 10
     steps:
@@ -63,4 +60,4 @@ jobs:
           name: sestrella
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build home configuration
-        run: nix run . -- build --flake .
+        run: nix run . -- build --flake .#sestrella
