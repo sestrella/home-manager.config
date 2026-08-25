@@ -1,18 +1,24 @@
-name: Home Manager
+name: Build
 
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - .gitignore
-      - LICENSE
-      - README.md
   pull_request:
     branches: [main]
-    paths-ignore:
-      - .gitignore
-      - LICENSE
-      - README.md
+    paths:
+      - .github/workflows/build.yml
+      - flake.*
+      - home.nix
+      - home/**
+      - packages/**
+      - templates/**
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/build.yml
+      - flake.*
+      - home.nix
+      - home/**
+      - packages/**
+      - templates/**
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -54,4 +60,4 @@ jobs:
           name: sestrella
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build home configuration
-        run: nix run home-manager/master -- build --flake .
+        run: nix run . -- build --flake .#sestrella

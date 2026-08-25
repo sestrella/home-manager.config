@@ -1,18 +1,24 @@
 name: Templates
 
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - .gitignore
-      - LICENSE
-      - README.md
   pull_request:
     branches: [main]
-    paths-ignore:
-      - .gitignore
-      - LICENSE
-      - README.md
+    paths:
+      - .github/workflows/templates.yml
+      - flake.*
+      - home.nix
+      - home/**
+      - packages/**
+      - templates/**
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/templates.yml
+      - flake.*
+      - home.nix
+      - home/**
+      - packages/**
+      - templates/**
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -37,5 +43,9 @@ jobs:
         uses: cachix/install-nix-action@v31
         with:
           extra_nix_config: accept-flake-config = true
+      - name: Update sestrella input
+        run: |
+          sed -i '' 's/github:sestrella\/home-manager\.config/github:sestrella\/home-manager\.config?ref=${{ github.sha }}/' flake.nix
+          git diff flake.nix
       - name: Build template
-        run: nix run home-manager/master -- build --flake .
+        run: nix run . -- build --flake .

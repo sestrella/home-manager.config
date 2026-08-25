@@ -48,27 +48,11 @@
     };
   };
 
-  launchd.agents.helix-theme-sync = {
+  services.helix-theme-sync = {
     enable = true;
 
-    config = {
-      Program = lib.getExe pkgs.helix-theme-sync;
-      ProgramArguments = [
-        "--config-dir"
-        "~/.config/helix"
-        "--runtime-dir"
-        "${pkgs.helix-unwrapped.HELIX_DEFAULT_RUNTIME}"
-        "--theme"
-        "${config.programs.helix.settings.theme}"
-      ];
-      ProcessType = "Background";
-      RunAtLoad = true;
-      KeepAlive = {
-        Crashed = true;
-        SuccessfulExit = false;
-      };
-      StandardOutPath = "${config.home.homeDirectory}/.local/state/helix-theme-sync/logs/out.log";
-      StandardErrorPath = "${config.home.homeDirectory}/.local/state/helix-theme-sync/logs/err.log";
-    };
+    configDir = "${config.home.homeDirectory}/.config/helix";
+    runtimeDir = "${pkgs.helix-unwrapped.HELIX_DEFAULT_RUNTIME}";
+    theme = config.programs.helix.settings.theme;
   };
 }
