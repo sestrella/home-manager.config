@@ -1,6 +1,6 @@
 # Home Manager Configuration
 
-[![Home Manager](https://github.com/sestrella/home-manager.config/actions/workflows/home-manager.yml/badge.svg)](https://github.com/sestrella/home-manager.config/actions/workflows/home-manager.yml)
+[![Build](https://github.com/sestrella/home-manager.config/actions/workflows/build.yml/badge.svg)](https://github.com/sestrella/home-manager.config/actions/workflows/build.yml)
 [![Templates](https://github.com/sestrella/home-manager.config/actions/workflows/templates.yml/badge.svg)](https://github.com/sestrella/home-manager.config/actions/workflows/templates.yml)
 
 My [Home Manager](https://github.com/nix-community/home-manager) configuration for macOS.
