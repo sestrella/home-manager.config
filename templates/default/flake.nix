@@ -6,9 +6,8 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # home-manager-config.url = "github:sestrella/home-manager.config";
-    home-manager-config.url = "path:../../";
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
+    sestrella.url = "github:sestrella/home-manager.config";
   };
 
   nixConfig = {
@@ -29,18 +28,15 @@
   outputs =
     {
       home-manager,
-      home-manager-config,
+      sestrella,
       nixpkgs,
       ...
     }:
-    let
-      system = "aarch64-darwin";
-    in
     {
       homeConfigurations.runner = home-manager.lib.homeManagerConfiguration {
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
         modules = [
-          home-manager-config.homeModules.default
+          sestrella.homeModules.default
           ./home.nix
         ];
       };

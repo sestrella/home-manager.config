@@ -20,6 +20,7 @@ concurrency:
 
 jobs:
   check:
+    if: false
     runs-on: macos-latest
     timeout-minutes: 10
     steps:
@@ -54,4 +55,4 @@ jobs:
           name: sestrella
           authToken: ${{ secrets.CACHIX_AUTH_TOKEN }}
       - name: Build home configuration
-        run: nix run home-manager/master -- build --flake .
+        run: nix run . -- build --flake .

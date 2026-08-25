@@ -107,7 +107,6 @@
 
       formatter.${system} = pkgs.nixfmt-tree;
 
-      # TODO: rename to homeManagerModules
       homeModules = {
         default = {
           nixpkgs.overlays = [
