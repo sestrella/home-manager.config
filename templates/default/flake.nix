@@ -28,13 +28,21 @@
   outputs =
     {
       home-manager,
-      sestrella,
       nixpkgs,
+      sestrella,
       ...
     }:
+    let
+      system = "aarch64-darwin";
+      pkgs = nixpkgs.legacyPackages.${system};
+    in
     {
+      apps.${system}.default = {
+        type = "app";
+        program = "${pkgs.lib.getExe home-manager.packages.${system}.default}";
+      };
+
       homeConfigurations.runner = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.aarch64-darwin;
         modules = [
           sestrella.homeModules.default
           ./home.nix
