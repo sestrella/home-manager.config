@@ -7,10 +7,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
-    sestrella = {
-      url = "github:sestrella/home-manager.config";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    sestrella.url = "github:sestrella/home-manager.config";
   };
 
   nixConfig = {

@@ -1,18 +1,26 @@
-name: Home Manager
+name: Build
 
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - .gitignore
-      - LICENSE
-      - README.md
   pull_request:
-    branches: [main]
-    paths-ignore:
-      - .gitignore
-      - LICENSE
-      - README.md
+    branches:
+      - main
+    paths:
+      - .github/workflows/home-manager.yml
+      - flake.*
+      - home.nix
+      - home/**
+      - packages/**
+      - templates/**
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/home-manager.yml
+      - flake.*
+      - home.nix
+      - home/**
+      - packages/**
+      - templates/**
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
