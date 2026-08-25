@@ -76,7 +76,6 @@
                   "--verbose"
                 ];
                 pass_filenames = false;
-                verbose = true;
               };
 
               shellcheck.enable = true;
