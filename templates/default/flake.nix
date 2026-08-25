@@ -43,6 +43,8 @@
       };
 
       homeConfigurations.runner = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+
         modules = [
           sestrella.homeModules.default
           ./home.nix
