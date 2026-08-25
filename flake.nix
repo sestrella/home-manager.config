@@ -40,23 +40,6 @@
     let
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
-
-      mkHomeManagerConfig =
-        { username }:
-        home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-
-          modules = [
-            {
-              home = {
-                homeDirectory = "/Users/${username}";
-                username = username;
-              };
-            }
-            helix-theme-sync.homeManagerModules.default
-            self.homeModules.default
-          ];
-        };
     in
     {
       apps.${system}.default = {
@@ -70,6 +53,7 @@
 
       devShells.${system}.default = devenv.lib.mkShell {
         inherit inputs pkgs;
+
         modules = [
           {
             packages = [
@@ -81,8 +65,6 @@
             languages.swift.enable = true;
 
             git-hooks.hooks = {
-              shellcheck.enable = true;
-
               gitleaks = {
                 enable = true;
                 entry = pkgs.lib.getExe pkgs.gitleaks;
@@ -96,6 +78,8 @@
                 pass_filenames = false;
                 verbose = true;
               };
+
+              shellcheck.enable = true;
             };
           }
         ];
@@ -103,31 +87,42 @@
 
       checks = self.packages;
 
-      packages.${system} = import ./packages { inherit pkgs; };
-
       formatter.${system} = pkgs.nixfmt-tree;
 
-      homeModules = {
-        default = {
-          nixpkgs.overlays = [
-            devenv.overlays.default
-            helix-theme-sync.overlays.default
-            herdr.overlays.default
-            (final: prev: import ./packages { pkgs = final; })
-          ];
-
-          imports = [ ./home.nix ];
-        };
-      };
-
       homeConfigurations = {
-        runner = mkHomeManagerConfig {
-          username = "runner";
+        runner = self.lib.homeConfiguration {
+          modules = [
+            {
+              home.username = "runner";
+            }
+          ];
         };
-        sestrella = mkHomeManagerConfig {
-          username = "sestrella";
-        };
+        sestrella = self.lib.homeConfiguration { };
       };
+
+      lib.homeConfiguration =
+        {
+          modules ? [ ],
+        }:
+        home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+
+          modules = [
+            {
+              nixpkgs.overlays = [
+                devenv.overlays.default
+                helix-theme-sync.overlays.default
+                herdr.overlays.default
+                (final: prev: import ./packages { pkgs = final; })
+              ];
+            }
+            helix-theme-sync.homeManagerModules.default
+            ./home.nix
+          ]
+          ++ modules;
+        };
+
+      packages.${system} = import ./packages { inherit pkgs; };
 
       templates.default = {
         path = ./templates/default;

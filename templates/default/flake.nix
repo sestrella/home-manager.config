@@ -7,7 +7,10 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixpkgs-unstable";
-    sestrella.url = "github:sestrella/home-manager.config";
+    sestrella = {
+      url = "github:sestrella/home-manager.config";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   nixConfig = {
@@ -42,13 +45,8 @@
         program = "${pkgs.lib.getExe home-manager.packages.${system}.default}";
       };
 
-      homeConfigurations.runner = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        modules = [
-          sestrella.homeModules.default
-          ./home.nix
-        ];
+      homeConfigurations.runner = sestrella.lib.homeConfiguration {
+        modules = [ ./home.nix ];
       };
     };
 }

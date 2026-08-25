@@ -1,4 +1,9 @@
-{ pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 let
   listDirFiles = path: map (name: "${path}/${name}") (builtins.attrNames (builtins.readDir path));
@@ -12,6 +17,9 @@ in
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
   home.stateVersion = "26.05"; # Please read the comment before changing.
+
+  home.homeDirectory = "/Users/${config.home.username}";
+  home.username = lib.mkDefault "sestrella";
 
   # Custom configuration
   imports = listDirFiles ./home;

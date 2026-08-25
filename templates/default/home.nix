@@ -1,10 +1,7 @@
 { ... }:
 
 {
-  home = {
-    homeDirectory = "/Users/runner";
-    username = "runner";
-  };
+  home.username = "runner";
 
   programs.git.settings = {
     user.email = "john.doe@acme.com";
