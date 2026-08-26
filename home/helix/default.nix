@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }:
@@ -51,8 +50,7 @@
   services.helix-theme-sync = {
     enable = true;
 
-    configDir = "${config.home.homeDirectory}/.config/helix";
-    runtimeDir = "${pkgs.helix-unwrapped.HELIX_DEFAULT_RUNTIME}";
+    runtimeThemesDir = "${pkgs.helix-unwrapped.HELIX_DEFAULT_RUNTIME}/themes";
     theme = config.programs.helix.settings.theme;
   };
 }
