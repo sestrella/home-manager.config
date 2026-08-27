@@ -57,6 +57,7 @@
         modules = [
           {
             packages = [
+              pkgs.pre-commit
               pkgs.swift-format
               pkgs.swiftpm
               pkgs.swiftpm2nix
@@ -65,6 +66,7 @@
             languages.swift.enable = true;
 
             git-hooks.hooks = {
+              actionlint.enable = true;
               gitleaks = {
                 enable = true;
                 entry = pkgs.lib.getExe pkgs.gitleaks;
@@ -77,7 +79,6 @@
                 ];
                 pass_filenames = false;
               };
-
               shellcheck.enable = true;
             };
           }
