@@ -33,8 +33,7 @@ curl -fsSL https://install.determinate.systems/nix | sh -s -- install
 Add your user to `extra-trusted-users` in your Nix configuration:
 
 ```sh
-# /etc/nix/nix.custom.conf
-extra-trusted-users = <username>
+sudo echo "extra-trusted-users = $USER" >> /etc/nix/nix.custom.conf
 ```
 
 ## Usage
