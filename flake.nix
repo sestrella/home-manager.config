@@ -89,11 +89,13 @@
 
       formatter.${system} = pkgs.nixfmt-tree;
 
-      homeConfigurations.sestrella = self.lib.homeConfiguration { };
+      homeConfigurations.sestrella = self.lib.homeConfiguration {
+        username = "sestrella";
+      };
 
       lib.homeConfiguration =
         {
-          username ? "sestrella",
+          username,
           modules ? [ ],
         }:
         home-manager.lib.homeManagerConfiguration {
