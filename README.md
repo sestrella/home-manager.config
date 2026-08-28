@@ -61,7 +61,7 @@ If you already have a Home Manager setup (or prefer to keep this configuration s
 nix flake init -t github:sestrella/home-manager.config#default
 ```
 
-Then customize `home.nix` with your own settings. The template wires up this repository as a flake input; to use it from GitHub instead of a local path, uncomment the `home-manager-config` input in `flake.nix`.
+Then customize `home.nix` with your own settings. The template wires up this repository as a flake input (`sestrella`).
 
 ### Activating the configuration
 
