@@ -93,6 +93,7 @@
 
       lib.homeConfiguration =
         {
+          username ? "sestrella",
           modules ? [ ],
         }:
         home-manager.lib.homeManagerConfiguration {
@@ -106,6 +107,9 @@
                 herdr.overlays.default
                 (final: prev: import ./packages { pkgs = final; })
               ];
+
+              home.homeDirectory = "/Users/${username}";
+              home.username = username;
             }
             helix-theme-sync.homeModules.default
             ./home.nix
