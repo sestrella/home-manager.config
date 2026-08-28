@@ -27,6 +27,7 @@
       apps = sestrella.apps;
 
       homeConfigurations.runner = sestrella.lib.homeConfiguration {
+        username = "runner";
         modules = [ ./home.nix ];
       };
     };
