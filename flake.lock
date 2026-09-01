@@ -199,17 +199,13 @@
         ]
       },
       "locked": {
-        "lastModified": 1786031233,
-        "narHash": "sha256-TIDlLTLI1/pB7IqgjzcKQjpODQsZE2oII4XGG9B6KjI=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "7834e82588860aaf780cec1366524456a70898d7",
-        "type": "github"
+        "narHash": "sha256-Yp1R083nO74bK9X5kNJ2FqSZK/tvuUNc6lbE5kli4x0=",
+        "path": "/Users/sestrella/code/home-manager",
+        "type": "path"
       },
       "original": {
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "type": "github"
+        "path": "/Users/sestrella/code/home-manager",
+        "type": "path"
       }
     },
     "nix": {

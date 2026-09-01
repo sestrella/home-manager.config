@@ -18,9 +18,6 @@ in
   # release notes.
   home.stateVersion = "26.05"; # Please read the comment before changing.
 
-  home.homeDirectory = "/Users/${config.home.username}";
-  home.username = lib.mkDefault "sestrella";
-
   # Custom configuration
   imports = listDirFiles ./home;
 
@@ -33,6 +30,8 @@ in
   ];
 
   home.packages = [
+    pkgs.check-jsonschema
+
     pkgs.actionlint
     pkgs.devenv
     pkgs.findutils

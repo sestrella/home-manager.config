@@ -6,7 +6,8 @@
     helix-theme-sync.url = "github:sestrella/helix-theme-sync";
     herdr.url = "github:ogulcancelik/herdr/v0.8.0";
     home-manager = {
-      url = "github:nix-community/home-manager";
+      url = "path:/Users/sestrella/code/home-manager";
+      # url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
