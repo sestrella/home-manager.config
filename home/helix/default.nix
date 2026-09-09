@@ -42,6 +42,7 @@
         line-number = "relative";
         mouse = false;
         rulers = [ 80 ];
+        trim-trailing-whitespace = true;
       };
       theme = "solarized";
     };
