@@ -4,7 +4,7 @@
   inputs = {
     devenv.url = "github:cachix/devenv/v2.2.2";
     helix-theme-sync.url = "github:sestrella/helix-theme-sync";
-    herdr.url = "github:ogulcancelik/herdr/v0.8.0";
+    herdr.url = "github:herdrdev/herdr-nix/023fd48e04ee69b88a078583f56c997c85fc4b1b";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -106,7 +106,7 @@
               nixpkgs.overlays = [
                 devenv.overlays.default
                 helix-theme-sync.overlays.default
-                herdr.overlays.default
+                (final: prev: { herdr = herdr.packages.${system}.default; })
                 (final: prev: import ./packages { pkgs = final; })
               ];
 
