@@ -199,7 +199,7 @@
         ]
       },
       "locked": {
-        "narHash": "sha256-Yp1R083nO74bK9X5kNJ2FqSZK/tvuUNc6lbE5kli4x0=",
+        "narHash": "sha256-CyBtzaW7Rs/74Phnje/dUtX5yvssUwGqFSWR9pcB0IA=",
         "path": "/Users/sestrella/code/home-manager",
         "type": "path"
       },
