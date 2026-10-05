@@ -65,5 +65,7 @@
     };
 
     tui.theme = "system";
+
+    validateFiles.config = true;
   };
 }
