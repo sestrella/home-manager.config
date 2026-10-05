@@ -4,7 +4,7 @@
   inputs = {
     devenv.url = "github:cachix/devenv/v2.2.2";
     helix-theme-sync.url = "github:sestrella/helix-theme-sync";
-    herdr.url = "github:herdrdev/herdr-nix/023fd48e04ee69b88a078583f56c997c85fc4b1b";
+    herdr.url = "github:herdrdev/herdr-nix/2298bb926bee66b70b2f9a51de8649aa127d50e6"; # v0.9.3
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
