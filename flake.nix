@@ -2,7 +2,7 @@
   description = "sestrella's Home Manager configuration";
 
   inputs = {
-    devenv.url = "github:cachix/devenv/v2.2.2";
+    devenv.url = "github:cachix/devenv/v2.4.0";
     helix-theme-sync.url = "github:sestrella/helix-theme-sync";
     herdr.url = "github:herdrdev/herdr-nix/2298bb926bee66b70b2f9a51de8649aa127d50e6"; # v0.9.3
     home-manager = {
