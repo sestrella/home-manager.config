@@ -177,11 +177,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1787713610,
-        "narHash": "sha256-1OqenL7Q4KC+4jTsSrmBji3wGFZitbLRTpfcDCvcjeA=",
+        "lastModified": 1792906207,
+        "narHash": "sha256-sD7R7AIfbGuF4k52XAzpW4mu8OMkj4JZC6ZGt1vg1l4=",
         "owner": "sestrella",
         "repo": "helix-theme-sync",
-        "rev": "c34841b3ece8b80539e183b7b506c94744133676",
+        "rev": "c79a087df248263012550ecd0c9dad3a9245a032",
         "type": "github"
       },
       "original": {
